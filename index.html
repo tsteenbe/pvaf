@@ -1414,7 +1414,7 @@ function renderAppView(id) {
   h += `</div>`;
   h += `<div class="assess-controls">`;
   h += `<div class="seg-control" id="segCtrl-${id}">`;
-  h += `<button class="seg-btn active" data-mode="full" onclick="setMode('${id}','full')">Volledig (22)</button>`;
+  h += `<button class="seg-btn active" data-mode="full" onclick="setMode('${id}','full')">Volledig (${INDICATORS.length})</button>`;
   h += `<button class="seg-btn" data-mode="quick" onclick="setMode('${id}','quick')">Quick scan (9)</button>`;
   h += `</div>`;
   h += `<span class="assess-mode-hint" id="modeHint-${id}"></span>`;
@@ -1479,7 +1479,7 @@ function renderAppView(id) {
     const picker = document.createElement('div');
     picker.id = `modePicker-${id}`;
     picker.className = 'mode-picker';
-    picker.innerHTML = `<span class="mode-picker-label">Hoe wil je beoordelen?</span><div class="mode-picker-opts"><button class="mode-opt" onclick="pickMode('${id}','quick')"><span class="mode-icon">\u26A1</span><span class="mode-text"><strong>Quick scan</strong><span>9 kernindicatoren</span></span></button><button class="mode-opt" onclick="pickMode('${id}','full')"><span class="mode-icon">\uD83D\uDCCB</span><span class="mode-text"><strong>Volledig assessment</strong><span>22 indicatoren</span></span></button></div>`;
+    picker.innerHTML = `<span class="mode-picker-label">Hoe wil je beoordelen?</span><div class="mode-picker-opts"><button class="mode-opt" onclick="pickMode('${id}','quick')"><span class="mode-icon">\u26A1</span><span class="mode-text"><strong>Quick scan</strong><span>9 kernindicatoren</span></span></button><button class="mode-opt" onclick="pickMode('${id}','full')"><span class="mode-icon">\uD83D\uDCCB</span><span class="mode-text"><strong>Volledig assessment</strong><span>${INDICATORS.length} indicatoren</span></span></button></div>`;
     div.prepend(picker);
   } else {
     const savedMode = hasSavedMode || 'full';
