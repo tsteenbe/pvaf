@@ -10,7 +10,7 @@ The Public Values Assessment Framework (PVAF) is a structured approach to assess
 2. **Mitigation capacity**: what measures are in place to manage those risks?
 3. **Strategic importance**: how critical is the application to the organisation?
 
-This tool implements the framework as an interactive, browser-based assessment. Based on 22 indicators across 8 dimensions, it calculates an public values score (1-10) per application. Results are presented in a summary table and an public values quadrant that provides immediate insight into which applications require attention.
+This tool implements the framework as an interactive, browser-based assessment. Based on 30 indicators across 8 dimensions, it calculates an public values score (1-10) per application. Results are presented in a summary table and an public values quadrant that provides immediate insight into which applications require attention.
 
 > **Note:** The tool interface is currently in Dutch. An English version is planned for a future release.
 
