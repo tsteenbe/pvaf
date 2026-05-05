@@ -5,13 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PVAF | Publieke Waarden Assessment Framework</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Ccircle%20cx='32'%20cy='32'%20r='24.035'%20fill='none'%20stroke='%2334444C'%20stroke-width='6.84'/%3E%3C/svg%3E">
+<link rel='dns-prefetch' href='//use.fontawesome.com' />
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@300;400;500;600;700&display=swap');
   :root {
-    --sivon-blue: #A8CED9;
+    --sivon-light-blue: #A8CED9;
     --sivon-red: #C33259;
     --sivon-blue: #34444D;
+    --sivon-gold: #CDB55B;
     --sivon-white: #FFFFFF;
+    --sivon-pink: #D77D95;
     --sivon-cream: #F7F3E8;
     --sivon-warm: #F2F0ED;
     --green: #0B7B5E;
@@ -21,21 +24,21 @@
     --shadow: 0 1px 3px rgba(0,0,0,0.08);
   }
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'Open Sans',Arial,system-ui,sans-serif; background:#f4f3ef; color:#333; line-height:1.5; font-size:14px; }
-  h1,h2,h3,.merri { font-family:'Merriweather',Georgia,serif; }
+  body { font-family:'Open Sans',sans-serif, Arial,system-ui; background:#fffcfc; color:#333; line-height:1.5; font-size:14px; }
+  h1,h2,h3,.sivon { font-family:'Open Sans',sans-serif,serif; color:#a9cfd9}
 
   /* === LAYOUT === */
-  .sivon-top { height:6px; background:var(--sivon-blue); }
+  .app-top { height:6px; background:var(--sivon-red); }
   .app-header { background:var(--sivon-blue); padding:1rem 2rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.5rem; }
   .app-header h1 { color:white; font-size:1.1rem; font-weight:700; }
-  .app-header h1 span { color:var(--sivon-blue); }
+  .app-header h1 span { color:var(--sivon-pink); }
   .header-right { display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; }
   .hbtn { background:rgba(255,255,255,0.1); color:rgba(255,255,255,0.75); border:none; padding:0.4rem 0.8rem; border-radius:5px; font-size:0.75rem; cursor:pointer; font-family:inherit; font-weight:500; transition:all 0.15s; }
   .hbtn:hover { background:rgba(255,255,255,0.2); color:white; }
-  .hbtn.primary { background:var(--sivon-blue); color:var(--sivon-blue); font-weight:600; }
-  .hbtn.primary:hover { background:#ffe04a; }
+  .hbtn.primary { background:var(--sivon-red); color:var(--sivon-white); font-weight:600; }
+  .hbtn.primary:hover { background:var(--sivon-pink); }
   .hbtn.help-btn { background:var(--sivon-red); color:white; font-weight:600; }
-  .hbtn.help-btn:hover { background:#d41040; }
+  .hbtn.help-btn:hover { background:var(--sivon-pink); }
   .hbtn.help-btn svg { width:13px; height:13px; vertical-align:-1.5px; margin-right:3px; fill:white; }
 
   .container { max-width:1200px; margin:0 auto; padding:1rem 1.5rem 3rem; }
@@ -49,14 +52,14 @@
   .tab-bar::-webkit-scrollbar { display:none; }
   .tab { padding:0.55rem 0.9rem; color:rgba(255,255,255,0.55); font-size:0.76rem; font-weight:500; cursor:pointer; border:none; background:transparent; font-family:inherit; white-space:nowrap; transition:all 0.15s; border-bottom:2px solid transparent; position:relative; flex-shrink:0; }
   .tab:hover { color:rgba(255,255,255,0.9); }
-  .tab.active { color:white; border-bottom-color:var(--sivon-blue); font-weight:600; }
-  .tab.overview { color:var(--sivon-blue); font-weight:600; }
-  .tab.overview.active { background:rgba(255,205,0,0.08); }
+  .tab.active { color:white; border-bottom-color:var(--sivon-pink); font-weight:600; }
+  .tab.overview { color:var(--sivon-white); font-weight:600; }
+  .tab.overview.active { background:var(--sivon-red); }
   .tab .close-tab { display:none; margin-left:0.4rem; font-size:0.65rem; opacity:0.5; }
   .tab:hover .close-tab { display:inline; }
   .tab .close-tab:hover { opacity:1; }
   .tab-count { color:rgba(255,255,255,0.35); font-size:0.68rem; padding:0.3rem 0.5rem; flex-shrink:0; }
-  .add-tab { color:var(--sivon-blue); font-size:1.1rem; cursor:pointer; padding:0.3rem 0.5rem; background:transparent; border:none; font-weight:700; flex-shrink:0; }
+  .add-tab { color:var(--sivon-pink); font-size:1.1rem; cursor:pointer; padding:0.3rem 0.5rem; background:transparent; border:none; font-weight:700; flex-shrink:0; }
   .add-tab:hover { color:white; }
 
   /* === OVERVIEW === */
@@ -198,8 +201,8 @@
   /* Info panel */
   .info-panel { background:white; border-radius:var(--radius); padding:1rem 1.2rem; margin-top:1rem; box-shadow:var(--shadow); }
   .info-panel h3 { font-size:0.85rem; color:var(--sivon-blue); margin-bottom:0.6rem; }
-  .formula-box { margin-top:0.6rem; padding:0.6rem; background:var(--sivon-cream); border-radius:6px; font-size:0.72rem; color:#666; }
-  .formula-box code { background:white; padding:0.1rem 0.3rem; border-radius:2px; font-size:0.75rem; color:var(--sivon-blue); font-weight:600; }
+  .formula-box { margin-top:0.6rem; padding:0.6rem; background:var(--sivon-white); border:1px solid var(--sivon-light-blue); border-radius:5px; font-size:0.72rem; var(--sivon-blue); }
+  .formula-box code { background:#e8ebf1; padding:0.1rem 0.3rem; border-radius:2px; font-size:0.75rem; color:var(--sivon-blue); font-weight:600; }
 
   /* Quadrant */
   .quadrant-wrap { margin-top:1rem; background:white; border-radius:var(--radius); box-shadow:var(--shadow); padding:1.2rem; }
@@ -242,18 +245,20 @@
   .modal-overlay { display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.5); z-index:1000; justify-content:center; align-items:flex-start; padding:2rem; overflow-y:auto; }
   .modal-overlay.open { display:flex; }
   .modal { background:white; border-radius:var(--radius); max-width:800px; width:100%; max-height:90vh; overflow-y:auto; box-shadow:0 8px 30px rgba(0,0,0,0.25); }
-  .modal-header { padding:1rem 1.5rem; border-bottom:3px solid var(--sivon-blue); display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; background:white; z-index:1; border-radius:var(--radius) var(--radius) 0 0; }
-  .modal-header h2 { font-size:1.1rem; color:var(--sivon-blue); }
+  .modal-header { padding:1rem 1.5rem; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; background:white; z-index:1; border-radius:var(--radius) var(--radius) 0 0; }
+  .modal-header h2 { font-size:1.3rem; color:var(--sivon-blue); }
   .modal-close { background:none; border:none; font-size:1.3rem; cursor:pointer; color:#999; padding:0.2rem 0.5rem; }
   .modal-close:hover { color:var(--sivon-red); }
   .modal-body { padding:1.5rem; }
-  .modal-body h3 { font-size:0.95rem; color:var(--sivon-blue); margin:1.2rem 0 0.5rem; }
+  .modal-body h3 { font-size:0.95rem; color:var(--sivon-gold); margin:1.2rem 0 0.5rem; }
   .modal-body h3:first-child { margin-top:0; }
   .modal-body p { font-size:0.85rem; color:#555; margin-bottom:0.6rem; line-height:1.6; }
+  .modal-body a { color:var(--sivon-gold); text-decoration:none; }
+  .modal-body a:hover { text-decoration:underline; }
   .modal-body ul { font-size:0.85rem; color:#555; margin:0.3rem 0 0.6rem 1.2rem; line-height:1.6; }
-  .modal-body .tip { background:var(--sivon-cream); border-left:3px solid var(--sivon-blue); padding:0.6rem 0.8rem; border-radius:0 6px 6px 0; font-size:0.8rem; color:#666; margin:0.6rem 0; }
+  .modal-body .tip { background:var(--sivon-white); border:1px solid var(--sivon-light-blue); padding:0.6rem 0.8rem; border-radius: 5px; font-size:0.8rem; color:var(--sivon-blue); margin:0.6rem 0; }
   .modal-body .tip strong { color:var(--sivon-blue); }
-  .modal-body code { background:#f0ece4; padding:0.1rem 0.3rem; border-radius:3px; font-size:0.8rem; }
+  .modal-body code { background:#e8ebf1; padding:0.1rem 0.3rem; border-radius:3px; font-size:0.8rem; }
 
   /* === DROPDOWN MENU === */
   .dropdown { position:relative; display:inline-block; }
@@ -289,7 +294,7 @@
 </style>
 </head>
 <body>
-<div class="sivon-top"></div>
+<div class="app-top"></div>
 <div class="app-header">
   <h1><span>PVAF</span> Publieke Waarden Assessment Framework</h1>
   <div class="header-right">
@@ -330,7 +335,7 @@
   <!-- OVERVIEW VIEW -->
   <div class="view active" id="view-overview">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.8rem">
-      <h2 class="merri" style="font-size:1.1rem;color:var(--sivon-blue)">Assessment overzicht</h2>
+      <h2 class="sivon" style="font-size:1.1rem;color:var(--sivon-blue)">Assessment overzicht</h2>
       <button class="hbtn primary" onclick="addApp()" style="font-size:0.8rem">+ Applicatie toevoegen</button>
     </div>
     <div id="overviewContent">
@@ -349,7 +354,7 @@
 <div class="modal-overlay" id="helpModal">
   <div class="modal">
     <div class="modal-header">
-      <h2 class="merri">Handleiding Publieke Waarden Assessment Tool</h2>
+      <h2 class="sivon">Handleiding Publieke Waarden Assessment Tool</h2>
       <button class="modal-close" onclick="closeHelp()">&times;</button>
     </div>
     <div class="modal-body">
@@ -427,7 +432,7 @@
 <div class="modal-overlay" id="weightsModal">
   <div class="modal">
     <div class="modal-header">
-      <h2 class="merri">Wegingen aanpassen</h2>
+      <h2 class="sivon">Wegingen aanpassen</h2>
       <button class="modal-close" onclick="closeWeightsModal()">&times;</button>
     </div>
     <div class="modal-body">
@@ -1213,7 +1218,7 @@ function renderOverview() {
   h += '</table>';
 
   // === QUADRANT ===
-  h += `<div class="quadrant-wrap"><h3 class="merri">Publieke Waarden-kwadrant</h3>`;
+  h += `<div class="quadrant-wrap"><h3 class="sivon">Publieke Waarden-kwadrant</h3>`;
   h += `<div class="q-xticks-row"><div class="q-side-spacer"></div><div class="q-xticks"><span></span><span>Laag</span><span></span><span>Hoog</span><span></span></div></div>`;
   h += `<div class="quadrant-outer">`;
   h += `<div class="q-ylabel">Mitigatie</div>`;
