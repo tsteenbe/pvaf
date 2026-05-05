@@ -32,7 +32,7 @@
     --shadow: 0 1px 3px rgba(0,0,0,0.08);
   }
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'Open Sans',sans-serif, Arial,system-ui; background:#fffcfc; color:#333; line-height:1.5; font-size:14px; }
+  body { font-family:'Open Sans',sans-serif, Arial,system-ui; background:#fffcfc; color:#333; line-height:1.5; font-size:14px; display: flex; flex-direction: column; min-height: 100vh; }
   h1,h2,h3,.sivon { font-family:'Open Sans',sans-serif,serif; color:#a9cfd9}
 
   /* === LAYOUT === */
@@ -54,7 +54,7 @@
     .hbtn.help-btn:hover svg { fill:var(--sivon-light-blue); }
 
 
-  .container { max-width:1200px; margin:0 auto; padding:1rem 1.5rem 3rem; }
+  .container { max-width:1200px; margin:0 auto; padding:1rem 1.5rem 3rem; flex: 1; }
 
   /* === TABS === */
   .tab-wrapper { background:var(--sivon-white); display:flex; align-items:center; position:relative; }
