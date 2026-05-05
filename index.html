@@ -27,39 +27,46 @@
   h1,h2,h3,.sivon { font-family:'Open Sans',sans-serif,serif; color:#a9cfd9}
 
   /* === LAYOUT === */
-  .app-top { height:6px; background:var(--sivon-red); }
-  .app-header { background:var(--sivon-blue); padding:1rem 2rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.5rem; }
+  .app-header { background:var(--sivon-white); padding:1rem 2rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.5rem; }
   .app-header h1 { color:white; font-size:1.1rem; font-weight:700; }
-  .app-header h1 span { color:var(--sivon-pink); }
+  .app-header h1 { color:var(--sivon-blue); }
+  .app-header .header-left img { width: 90px; height: auto; }
+  .header-logo { display: flex; align-items: center; gap: 1rem; }
+  .header-logo a img { flex-shrink: 0; }
+  .header-logo h1 { padding-bottom: 10px; }
   .header-right { display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; }
-  .hbtn { background:rgba(255,255,255,0.1); color:rgba(255,255,255,0.75); border:none; padding:0.4rem 0.8rem; border-radius:5px; font-size:0.75rem; cursor:pointer; font-family:inherit; font-weight:500; transition:all 0.15s; }
-  .hbtn:hover { background:rgba(255,255,255,0.2); color:white; }
-  .hbtn.primary { background:var(--sivon-red); color:var(--sivon-white); font-weight:600; }
-  .hbtn.primary:hover { background:var(--sivon-pink); }
-  .hbtn.help-btn { background:var(--sivon-red); color:white; font-weight:600; }
-  .hbtn.help-btn:hover { background:var(--sivon-pink); }
-  .hbtn.help-btn svg { width:13px; height:13px; vertical-align:-1.5px; margin-right:3px; fill:white; }
+  .hbtn { background:rgba(255,255,255,0.1); color:var(--sivon-blue); border:none; padding:0.4rem 0.8rem; font-size:0.75rem; cursor:pointer; font-family:inherit; font-weight:500; transition:all 0.15s; }
+  .hbtn:hover { background:rgba(255,255,255,0.2); color:var(--sivon-light-blue); }
+  .hbtn.primary { background:var(--sivon-white); color:var(--sivon-blue); border: 2px solid var(--sivon-light-blue); font-weight:600; }
+  .hbtn.primary:hover { background:var(--sivon-light-blue); color:var(--sivon-white); }
+  .hbtn.help-btn { background:var(--sivon-white); color:var(--sivon-blue); font-weight:600; }
+  .hbtn.help-btn:hover { background:var(--sivon-white); color:var(--sivon-light-blue); }
+  .hbtn.help-btn svg { width:13px; height:13px; vertical-align:-1.5px; margin-right:3px; fill:var(--sivon-blue); }
+    .hbtn.help-btn:hover svg { fill:var(--sivon-light-blue); }
+
 
   .container { max-width:1200px; margin:0 auto; padding:1rem 1.5rem 3rem; }
 
   /* === TABS === */
-  .tab-wrapper { background:var(--sivon-blue); display:flex; align-items:center; position:relative; }
+  .tab-wrapper { background:var(--sivon-white); display:flex; align-items:center; position:relative; }
   .tab-scroll-btn { background:none; border:none; color:var(--sivon-blue); font-size:1.1rem; cursor:pointer; padding:0.4rem 0.5rem; flex-shrink:0; opacity:0.7; transition:opacity 0.15s; z-index:2; }
-  .tab-scroll-btn:hover { opacity:1; }
+  .tab-scroll-btn:hover { background:var(--sivon-light-blue);  color:var(--sivon-white); }
   .tab-scroll-btn.hidden { visibility:hidden; pointer-events:none; }
-  .tab-bar { display:flex; align-items:center; gap:2px; overflow-x:auto; flex:1; padding:0 0.3rem; scrollbar-width:none; -ms-overflow-style:none; scroll-behavior:smooth; }
+  .tab-bar { display:flex; align-items:center; gap:2px; overflow-x:auto; flex:1; padding:0 0.3rem; scrollbar-width:none; -ms-overflow-style:none; scroll-behavior:smooth; border-bottom:1px solid; border-bottom-color:var(--sivon-light-blue); }
   .tab-bar::-webkit-scrollbar { display:none; }
-  .tab { padding:0.55rem 0.9rem; color:rgba(255,255,255,0.55); font-size:0.76rem; font-weight:500; cursor:pointer; border:none; background:transparent; font-family:inherit; white-space:nowrap; transition:all 0.15s; border-bottom:2px solid transparent; position:relative; flex-shrink:0; }
-  .tab:hover { color:rgba(255,255,255,0.9); }
-  .tab.active { color:white; border-bottom-color:var(--sivon-pink); font-weight:600; }
-  .tab.overview { color:var(--sivon-white); font-weight:600; }
-  .tab.overview.active { background:var(--sivon-red); }
+  .tab { padding:0.55rem 0.9rem; color:var(--sivon-blue); font-size:0.76rem; font-weight:500; cursor:pointer; border:none; background:transparent; font-family:inherit; white-space:nowrap; transition:all 0.15s; border-bottom:2px solid transparent; position:relative; flex-shrink:0; }
+  .tab:hover { background:var(--sivon-light-blue); color:var(--sivon-white); }
+  .tab.active { color:white; background:var(--sivon-blue); font-weight:600; }
+  .tab.active:hover { background:var(--sivon-light-blue); color:var(--sivon-white); }
+  .tab.overview { color:var(--sivon-blue); font-weight:600; }
+  .tab.overview:hover { background:var(--sivon-light-blue); color:var(--sivon-white); }
+  .tab.overview.active { background:var(--sivon-blue);  color:var(--sivon-white); }
   .tab .close-tab { display:none; margin-left:0.4rem; font-size:0.65rem; opacity:0.5; }
   .tab:hover .close-tab { display:inline; }
   .tab .close-tab:hover { opacity:1; }
   .tab-count { color:rgba(255,255,255,0.35); font-size:0.68rem; padding:0.3rem 0.5rem; flex-shrink:0; }
-  .add-tab { color:var(--sivon-pink); font-size:1.1rem; cursor:pointer; padding:0.3rem 0.5rem; background:transparent; border:none; font-weight:700; flex-shrink:0; }
-  .add-tab:hover { color:white; }
+  .add-tab { color:var(--sivon-blue); font-size:1.1rem; cursor:pointer; padding:0.3rem 0.5rem; background:transparent; border:none; font-weight:700; flex-shrink:0; }
+  .add-tab:hover { color:var(--sivon-light-blue); }
 
   /* === OVERVIEW === */
   .overview-grid { width:100%; border-collapse:separate; border-spacing:0; }
@@ -261,12 +268,11 @@
 
   /* === DROPDOWN MENU === */
   .dropdown { position:relative; display:inline-block; }
-  .dropdown-menu { display:none; position:absolute; left:0; top:100%; background:white; border-radius:var(--radius); box-shadow:0 4px 16px rgba(0,0,0,0.18); z-index:200; min-width:240px; overflow:hidden; margin-top:4px; }
+  .dropdown-menu { display:none; position:absolute; left:0; top:100%; background:white; z-index:200; min-width:240px; overflow:hidden; margin-top:4px; }
   .dropdown-menu.open { display:block; }
-  .dropdown-item { display:block; width:100%; padding:0.5rem 1rem; border:none; background:none; cursor:pointer; font-family:inherit; font-size:0.78rem; color:#333; text-align:left; transition:background 0.1s; }
-  .dropdown-item:hover { background:var(--sivon-cream); }
-  .dropdown-item small { display:block; color:#999; font-size:0.68rem; margin-top:1px; }
-  .dropdown-sep { height:1px; background:#eee; margin:2px 0; }
+  .dropdown-item { display:block; width:100%; padding:0.5rem 1rem; border:none; background:var(--sivon-red); cursor:pointer; font-family:inherit; font-size:0.78rem; color:var(--sivon-white); text-align:left; transition:background 0.1s; }
+  .dropdown-item:hover { background:var(--sivon-pink); }
+  .dropdown-item small { display:block; color: var(--sivon-white); font-size:0.68rem; margin-top:1px; }
 
   /* === FOOTER === */
   footer { border-top:3px solid var(--sivon-blue); margin-top:2rem; padding:1.5rem 2rem; background:var(--sivon-blue); color:rgba(255,255,255,0.7); }
@@ -293,15 +299,18 @@
 </style>
 </head>
 <body>
-<div class="app-top"></div>
 <div class="app-header">
-  <h1><span>PVAF</span> Publieke Waarden Assessment Framework</h1>
+  <div class="header-left">
+      <div class="header-logo">
+        <a href="https://sivon.nl/"><img src="https://sivon.nl/wp-content/themes/haicu26_sivon/images/logo-SIVON.png" alt="SIVON Logo"></a>
+        <h1>Publieke Waarden Assessment Framework</h1>
+      </div>
+  </div>
   <div class="header-right">
     <div class="dropdown">
       <button class="hbtn" onclick="toggleDropdown('importMenu')">Importeer &#9662;</button>
       <div class="dropdown-menu" id="importMenu">
         <button class="dropdown-item" onclick="importData();closeDropdowns()">JSON importeren<small>Eerder geexporteerde assessments</small></button>
-        <div class="dropdown-sep"></div>
         <button class="dropdown-item" onclick="importCSVApps();closeDropdowns()">Applicatielijst (CSV)<small>Bulk: meerdere applicaties in een keer</small></button>
         <button class="dropdown-item" onclick="downloadCSVTemplate();closeDropdowns()">Download CSV-template<small>Templatebestand voor bulk-import</small></button>
       </div>
