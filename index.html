@@ -812,21 +812,21 @@ const INDICATORS = [
   },
   {
     code: 'G2',
-    title: 'Onderzoeksdata en kennisveiligheid',
+    title: 'Onderwijsdata en kennisveiligheid',
     dim: 'G',
     dn: 'Data-gevoeligheid',
     niv: 3,
     w: 3,
-    q: 'Hoe gevoelig zijn de onderzoeksgegevens en kennis in dit systeem?',
+    q: 'Hoe gevoelig zijn de onderwijsgegevens en kennis in dit systeem?',
     r: [
-      'Geen onderzoeksdata.',
+      'Geen onderwijsdata.',
       'Alleen openbare/gepubliceerde data.',
       'Vertrouwelijk, nog niet gepubliceerd. Voortijdige toegang door derden is onwenselijk.',
       'Gevoelig of strategisch waardevol. Concurrentiegevoelig.',
       'Nationale veiligheid, exportcontrole, dual-use. Buitenlandse toegang ernstig.'
     ],
     h:
-      "Onderzoeksdata? Hoe gevoelig? Embargo's? Buitenlandse toegang problematisch? Denk breder dan alleen datasets: ook onderzoeksmethoden, nog niet gepubliceerde bevindingen en strategische kennis vallen hieronder."
+      "Onderwijsdata? Hoe gevoelig? Embargo's? Buitenlandse toegang problematisch? Denk breder dan alleen datasets: ook onderwijsmethoden en strategische kennis vallen hieronder."
   },
   {
     code: 'G3',
@@ -848,30 +848,30 @@ const INDICATORS = [
   },
   {
     code: 'H1',
-    title: 'Academische vrijheid',
+    title: 'Onderwijsvrijheid',
     dim: 'H',
-    dn: 'Academische impact',
+    dn: 'Onderwijs impact',
     niv: 3,
     w: 3,
-    q: 'Kan de leverancier invloed uitoefenen op academische activiteiten?',
+    q: 'Kan de leverancier invloed uitoefenen op de onderwijs activiteiten?',
     r: [
-      'Geen relatie met onderzoek.',
+      'Geen relatie met onderwijs.',
       'Theoretisch risico, geen eerdere gevallen bekend.',
-      'Toegang tot onderzoekspatronen. Beperkt risico op indirecte beinvloeding.',
-      'Reeel risico. Land waar overheden onderzoek kunnen censureren.',
+      'Toegang tot onderwijsmaterialen. Beperkt risico op indirecte beinvloeding.',
+      'Reëel risico. Land waar overheden onderwijs kunnen censureren.',
       'Aangetoonde censuur of datavordering bij deze leverancier of overheid.'
     ],
     h:
-      'Kan de leverancier of een buitenlandse overheid inzicht krijgen in onderzoeksactiviteiten? Zijn er eerdere gevallen van censuur of datavordering bij deze leverancier?'
+      'Kan de leverancier of een buitenlandse overheid inzicht krijgen in onderwijsactiviteiten? Zijn er eerdere gevallen van censuur of datavordering bij deze leverancier?'
   },
   {
     code: 'H2',
-    title: 'Onderzoekssamenwerking',
+    title: 'Onderwijssamenwerking',
     dim: 'H',
-    dn: 'Academische impact',
+    dn: 'Onderwijs impact',
     niv: 3,
     w: 2,
-    q: 'Belang voor onderzoekssamenwerking (nationaal en internationaal)?',
+    q: 'Belang voor onderwijssamenwerking (nationaal en internationaal)?',
     r: [
       'Geen rol. Puur intern.',
       'Marginale rol. Direct alternatieven voor partners.',
@@ -886,7 +886,7 @@ const INDICATORS = [
     code: 'H3',
     title: 'Langetermijnarchivering',
     dim: 'H',
-    dn: 'Academische impact',
+    dn: 'Onderwijs impact',
     niv: 3,
     w: 2,
     q: 'Hoe lang moet data bewaard en toegankelijk blijven?',
@@ -902,8 +902,8 @@ const INDICATORS = [
   }
 ];
 
-const DIM_DESC={A:'Onder welke wetgeving valt de leverancier en waar staat de data? Geopolitieke en jurisdictierisico\'s.',B:'Hoeveel producten en diensten neem je af bij dezelfde leverancier?',C:'Kun je technisch gezien overstappen? Zijn er alternatieven, is data exporteerbaar, is de software open?',D:'Heb je de kennis, plannen en backups om een overstap daadwerkelijk uit te voeren?',E:'Wat is er contractueel geregeld over vertrek, data-overdracht en flexibiliteit?',F:'Hoe belangrijk is deze applicatie voor de organisatie en hoeveel hangt ervan af?',G:'Welke gevoelige gegevens zitten in dit systeem? Persoonsgegevens, onderzoeksdata, intellectueel eigendom.',H:'Raakt deze applicatie aan academische vrijheid, samenwerking of langetermijnarchivering?'};
-const DIMS={A:'Geopolitiek risico',B:'Leveranciersafhankelijkheid',C:'Technische weerbaarheid',D:'Organisatorische weerbaarheid',E:'Contractuele weerbaarheid',F:'Organisatorisch belang',G:'Data-gevoeligheid',H:'Academische impact'};
+const DIM_DESC={A:'Onder welke wetgeving valt de leverancier en waar staat de data? Geopolitieke en jurisdictierisico\'s.',B:'Hoeveel producten en diensten neem je af bij dezelfde leverancier?',C:'Kun je technisch gezien overstappen? Zijn er alternatieven, is data exporteerbaar, is de software open?',D:'Heb je de kennis, plannen en backups om een overstap daadwerkelijk uit te voeren?',E:'Wat is er contractueel geregeld over vertrek, data-overdracht en flexibiliteit?',F:'Hoe belangrijk is deze applicatie voor de organisatie en hoeveel hangt ervan af?',G:'Welke gevoelige gegevens zitten in dit systeem? Persoonsgegevens, onderzoeksdata, intellectueel eigendom.',H:'Raakt deze applicatie aan onderwijs vrijheid, samenwerking of langetermijnarchivering?'};
+const DIMS={A:'Geopolitiek risico',B:'Leveranciersafhankelijkheid',C:'Technische weerbaarheid',D:'Organisatorische weerbaarheid',E:'Contractuele weerbaarheid',F:'Organisatorisch belang',G:'Data-gevoeligheid',H:'Onderwijs impact'};
 const NIV_DIMS={1:['A','B'],2:['C','D','E'],3:['F','G','H']};
 const NIV_NAMES={1:'Risico-exposure',2:'Mitigatie-capaciteit',3:'Strategisch belang'};
 const NIV_CLS={1:'n1',2:'n2',3:'n3'};
@@ -1424,7 +1424,7 @@ function renderAppView(id) {
   h += `<div class="score-card main-score"><div class="sc-label">Publieke Waarden Score <span class="tt" data-tip="Hoe groot is het publieke waarde probleem? Een hoge score betekent: goed gemitigeerd en/of laag risico. Een lage score betekent: urgent probleem. Berekend als Mitigatie / (Risico x Belang), genormaliseerd naar 1-10. Zie Handleiding voor details." style="cursor:help;font-size:0.55rem;color:#bbb;border-bottom:1px dotted #ccc">&#9432;</span></div><div class="sc-value" id="sc10-${id}">--</div><div class="sc-sub">Lage score = urgent probleem</div></div>`;
   h += `<div class="score-card risico"><div class="sc-label">Risico-exposure <span class="tt" data-tip="Hoe groot is het externe risico? Gemiddelde van dimensie A (Geopolitiek risico) en B (Leveranciersafhankelijkheid). Lage score = weinig risico (goed). Hoge score = veel risico. Dit niveau kun je verbeteren, bijv. door te migreren naar een EU-provider." style="cursor:help;font-size:0.55rem;color:#bbb;border-bottom:1px dotted #ccc">&#9432;</span></div><div class="sc-value" id="scR-${id}">--</div><div class="sc-sub">Laag = weinig risico (goed)</div></div>`;
   h += `<div class="score-card mitigatie"><div class="sc-label">Mitigatie-capaciteit <span class="tt" data-tip="Hoe goed kan de organisatie risico's beheersen? Gemiddelde van dimensie C (Technische weerbaarheid), D (Organisatorische weerbaarheid) en E (Contractuele weerbaarheid). Lage score = zwak. Hoge score = sterk. Dit niveau kun je verbeteren, bijv. door alternatieven te ontwikkelen, contracten te versterken of kennis op te bouwen." style="cursor:help;font-size:0.55rem;color:#bbb;border-bottom:1px dotted #ccc">&#9432;</span></div><div class="sc-value" id="scM-${id}">--</div><div class="sc-sub">Hoog = sterke mitigatie (goed)</div></div>`;
-  h += `<div class="score-card belang"><div class="sc-label">Strategisch belang <span class="tt" data-tip="Hoe belangrijk is de applicatie? Gemiddelde van dimensie F (Organisatorisch belang), G (Data-gevoeligheid) en H (Academische impact). Lage score = weinig belang. Hoge score = kritiek. Dit niveau ligt grotendeels vast; een applicatie wordt niet minder belangrijk." style="cursor:help;font-size:0.55rem;color:#bbb;border-bottom:1px dotted #ccc">&#9432;</span></div><div class="sc-value" id="scB-${id}">--</div><div class="sc-sub">Hoog = kritieke applicatie</div></div>`;
+  h += `<div class="score-card belang"><div class="sc-label">Strategisch belang <span class="tt" data-tip="Hoe belangrijk is de applicatie? Gemiddelde van dimensie F (Organisatorisch belang), G (Data-gevoeligheid) en H (Onderwijs impact). Lage score = weinig belang. Hoge score = kritiek. Dit niveau ligt grotendeels vast; een applicatie wordt niet minder belangrijk." style="cursor:help;font-size:0.55rem;color:#bbb;border-bottom:1px dotted #ccc">&#9432;</span></div><div class="sc-value" id="scB-${id}">--</div><div class="sc-sub">Hoog = kritieke applicatie</div></div>`;
   h += `</div>`;
 
   for (const niv of [1,2,3]) {
