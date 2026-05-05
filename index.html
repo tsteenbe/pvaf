@@ -520,7 +520,7 @@ const INDICATORS = [
     code: 'A1',
     title: 'Jurisdictie leverancier',
     dim: 'A',
-    dn: 'Geopolitiek risico',
+    dn: 'Geopolitiek en wettelijke conformiteit risico',
     niv: 1,
     w: 3,
     q: 'Onder welke jurisdictie valt de leverancier?',
@@ -531,14 +531,13 @@ const INDICATORS = [
       'Geen adequaatheidsbesluit maar contractuele waarborgen (SCCs). Juridische bescherming beperkt.',
       'Geen adequaatheidsbesluit, geen waarborgen. Directe toegang buitenlandse overheden.'
     ],
-    h:
-      'Waar is de leverancier gevestigd? Extraterritoriale wetgeving? Adequaatheidsbesluit? Let op: het EU-US Data Privacy Framework (2023) is het derde adequaatheidsbesluit voor de VS; de vorige twee zijn door het Europese Hof vernietigd. De onderliggende wetgeving (CLOUD Act, FISA 702) is echter niet veranderd. Weeg zelf of je dit als score 3 of 4 beschouwt.'
+    h: 'Waar is de leverancier gevestigd? Extraterritoriale wetgeving? Adequaatheidsbesluit? Let op: het EU-US Data Privacy Framework (2023) is het derde adequaatheidsbesluit voor de VS; de vorige twee zijn door het Europese Hof vernietigd. De onderliggende wetgeving (CLOUD Act, FISA 702) is echter niet veranderd. Weeg zelf of je dit als score 3 of 4 beschouwt.'
   },
   {
     code: 'A2',
     title: 'Sanctie- en geopolitiek risico',
     dim: 'A',
-    dn: 'Geopolitiek risico',
+    dn: 'Geopolitiek en wettelijke conformiteit risico',
     niv: 1,
     w: 2,
     q: 'Hoe groot is het geopolitieke risico voor de dienstverlening?',
@@ -549,14 +548,13 @@ const INDICATORS = [
       'Verhoogd risico. Geopolitieke spanningen of handelsconflicten. Nog geen voorbeelden van directe gevolgen voor Europese partijen.',
       'Hoog risico. Actieve sancties of beperkingen. Voorbeelden van dienstverstoring of blokkade voor Europese partijen.'
     ],
-    h:
-      'Actuele sancties of handelsgeschillen? Eerder diensten beperkt aan Europese partijen? Houd ook rekening met ideologische verschillen (normen en waarden) tussen de leverancier/overheid en de Europese context.'
+    h: 'Actuele sancties of handelsgeschillen? Eerder diensten beperkt aan Europese partijen? Houd ook rekening met ideologische verschillen (normen en waarden) tussen de leverancier/overheid en de Europese context.'
   },
   {
     code: 'A3',
     title: 'Hosting en datalocatie',
     dim: 'A',
-    dn: 'Geopolitiek risico',
+    dn: 'Geopolitiek en wettelijke conformiteit risico',
     niv: 1,
     w: 2,
     q: 'Waar worden data en applicatie fysiek gehost en hoe is dat geborgd?',
@@ -567,14 +565,31 @@ const INDICATORS = [
       'Data deels buiten EU, met contractuele waarborgen (SCCs of adequaatheidsbesluit).',
       'Data buiten EU, geen waarborgen, of onduidelijk waar data staat.'
     ],
+    h: 'Waar staan de servers fysiek? Is de data- en applicatielocatie contractueel vastgelegd? Kunnen backups of replicatie buiten de EU terechtkomen? Let op: data en applicatie kunnen op verschillende locaties draaien (bijv. applicatie in Ierland, database in Frankfurt, beheerconsole in de VS). Check of er ergens in de keten een niet-Europese jurisdictie meespeelt en neem de slechtste jurisdictie als uitgangspunt.'
+  },
+  {
+    code: 'A4',
+    title: 'Wettelijke conformiteit',
+    dim: 'A',
+    dn: 'Geopolitiek en wettelijke conformiteit risico',
+    niv: 1,
+    w: 2,
+    q: 'Hoe zit het met conformiteit met de wettelijke eisen, zoals toegankelijkheidseisen (WCAG), beveiliging en privacywetgeving?',
+    r: [
+      'Volledig aangetoonde conformiteit inclusief procedures gedocumenteerd; jaarlijks extern auditrapport publiek beschikbaar; leverancier toont actief leiderschap in (sector)samenwerking om conformiteit in de toeleveringsketen te verbeteren.',
+      'Volledig aangetoonde conformiteit inclusief procedures gedocumenteerd; jaarlijks extern auditrapport beschikbaar; leverancier participeert in (sector)samenwerking om conformiteit in de keten te verbeteren.',
+      'Gedocumenteerde conformiteit met wettlijke eisen met vermelding van gebruikte processen. Jaarlijks extern auditrapport optioneel beschikbaar.',
+      'Documentatie specificeert welke wettelijke eisen (bijv. WCAG, privacy, beveiliging) worden getest en geeft beperkt inzicht in de conformiteitsprocessen.',
+      'Geen of beperkte documentatie over wettelijke conformiteit beschikbaar.'
+    ],
     h:
-      'Waar staan de servers fysiek? Is de data- en applicatielocatie contractueel vastgelegd? Kunnen backups of replicatie buiten de EU terechtkomen? Let op: data en applicatie kunnen op verschillende locaties draaien (bijv. applicatie in Ierland, database in Frankfurt, beheerconsole in de VS). Check of er ergens in de keten een niet-Europese jurisdictie meespeelt en neem de slechtste jurisdictie als uitgangspunt.'
+      'Controleer of de leverancier aantoont welke wettelijke eisen en standaarden worden geborgd (bijv. WCAG‑niveau, AVG/privacy, informatiebeveiligingsnormen zoals ISO 27001) en of hiervoor concrete processen, tests en verantwoordelijkheden zijn vastgelegd. Vraag naar bewijs (auditrapporten, testresultaten, certificaten), de frequentie van controles en of audits publiek of op verzoek beschikbaar zijn. Let ook op reikwijdte (alle diensten/onderdelen of alleen kerncomponenten), ketenimpact (leveranciers/subcontractors) en welke corrigerende maatregelen worden toegepast bij non‑conformiteit.'
   },
   {
     code: 'B1',
     title: 'Vendor concentratie',
     dim: 'B',
-    dn: 'Leveranciersafhankelijkheid',
+    dn: 'Leveranciers- en ketenafhankelijkheden',
     niv: 1,
     w: 3,
     q: 'Hoeveel producten en diensten gebruik je van dezelfde leverancier?',
@@ -585,8 +600,24 @@ const INDICATORS = [
       '7-15 producten/diensten bij deze leverancier.',
       'Heel ecosysteem (>15 producten/diensten) bij deze leverancier.'
     ],
-    h:
-      'Tel alle producten, diensten, licenties en platformen die je van deze leverancier gebruikt, zowel afgenomen diensten als gekochte software. Denk ook aan onderliggende platformen (bijv. Azure AD, SharePoint, Intune naast Office 365).'
+    h: 'Tel alle producten, diensten, licenties en platformen die je van deze leverancier gebruikt, zowel afgenomen diensten als gekochte software. Denk ook aan onderliggende platformen (bijv. Azure AD, SharePoint, Intune naast Office 365).'
+  },
+  {
+    code: 'B2',
+    title: 'Inzicht software opbouw en toeleveringsketen',
+    dim: 'B',
+    dn: 'Leveranciers- en ketenafhankelijkheden',
+    niv: 1,
+    w: 3,
+    q: 'Is er een software bill of materials (SBOM) beschikbaar voor dit product of dienst?',
+    r: [
+      'Volledige SBOM bij elke release: CycloneDX ≥1.6 en/of SPDX ≥2.2, alle afhankelijkheden (inclusief closed‑source) zo volledig als de klant redelijkerwijs mag verwachten. Gevalideerd door een onafhankelijke derde partij.',
+      'Volledige SBOM bij elke release: CycloneDX ≥1.6 en/of SPDX ≥2.2, alle afhankelijkheden (inclusief closed‑source) zo volledig als de klant redelijkerwijs mag verwachten.',
+      'SBOM bij elke release: CycloneDX ≥1.6 en/of ≥SPDX 2.2, minimaal alle directe afhankelijkheden (inclusief closed‑source).',
+      'Beknopt componentoverzicht beschikbaar in documentatie of op verzoek (geen gestructureerde SBOM).',
+      'Geen SBOM beschikbaar.',
+    ],
+    h: 'Welke closed-source en open source componenten worden gebruikt? Een SBOM (Software Bill of Materials) is een gestructureerde lijst van alle softwarecomponenten en afhankelijkheden die inzicht geeft in licentierisico’s, bekende beveiligingskwetsbaarheden (CVEs) en supply‑chain risico’s. Gebruikelijke standaarden zijn CycloneDX en SPDX.'
   },
   {
     code: 'C1',
@@ -620,8 +651,7 @@ const INDICATORS = [
       '3-6 maanden.',
       'Minder dan 3 maanden. Of: self-hosting optie direct beschikbaar.'
     ],
-    h:
-      'Schat de doorlooptijd van een volledige migratie. Houd rekening met: datavolume, aantal koppelingen, leveranciersspecifieke onderdelen, beschikbaarheid van migratietools, en benodigde aanpassingen aan werkprocessen. Neem naast doorlooptijd ook de verwachte kosten mee in je afweging (inhuur, licenties, omscholing).'
+    h: 'Schat de doorlooptijd van een volledige migratie. Houd rekening met: datavolume, aantal koppelingen, leveranciersspecifieke onderdelen, beschikbaarheid van migratietools, en benodigde aanpassingen aan werkprocessen. Neem naast doorlooptijd ook de verwachte kosten mee in je afweging (inhuur, licenties, omscholing).'
   },
   {
     code: 'C3',
@@ -634,12 +664,11 @@ const INDICATORS = [
     r: [
       'Geen export mogelijk. Data alleen via leverancierssysteem.',
       'Beperkte handmatige export. Geen metadata, onbruikbaar formaat.',
-      'Export in gangbare formaten, redelijk volledig. Mogelijk ontbreken metadata.',
+      'Export in gangbare (open standaard) formaten, redelijk volledig. Mogelijk ontbreken metadata.',
       'Volledige export in open formaten met API. Inclusief metadata.',
       'Volledige portabiliteit: open formaten, metadata, historie, relaties. Direct bruikbaar.'
     ],
-    h:
-      'Kan alle data geexporteerd? Welk formaat? API? Metadata meegenomen? Als de applicatie ook self-hosted beschikbaar is, kan dat de portabiliteit aanzienlijk verbeteren.'
+    h: 'Kan alle data geexporteerd? Welk formaat? API? Metadata meegenomen? Als de applicatie ook self-hosted beschikbaar is, kan dat de portabiliteit aanzienlijk verbeteren.'
   },
   {
     code: 'C4',
@@ -657,8 +686,7 @@ const INDICATORS = [
       'BYOK: eigen sleutels inbrengen en beheren.',
       'Client-side encryption: data versleuteld voor verzending met eigen sleutels.'
     ],
-    h:
-      'Het gaat hier om controle over de encryptiesleutels, niet om of encryptie nodig is. Wie beheert de sleutels bepaalt wie bij de data kan, ook bij een dataverzoek van een buitenlandse overheid of bij vertrek van de leverancier.'
+    h: 'Het gaat hier om controle over de encryptiesleutels, niet om of encryptie nodig is. Wie beheert de sleutels bepaalt wie bij de data kan, ook bij een dataverzoek van een buitenlandse overheid of bij vertrek van de leverancier.'
   },
   {
     code: 'C5',
@@ -675,8 +703,24 @@ const INDICATORS = [
       'Open source, actieve community, permissive licentie. Mogelijk om een onafhankelijke kopie (fork) te maken.',
       'Volledig open source, meerdere partijen bieden ondersteuning. Overstappen naar een andere partij of een fork (laten) doorontwikkelen is realistisch.'
     ],
-    h:
-      'Broncode beschikbaar? Licentie? Community? Onafhankelijk (laten) doorontwikkelen mogelijk (fork)?'
+    h: 'Broncode beschikbaar? Licentie? Community? Onafhankelijk (laten) doorontwikkelen mogelijk (fork)?'
+  },
+  {
+    code: 'C6',
+    title: 'Algoritmes en AI transparantie',
+    dim: 'C',
+    dn: 'Technische weerbaarheid',
+    niv: 2,
+    w: 2,
+    q: 'Hoe inzichtelijk is het gebruik van algoritmes en AI?',
+    r: [
+      'Volledig gesloten. Geen inzicht in werking algoritme- en AI-functionaliteit.',
+      'Gedeeltelijk gesloten: gesloten implementatie, met openbare documentatie over algoritmes en AI. Beperkt inzicht.',
+      'Deels open: openbare algoritme en AI-documentatie maar kern algoritmes en AI modellen voornamelijk gesloten; delen beschikbaar als open source of onder source-available licentie.',
+      'Grotendeels open: gebruik van open source (of open weights) algoritmes en AI, registratie in een algoritmeregister om te voldoen aan wet‑ en regelgeving en voor maatschappelijke transparantie wordt ondersteund.',
+      'Volledige transparantie: alleen open source gelicenseerde algoritmes en AI-modellen; overstap naar een andere partij met behoud van algoritme- en AI-functionaliteit is realistisch.'
+    ],
+    h: 'Kan de leverancier inzicht geven in de werking van algoritmes en AI om onbedoelde benadeling of bias te voorkomen?'
   },
   {
     code: 'D1',
@@ -693,8 +737,7 @@ const INDICATORS = [
       'Kennis breed gedeeld en gedocumenteerd. Niet persoonsafhankelijk.',
       'Kennis structureel geborgd. Volledige documentatie, periodiek bijgewerkt.'
     ],
-    h:
-      'Denk aan alle relevante kennis: functioneel (wat doet het systeem), technisch (configuratie, koppelingen), data (welke data zit erin, hoe exporteer je die). Niet alleen technisch beheer. Wat gebeurt er als de belangrijkste expert vertrekt?'
+    h: 'Denk aan alle relevante kennis: functioneel (wat doet het systeem), technisch (configuratie, koppelingen), data (welke data zit erin, hoe exporteer je die). Niet alleen technisch beheer. Wat gebeurt er als de belangrijkste expert vertrekt?'
   },
   {
     code: 'D2',
@@ -745,8 +788,7 @@ const INDICATORS = [
       'Uitgebreide exit-regeling: open formaten, transitieperiode, actieve medewerking leverancier.',
       'Uitgebreide exit-regeling met afdwingbare consequenties bij niet-nakoming (boeteclausule, escalatieprocedure, verwijdergarantie).'
     ],
-    h:
-      'Contract over beëindiging? Formaat data? Transitieperiode? Consequenties?'
+    h: 'Contract over beëindiging? Formaat data? Transitieperiode? Consequenties?'
   },
   {
     code: 'E2',
@@ -763,8 +805,24 @@ const INDICATORS = [
       'Flexibel opzegbaar, 3-6 maanden opzegtermijn.',
       'Maandelijks opzegbaar of betalen naar gebruik.'
     ],
-    h:
-      'Kijk naar de contractuele binding: looptijd, opzegtermijn en automatische verlenging. Let ook op licentievoorwaarden die de leverancier eenzijdig kan wijzigen (prijsverhogingen, gebruiksbeperkingen, feature-verwijdering). De technische doorlooptijd van een migratie valt onder C2 (Migratiecomplexiteit).'
+    h: 'Kijk naar de contractuele binding: looptijd, opzegtermijn en automatische verlenging. Let ook op licentievoorwaarden die de leverancier eenzijdig kan wijzigen (prijsverhogingen, gebruiksbeperkingen, feature-verwijdering). De technische doorlooptijd van een migratie valt onder C2 (Migratiecomplexiteit).'
+  },
+  {
+    code: 'E3',
+    title: 'Overname of fusie',
+    dim: 'E',
+    dn: 'Contractuele weerbaarheid',
+    niv: 2,
+    w: 2,
+    q: 'Wat is er contractueel geregeld als de leverancier wordt overgenomen of fuseert?',
+    r: [
+        'Niets geregeld; contract blijft volledig in stand zonder rechten voor klant.',
+        'Beperkt geregeld; alleen algemene bepaling, geen specifieke exit-, data- of jurisdictiewaarborgen.',
+        'Basisafspraken; melding bij overname of fusie en recht tot heronderhandeling of opzegging met standaardtermijn.',
+        'Goed geregeld; recht op opzegging bij overname of fusie met redelijke termijn, behoud van afgesproken jurisdictie/datalocatie.',
+        'Uitstekend geregeld; expliciete change-of-control clausules met kosteloze exit, volledige dataportabiliteit, migratie-ondersteuning en waarborgen voor financiën en operatie, evenals behoud van jurisdictie en datalocatie.'
+    ],
+    h: 'Let op clausules rond change of control: meldplicht, recht op opzegging of heronderhandeling, ondersteuning bij migratie, en gevolgen voor toepasselijk recht, datalocatie en subverwerkers. Controleer ook of servicelevels, prijzen en datatoegang geborgd blijven bij een nieuwe eigenaar.'
   },
   {
     code: 'F1',
@@ -781,8 +839,7 @@ const INDICATORS = [
       'Belangrijke processen stilgevallen.',
       'Organisatiebrede stilstand.'
     ],
-    h:
-      'Stel dat het systeem 48 uur uitvalt. Wat is de impact? Dit geldt voor alle processen: onderwijs, onderzoek en bedrijfsvoering. Weeg mee: het aantal getroffen gebruikers, de beschikbaarheid van workarounds, en hoe kritiek de getroffen processen zijn.'
+    h: 'Stel dat het systeem 48 uur uitvalt. Wat is de impact? Dit geldt voor alle processen: onderwijs, onderzoek en bedrijfsvoering. Weeg mee: het aantal getroffen gebruikers, de beschikbaarheid van workarounds, en hoe kritiek de getroffen processen zijn.'
   },
   {
     code: 'F2',
@@ -799,14 +856,13 @@ const INDICATORS = [
       '5-10 koppelingen.',
       'Centraal knooppunt (>10 koppelingen).'
     ],
-    h:
-      'Hoeveel andere systemen zijn gekoppeld aan dit systeem? Als dit systeem uitvalt, welke andere systemen vallen dan ook (deels) uit?'
+    h: 'Hoeveel andere systemen zijn gekoppeld aan dit systeem? Als dit systeem uitvalt, welke andere systemen vallen dan ook (deels) uit?'
   },
   {
     code: 'G1',
     title: 'Persoonsgegevens',
     dim: 'G',
-    dn: 'Data-gevoeligheid',
+    dn: 'Data-gevoeligheid, toegangsbeheer en beleid',
     niv: 3,
     w: 3,
     q: 'Welke persoonsgegevens worden verwerkt?',
@@ -823,7 +879,7 @@ const INDICATORS = [
     code: 'G2',
     title: 'Onderwijsdata en kennisveiligheid',
     dim: 'G',
-    dn: 'Data-gevoeligheid',
+    dn: 'Data-gevoeligheid, toegangsbeheer en beleid',
     niv: 3,
     w: 3,
     q: 'Hoe gevoelig zijn de onderwijsgegevens en kennis in dit systeem?',
@@ -834,14 +890,13 @@ const INDICATORS = [
       'Gevoelig of strategisch waardevol. Concurrentiegevoelig.',
       'Nationale veiligheid, exportcontrole, dual-use. Buitenlandse toegang ernstig.'
     ],
-    h:
-      "Onderwijsdata? Hoe gevoelig? Embargo's? Buitenlandse toegang problematisch? Denk breder dan alleen datasets: ook onderwijsmethoden en strategische kennis vallen hieronder."
+    h: "Onderwijsdata? Hoe gevoelig? Embargo's? Buitenlandse toegang problematisch? Denk breder dan alleen datasets: ook onderwijsmethoden en strategische kennis vallen hieronder."
   },
   {
     code: 'G3',
     title: 'Intellectueel eigendom',
     dim: 'G',
-    dn: 'Data-gevoeligheid',
+    dn: 'Data-gevoeligheid, toegangsbeheer en beleid',
     niv: 3,
     w: 2,
     q: 'Hoe waardevol is het IP in dit systeem?',
@@ -852,8 +907,58 @@ const INDICATORS = [
       'Significant: bijv. patentwaardige vindingen, unieke datasets.',
       'Kritiek: actieve patenten of strategisch IP. Toegang door derden levert grote schade op.'
     ],
-    h:
-      'Welk intellectueel eigendom zit in dit systeem? Denk aan uniek cursusmateriaal, onderzoeksmethoden, algoritmen, datasets, patenten. Wat is de schade als een derde partij hier toegang toe krijgt?'
+    h: 'Welk intellectueel eigendom zit in dit systeem? Denk aan uniek cursusmateriaal, onderzoeksmethoden, algoritmen, datasets, patenten. Wat is de schade als een derde partij hier toegang toe krijgt?'
+  },
+  {
+    code: 'G4',
+    title: 'Toegang tot data',
+    dim: 'G',
+    dn: 'Data-gevoeligheid, toegangsbeheer en beleid',
+    niv: 3,
+    w: 2,
+    q: 'Wie heeft toegang tot jouw data?',
+    r: [
+      'Vrije toegang; leverancier kan data gebruiken, inzien of hergebruiken zonder duidelijke beperkingen.',
+      'Brede toegang; leverancier heeft inzage voor beheer, support of analyse, met beperkte contractuele begrenzing.',
+      'Beperkte toegang; toegang is alleen toegestaan voor vooraf gedefinieerde rollen of taken, met logging en interne autorisatie.',
+      'Zeer beperkte toegang; toegang is technisch en contractueel afgeschermd, alleen met jouw expliciete toestemming of strikt noodzakelijke support.',
+      'Geen toegang of dataverstrekking; leverancier heeft geen toegang tot opgeslagen data en verstrekking aan niet-EU-overheden is contractueel onmogelijk zonder jouw toestemming.'
+    ],
+    h: 'Let op technische en contractuele toegang tot data, inclusief beheer, support, subverwerkers en doorgifte buiten de EU. Controleer logging, autorisaties, noodtoegang en of toegang of verstrekking aan derden expliciet kan worden beperkt. Check conformiteit met de Data Governance Act (DGA).'
+  },
+  {
+    code: 'G5',
+    title: 'Databeleid en regie',
+    dim: 'G',
+    dn: 'Data-gevoeligheid, toegangsbeheer en beleid',
+    niv: 3,
+    w: 2,
+    q: 'In hoeverre zijn databeleid, doelbinding en gebruikersregie geborgd?',
+    r: [
+      'Onvoldoende geregeld; databeleid is onduidelijk en er is geen inzicht in welke data en metadata worden opgeslagen.',
+      'Beperkt geregeld; er is enige informatie over databeleid, maar doel, gebruik en wijziging zijn niet helder vastgelegd.',
+      'Basis geregeld; de leverancier communiceert databeleid, maar gebruikers hebben beperkt inzicht of instelmogelijkheden.',
+      'Goed geregeld; alleen noodzakelijke data en metadata worden opgeslagen, het doel is vastgelegd en gebruikers kunnen eigen data inzien en deels instellen.',
+      'Uitstekend geregeld; databeleid en wijzigingen zijn openbaar, alleen noodzakelijke data en metadata worden opgeslagen, doel en functie zijn vastgelegd, en gebruikers kunnen data en metadata volledig inzien en naar wens instellen.'
+    ],
+    h: 'Controleer of het databeleid openbaar en begrijpelijk is, of doelbinding van data en metadata contractueel of technisch is vastgelegd, en of gebruikers eigen data en metadata kunnen inzien en beheren.'
+  },
+  {
+    code: 'G6',
+    title: 'Data-minimalizatie en verwijdering',
+    dim: 'G',
+    dn: 'Data-gevoeligheid, toegangsbeheer en beleid',
+    niv: 2,
+    w: 2,
+    q: 'Wat zijn de mogelijkheden om datacollectie te beperken of data te verwijderen?',
+    r: [
+      'Geen opties; data kan alleen door de leverancier worden beheerd of verwijderd.',
+      'Beperkte mogelijkheden; data kan deels worden beperkt of verwijderd, maar zonder duidelijke garanties.',
+      'Ondersteuning voor dataminimalisatie en verwijdering conform AVG, inclusief verwerking van backups en kopieën.',
+      'Sterke ondersteuning conform AVG; datacollectie kan worden beperkt tot het noodzakelijke en verwijdering is contractueel geborgd en toetsbaar.',
+      'Volledige ondersteuning conform AVG; datacollectie is strikt geminimaliseerd, verwijdering is volledig contractueel geborgd en toetsbaar. Gevalideerd door een onafhankelijke derde partij.'
+    ],
+    h: 'Kan data collectie worden beperkt tot alleen data noodzakelijk voor het functioneren van het product of dienst? Kan gebruikersdata worden verwijdert conform de AVG?'
   },
   {
     code: 'H1',
@@ -870,8 +975,7 @@ const INDICATORS = [
       'Reëel risico. Land waar overheden onderwijs kunnen censureren.',
       'Aangetoonde censuur of datavordering bij deze leverancier of overheid.'
     ],
-    h:
-      'Kan de leverancier of een buitenlandse overheid inzicht krijgen in onderwijsactiviteiten? Zijn er eerdere gevallen van censuur of datavordering bij deze leverancier?'
+    h: 'Kan de leverancier of een buitenlandse overheid inzicht krijgen in onderwijsactiviteiten? Zijn er eerdere gevallen van censuur of datavordering bij deze leverancier?'
   },
   {
     code: 'H2',
@@ -888,8 +992,7 @@ const INDICATORS = [
       'Belangrijk platform. Meerdere partners gebruiken het.',
       'Essentieel en onvervangbaar. Standaard in vakgebied.'
     ],
-    h:
-      'Partners met zelfde systeem? Standaard in vakgebied? Gevolgen overstap? Dit geldt voor zowel internationale als nationale samenwerkingsverbanden.'
+    h: 'Partners met zelfde systeem? Standaard in vakgebied? Gevolgen overstap? Dit geldt voor zowel internationale als nationale samenwerkingsverbanden.'
   },
   {
     code: 'H3',
@@ -906,13 +1009,29 @@ const INDICATORS = [
       '10-25 jaar. Wetenschappelijke reproduceerbaarheid vereist.',
       'Permanent (>25 jaar) of wettelijke verplichting.'
     ],
-    h:
-      'Hoe lang bewaren? Wettelijke plicht? Reproduceerbaarheid? Hoe langer de bewaartermijn, hoe groter het risico van langdurige leveranciersafhankelijkheid. Voor het formaat waarin data wordt opgeslagen, zie C3 (Data-portabiliteit).'
+    h: 'Hoe lang bewaren? Wettelijke plicht? Reproduceerbaarheid? Hoe langer de bewaartermijn, hoe groter het risico van langdurige leveranciersafhankelijkheid. Voor het formaat waarin data wordt opgeslagen, zie C3 (Data-portabiliteit).'
+  },
+  {
+    code: 'H4',
+    title: 'Gebruikersbeïnvloeding en transparantie',
+    dim: 'H',
+    dn: 'Onderwijs impact',
+    niv: 3,
+    w: 2,
+    q: 'In hoeverre is de gebruikersinterface transparant, vrij van manipulatie en gericht op autonomie van de gebruiker?',
+    r: [
+        'Onvoldoende geregeld; de interface is onduidelijk, stuurt gedrag sterk en maakt niet zichtbaar of een mens of bot reageert.',
+        'Beperkt geregeld; er is enige transparantie, maar dark patterns, gokelementen of persuasieve keuzes zijn niet aantoonbaar uitgesloten.',
+        'Basis geregeld; de interface geeft soms aan of sprake is van mens of bot, maar transparantie en autonomie zijn niet consequent geborgd.',
+        'Goed geregeld; de interface maakt altijd duidelijk of sprake is van mens of bot en is vrij van dark patterns, gokelementen en verslavende elementen.',
+        'Uitstekend geregeld; de interface is altijd transparant, vrij van dark patterns, gokelementen, persuasieve en verslavende elementen, met opt-out mogelijkheden. Gevalideerd door een onafhankelijke derde partij.'
+    ],
+    h: 'Beoordeel de verschillende delen van de gebruikersinterface samen met (potentiële) gebruikers. Dark patterns zijn misleidende of sturende ontwerppatronen, gokelementen zijn kans- of beloningsmechanismen, persuasieve elementen zijn subtiele gedragsprikkels en verslavende elementen stimuleren herhaald of dwangmatig gebruik.'
   }
 ];
 
-const DIM_DESC={A:'Onder welke wetgeving valt de leverancier en waar staat de data? Geopolitieke en jurisdictierisico\'s.',B:'Hoeveel producten en diensten neem je af bij dezelfde leverancier?',C:'Kun je technisch gezien overstappen? Zijn er alternatieven, is data exporteerbaar, is de software open?',D:'Heb je de kennis, plannen en backups om een overstap daadwerkelijk uit te voeren?',E:'Wat is er contractueel geregeld over vertrek, data-overdracht en flexibiliteit?',F:'Hoe belangrijk is deze applicatie voor de organisatie en hoeveel hangt ervan af?',G:'Welke gevoelige gegevens zitten in dit systeem? Persoonsgegevens, onderzoeksdata, intellectueel eigendom.',H:'Raakt deze applicatie aan onderwijs vrijheid, samenwerking of langetermijnarchivering?'};
-const DIMS={A:'Geopolitiek risico',B:'Leveranciersafhankelijkheid',C:'Technische weerbaarheid',D:'Organisatorische weerbaarheid',E:'Contractuele weerbaarheid',F:'Organisatorisch belang',G:'Data-gevoeligheid',H:'Onderwijs impact'};
+const DIM_DESC={A:'Onder welke wetgeving valt de leverancier en waar staat de data? Geopolitieke en jurisdictierisico\'s.',B:'Hoeveel producten en diensten neem je af bij dezelfde leverancier?',C:'Kun je technisch gezien overstappen? Zijn er alternatieven, is data exporteerbaar, is de software open?',D:'Heb je de kennis, plannen en backups om een overstap daadwerkelijk uit te voeren?',E:'Wat is er contractueel geregeld over vertrek, data-overdracht en flexibiliteit?',F:'Hoe belangrijk is deze applicatie voor de organisatie en hoeveel hangt ervan af?',G:'Welke gevoelige data en metadata verwerkt dit systeem, wie heeft toegang en hoe is gebruik contractueel en technisch geregeld??',H:'Raakt deze applicatie aan onderwijsvrijheid, samenwerking of langetermijnarchivering? Is er sprake van gebruikersbeïnvloeding?'};
+const DIMS={A:'Geopolitiek en wettelijke conformiteit risico',B:'Leveranciers- en ketenafhankelijkheden',C:'Technische weerbaarheid',D:'Organisatorische weerbaarheid',E:'Contractuele weerbaarheid',F:'Organisatorisch belang',G:'Data-gevoeligheid, toegangsbeheer en beleid',H:'Onderwijs impact'};
 const NIV_DIMS={1:['A','B'],2:['C','D','E'],3:['F','G','H']};
 const NIV_NAMES={1:'Risico-exposure',2:'Mitigatie-capaciteit',3:'Strategisch belang'};
 const NIV_CLS={1:'n1',2:'n2',3:'n3'};
