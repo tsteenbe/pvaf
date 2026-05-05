@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DAAF | Digital Autonomy Assessment Framework</title>
+<title>PVAF | Publieke Waarden Assessment Framework</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2C16 2 4 6 4 14v8c0 5 5.4 8.4 12 10 6.6-1.6 12-5 12-10v-8c0-8-12-12-12-12z' fill='%23FFCD00'/%3E%3Cpath d='M16 4.5c0 0-9.5 3.2-9.5 9.5v7c0 3.8 4.2 6.5 9.5 8 5.3-1.5 9.5-4.2 9.5-8v-7c0-6.3-9.5-9.5-9.5-9.5z' fill='%23000'/%3E%3Ctext x='16' y='22.5' text-anchor='middle' font-family='Georgia,serif' font-size='16' font-weight='bold' fill='%23FFCD00'%3ED%3C/text%3E%3C/svg%3E">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@300;400;500;600;700&display=swap');
@@ -319,12 +319,14 @@
   .bulk-bar .hbtn { font-size:0.75rem; }
   .overview-grid input[type="checkbox"] { cursor:pointer; }
   .pending-delete { opacity:0.3; text-decoration:line-through; }
+
 </style>
 </head>
 <body>
+<div style="width:100%;background:#34444D;color:#fff;text-align:center;padding:0.5rem 1rem;font-size:0.65rem;box-sizing:border-box;">⚠️ <strong>Warning: Prototype</strong> - This project is a proof of concept under active development. Expect breaking changes. Not recommended for production use.</div>
 <div class="uu-top"></div>
 <div class="app-header">
-  <h1><span>DAAF</span> Digital Autonomy Assessment Framework</h1>
+  <h1><span>PVAF</span> Publieke Waarden Assessment Framework</h1>
   <div class="header-right">
     <div class="dropdown">
       <button class="hbtn" onclick="toggleDropdown('importMenu')">Importeer &#9662;</button>
@@ -383,12 +385,16 @@
 <div class="modal-overlay" id="helpModal">
   <div class="modal">
     <div class="modal-header">
-      <h2 class="merri">Handleiding DAAF Assessment Tool</h2>
+      <h2 class="merri">Handleiding Publieke Waarden Assessment Tool</h2>
       <button class="modal-close" onclick="closeHelp()">&times;</button>
     </div>
     <div class="modal-body">
-      <h3>Wat is het DAAF?</h3>
-      <p>Het Digital Autonomy Assessment Framework (DAAF) helpt organisaties om de digitale autonomie van hun applicatielandschap te beoordelen. Het framework meet 22 indicatoren verdeeld over 8 dimensies en 3 analyseniveaus.</p>
+      <h3>Wat is het PVAF?</h3>
+      <p>
+        Het Publieke Waarden Assessment Framework (PVAF; Engels: Public Values Assessment Framework)
+        helpt organisaties om de conformiteit met de <a href="https://www.kennisnet.nl/tools/waardenwijzer/">publieke waarden van het onderwijs</a>
+        van hun applicatielandschap te beoordelen. Het framework meet 22 indicatoren verdeeld over 8 dimensies en 3 analyseniveaus.
+      </p>
 
       <h3>Hoe werkt het?</h3>
       <p>Het assessment verloopt in vier stappen:</p>
@@ -404,10 +410,10 @@
       <p><strong style="color:var(--green)">Niveau 2: Mitigatie-capaciteit</strong> (dimensies C-E). Meet hoe goed de organisatie risico's kan beheersen. Een lage score (1) is zwak, een hoge score (5) is sterk.</p>
       <p><strong style="color:#555">Niveau 3: Strategisch belang</strong> (dimensies F-H). Meet hoe belangrijk de applicatie is. Een lage score (1) is weinig belang, een hoge score (5) is kritiek.</p>
 
-      <div class="tip"><strong>Let op de kleurrichting:</strong> Bij niveau 1 en 3 is score 1 groen (goed vanuit autonomieperspectief), bij niveau 2 is score 5 groen (sterke mitigatie).</div>
+      <div class="tip"><strong>Let op de kleurrichting:</strong> Bij niveau 1 en 3 is score 1 groen (goed vanuit publieke waarden perspectief), bij niveau 2 is score 5 groen (sterke mitigatie).</div>
 
       <h3>Berekening</h3>
-      <p>De autonomiescore wordt in vier stappen berekend:</p>
+      <p>De publieke waarden score wordt in vier stappen berekend:</p>
       <ul>
         <li><strong>Stap 1, Dimensiescore:</strong> Per dimensie het gewogen gemiddelde van de indicatorscores. De weging bepaalt hoeveel invloed elke indicator heeft.</li>
         <li><strong>Stap 2, Niveauscore:</strong> Per niveau het gemiddelde van de dimensiescores. Dimensies wegen gelijk.</li>
@@ -418,8 +424,8 @@
       <p><strong>Vuistregels:</strong> 7+ = goede positie (groen), 5-7 = acceptabel (oranje), 3-5 = zorgwekkend (donkeroranje), &lt;3 = kritiek (rood).</p>
 
       <h3>Wat zegt de score?</h3>
-      <p>De autonomiescore is geen maat voor "hoe digitaal autonoom is deze applicatie" maar voor <strong>hoe urgent is het autonomieprobleem</strong>. De score combineert drie dingen: hoe groot is het risico, hoe goed kun je het beheersen, en hoe belangrijk is de applicatie.</p>
-      <p>Een <strong>hoge score</strong> kan twee dingen betekenen: de risico's zijn goed gemitigeerd (sterke contracten, alternatieven beschikbaar, kennis in huis), of de applicatie heeft weinig strategisch belang (en dus is het autonomieprobleem minder urgent). Beide situaties zijn positief vanuit besluitvorming: er is geen acute actie nodig.</p>
+      <p>De publieke waarden score is geen maat voor "hoe conform met de publieke waarden is deze applicatie" maar voor <strong>hoe urgent is het publieke waarden probleem</strong>. De score combineert drie dingen: hoe groot is het risico, hoe goed kun je het beheersen, en hoe belangrijk is de applicatie.</p>
+      <p>Een <strong>hoge score</strong> kan twee dingen betekenen: de risico's zijn goed gemitigeerd (sterke contracten, alternatieven beschikbaar, kennis in huis), of de applicatie heeft weinig strategisch belang (en dus is het publieke waarden probleem minder urgent). Beide situaties zijn positief vanuit besluitvorming: er is geen acute actie nodig.</p>
       <p>Een <strong>lage score</strong> betekent: er is een combinatie van hoog risico, zwakke mitigatie en/of hoog strategisch belang. Dat vraagt om actie: migreren, mitigeren of bewust accepteren.</p>
       <div class="tip"><strong>Verbeteren:</strong> Strategisch belang (niveau 3) ligt grotendeels vast; een applicatie wordt niet minder belangrijk. Verbeteringen zitten in <strong>Risico-exposure verlagen</strong> (niveau 1, bijv. migreren naar EU-provider) en <strong>Mitigatie-capaciteit verhogen</strong> (niveau 2, bijv. alternatieven ontwikkelen, contracten versterken, kennis opbouwen). Gebruik de drie niveauscores apart om te bepalen waar de grootste winst te behalen is.</div>
 
@@ -461,7 +467,7 @@
       <button class="modal-close" onclick="closeWeightsModal()">&times;</button>
     </div>
     <div class="modal-body">
-      <div class="tip"><strong>Wat zijn wegingen?</strong> De wegingen bepalen hoeveel invloed elke indicator heeft binnen zijn dimensie. Standaardwegingen zijn afgestemd op het DAAF-model. Pas wegingen alleen aan in overleg met je organisatie of sector, anders worden resultaten onderling niet vergelijkbaar.</div>
+      <div class="tip"><strong>Wat zijn wegingen?</strong> De wegingen bepalen hoeveel invloed elke indicator heeft binnen zijn dimensie. Standaardwegingen zijn afgestemd op het PVAF-model. Pas wegingen alleen aan in overleg met je organisatie of sector, anders worden resultaten onderling niet vergelijkbaar.</div>
       <div id="weightsContent"></div>
       <button class="hbtn primary" onclick="resetWeights()" style="margin-top:1rem;width:100%;text-align:center">Reset naar standaard</button>
     </div>
@@ -471,9 +477,8 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-left">
-      <strong>DAAF v0.8.2</strong> | &copy; 2026 Universiteit Utrecht | Tim van Neerbos<br>
+      <strong>PVAF v0.8.2</strong> | &copy; 2026 Universiteit Utrecht | Tim van Neerbos<br>
       Vrij te gebruiken door onderwijs-, non-profit- en overheidsorganisaties. Niet voor commercieel gebruik.<br>
-      Verbeteringen graag communiceren aan <a href="mailto:t.m.vanneerbos@uu.nl">t.m.vanneerbos@uu.nl</a>
     </div>
     <div class="footer-right">
       <a class="cc-badge" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">
@@ -979,8 +984,8 @@ document.addEventListener('mouseout', e => {
 let state = { apps:{}, order:[], currentView:'overview', modes:{} };
 let appCounter = 0;
 
-function save() { try { localStorage.setItem('daaf_state', JSON.stringify(state)); } catch(e){} }
-function load() { try { const s=localStorage.getItem('daaf_state'); if(s){state=JSON.parse(s);appCounter=state.order.length;if(!state.modes)state.modes={};for(const id of state.order){if(!state.apps[id].remarks)state.apps[id].remarks={};if(state.apps[id].appId===undefined)state.apps[id].appId='';}} } catch(e){} }
+function save() { try { localStorage.setItem('pvaf_state', JSON.stringify(state)); } catch(e){} }
+function load() { try { const s=localStorage.getItem('pvaf_state'); if(s){state=JSON.parse(s);appCounter=state.order.length;if(!state.modes)state.modes={};for(const id of state.order){if(!state.apps[id].remarks)state.apps[id].remarks={};if(state.apps[id].appId===undefined)state.apps[id].appId='';}} } catch(e){} }
 function uid() { return 'app_'+(++appCounter)+'_'+Date.now().toString(36); }
 
 // === DROPDOWN ===
@@ -1280,7 +1285,7 @@ function renderOverview() {
   let h = '';
   // Export reminder: show if 3+ apps and 7+ days since last export/dismiss
   if (visibleOrder.length >= 3) {
-    const lastAction = parseInt(localStorage.getItem('daaf_lastExportAction') || '0', 10);
+    const lastAction = parseInt(localStorage.getItem('pvaf_lastExportAction') || '0', 10);
     const daysSince = (Date.now() - lastAction) / (1000 * 60 * 60 * 24);
     if (daysSince >= 7 || lastAction === 0) {
       h += '<div class="export-reminder" id="exportReminder">';
@@ -1314,7 +1319,7 @@ function renderOverview() {
   h += '</table>';
 
   // === QUADRANT ===
-  h += `<div class="quadrant-wrap"><h3 class="merri">Autonomie-kwadrant</h3>`;
+  h += `<div class="quadrant-wrap"><h3 class="merri">Publieke Waarden-kwadrant</h3>`;
   h += `<div class="q-xticks-row"><div class="q-side-spacer"></div><div class="q-xticks"><span></span><span>Laag</span><span></span><span>Hoog</span><span></span></div></div>`;
   h += `<div class="quadrant-outer">`;
   h += `<div class="q-ylabel">Mitigatie</div>`;
@@ -1401,7 +1406,7 @@ function renderAppView(id) {
   h += `</div></div>`;
 
   h += `<div class="score-row">`;
-  h += `<div class="score-card main-score"><div class="sc-label">Autonomie Score <span class="tt" data-tip="Hoe groot is het autonomieprobleem? Een hoge score betekent: goed gemitigeerd en/of laag risico. Een lage score betekent: urgent probleem. Berekend als Mitigatie / (Risico x Belang), genormaliseerd naar 1-10. Zie Handleiding voor details." style="cursor:help;font-size:0.55rem;color:#bbb;border-bottom:1px dotted #ccc">&#9432;</span></div><div class="sc-value" id="sc10-${id}">--</div><div class="sc-sub">Lage score = urgent probleem</div></div>`;
+  h += `<div class="score-card main-score"><div class="sc-label">Publieke Waarden Score <span class="tt" data-tip="Hoe groot is het publieke waarde probleem? Een hoge score betekent: goed gemitigeerd en/of laag risico. Een lage score betekent: urgent probleem. Berekend als Mitigatie / (Risico x Belang), genormaliseerd naar 1-10. Zie Handleiding voor details." style="cursor:help;font-size:0.55rem;color:#bbb;border-bottom:1px dotted #ccc">&#9432;</span></div><div class="sc-value" id="sc10-${id}">--</div><div class="sc-sub">Lage score = urgent probleem</div></div>`;
   h += `<div class="score-card risico"><div class="sc-label">Risico-exposure <span class="tt" data-tip="Hoe groot is het externe risico? Gemiddelde van dimensie A (Geopolitiek risico) en B (Leveranciersafhankelijkheid). Lage score = weinig risico (goed). Hoge score = veel risico. Dit niveau kun je verbeteren, bijv. door te migreren naar een EU-provider." style="cursor:help;font-size:0.55rem;color:#bbb;border-bottom:1px dotted #ccc">&#9432;</span></div><div class="sc-value" id="scR-${id}">--</div><div class="sc-sub">Laag = weinig risico (goed)</div></div>`;
   h += `<div class="score-card mitigatie"><div class="sc-label">Mitigatie-capaciteit <span class="tt" data-tip="Hoe goed kan de organisatie risico's beheersen? Gemiddelde van dimensie C (Technische weerbaarheid), D (Organisatorische weerbaarheid) en E (Contractuele weerbaarheid). Lage score = zwak. Hoge score = sterk. Dit niveau kun je verbeteren, bijv. door alternatieven te ontwikkelen, contracten te versterken of kennis op te bouwen." style="cursor:help;font-size:0.55rem;color:#bbb;border-bottom:1px dotted #ccc">&#9432;</span></div><div class="sc-value" id="scM-${id}">--</div><div class="sc-sub">Hoog = sterke mitigatie (goed)</div></div>`;
   h += `<div class="score-card belang"><div class="sc-label">Strategisch belang <span class="tt" data-tip="Hoe belangrijk is de applicatie? Gemiddelde van dimensie F (Organisatorisch belang), G (Data-gevoeligheid) en H (Academische impact). Lage score = weinig belang. Hoge score = kritiek. Dit niveau ligt grotendeels vast; een applicatie wordt niet minder belangrijk." style="cursor:help;font-size:0.55rem;color:#bbb;border-bottom:1px dotted #ccc">&#9432;</span></div><div class="sc-value" id="scB-${id}">--</div><div class="sc-sub">Hoog = kritieke applicatie</div></div>`;
@@ -1606,7 +1611,7 @@ function recalcApp(id) {
 
 // === IMPORT / EXPORT ===
 function exportAll() {
-  const data = { version:'DAAF-export-v1', exportDatum:new Date().toISOString(), applicaties:{} };
+  const data = { version:'PVAF-export-v1', exportDatum:new Date().toISOString(), applicaties:{} };
   for (const id of state.order) {
     const app = state.apps[id];
     const appMode = state.modes?.[id] || 'full';
@@ -1622,7 +1627,8 @@ function exportAll() {
       }
     };
   }
-  downloadBlob(JSON.stringify(data,null,2), 'application/json', `DAAF_export_${new Date().toISOString().slice(0,10)}.json`);
+
+  downloadBlob(JSON.stringify(data,null,2), 'application/json', `PVAF_export_${new Date().toISOString().slice(0,10)}.json`);
   markExportAction();
 }
 
@@ -1643,7 +1649,7 @@ function exportCSV() {
     for (const d of Object.keys(DIMS)) csv += `;${res.dims[d]?res.dims[d].toFixed(2):''}`;
     csv += '\n';
   }
-  downloadBlob(csv, 'text/csv;charset=utf-8', `DAAF_scores_${new Date().toISOString().slice(0,10)}.csv`);
+  downloadBlob(csv, 'text/csv;charset=utf-8', `PVAF_scores_${new Date().toISOString().slice(0,10)}.csv`);
 }
 
 function exportODF() {
@@ -1667,7 +1673,7 @@ function exportODF() {
       csv += '\n';
     }
   }
-  downloadBlob(csv, 'text/csv;charset=utf-8', `DAAF_ODF_${new Date().toISOString().slice(0,10)}.csv`);
+  downloadBlob(csv, 'text/csv;charset=utf-8', `PVAF_ODF_${new Date().toISOString().slice(0,10)}.csv`);
 }
 
 function importData() {
@@ -1771,7 +1777,7 @@ function downloadCSVTemplate() {
   csv += 'SOFT-002;Canvas LMS;;\n';
   csv += 'SOFT-003;SAP;;\n';
   csv += 'SOFT-004;OSIRIS;;\n';
-  downloadBlob(csv, 'text/csv;charset=utf-8', 'DAAF_import_template.csv');
+  downloadBlob(csv, 'text/csv;charset=utf-8', 'PVAF_import_template.csv');
 }
 
 function downloadBlob(content, type, filename) {
@@ -1826,7 +1832,7 @@ const CHANGELOG = [
 const CURRENT_VERSION = '0.8.2';
 
 function markExportAction() {
-  localStorage.setItem('daaf_lastExportAction', String(Date.now()));
+  localStorage.setItem('pvaf_lastExportAction', String(Date.now()));
 }
 function exportAllAndDismissReminder() {
   exportAll();
@@ -1846,7 +1852,7 @@ function showChangelog() {
   ov.className = 'wn-overlay';
   ov.onclick = function(e) { if (e.target === ov) closeChangelog(); };
   let html = '<div class="wn-modal"><button class="wn-close" onclick="closeChangelog()">&times;</button><h2>Changelog</h2>';
-  const lastSeen = localStorage.getItem('daaf_lastSeenVersion') || '0.0.0';
+  const lastSeen = localStorage.getItem('pvaf_lastSeenVersion') || '0.0.0';
   for (const entry of CHANGELOG) {
     const isNew = entry.version > lastSeen;
     html += '<div class="cl-version"><h3>v' + entry.version + (isNew ? '<span class="cl-new-badge">NIEUW</span>' : '') + '</h3>';
@@ -1861,14 +1867,14 @@ function showChangelog() {
 function closeChangelog() {
   const ov = document.querySelector('.wn-overlay');
   if (ov) ov.remove();
-  localStorage.setItem('daaf_lastSeenVersion', CURRENT_VERSION);
+  localStorage.setItem('pvaf_lastSeenVersion', CURRENT_VERSION);
   updateChangelogDot();
 }
 function updateChangelogDot() {
   const btn = document.getElementById('changelogBtn');
   if (!btn) return;
   const dot = btn.querySelector('.changelog-dot');
-  const lastSeen = localStorage.getItem('daaf_lastSeenVersion') || '0.0.0';
+  const lastSeen = localStorage.getItem('pvaf_lastSeenVersion') || '0.0.0';
   if (CURRENT_VERSION > lastSeen) {
     if (!dot) { const d = document.createElement('span'); d.className = 'changelog-dot'; btn.appendChild(d); }
   } else {
@@ -1886,7 +1892,7 @@ if (state.currentView && state.currentView!=='overview' && state.apps[state.curr
   showView('overview');
 }
 updateChangelogDot();
-if (localStorage.getItem('daaf_lastSeenVersion') !== CURRENT_VERSION) {
+if (localStorage.getItem('pvaf_lastSeenVersion') !== CURRENT_VERSION) {
   showChangelog();
 }
 </script>
