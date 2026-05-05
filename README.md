@@ -1,16 +1,18 @@
-# Digital Autonomy Assessment Tool
+# Public Values Assessment Tool
 
-A browser-based assessment tool that implements the Digital Autonomy Assessment Framework (DAAF). Helps organisations evaluate the digital autonomy of their application landscape. Developed at Utrecht University as part of the UU Digital Autonomy project.
+A browser-based assessment tool that implements the Public Values Assessment Framework (PVAF). Helps organisations evaluate the conformance of their application landscape with the [public values of Dutch education][waarden-wijzer]. Developed at [SIVON][sivon] as part of its [Open Source Program Office][sivon-ospo].
+
+⚠️ **Warning: Prototype** - This project is a proof of concept under active development. Breaking changes and git force rebases will occur. Not recommended for production use.
 
 ## About
 
-The Digital Autonomy Assessment Framework (DAAF) is a structured approach to assessing applications across three levels:
+The Public Values Assessment Framework (PVAF) is a structured approach to assessing applications across three levels:
 
 1. **Risk exposure**: how significant are the dependencies and associated risks?
 2. **Mitigation capacity**: what measures are in place to manage those risks?
 3. **Strategic importance**: how critical is the application to the organisation?
 
-This tool implements the framework as an interactive, browser-based assessment. Based on 22 indicators across 8 dimensions, it calculates an autonomy score (1-10) per application. Results are presented in a summary table and an autonomy quadrant that provides immediate insight into which applications require attention.
+This tool implements the framework as an interactive, browser-based assessment. Based on 22 indicators across 8 dimensions, it calculates an public values score (1-10) per application. Results are presented in a summary table and an public values quadrant that provides immediate insight into which applications require attention.
 
 > **Note:** The tool interface is currently in Dutch. An English version is planned for a future release.
 
@@ -25,17 +27,14 @@ This tool implements the framework as an interactive, browser-based assessment. 
 
 ## Usage
 
-Open the tool via GitHub Pages:
-**https://utrechtuniversity.github.io/digital-autonomy-assessment-tool/**
-
-Or download `index.html` and open it locally in your browser.
+Open `index.html` in a browser of your choice.
 
 ### Getting started
 
 1. Click "Nieuwe applicatie" (New application) and enter a name
 2. Choose Quick scan or Full assessment
 3. Score each indicator using the provided rubrics
-4. View the results in the overview table and autonomy quadrant
+4. View the results in the overview table and public values quadrant
 
 ### Data privacy
 
@@ -45,24 +44,24 @@ All data stays in your browser. Nothing is sent to a server. You can export asse
 
 | Code | Dimension | Level |
 |------|-----------|-------|
-| A | Geopolitical risk | Risk exposure |
-| B | Vendor dependency | Risk exposure |
+| A | Geopolitical and regulatory risk | Risk exposure |
+| B | Vendor and supplychain dependency | Risk exposure |
 | C | Technical resilience | Mitigation capacity |
 | D | Organisational resilience | Mitigation capacity |
 | E | Contractual resilience | Mitigation capacity |
 | F | Organisational importance | Strategic importance |
 | G | Data sensitivity | Strategic importance |
-| H | Academic impact | Strategic importance |
+| H | Educational impact | Strategic importance |
 
 ## Scoring methodology
 
-The autonomy score is calculated using the formula:
+The public values score is calculated using the formula:
 
 ```
 Score = Mitigation / (Risk exposure x Strategic importance)
 ```
 
-The result is normalised to a 1-10 scale using a logarithmic function, where 1 indicates low autonomy (urgent) and 10 indicates high autonomy (optimal).
+The result is normalised to a 1-10 scale using a logarithmic function, where 1 indicates low conformance with public values (urgent) and 10 indicates high conformance (optimal).
 
 ## Technical details
 
@@ -74,7 +73,15 @@ The result is normalised to a 1-10 scale using a logarithmic function, where 1 i
 
 This work is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
+Based on the [digital autonomy assessment tool][daaf] from the [University of Utrecht][university-utrecht].
+
 ## Contact
 
-- Tim van Neerbos, Lead Enterprise Architect, Utrecht University
-- Email: t.m.vanneerbos@uu.nl
+- Thomas Steenbergen, OSPO Advisor at SIVON
+- Email: t.steenbergen@sivon.nl
+
+[daaf]: https://github.com/utrechtuniversity/digital-autonomy-assessment-tool/
+[sivon]: https://www.sivon.nl
+[sivon-ospo]: https://sivon.nl/ospo-voor-het-onderwijs/
+[university-utrecht]: https://www.uu.nl/en
+[waarden-wijzer]: https://www.kennisnet.nl/tools/waardenwijzer/
