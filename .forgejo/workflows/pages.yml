@@ -1,0 +1,13 @@
+name: Publish
+on:
+  push:
+jobs:
+  publish:
+    runs-on: codeberg-tiny
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6
+      - uses: actions/git-pages@5978530ffb9bbe196ad9fdc0c48fdaf1483de4cf #v2
+        with:
+          site: https://sivon.codeberg.page/pvaf/
+          token: ${{ forge.token }}
+          source: ./
