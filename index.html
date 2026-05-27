@@ -11,7 +11,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PVAF | Publieke Waarden Assessment Framework</title>
+<title data-i18n="head.title">PVAF | Publieke Waarden Assessment Framework</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Ccircle%20cx='32'%20cy='32'%20r='24.035'%20fill='none'%20stroke='%2334444C'%20stroke-width='6.84'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.bunny.net">
 <link href="https://fonts.bunny.net/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -52,6 +52,10 @@
   .hbtn.help-btn:hover { background:var(--sivon-white); color:var(--sivon-light-blue); }
   .hbtn.help-btn svg { width:13px; height:13px; vertical-align:-1.5px; margin-right:3px; fill:var(--sivon-blue); }
   .hbtn.help-btn:hover svg { fill:var(--sivon-light-blue); }
+  .hbtn.language-btn { background:var(--sivon-white); color:var(--sivon-blue); font-weight:600; }
+  .hbtn.language-btn:hover { background:var(--sivon-white); color:var(--sivon-light-blue); }
+  .hbtn.language-btn svg { width:10px; height:13px; vertical-align:-1.5px; margin-right:3px; fill:var(--sivon-blue); }
+  .hbtn.language-btn:hover svg { fill:var(--sivon-light-blue); }
 
   .container { max-width:1200px; margin:0 auto; padding:1rem 1.5rem 3rem; flex: 1; }
 
@@ -312,29 +316,36 @@
   <div class="header-left">
       <div class="header-logo">
         <a href="https://sivon.nl/"><img src="https://sivon.nl/wp-content/themes/haicu26_sivon/images/logo-SIVON.png" alt="SIVON Logo"></a>
-        <h1>Publieke Waarden Assessment Framework</h1>
+        <h1><span data-i18n="app-header.title">Publieke Waarden Assessment Framework</span></h1>
       </div>
   </div>
   <div class="header-right">
     <div class="dropdown">
-      <button class="hbtn" onclick="toggleDropdown('importMenu')">Importeer &#9662;</button>
-      <div class="dropdown-menu" id="importMenu">
-        <button class="dropdown-item" onclick="importData();closeDropdowns()">JSON importeren<small>Eerder geexporteerde assessments</small></button>
-        <button class="dropdown-item" onclick="importCSVApps();closeDropdowns()">Applicatielijst (CSV)<small>Bulk: meerdere applicaties in een keer</small></button>
-        <button class="dropdown-item" onclick="downloadCSVTemplate();closeDropdowns()">Download CSV-template<small>Templatebestand voor bulk-import</small></button>
+      <button class="hbtn language-btn" onclick="toggleDropdown('languageMenu')"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="#000000" stroke-width="2" d="M12,23 C18.0751322,23 23,18.0751322 23,12 C23,5.92486775 18.0751322,1 12,1 C5.92486775,1 1,5.92486775 1,12 C1,18.0751322 5.92486775,23 12,23 Z M12,23 C15,23 16,18 16,12 C16,6 15,1 12,1 C9,1 8,6 8,12 C8,18 9,23 12,23 Z M2,16 L22,16 M2,8 L22,8"/></svg></button>
+      <div class="dropdown-menu" id="languageMenu">
+        <button class="dropdown-item" onclick="setLang('en');applyI18n();closeDropdowns()">🇬🇧 English</button>
+        <button class="dropdown-item" onclick="setLang('nl');;applyI18n() ;closeDropdowns()">🇳🇱 Nederlands</button>
       </div>
     </div>
     <div class="dropdown">
-      <button class="hbtn" onclick="toggleDropdown('exportMenu')">Exporteer &#9662;</button>
-      <div class="dropdown-menu" id="exportMenu">
-        <button class="dropdown-item" onclick="exportAll();closeDropdowns()">JSON (volledig)<small>Alle data, scores en wegingen</small></button>
-        <div class="dropdown-sep"></div>
-        <button class="dropdown-item" onclick="exportCSV();closeDropdowns()">CSV (samenvatting)<small>Scores per dimensie en niveau</small></button>
-        <button class="dropdown-item" onclick="exportODF();closeDropdowns()">CSV (gedetailleerd)<small>Alle indicatorscores per applicatie</small></button>
+      <button class="hbtn" onclick="toggleDropdown('importMenu')"><span data-i18n="app-header.import-button">Importeer</span> &#9662;</button>
+      <div class="dropdown-menu" id="importMenu">
+        <button class="dropdown-item" onclick="importData();closeDropdowns()"><span data-i18n-html="app-header.import-menu-json">JSON importeren<small>Eerder geexporteerde assessments</small></span></button>
+        <button class="dropdown-item" onclick="importCSVApps();closeDropdowns()"><span data-i18n-html="app-header.import-menu-csv">Applicatielijst (CSV)<small>Bulk: meerdere applicaties in een keer</small></span></button>
+        <button class="dropdown-item" onclick="downloadCSVTemplate();closeDropdowns()"><span data-i18n-html="app-header.import-menu-download-csv-template">Download CSV-template<small>Templatebestand voor bulk-import</small></span></button>
       </div>
     </div>
-    <button class="hbtn" id="headerWeightsBtn" onclick="openWeightsModalCurrent()" style="display:none">Wegingen aanpassen</button>
-    <button class="hbtn help-btn" onclick="openHelp()"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg>Handleiding</button>
+    <div class="dropdown">
+      <button class="hbtn" onclick="toggleDropdown('exportMenu')"><span data-i18n="app-header.export-button">Exporteer</span> &#9662;</button>
+      <div class="dropdown-menu" id="exportMenu">
+        <button class="dropdown-item" onclick="exportAll();closeDropdowns()"><span data-i18n-html="app-header.export-menu-json">JSON (volledig)<small>Alle data, scores en wegingen</small></span></button>
+        <div class="dropdown-sep"></div>
+        <button class="dropdown-item" onclick="exportCSV();closeDropdowns()"><span data-i18n-html="app-header.export-menu-csv-summary">CSV (samenvatting)<small>Scores per dimensie en niveau</small></span></button>
+        <button class="dropdown-item" onclick="exportODF();closeDropdowns()"><span data-i18n-html="app-header.export-menu-csv-detailed">CSV (gedetailleerd)<small>Alle indicatorscores per applicatie</small></span></button>
+      </div>
+    </div>
+    <button class="hbtn" id="headerWeightsBtn" onclick="openWeightsModalCurrent()" style="display:none"><span data-i18n="app-header.weights-button">Wegingen aanpassen</span></button>
+    <button class="hbtn help-btn" onclick="openHelp()"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg><span data-i18n="app-header.help-button">Handleiding</span></button>
   </div>
 </div>
 
@@ -463,8 +474,8 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-left">
-      <strong>PVAF v0.1.0</strong> | &copy; 2026 Universiteit Utrecht & SIVON | Gebaseerd op <a href="https://github.com/UtrechtUniversity/digital-autonomy-assessment-tool">DAAF</a> door Tim van Neerbos<br>
-      Vrij te gebruiken door onderwijs-, non-profit- en overheidsorganisaties. Niet voor commercieel gebruik.<br>
+      <strong>PVAF v0.1.0</strong> | &copy; 2026 <span data-i18n="footer.copyright">Universiteit Utrecht & SIVON</span> | <span data-i18n-html="footer.credits">Gebaseerd op <a href="https://github.com/UtrechtUniversity/digital-autonomy-assessment-tool">DAAF</a> door Tim van Neerbos</span><br>
+      <span data-i18n="footer.license-summary">Vrij te gebruiken door onderwijs-, non-profit- en overheidsorganisaties. Niet voor commercieel gebruik.</span><br>
     </div>
     <div class="footer-right">
       <a class="cc-badge" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">
@@ -1048,6 +1059,92 @@ function addTooltips(text) {
     result = result.substring(0, idx) + `<span class="tt" data-tip="${tipText}">${term}</span>` + result.substring(idx + term.length);
   }
   return result;
+}
+
+// === LOCALIZATION ===
+
+let lang = localStorage.getItem('pvaf-lang') || 'nl';
+const LOCALES = ['en', 'nl'];
+const I18N = {
+    "en": {
+        "head": {
+            "title": "PVAF | Public Values Assessment Framework"
+        },
+        "app-header": {
+            "export-button": "Export",
+            "export-menu-json": "JSON (Complete)<small>All data, scores and weights</small>",
+            "export-menu-csv-summary": "CSV (Summary)<small>Scores per dimension and level</small>",
+            "export-menu-csv-detailed": "CSV (Detailed)<small>All indicator scores per application</small>",
+            "help-button": "Help",
+            "import-button": "Import",
+            "import-menu-json": "Import JSON<small>Previously exported assessments</small>",
+            "import-menu-csv": "Application List (CSV)<small>Bulk: multiple applications at once</small>",
+            "import-menu-download-csv-template": "Download CSV Template<small>Template file for bulk import</small>",
+            "title": "Publieke Values Assessment Framework",
+            "weights-button": "Adjust weights",
+        },
+        "footer": {
+            "copyright": "University of Utrecht & SIVON",
+            "credits": "Based on <a href='https://github.com/UtrechtUniversity/digital-autonomy-assessment-tool'>DAAF</a> by Tim van Neerbos",
+            "license-summary": "Free to use by educational, non-profit and government organizations. Not for commercial use.",
+        }
+    },
+    "nl": {
+        "head": {
+          "title": "PVAF | Publieke Waarden Assessment Framework"
+        },
+        "app-header": {
+            "export-button": "Exporteer",
+            "export-menu-json": "JSON (volledig)<small>Alle data, scores en wegingen</small>",
+            "export-menu-csv-summary": "CSV (samenvatting)<small>Scores per dimensie en niveau</small>",
+            "export-menu-csv-detailed": "CSV (gedetailleerd)<small>Alle indicatorscores per applicatie</small>",
+            "help-button": "Handleiding",
+            "import-button": "Importeer",
+            "import-menu-json": "JSON importeren<small>Eerder geexporteerde assessments</small>",
+            "import-menu-csv": "Applicatielijst (CSV)<small>Bulk: meerdere applicaties in een keer</small>",
+            "import-menu-download-csv-template": "Download CSV-template<small>Templatebestand voor bulk-import</small>",
+            "title": "Publieke Waarden Assessment Framework",
+            "weights-button": "Wegingen aanpassen",
+        },
+        "footer": {
+            "copyright": "Universiteit Utrecht & SIVON",
+            "credits": "Gebaseerd op <a href='https://github.com/UtrechtUniversity/digital-autonomy-assessment-tool'>DAAF</a> door Tim van Neerbos",
+            "license-summary": "Vrij te gebruiken door onderwijs-, non-profit- en overheidsorganisaties. Niet voor commercieel gebruik.",
+        }
+    }
+};
+
+function applyI18n(root = document) {
+  root.querySelectorAll('[data-i18n]').forEach(el => {
+    el.textContent = t(el.dataset.i18n);
+  });
+
+  root.querySelectorAll('[data-i18n-html]').forEach(el => {
+    el.innerHTML = t(el.dataset.i18nHtml);
+  });
+
+  root.querySelectorAll('[data-i18n-attr]').forEach(el => {
+    el.dataset.i18nAttr.split(';').forEach(pair => {
+      const [attr, key] = pair.split(':').map(s => s.trim());
+      if (attr && key) el.setAttribute(attr, t(key));
+    });
+  });
+}
+
+function setLang(nextLang) {
+  lang = nextLang;
+  localStorage.setItem('pvaf-lang', nextLang);
+  document.documentElement.lang = nextLang;
+}
+
+function t(path) {
+  return path
+    .split('.')
+    .reduce((obj, key) => obj?.[key], I18N[lang])
+    ?? path
+    .split('.')
+    .reduce((obj, key) => obj?.[key], I18N.en)
+    ?? path;
 }
 
 // === TOOLTIP POPUP (single shared element, fixed positioning) ===
