@@ -316,7 +316,7 @@
   <div class="header-left">
       <div class="header-logo">
         <a href="https://sivon.nl/"><img src="https://sivon.nl/wp-content/themes/haicu26_sivon/images/logo-SIVON.png" alt="SIVON Logo"></a>
-        <h1><span data-i18n="app-header.title">Publieke Waarden Assessment Framework</span></h1>
+        <h1 data-i18n="headerTitle">Publieke Waarden Assessment Framework</h1>
       </div>
   </div>
   <div class="header-right">
@@ -324,35 +324,33 @@
       <button class="hbtn language-btn" onclick="toggleDropdown('languageMenu')"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="#000000" stroke-width="2" d="M12,23 C18.0751322,23 23,18.0751322 23,12 C23,5.92486775 18.0751322,1 12,1 C5.92486775,1 1,5.92486775 1,12 C1,18.0751322 5.92486775,23 12,23 Z M12,23 C15,23 16,18 16,12 C16,6 15,1 12,1 C9,1 8,6 8,12 C8,18 9,23 12,23 Z M2,16 L22,16 M2,8 L22,8"/></svg></button>
       <div class="dropdown-menu" id="languageMenu">
         <button class="dropdown-item" onclick="setLang('en');applyI18n();closeDropdowns()">🇬🇧 English</button>
-        <button class="dropdown-item" onclick="setLang('nl');;applyI18n() ;closeDropdowns()">🇳🇱 Nederlands</button>
+        <button class="dropdown-item" onclick="setLang('nl');applyI18n();closeDropdowns()">🇳🇱 Nederlands</button>
       </div>
     </div>
-    <div class="dropdown">
-      <button class="hbtn" onclick="toggleDropdown('importMenu')"><span data-i18n="app-header.import-button">Importeer</span> &#9662;</button>
+      <button class="hbtn" onclick="toggleDropdown('importMenu')" data-i18n="importBtn">Importeer &#9662;</button>
       <div class="dropdown-menu" id="importMenu">
-        <button class="dropdown-item" onclick="importData();closeDropdowns()"><span data-i18n-html="app-header.import-menu-json">JSON importeren<small>Eerder geexporteerde assessments</small></span></button>
-        <button class="dropdown-item" onclick="importCSVApps();closeDropdowns()"><span data-i18n-html="app-header.import-menu-csv">Applicatielijst (CSV)<small>Bulk: meerdere applicaties in een keer</small></span></button>
-        <button class="dropdown-item" onclick="downloadCSVTemplate();closeDropdowns()"><span data-i18n-html="app-header.import-menu-download-csv-template">Download CSV-template<small>Templatebestand voor bulk-import</small></span></button>
+        <button class="dropdown-item" onclick="importData();closeDropdowns()"><span data-i18n="importJson">JSON importeren</span><small data-i18n="importJsonSub">Eerder geexporteerde assessments</small></button>
+        <button class="dropdown-item" onclick="importCSVApps();closeDropdowns()"><span data-i18n="importCsv">Applicatielijst (CSV)</span><small data-i18n="importCsvSub">Bulk: meerdere applicaties in een keer</small></button>
+        <button class="dropdown-item" onclick="downloadCSVTemplate();closeDropdowns()"><span data-i18n="downloadTpl">Download CSV-template</span><small data-i18n="downloadTplSub">Templatebestand voor bulk-import</small></button>
       </div>
     </div>
     <div class="dropdown">
-      <button class="hbtn" onclick="toggleDropdown('exportMenu')"><span data-i18n="app-header.export-button">Exporteer</span> &#9662;</button>
+      <button class="hbtn" onclick="toggleDropdown('exportMenu')" data-i18n="exportBtn">Exporteer &#9662;</button>
       <div class="dropdown-menu" id="exportMenu">
-        <button class="dropdown-item" onclick="exportAll();closeDropdowns()"><span data-i18n-html="app-header.export-menu-json">JSON (volledig)<small>Alle data, scores en wegingen</small></span></button>
+        <button class="dropdown-item" onclick="exportAll();closeDropdowns()"><span data-i18n="exportJson">JSON (volledig)</span><small data-i18n="exportJsonSub">Alle data, scores en wegingen</small></button>
         <div class="dropdown-sep"></div>
-        <button class="dropdown-item" onclick="exportCSV();closeDropdowns()"><span data-i18n-html="app-header.export-menu-csv-summary">CSV (samenvatting)<small>Scores per dimensie en niveau</small></span></button>
-        <button class="dropdown-item" onclick="exportODF();closeDropdowns()"><span data-i18n-html="app-header.export-menu-csv-detailed">CSV (gedetailleerd)<small>Alle indicatorscores per applicatie</small></span></button>
+        <button class="dropdown-item" onclick="exportCSV();closeDropdowns()"><span data-i18n="exportCsvSum">CSV (samenvatting)</span><small data-i18n="exportCsvSumSub">Scores per dimensie en niveau</small></button>
+        <button class="dropdown-item" onclick="exportODF();closeDropdowns()"><span data-i18n="exportCsvDet">CSV (gedetailleerd)</span><small data-i18n="exportCsvDetSub">Alle indicatorscores per applicatie</small></button>
       </div>
     </div>
-    <button class="hbtn" id="headerWeightsBtn" onclick="openWeightsModalCurrent()" style="display:none"><span data-i18n="app-header.weights-button">Wegingen aanpassen</span></button>
-    <button class="hbtn help-btn" onclick="openHelp()"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg><span data-i18n="app-header.help-button">Handleiding</span></button>
+    <button class="hbtn help-btn" onclick="openHelp()" data-i18n-html="helpBtn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg>Handleiding</button>
   </div>
 </div>
 
 <div class="tab-wrapper">
   <button class="tab-scroll-btn hidden" id="tabScrollLeft" onclick="scrollTabs(-200)">&lsaquo;</button>
   <div class="tab-bar" id="tabBar" onscroll="updateScrollBtns()">
-    <button class="tab overview active" onclick="showView('overview')">Overzicht</button>
+    <button class="tab overview active" onclick="showView('overview')"><span data-i18n="tab-wrapper.overview">Overzicht</span></button>
     <button class="add-tab" onclick="addApp()" title="Applicatie toevoegen">+</button>
   </div>
   <span class="tab-count" id="tabCount"></span>
@@ -363,12 +361,12 @@
   <!-- OVERVIEW VIEW -->
   <div class="view active" id="view-overview">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.8rem">
-      <h2 class="sivon" style="font-size:1.1rem;color:var(--sivon-blue)">Assessment overzicht</h2>
-      <button class="hbtn primary" onclick="addApp()" style="font-size:0.8rem">+ Applicatie toevoegen</button>
+      <h2 class="sivon" style="font-size:1.1rem;color:var(--sivon-blue)"><span data-i18n="container.overview.title">Assessment overzicht</span></h2>
+      <button class="hbtn primary" onclick="addApp()" style="font-size:0.8rem">+ <span data-i18n="container.overview.add-app-button">Applicatie toevoegen</span></button>
     </div>
     <div id="overviewContent">
       <div style="text-align:center;padding:3rem;color:#bbb">
-        <p style="font-size:1.2rem;margin-bottom:0.5rem">Nog geen applicaties beoordeeld</p>
+        <p style="font-size:1.2rem;margin-bottom:0.5rem"><span data-i18n="container.overview.add-app-button">Nog geen applicaties beoordeeld</span></p>
         <p style="font-size:0.85rem">Klik op <strong>+ Applicatie toevoegen</strong> om te beginnen, of importeer een applicatielijst via CSV.</p>
       </div>
     </div>
@@ -1067,49 +1065,209 @@ let lang = localStorage.getItem('pvaf-lang') || 'nl';
 const LOCALES = ['en', 'nl'];
 const I18N = {
     "en": {
-        "head": {
-            "title": "PVAF | Public Values Assessment Framework"
-        },
-        "app-header": {
-            "export-button": "Export",
-            "export-menu-json": "JSON (Complete)<small>All data, scores and weights</small>",
-            "export-menu-csv-summary": "CSV (Summary)<small>Scores per dimension and level</small>",
-            "export-menu-csv-detailed": "CSV (Detailed)<small>All indicator scores per application</small>",
-            "help-button": "Help",
-            "import-button": "Import",
-            "import-menu-json": "Import JSON<small>Previously exported assessments</small>",
-            "import-menu-csv": "Application List (CSV)<small>Bulk: multiple applications at once</small>",
-            "import-menu-download-csv-template": "Download CSV Template<small>Template file for bulk import</small>",
-            "title": "Publieke Values Assessment Framework",
-            "weights-button": "Adjust weights",
-        },
-        "footer": {
-            "copyright": "University of Utrecht & SIVON",
-            "credits": "Based on <a href='https://github.com/UtrechtUniversity/digital-autonomy-assessment-tool'>DAAF</a> by Tim van Neerbos",
-            "license-summary": "Free to use by educational, non-profit and government organizations. Not for commercial use.",
+        "ui": {
+            "addAppBtn": "+ Add Application",
+            "addAppTitle": "Add Application",
+            "alertEmptyFile": "Empty file.",
+            "alertImportErr": "Error importing: ",
+            "alertImported": "imported.",
+            "alertInvalidFile": "Invalid file: ",
+            "alertNoApps": "No application names found.",
+            "appPlural": "applications",
+            "appSingular": "application",
+            "assessmentOverview": "Assessment Overview",
+            "btnCopy": "Copy",
+            "colExplanation": "Guidance:",
+            "colIndicator": "Indicator",
+            "colRemark": "Comment or justification…",
+            "colRubrics": "Rubrics ▾",
+            "colScore": "Score (1-5)",
+            "colWeight": "Weight",
+            "confirmDelete": "Are you sure you want to delete this application?",
+            "confirmResetW": "Are you sure you want to reset all weights to default?",
+            "copyLabel": " (copy)",
+            "dimensionLabel": "Dimension",
+            "downloadTpl": "Download CSV template",
+            "downloadTplSub": "Template file for bulk import",
+            "exportBtn": "Export ▾",
+            "exportCsvDet": "CSV (detailed)",
+            "exportCsvDetSub": "All indicator scores per application",
+            "exportCsvSum": "CSV (summary)",
+            "exportCsvSumSub": "Scores per dimension and level",
+            "exportJson": "JSON (complete)",
+            "exportJsonSub": "All data, scores and weights",
+            "formulaBoxLabel": "Calculation:",
+            "formulaBoxText": "Per indicator score (1-5) × weight. Per dimension weighted average. Per level average of dimensions. <code>Raw score = Mitigation / (Risk × Importance)</code>. Normalised to 1-10 via logarithmic scale.",
+            "helpBtn": "<svg viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z\"/></svg>User Guide",
+            "helpModalTitle": "User Guide – Public Values Assessment Tool",
+            "headerTitle": "Public Values Assessment Framework",
+            "importBtn": "Import ▾",
+            "importCsv": "Application list (CSV)",
+            "importCsvSub": "Bulk: multiple applications at once",
+            "importJson": "Import JSON",
+            "importJsonSub": "Previously exported assessments",
+            "labelAppId": "Application ID",
+            "labelAppName": "Application Name",
+            "labelAssessor": "Assessor(s)",
+            "labelDate": "Date",
+            "levelLabel": "Level",
+            "modeFull": "Full",
+            "modeHintFull": "indicators",
+            "modeHintOf": "of",
+            "modeHintQuick": "key indicators (indicative score)",
+            "modePickFull": "Full assessment",
+            "modePickLabel": "How do you want to assess?",
+            "modePickQuick": "Quick scan",
+            "modePickQuickSub": "9 key indicators",
+            "modeQuick": "Quick scan (9)",
+            "noApps": "No applications assessed yet",
+            "noAppsHint": "Click <strong>+ Add Application</strong> to get started, or import an application list via CSV.",
+            "overviewTab": "Overview",
+            "phAppId": "E.g. SOFT-1234…",
+            "phAppName": "E.g. Microsoft Teams…",
+            "phAssessor": "Names…",
+            "qAttention": "ATTENTION POINT",
+            "qAttentionDesc": "Build mitigation or\nconsciously accept risk",
+            "qCritical": "CRITICAL",
+            "qCriticalDesc": "Urgent action required:\nmigrate or mitigate",
+            "qEmptyHint": "Complete at least all dimensions to plot applications in the quadrant",
+            "qHigh": "High",
+            "qLow": "Low",
+            "qManageable": "MANAGEABLE",
+            "qManageableDesc": "Risks accepted\nwith good fallback",
+            "qOptimal": "OPTIMAL",
+            "qOptimalDesc": "Maintain current situation,\nmonitor periodically",
+            "qXLabel": "Risk exposure × Strategic importance",
+            "qYLabel": "Mitigation",
+            "quadrantTitle": "Public Values Quadrant",
+            "resetWeightsBtn": "Reset to default",
+            "scLabelImp": "Strategic importance",
+            "scLabelMit": "Mitigation capacity",
+            "scLabelPV": "Public Values Score",
+            "scLabelRisk": "Risk exposure",
+            "scSubImp": "High = critical application",
+            "scSubMit": "High = strong mitigation (good)",
+            "scSubPV": "Low score = urgent problem",
+            "scSubRisk": "Low = little risk (good)",
+            "scTipImp": "How important is the application? Average of dimension F, G and H. Low score = little importance. High score = critical.",
+            "scTipMit": "How well can the organisation manage risks? Average of dimension C, D and E. Low score = weak. High score = strong.",
+            "scTipPV": "How large is the public values problem? A high score means: well mitigated and/or low risk. A low score means: urgent problem. Calculated as Mitigation / (Risk × Importance), normalised to 1-10.",
+            "scTipRisk": "How large is the external risk? Average of dimension A and B. Low score = little risk (good). High score = much risk.",
+            "thApp": "Application",
+            "thId": "ID",
+            "thImp": "Importance",
+            "thMit": "Mitigation",
+            "thProgress": "Progress",
+            "thRaw": "Raw score",
+            "thRisk": "Risk",
+            "thScore": "Score (1-10)",
+            "unnamed": "Unnamed",
+            "weightsBtn": "Adjust Weights",
+            "weightsModalTitle": "Adjust Weights",
+            "weightsTipHtml": "<strong>What are weights?</strong> Weights determine how much influence each indicator has within its dimension. Default weights are calibrated for the PVAF model. Only adjust weights in consultation with your organisation or sector, otherwise results become incomparable."
         }
     },
     "nl": {
-        "head": {
-          "title": "PVAF | Publieke Waarden Assessment Framework"
-        },
-        "app-header": {
-            "export-button": "Exporteer",
-            "export-menu-json": "JSON (volledig)<small>Alle data, scores en wegingen</small>",
-            "export-menu-csv-summary": "CSV (samenvatting)<small>Scores per dimensie en niveau</small>",
-            "export-menu-csv-detailed": "CSV (gedetailleerd)<small>Alle indicatorscores per applicatie</small>",
-            "help-button": "Handleiding",
-            "import-button": "Importeer",
-            "import-menu-json": "JSON importeren<small>Eerder geexporteerde assessments</small>",
-            "import-menu-csv": "Applicatielijst (CSV)<small>Bulk: meerdere applicaties in een keer</small>",
-            "import-menu-download-csv-template": "Download CSV-template<small>Templatebestand voor bulk-import</small>",
-            "title": "Publieke Waarden Assessment Framework",
-            "weights-button": "Wegingen aanpassen",
-        },
-        "footer": {
-            "copyright": "Universiteit Utrecht & SIVON",
-            "credits": "Gebaseerd op <a href='https://github.com/UtrechtUniversity/digital-autonomy-assessment-tool'>DAAF</a> door Tim van Neerbos",
-            "license-summary": "Vrij te gebruiken door onderwijs-, non-profit- en overheidsorganisaties. Niet voor commercieel gebruik.",
+        "ui": {
+            "addAppBtn": "+ Applicatie toevoegen",
+            "addAppTitle": "Applicatie toevoegen",
+            "alertEmptyFile": "Leeg bestand.",
+            "alertImportErr": "Fout bij importeren: ",
+            "alertImported": "geïmporteerd.",
+            "alertInvalidFile": "Ongeldig bestand: ",
+            "alertNoApps": "Geen applicatienamen gevonden.",
+            "appPlural": "applicaties",
+            "appSingular": "applicatie",
+            "assessmentOverview": "Assessment overzicht",
+            "btnCopy": "Kopieer",
+            "colExplanation": "Toelichting:",
+            "colIndicator": "Indicator",
+            "colRemark": "Opmerking of onderbouwing…",
+            "colRubrics": "Rubrieken ▾",
+            "colScore": "Score (1-5)",
+            "colWeight": "Weging",
+            "confirmDelete": "Weet je zeker dat je deze applicatie wilt verwijderen?",
+            "confirmResetW": "Weet je zeker dat je alle wegingen wilt resetten naar standaard?",
+            "copyLabel": " (kopie)",
+            "dimensionLabel": "Dimensie",
+            "downloadTpl": "Download CSV-template",
+            "downloadTplSub": "Templatebestand voor bulk-import",
+            "exportBtn": "Exporteer ▾",
+            "exportCsvDet": "CSV (gedetailleerd)",
+            "exportCsvDetSub": "Alle indicatorscores per applicatie",
+            "exportCsvSum": "CSV (samenvatting)",
+            "exportCsvSumSub": "Scores per dimensie en niveau",
+            "exportJson": "JSON (volledig)",
+            "exportJsonSub": "Alle data, scores en wegingen",
+            "formulaBoxLabel": "Berekening:",
+            "formulaBoxText": "Per indicator score (1-5) x weging. Per dimensie gewogen gemiddelde. Per niveau gemiddelde van dimensies. <code>Ruwe score = Mitigatie / (Risico x Belang)</code>. Genormaliseerd naar 1-10 via logaritmische schaal.",
+            "helpBtn": "<svg viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z\"/></svg>Handleiding",
+            "helpModalTitle": "Handleiding Publieke Waarden Assessment Tool",
+            "headerTitle": "Publieke Waarden Assessment Framework",
+            "importBtn": "Importeer ▾",
+            "importCsv": "Applicatielijst (CSV)",
+            "importCsvSub": "Bulk: meerdere applicaties in een keer",
+            "importJson": "JSON importeren",
+            "importJsonSub": "Eerder geëxporteerde assessments",
+            "labelAppId": "Applicatie-ID",
+            "labelAppName": "Applicatienaam",
+            "labelAssessor": "Beoordelaar(s)",
+            "labelDate": "Datum",
+            "levelLabel": "Niveau",
+            "modeFull": "Volledig",
+            "modeHintFull": "indicatoren",
+            "modeHintOf": "van",
+            "modeHintQuick": "kernindicatoren (indicatieve score)",
+            "modePickFull": "Volledig assessment",
+            "modePickLabel": "Hoe wil je beoordelen?",
+            "modePickQuick": "Quick scan",
+            "modePickQuickSub": "9 kernindicatoren",
+            "modeQuick": "Quick scan (9)",
+            "noApps": "Nog geen applicaties beoordeeld",
+            "noAppsHint": "Klik op <strong>+ Applicatie toevoegen</strong> om te beginnen, of importeer een applicatielijst via CSV.",
+            "overviewTab": "Overzicht",
+            "phAppId": "Bijv. SOFT-1234…",
+            "phAppName": "Bijv. Microsoft Teams…",
+            "phAssessor": "Namen…",
+            "qAttention": "AANDACHTSPUNT",
+            "qAttentionDesc": "Bouw mitigatie op of\naccepteer risico bewust",
+            "qCritical": "KRITIEK",
+            "qCriticalDesc": "Urgente actie vereist:\nmigreer of mitigeer",
+            "qEmptyHint": "Vul minimaal alle dimensies in om applicaties in het kwadrant te plotten",
+            "qHigh": "Hoog",
+            "qLow": "Laag",
+            "qManageable": "BEHEERSBAAR",
+            "qManageableDesc": "Risico's geaccepteerd\nmet goede fallback",
+            "qOptimal": "OPTIMAAL",
+            "qOptimalDesc": "Behoud huidige situatie,\nmonitor periodiek",
+            "qXLabel": "Risico-exposure x Strategisch belang",
+            "qYLabel": "Mitigatie",
+            "quadrantTitle": "Publieke Waarden-kwadrant",
+            "resetWeightsBtn": "Reset naar standaard",
+            "scLabelImp": "Strategisch belang",
+            "scLabelMit": "Mitigatie-capaciteit",
+            "scLabelPV": "Publieke Waarden Score",
+            "scLabelRisk": "Risico-exposure",
+            "scSubImp": "Hoog = kritieke applicatie",
+            "scSubMit": "Hoog = sterke mitigatie (goed)",
+            "scSubPV": "Lage score = urgent probleem",
+            "scSubRisk": "Laag = weinig risico (goed)",
+            "scTipImp": "Hoe belangrijk is de applicatie? Gemiddelde van dimensie F, G en H. Lage score = weinig belang. Hoge score = kritiek.",
+            "scTipMit": "Hoe goed kan de organisatie risico's beheersen? Gemiddelde van dimensie C, D en E. Lage score = zwak. Hoge score = sterk.",
+            "scTipPV": "Hoe groot is het publieke waarde probleem? Een hoge score betekent: goed gemitigeerd en/of laag risico. Een lage score betekent: urgent probleem. Berekend als Mitigatie / (Risico x Belang), genormaliseerd naar 1-10. Zie Handleiding voor details.",
+            "scTipRisk": "Hoe groot is het externe risico? Gemiddelde van dimensie A (Geopolitiek risico) en B (Leveranciersafhankelijkheid). Lage score = weinig risico (goed). Hoge score = veel risico.",
+            "thApp": "Applicatie",
+            "thId": "ID",
+            "thImp": "Belang",
+            "thMit": "Mitigatie",
+            "thProgress": "Voortgang",
+            "thRaw": "Ruwe score",
+            "thRisk": "Risico",
+            "thScore": "Score (1-10)",
+            "unnamed": "Naamloos",
+            "weightsBtn": "Wegingen aanpassen",
+            "weightsModalTitle": "Wegingen aanpassen",
+            "weightsTipHtml": "<strong>Wat zijn wegingen?</strong> De wegingen bepalen hoeveel invloed elke indicator heeft binnen zijn dimensie. Standaardwegingen zijn afgestemd op het PVAF-model. Pas wegingen alleen aan in overleg met je organisatie of sector, anders worden resultaten onderling niet vergelijkbaar."
         }
     }
 };
