@@ -128,21 +128,21 @@
   .score-card .sc-value { font-size:2rem; font-weight:800; color:var(--sivon-blue); line-height:1.1; margin:0.3rem 0 0.1rem; font-family:'Open Sans',sans-serif; }
   .score-card .sc-scale { font-size:0.9rem; font-weight:400; opacity:0.45; }
   .score-card .sc-sub { font-size:0.65rem; color:#bbb; }
-  .score-card.risico .sc-label { color:#C00A35; }
-  .score-card.risico .sc-value { color:#C00A35; }
-  .score-card.mitigatie .sc-label { color:#0B7B5E; }
-  .score-card.mitigatie .sc-value { color:#0B7B5E; }
-  .score-card.belang .sc-label { color:#EF6C00; }
-  .score-card.belang .sc-value { color:#EF6C00; }
+  .score-card.risk .sc-label { color:#C00A35; }
+  .score-card.risk .sc-value { color:#C00A35; }
+  .score-card.mitigation .sc-label { color:#0B7B5E; }
+  .score-card.mitigation .sc-value { color:#0B7B5E; }
+  .score-card.importance .sc-label { color:#EF6C00; }
+  .score-card.importance .sc-value { color:#EF6C00; }
 
-  /* Niveau sections */
-  .niv-section { margin-bottom:0.6rem; }
-  .niv-bar { padding:0.5rem 1rem; color:white; font-weight:600; font-size:0.78rem; display:flex; justify-content:space-between; align-items:center; border-radius:var(--radius) var(--radius) 0 0; cursor:pointer; user-select:none; }
-  .niv-bar.n1 { background:#C00A35; }
-  .niv-bar.n2 { background:#0B7B5E; }
-  .niv-bar.n3 { background:#EF6C00; }
-  .niv-bar .niv-hint { font-weight:400; font-size:0.68rem; opacity:0.8; }
-  .niv-body { background:white; border-radius:0 0 var(--radius) var(--radius); box-shadow:var(--shadow); overflow:hidden; }
+  /* Level sections */
+  .lvl-section { margin-bottom:0.6rem; }
+  .lvl-bar { padding:0.5rem 1rem; color:white; font-weight:600; font-size:0.78rem; display:flex; justify-content:space-between; align-items:center; border-radius:var(--radius) var(--radius) 0 0; cursor:pointer; user-select:none; }
+  .lvl-bar.n1 { background:#C00A35; }
+  .lvl-bar.n2 { background:#0B7B5E; }
+  .lvl-bar.n3 { background:#EF6C00; }
+  .lvl-bar .lvl-hint { font-weight:400; font-size:0.68rem; opacity:0.8; }
+  .lvl-body { background:white; border-radius:0 0 var(--radius) var(--radius); box-shadow:var(--shadow); overflow:hidden; }
   .dim-row { border-bottom:1px solid #f0ece4; }
   .dim-row:last-child { border-bottom:none; }
   .dim-title { padding:0.45rem 1rem; background:var(--sivon-cream); font-size:0.78rem; font-weight:600; color:var(--sivon-blue); display:flex; justify-content:space-between; align-items:center; cursor:pointer; }
@@ -455,7 +455,7 @@
       <p>Het kwadrant toont applicaties op twee assen: <strong>Risico x Belang</strong> (horizontaal) en <strong>Mitigatie</strong> (verticaal). Twee applicaties met dezelfde 1-10 score kunnen op verschillende plekken in het kwadrant staan, waardoor de aanbevolen actie verschilt.</p>
 
       <h3>Wegingen aanpassen</h3>
-      <p>Elke indicator heeft een standaardweging (2 of 3). Via het scherm "Wegingen aanpassen" kun je de wegingen aanpassen (1-5). De weging bepaalt hoeveel invloed een indicator heeft <strong>binnen zijn dimensie</strong>. Bijvoorbeeld: als je C1 (Alternatief beschikbaar) op weging 5 zet en C2 op weging 1, telt C1 vijf keer zo zwaar mee in de dimensiescore van "Technische weerbaarheid". Aangepaste wegingen worden rood weergegeven. Doe dit alleen in overleg met je organisatie of sector om onderlinge vergelijkbaarheid te behouden.</p>
+      <p>Elke indicator heeft een standaardweging (2 of 3). Via het scherm "Wegingen aanpassen" kun je de wegingen aanpassen (1-5). De weging bepaalt hoeveel invloed een indicator heeft <strong>binnen zijn dimensie</strong>. Bijvoorbeeld: als je C1 (Alternatief beschikbaar) op weging 5 zet en C2 op weging 1, telt C1 vijf keer zo zwaar mee in de dimensiescore van "Technische weerbaarheid". adjustede wegingen worden rood weergegeven. Doe dit alleen in overleg met je organisatie of sector om onderlinge vergelijkbaarheid te behouden.</p>
 
       <h3>Opmerkingen per indicator</h3>
       <p>Bij elke indicator kun je een opmerking plaatsen om je score te onderbouwen. Dit is optioneel maar aangeraden: het maakt je beoordeling transparant en reproduceerbaar. Opmerkingen worden meegenomen bij JSON-export en -import.</p>
@@ -519,7 +519,7 @@ const INDICATORS = [
     title: 'Jurisdictie leverancier',
     dim: 'A',
     dn: 'Geopolitiek en wettelijke conformiteit risico',
-    niv: 1,
+    lvl: 1,
     w: 3,
     q: 'Onder welke jurisdictie valt de leverancier?',
     r: [
@@ -536,7 +536,7 @@ const INDICATORS = [
     title: 'Sanctie- en geopolitiek risico',
     dim: 'A',
     dn: 'Geopolitiek en wettelijke conformiteit risico',
-    niv: 1,
+    lvl: 1,
     w: 2,
     q: 'Hoe groot is het geopolitieke risico voor de dienstverlening?',
     r: [
@@ -553,7 +553,7 @@ const INDICATORS = [
     title: 'Hosting en datalocatie',
     dim: 'A',
     dn: 'Geopolitiek en wettelijke conformiteit risico',
-    niv: 1,
+    lvl: 1,
     w: 2,
     q: 'Waar worden data en applicatie fysiek gehost en hoe is dat geborgd?',
     r: [
@@ -570,7 +570,7 @@ const INDICATORS = [
     title: 'Wettelijke conformiteit',
     dim: 'A',
     dn: 'Geopolitiek en wettelijke conformiteit risico',
-    niv: 1,
+    lvl: 1,
     w: 2,
     q: 'Hoe zit het met conformiteit met de wettelijke eisen, zoals toegankelijkheidseisen (WCAG), beveiliging en privacywetgeving?',
     r: [
@@ -588,7 +588,7 @@ const INDICATORS = [
     title: 'Vendor concentratie',
     dim: 'B',
     dn: 'Leveranciers- en ketenafhankelijkheden',
-    niv: 1,
+    lvl: 1,
     w: 3,
     q: 'Hoeveel producten en diensten gebruik je van dezelfde leverancier?',
     r: [
@@ -605,7 +605,7 @@ const INDICATORS = [
     title: 'Inzicht software opbouw en toeleveringsketen',
     dim: 'B',
     dn: 'Leveranciers- en ketenafhankelijkheden',
-    niv: 1,
+    lvl: 1,
     w: 3,
     q: 'Is er een software bill of materials (SBOM) beschikbaar voor dit product of dienst?',
     r: [
@@ -622,7 +622,7 @@ const INDICATORS = [
     title: 'Alternatief beschikbaar',
     dim: 'C',
     dn: 'Technische weerbaarheid',
-    niv: 2,
+    lvl: 2,
     w: 3,
     q: 'Bestaan er vergelijkbare diensten als vervanging?',
     r: [
@@ -639,7 +639,7 @@ const INDICATORS = [
     title: 'Migratiecomplexiteit',
     dim: 'C',
     dn: 'Technische weerbaarheid',
-    niv: 2,
+    lvl: 2,
     w: 3,
     q: 'Hoe lang duurt het om over te stappen naar een alternatief?',
     r: [
@@ -656,7 +656,7 @@ const INDICATORS = [
     title: 'Data-portabiliteit',
     dim: 'C',
     dn: 'Technische weerbaarheid',
-    niv: 2,
+    lvl: 2,
     w: 3,
     q: 'Kunnen we data volledig en bruikbaar exporteren?',
     r: [
@@ -673,7 +673,7 @@ const INDICATORS = [
     title: 'Encryptiebeheer',
     dim: 'C',
     dn: 'Technische weerbaarheid',
-    niv: 2,
+    lvl: 2,
     w: 2,
     opt: true,
     q: 'Controle over versleuteling? (optioneel)',
@@ -691,7 +691,7 @@ const INDICATORS = [
     title: 'Transparantie en openheid software',
     dim: 'C',
     dn: 'Technische weerbaarheid',
-    niv: 2,
+    lvl: 2,
     w: 3,
     q: 'Is de broncode beschikbaar en onafhankelijk te gebruiken?',
     r: [
@@ -708,7 +708,7 @@ const INDICATORS = [
     title: 'Algoritmes en AI transparantie',
     dim: 'C',
     dn: 'Technische weerbaarheid',
-    niv: 2,
+    lvl: 2,
     w: 2,
     q: 'Hoe inzichtelijk is het gebruik van algoritmes en AI?',
     r: [
@@ -725,7 +725,7 @@ const INDICATORS = [
     title: 'Interne expertise en kennisborging',
     dim: 'D',
     dn: 'Organisatorische weerbaarheid',
-    niv: 2,
+    lvl: 2,
     w: 3,
     q: 'Hoeveel interne kennis hebben we over dit systeem?',
     r: [
@@ -742,7 +742,7 @@ const INDICATORS = [
     title: 'Exit-plan aanwezig',
     dim: 'D',
     dn: 'Organisatorische weerbaarheid',
-    niv: 2,
+    lvl: 2,
     w: 3,
     q: 'Is er een concreet plan voor als we moeten overstappen?',
     r: [
@@ -759,7 +759,7 @@ const INDICATORS = [
     title: 'Backup-strategie',
     dim: 'D',
     dn: 'Organisatorische weerbaarheid',
-    niv: 2,
+    lvl: 2,
     w: 2,
     q: 'Onafhankelijke kopie van data buiten leverancier?',
     r: [
@@ -776,7 +776,7 @@ const INDICATORS = [
     title: 'Exit-clausules en transitieregeling',
     dim: 'E',
     dn: 'Contractuele weerbaarheid',
-    niv: 2,
+    lvl: 2,
     w: 3,
     q: 'Wat is contractueel geregeld over data-overdracht bij beëindiging?',
     r: [
@@ -793,7 +793,7 @@ const INDICATORS = [
     title: 'Contractuele flexibiliteit',
     dim: 'E',
     dn: 'Contractuele weerbaarheid',
-    niv: 2,
+    lvl: 2,
     w: 2,
     q: 'Hoe snel kun je contractueel weg bij deze leverancier?',
     r: [
@@ -810,7 +810,7 @@ const INDICATORS = [
     title: 'Overname of fusie',
     dim: 'E',
     dn: 'Contractuele weerbaarheid',
-    niv: 2,
+    lvl: 2,
     w: 2,
     q: 'Wat is er contractueel geregeld als de leverancier wordt overgenomen of fuseert?',
     r: [
@@ -827,7 +827,7 @@ const INDICATORS = [
     title: 'Impact bij uitval',
     dim: 'F',
     dn: 'Organisatorisch belang',
-    niv: 3,
+    lvl: 3,
     w: 3,
     q: 'Wat is de impact als dit systeem uitvalt?',
     r: [
@@ -844,7 +844,7 @@ const INDICATORS = [
     title: 'Integratie-afhankelijkheden',
     dim: 'F',
     dn: 'Organisatorisch belang',
-    niv: 3,
+    lvl: 3,
     w: 2,
     q: 'Hoeveel systemen zijn afhankelijk van dit systeem?',
     r: [
@@ -861,7 +861,7 @@ const INDICATORS = [
     title: 'Persoonsgegevens',
     dim: 'G',
     dn: 'Data-gevoeligheid, toegangsbeheer en beleid',
-    niv: 3,
+    lvl: 3,
     w: 3,
     q: 'Welke persoonsgegevens worden verwerkt?',
     r: [
@@ -878,7 +878,7 @@ const INDICATORS = [
     title: 'Onderwijsdata en kennisveiligheid',
     dim: 'G',
     dn: 'Data-gevoeligheid, toegangsbeheer en beleid',
-    niv: 3,
+    lvl: 3,
     w: 3,
     q: 'Hoe gevoelig zijn de onderwijsgegevens en kennis in dit systeem?',
     r: [
@@ -895,7 +895,7 @@ const INDICATORS = [
     title: 'Intellectueel eigendom',
     dim: 'G',
     dn: 'Data-gevoeligheid, toegangsbeheer en beleid',
-    niv: 3,
+    lvl: 3,
     w: 2,
     q: 'Hoe waardevol is het IP in dit systeem?',
     r: [
@@ -912,7 +912,7 @@ const INDICATORS = [
     title: 'Toegang tot data',
     dim: 'G',
     dn: 'Data-gevoeligheid, toegangsbeheer en beleid',
-    niv: 3,
+    lvl: 3,
     w: 2,
     q: 'Wie heeft toegang tot jouw data?',
     r: [
@@ -929,7 +929,7 @@ const INDICATORS = [
     title: 'Databeleid en regie',
     dim: 'G',
     dn: 'Data-gevoeligheid, toegangsbeheer en beleid',
-    niv: 3,
+    lvl: 3,
     w: 2,
     q: 'In hoeverre zijn databeleid, doelbinding en gebruikersregie geborgd?',
     r: [
@@ -946,7 +946,7 @@ const INDICATORS = [
     title: 'Data-minimalizatie en verwijdering',
     dim: 'G',
     dn: 'Data-gevoeligheid, toegangsbeheer en beleid',
-    niv: 2,
+    lvl: 2,
     w: 2,
     q: 'Wat zijn de mogelijkheden om datacollectie te beperken of data te verwijderen?',
     r: [
@@ -963,7 +963,7 @@ const INDICATORS = [
     title: 'Onderwijsvrijheid',
     dim: 'H',
     dn: 'Onderwijs impact',
-    niv: 3,
+    lvl: 3,
     w: 3,
     q: 'Kan de leverancier invloed uitoefenen op de onderwijs activiteiten?',
     r: [
@@ -980,7 +980,7 @@ const INDICATORS = [
     title: 'Onderwijssamenwerking',
     dim: 'H',
     dn: 'Onderwijs impact',
-    niv: 3,
+    lvl: 3,
     w: 2,
     q: 'Belang voor onderwijssamenwerking (nationaal en internationaal)?',
     r: [
@@ -997,7 +997,7 @@ const INDICATORS = [
     title: 'Langetermijnarchivering',
     dim: 'H',
     dn: 'Onderwijs impact',
-    niv: 3,
+    lvl: 3,
     w: 2,
     q: 'Hoe lang moet data bewaard en toegankelijk blijven?',
     r: [
@@ -1014,7 +1014,7 @@ const INDICATORS = [
     title: 'Gebruikersbeïnvloeding en transparantie',
     dim: 'H',
     dn: 'Onderwijs impact',
-    niv: 3,
+    lvl: 3,
     w: 2,
     q: 'In hoeverre is de gebruikersinterface transparant, vrij van manipulatie en gericht op autonomie van de gebruiker?',
     r: [
@@ -1030,10 +1030,10 @@ const INDICATORS = [
 
 const DIM_DESC={A:'Onder welke wetgeving valt de leverancier en waar staat de data? Geopolitieke en jurisdictierisico\'s.',B:'Hoeveel producten en diensten neem je af bij dezelfde leverancier?',C:'Kun je technisch gezien overstappen? Zijn er alternatieven, is data exporteerbaar, is de software open?',D:'Heb je de kennis, plannen en backups om een overstap daadwerkelijk uit te voeren?',E:'Wat is er contractueel geregeld over vertrek, data-overdracht en flexibiliteit?',F:'Hoe belangrijk is deze applicatie voor de organisatie en hoeveel hangt ervan af?',G:'Welke gevoelige data en metadata verwerkt dit systeem, wie heeft toegang en hoe is gebruik contractueel en technisch geregeld??',H:'Raakt deze applicatie aan onderwijsvrijheid, samenwerking of langetermijnarchivering? Is er sprake van gebruikersbeïnvloeding?'};
 const DIMS={A:'Geopolitiek en wettelijke conformiteit risico',B:'Leveranciers- en ketenafhankelijkheden',C:'Technische weerbaarheid',D:'Organisatorische weerbaarheid',E:'Contractuele weerbaarheid',F:'Organisatorisch belang',G:'Data-gevoeligheid, toegangsbeheer en beleid',H:'Onderwijs impact'};
-const NIV_DIMS={1:['A','B'],2:['C','D','E'],3:['F','G','H']};
-const NIV_NAMES={1:'Risico-exposure',2:'Mitigatie-capaciteit',3:'Strategisch belang'};
-const NIV_CLS={1:'n1',2:'n2',3:'n3'};
-const NIV_HINTS={1:'1 = laag risico (goed) ... 5 = hoog risico',2:'1 = slechte mitigatie ... 5 = sterke mitigatie (goed)',3:'1 = laag belang ... 5 = hoog belang (urgent)'};
+const LVL_DIMS={1:['A','B'],2:['C','D','E'],3:['F','G','H']};
+const LVL_NAMES={1:'Risico-exposure',2:'Mitigatie-capaciteit',3:'Strategisch belang'};
+const LVL_CLS={1:'n1',2:'n2',3:'n3'};
+const LVL_HINTS={1:'1 = laag risico (goed) ... 5 = hoog risico',2:'1 = slechte mitigatie ... 5 = sterke mitigatie (goed)',3:'1 = laag belang ... 5 = hoog belang (urgent)'};
 const QUICK_CODES=new Set(['A1','A3','B1','C1','D1','E1','F1','G1','H1']);
 const LIGHT_CODES=QUICK_CODES; // backward compat
 const VALID_CODES=new Set(INDICATORS.map(i=>i.code));
@@ -1176,8 +1176,8 @@ function openWeightsModal(id) {
   const modal = document.getElementById('weightsModal');
   const content = document.getElementById('weightsContent');
   let h = '';
-  for (const niv of [1,2,3]) {
-    const dims = NIV_DIMS[niv];
+  for (const lvl of [1,2,3]) {
+    const dims = LVL_DIMS[lvl];
     for (const dim of dims) {
       const dinds = INDICATORS.filter(i=>i.dim===dim);
       h += `<div style="margin-bottom:1.2rem"><h3 style="font-size:0.9rem;color:var(--sivon-blue);margin-bottom:0.5rem">Dimensie ${dim}: ${DIMS[dim]}</h3>`;
@@ -1242,7 +1242,7 @@ function saveRemark(id, code, value) {
 function calcApp(app, mode) {
   const isQuick = mode==='quick';
   const activeInds = isQuick ? INDICATORS.filter(i=>QUICK_CODES.has(i.code)) : INDICATORS;
-  const res = { dims:{}, nivs:{}, raw:null, score10:null, filled:0, total:activeInds.length };
+  const res = { dims:{}, lvls:{}, raw:null, score10:null, filled:0, total:activeInds.length };
   for (const d of Object.keys(DIMS)) {
     const inds = activeInds.filter(i=>i.dim===d);
     if (inds.length===0) { res.dims[d]=null; continue; }
@@ -1256,12 +1256,13 @@ function calcApp(app, mode) {
     }
     res.dims[d] = sw>0 ? sws/sw : null;
   }
-  function nivAvg(dl) { const v=dl.map(d=>res.dims[d]).filter(x=>x!==null); return v.length===dl.length?v.reduce((a,b)=>a+b,0)/v.length:null; }
-  res.nivs.risico = nivAvg(NIV_DIMS[1]);
-  res.nivs.mitigatie = nivAvg(NIV_DIMS[2]);
-  res.nivs.belang = nivAvg(NIV_DIMS[3]);
-  if (res.nivs.risico && res.nivs.mitigatie && res.nivs.belang && res.nivs.risico*res.nivs.belang>0) {
-    res.raw = res.nivs.mitigatie / (res.nivs.risico * res.nivs.belang);
+  function lvlAvg(dl) { const v=dl.map(d=>res.dims[d]).filter(x=>x!==null); return v.length===dl.length?v.reduce((a,b)=>a+b,0)/v.length:null; }
+  res.lvls.risk = lvlAvg(LVL_DIMS[1]);
+  res.lvls.mitigation = lvlAvg(LVL_DIMS[2]);
+  res.lvls.importance = lvlAvg(LVL_DIMS[3]);
+
+  if (res.lvls.risk && res.lvls.mitigation && res.lvls.importance && res.lvls.risk*res.lvls.importance>0) {
+    res.raw = res.lvls.mitigation / (res.lvls.risk * res.lvls.importance);
     res.score10 = normalize10(res.raw);
   }
   return res;
@@ -1300,7 +1301,7 @@ function updateScrollBtns() {
 // === APP MANAGEMENT ===
 function addApp(name) {
   const id = uid();
-  state.apps[id] = { name:name||'', appId:'', datum:'', beoordelaar:'', scores:{}, weights:{}, remarks:{} };
+  state.apps[id] = { name:name||'', appId:'', date:'', assessor:'', scores:{}, weights:{}, remarks:{} };
   state.order.push(id);
   save();
   rebuildTabs();
@@ -1450,9 +1451,9 @@ function renderOverview() {
     h += `<td style="font-size:0.75rem;color:#999">${esc(app.appId||'--')}</td>`;
     h += `<td>${pct}%<span class="progress-bar"><span class="progress-fill" style="width:${pct}%;background:${pcolor}"></span></span></td>`;
     h += `<td>${scorePill(res.score10)}</td>`;
-    h += `<td style="font-size:0.75rem;color:var(--sivon-red)">${res.nivs.risico?res.nivs.risico.toFixed(2):'--'}</td>`;
-    h += `<td style="font-size:0.75rem;color:var(--green)">${res.nivs.mitigatie?res.nivs.mitigatie.toFixed(2):'--'}</td>`;
-    h += `<td style="font-size:0.75rem;color:var(--orange)">${res.nivs.belang?res.nivs.belang.toFixed(2):'--'}</td>`;
+    h += `<td style="font-size:0.75rem;color:var(--sivon-red)">${res.lvls.risk?res.lvls.risk.toFixed(2):'--'}</td>`;
+    h += `<td style="font-size:0.75rem;color:var(--green)">${res.lvls.mitigation?res.lvls.mitigation.toFixed(2):'--'}</td>`;
+    h += `<td style="font-size:0.75rem;color:var(--orange)">${res.lvls.importance?res.lvls.importance.toFixed(2):'--'}</td>`;
     h += `<td style="font-size:0.72rem;color:#aaa">${res.raw?res.raw.toFixed(3):'--'}</td>`;
     h += `<td><button class="hbtn" style="font-size:0.65rem;padding:0.2rem 0.5rem;color:#888;background:#f5f5f5" onclick="duplicateApp('${id}')">Kopieer</button></td>`;
     h += `</tr>`;
@@ -1482,8 +1483,8 @@ function renderOverview() {
     const aid = visibleOrder[idx];
     const a = state.apps[aid];
     const r = calcApp(a, state.modes?.[aid] || 'full');
-    if (r.nivs.risico && r.nivs.mitigatie && r.nivs.belang) {
-      plotted.push({id:aid, name:a.name||'Naamloos', num:idx+1, risico:r.nivs.risico, mitigatie:r.nivs.mitigatie, belang:r.nivs.belang});
+    if (r.lvls.risk && r.lvls.mitigation && r.lvls.importance) {
+      plotted.push({id:aid, name:a.name||'Naamloos', num:idx+1, risk:r.lvls.risk, mitigation:r.lvls.mitigation, importance:r.lvls.importance});
     }
   }
   for (const p of plotted) {
@@ -1505,10 +1506,10 @@ function renderOverview() {
       const gh = gridEl.offsetHeight;
       for (const p of plotted) {
         // X: risico * belang, range 1-25, map to 5%-95%
-        const xRaw = p.risico * p.belang;
+        const xRaw = p.risk * p.importance;
         const xPct = 5 + ((xRaw - 1) / (25 - 1)) * 90;
-        // Y: mitigatie, range 1-5, map to 95%-5% (inverted: high=top)
-        const yPct = 95 - ((p.mitigatie - 1) / (5 - 1)) * 90;
+        // Y: importance, range 1-5, map to 95%-5% (inverted: high=top)
+        const yPct = 95 - ((p.mitigation - 1) / (5 - 1)) * 90;
         const dot = document.createElement('div');
         dot.className = 'q-dot';
         dot.style.left = xPct + '%';
@@ -1535,8 +1536,8 @@ function renderAppView(id) {
   h += `<div class="assess-meta">`;
   h += `<div class="meta-field"><label>Applicatie-ID</label><input id="appId-${id}" value="${esc(app.appId||'')}" placeholder="Bijv. SOFT-1234..." onchange="updateMeta('${id}','appId',this.value)"></div>`;
   h += `<div class="meta-field" style="flex:2"><label>Applicatienaam</label><input id="name-${id}" value="${esc(app.name)}" placeholder="Bijv. Microsoft Teams..." onchange="updateMeta('${id}','name',this.value)"></div>`;
-  h += `<div class="meta-field"><label>Datum</label><input type="date" value="${app.datum}" onchange="updateMeta('${id}','datum',this.value)"></div>`;
-  h += `<div class="meta-field"><label>Beoordelaar(s)</label><input value="${esc(app.beoordelaar)}" placeholder="Namen..." onchange="updateMeta('${id}','beoordelaar',this.value)"></div>`;
+  h += `<div class="meta-field"><label>Datum</label><input type="date" value="${app.date}" onchange="updateMeta('${id}','date',this.value)"></div>`;
+  h += `<div class="meta-field"><label>Beoordelaar(s)</label><input value="${esc(app.assessor)}" placeholder="Namen..." onchange="updateMeta('${id}','assessor',this.value)"></div>`;
   h += `</div>`;
   h += `<div class="assess-controls">`;
   h += `<div class="seg-control" id="segCtrl-${id}">`;
@@ -1548,16 +1549,16 @@ function renderAppView(id) {
 
   h += `<div class="score-row">`;
   h += `<div class="score-card main-score"><div class="sc-label">Publieke Waarden Score <span class="tt" data-tip="Hoe groot is het publieke waarde probleem? Een hoge score betekent: goed gemitigeerd en/of laag risico. Een lage score betekent: urgent probleem. Berekend als Mitigatie / (Risico x Belang), genormaliseerd naar 1-10. Zie Handleiding voor details." style="cursor:help;font-size:0.55rem;color:#bbb;border-bottom:1px dotted #ccc">&#9432;</span></div><div class="sc-value" id="sc10-${id}">--</div><div class="sc-sub">Lage score = urgent probleem</div></div>`;
-  h += `<div class="score-card risico"><div class="sc-label">Risico-exposure <span class="tt" data-tip="Hoe groot is het externe risico? Gemiddelde van dimensie A (Geopolitiek risico) en B (Leveranciersafhankelijkheid). Lage score = weinig risico (goed). Hoge score = veel risico. Dit niveau kun je verbeteren, bijv. door te migreren naar een EU-provider." style="cursor:help;font-size:0.55rem;color:#bbb;border-bottom:1px dotted #ccc">&#9432;</span></div><div class="sc-value" id="scR-${id}">--</div><div class="sc-sub">Laag = weinig risico (goed)</div></div>`;
-  h += `<div class="score-card mitigatie"><div class="sc-label">Mitigatie-capaciteit <span class="tt" data-tip="Hoe goed kan de organisatie risico's beheersen? Gemiddelde van dimensie C (Technische weerbaarheid), D (Organisatorische weerbaarheid) en E (Contractuele weerbaarheid). Lage score = zwak. Hoge score = sterk. Dit niveau kun je verbeteren, bijv. door alternatieven te ontwikkelen, contracten te versterken of kennis op te bouwen." style="cursor:help;font-size:0.55rem;color:#bbb;border-bottom:1px dotted #ccc">&#9432;</span></div><div class="sc-value" id="scM-${id}">--</div><div class="sc-sub">Hoog = sterke mitigatie (goed)</div></div>`;
-  h += `<div class="score-card belang"><div class="sc-label">Strategisch belang <span class="tt" data-tip="Hoe belangrijk is de applicatie? Gemiddelde van dimensie F (Organisatorisch belang), G (Data-gevoeligheid) en H (Onderwijs impact). Lage score = weinig belang. Hoge score = kritiek. Dit niveau ligt grotendeels vast; een applicatie wordt niet minder belangrijk." style="cursor:help;font-size:0.55rem;color:#bbb;border-bottom:1px dotted #ccc">&#9432;</span></div><div class="sc-value" id="scB-${id}">--</div><div class="sc-sub">Hoog = kritieke applicatie</div></div>`;
+  h += `<div class="score-card risk"><div class="sc-label">Risico-exposure <span class="tt" data-tip="Hoe groot is het externe risico? Gemiddelde van dimensie A (Geopolitiek risico) en B (Leveranciersafhankelijkheid). Lage score = weinig risico (goed). Hoge score = veel risico. Dit niveau kun je verbeteren, bijv. door te migreren naar een EU-provider." style="cursor:help;font-size:0.55rem;color:#bbb;border-bottom:1px dotted #ccc">&#9432;</span></div><div class="sc-value" id="scR-${id}">--</div><div class="sc-sub">Laag = weinig risico (goed)</div></div>`;
+  h += `<div class="score-card mitigation"><div class="sc-label">Mitigatie-capaciteit <span class="tt" data-tip="Hoe goed kan de organisatie risico's beheersen? Gemiddelde van dimensie C (Technische weerbaarheid), D (Organisatorische weerbaarheid) en E (Contractuele weerbaarheid). Lage score = zwak. Hoge score = sterk. Dit niveau kun je verbeteren, bijv. door alternatieven te ontwikkelen, contracten te versterken of kennis op te bouwen." style="cursor:help;font-size:0.55rem;color:#bbb;border-bottom:1px dotted #ccc">&#9432;</span></div><div class="sc-value" id="scM-${id}">--</div><div class="sc-sub">Hoog = sterke mitigatie (goed)</div></div>`;
+  h += `<div class="score-card importance"><div class="sc-label">Strategisch belang <span class="tt" data-tip="Hoe belangrijk is de applicatie? Gemiddelde van dimensie F (Organisatorisch belang), G (Data-gevoeligheid) en H (Onderwijs impact). Lage score = weinig belang. Hoge score = kritiek. Dit niveau ligt grotendeels vast; een applicatie wordt niet minder belangrijk." style="cursor:help;font-size:0.55rem;color:#bbb;border-bottom:1px dotted #ccc">&#9432;</span></div><div class="sc-value" id="scI-${id}">--</div><div class="sc-sub">Hoog = kritieke applicatie</div></div>`;
   h += `</div>`;
 
-  for (const niv of [1,2,3]) {
-    const dims = NIV_DIMS[niv];
-    h += `<div class="niv-section">`;
-    h += `<div class="niv-bar ${NIV_CLS[niv]}"><span>Niveau ${niv}: ${NIV_NAMES[niv]}</span><span class="niv-hint">${NIV_HINTS[niv]}</span></div>`;
-    h += `<div class="niv-body" id="nivBody-${id}-${niv}">`;
+  for (const lvl of [1,2,3]) {
+    const dims = LVL_DIMS[lvl];
+    h += `<div class="lvl-section">`;
+    h += `<div class="lvl-bar ${LVL_CLS[lvl]}"><span>Niveau ${lvl}: ${LVL_NAMES[lvl]}</span><span class="lvl-hint">${LVL_HINTS[lvl]}</span></div>`;
+    h += `<div class="lvl-body" id="lvlBody-${id}-${lvl}">`;
     for (const dim of dims) {
       const dinds = INDICATORS.filter(i=>i.dim===dim);
       h += `<div class="dim-row" id="dimRow-${id}-${dim}">`;
@@ -1565,10 +1566,10 @@ function renderAppView(id) {
       h += `<div class="dim-inds" id="dimInds-${id}-${dim}">`;
       h += `<div class="ind-colheader"><span></span><span>Indicator</span><span class="ch-wgt">Weging</span><span class="ch-score">Score (1-5)</span></div>`;
       for (const ind of dinds) {
-        const dir = ind.niv===2?'asc':'desc';
-        const hL = ind.niv===2?'laag':'goed';
-        const hR = ind.niv===2?'hoog':'slecht';
-        const rubDir = ind.niv===2?'rub-asc':'rub-desc';
+        const dir = ind.lvl===2?'asc':'desc';
+        const hL = ind.lvl===2?'laag':'goed';
+        const hR = ind.lvl===2?'hoog':'slecht';
+        const rubDir = ind.lvl===2?'rub-asc':'rub-desc';
         const isQuick = QUICK_CODES.has(ind.code);
         h += `<div class="ind-row" data-code="${ind.code}" data-quick="${isQuick?1:0}" onclick="indRowClick(event,'${id}','${ind.code}')">`;
         h += `<span class="ind-code">${ind.code}</span>`;
@@ -1723,9 +1724,9 @@ function recalcApp(id) {
     el10.innerHTML = res.score10?res.score10.toFixed(1)+'<span class="sc-scale">/10</span>':'--';
     el10.style.color = res.score10?(res.score10>=7?'var(--green)':res.score10>=5?'var(--orange)':res.score10>=3?'#E65100':'var(--red)'):'var(--sivon-blue)';
   }
-  const elR=document.getElementById(`scR-${id}`); if(elR) elR.innerHTML=res.nivs.risico!==null?fmt(res.nivs.risico)+'<span class="sc-scale">/5</span>':'--';
-  const elM=document.getElementById(`scM-${id}`); if(elM) elM.innerHTML=res.nivs.mitigatie!==null?fmt(res.nivs.mitigatie)+'<span class="sc-scale">/5</span>':'--';
-  const elB=document.getElementById(`scB-${id}`); if(elB) elB.innerHTML=res.nivs.belang!==null?fmt(res.nivs.belang)+'<span class="sc-scale">/5</span>':'--';
+  const elR=document.getElementById(`scR-${id}`); if(elR) elR.innerHTML=res.lvls.risk!==null?fmt(res.lvls.risk)+'<span class="sc-scale">/5</span>':'--';
+  const elM=document.getElementById(`scM-${id}`); if(elM) elM.innerHTML=res.lvls.mitigation!==null?fmt(res.lvls.mitigation)+'<span class="sc-scale">/5</span>':'--';
+  const elI=document.getElementById(`scI-${id}`); if(elI) elI.innerHTML=res.lvls.importance!==null?fmt(res.lvls.importance)+'<span class="sc-scale">/5</span>':'--';
 
   for (const d of Object.keys(DIMS)) {
     const dimRow = document.getElementById(`dimRow-${id}-${d}`);
@@ -1752,19 +1753,19 @@ function recalcApp(id) {
 
 // === IMPORT / EXPORT ===
 function exportAll() {
-  const data = { version:'PVAF-export-v1', exportDatum:new Date().toISOString(), applicaties:{} };
+  const data = { version:'PVAF-export-v1', exportDate:new Date().toISOString(), applications:{} };
   for (const id of state.order) {
     const app = state.apps[id];
     const appMode = state.modes?.[id] || 'full';
     const res = calcApp(app, appMode);
-    data.applicaties[app.name||'Naamloos'] = {
-      appId:app.appId||'', modus:appMode, datum:app.datum, beoordelaar:app.beoordelaar,
-      scores:app.scores, wegingen:app.weights, opmerkingen:app.remarks||{},
-      resultaat: { score10:res.score10?+res.score10.toFixed(1):null, ruw:res.raw?+res.raw.toFixed(4):null,
-        risico:res.nivs.risico?+res.nivs.risico.toFixed(2):null,
-        mitigatie:res.nivs.mitigatie?+res.nivs.mitigatie.toFixed(2):null,
-        belang:res.nivs.belang?+res.nivs.belang.toFixed(2):null,
-        dimensies:Object.fromEntries(Object.entries(res.dims).map(([k,v])=>[k+'. '+DIMS[k],v?+v.toFixed(2):null]))
+    data.applications[app.name||'Naamloos'] = {
+      appId:app.appId||'', modus:appMode, date:app.date, assessor:app.assessor,
+      scores:app.scores, weights:app.weights, remarks:app.remarks||{},
+      result: { score10:res.score10?+res.score10.toFixed(1):null, raw:res.raw?+res.raw.toFixed(4):null,
+        risk:res.lvls.risk?+res.lvls.risk.toFixed(2):null,
+        mitigation:res.lvls.mitigation?+res.lvls.mitigation.toFixed(2):null,
+        importance:res.lvls.importance?+res.lvls.importance.toFixed(2):null,
+        dimensions:Object.fromEntries(Object.entries(res.dims).map(([k,v])=>[k+'. '+DIMS[k],v?+v.toFixed(2):null]))
       }
     };
   }
@@ -1781,11 +1782,11 @@ function exportCSV() {
   for (const id of state.order) {
     const app = state.apps[id];
     const res = calcApp(app, state.modes?.[id] || 'full');
-    csv += `"${(app.appId||'').replace(/"/g,'""')}";"${(app.name||'Naamloos').replace(/"/g,'""')}";"${app.datum}";"${(app.beoordelaar||'').replace(/"/g,'""')}"`;
+    csv += `"${(app.appId||'').replace(/"/g,'""')}";"${(app.name||'Naamloos').replace(/"/g,'""')}";"${app.date}";"${(app.assessor||'').replace(/"/g,'""')}"`;
     csv += `;${res.score10?res.score10.toFixed(1):''}`;
-    csv += `;${res.nivs.risico?res.nivs.risico.toFixed(2):''}`;
-    csv += `;${res.nivs.mitigatie?res.nivs.mitigatie.toFixed(2):''}`;
-    csv += `;${res.nivs.belang?res.nivs.belang.toFixed(2):''}`;
+    csv += `;${res.lvls.risk?res.lvls.risk.toFixed(2):''}`;
+    csv += `;${res.lvls.mitigation?res.lvls.mitigation.toFixed(2):''}`;
+    csv += `;${res.lvls.importance?res.lvls.importance.toFixed(2):''}`;
     csv += `;${res.raw?res.raw.toFixed(4):''}`;
     for (const d of Object.keys(DIMS)) csv += `;${res.dims[d]?res.dims[d].toFixed(2):''}`;
     csv += '\n';
@@ -1806,8 +1807,8 @@ function exportODF() {
       const w = app.weights[ind.code]||ind.w;
       csv += `"${appId}";"${appName}";"${ind.code}";"${ind.title}";${w};${sc||''};${sc?sc*w:''};"${ind.dim}. ${DIMS[ind.dim]}";${res.dims[ind.dim]?res.dims[ind.dim].toFixed(2):''};`;
       if (ind.code==='A1'||ind.code==='C1'||ind.code==='F1') {
-        const nivKey = ind.niv===1?'risico':ind.niv===2?'mitigatie':'belang';
-        csv += res.nivs[nivKey]?res.nivs[nivKey].toFixed(2):'';
+        const lvlKey = ind.lvl===1?'risico':ind.lvl===2?'mitigatie':'belang';
+        csv += res.lvls[lvlKey]?res.lvls[lvlKey].toFixed(2):'';
       }
       csv += ';';
       if (ind.code==='A1') csv += res.score10?res.score10.toFixed(1):'';
@@ -1826,17 +1827,17 @@ function importData() {
     reader.onload = ev => {
       try {
         const data = JSON.parse(ev.target.result);
-        if (data.version && data.applicaties) {
-          for (const [name, app] of Object.entries(data.applicaties)) {
+        if (data.version && data.applications) {
+          for (const [name, app] of Object.entries(data.applications)) {
             const id = uid();
-            state.apps[id] = { name, appId:app.appId||'', datum:app.datum||'', beoordelaar:app.beoordelaar||'', scores:app.scores||{}, weights:app.wegingen||{}, remarks:app.opmerkingen||{} };
+            state.apps[id] = { name, appId:app.appId||'', date:app.date||'', assessor:app.assessor||'', scores:app.scores||{}, weights:app.weights||{}, remarks:app.remarks||{} };
             state.order.push(id);
           }
-        } else if (data.meta && data.indicatoren) {
+        } else if (data.meta && data.indicators) {
           const id = uid();
           const scores = {};
-          for (const [code, d] of Object.entries(data.indicatoren)) scores[code]=d.score;
-          state.apps[id] = { name:data.meta.applicatie||'', appId:'', datum:data.meta.datum||'', beoordelaar:data.meta.beoordelaar||'', scores, weights:data.aangepaste_wegingen?Object.fromEntries(Object.entries(data.aangepaste_wegingen).map(([k,v])=>[k,v.aangepast])):{}, remarks:{} };
+          for (const [code, d] of Object.entries(data.indicators)) scores[code]=d.score;
+          state.apps[id] = { name:data.meta.application||'', appId:'', datum:data.meta.date||'', assessor:data.meta.assessor||'', scores, weights:data.modified_weights?Object.fromEntries(Object.entries(data.modified_weights).map(([k,v])=>[k,v.adjusted])):{}, remarks:{} };
           state.order.push(id);
         }
         save();
@@ -1867,7 +1868,7 @@ function importCSVApps() {
         // Detect header
         const firstLower = lines[0].toLowerCase();
         let startIdx = 0;
-        if (firstLower.includes('applicatie') || firstLower.includes('naam') || firstLower.includes('name') || firstLower.includes('app') || firstLower.includes('id')) {
+        if (firstLower.includes('applicatie') || firstLower.includes('application') || firstLower.includes('naam') || firstLower.includes('name') || firstLower.includes('app') || firstLower.includes('id')) {
           startIdx = 1;
         }
         let added = 0;
@@ -1877,22 +1878,22 @@ function importCSVApps() {
           const cols = lines[i].split(sep).map(c=>c.replace(/^["']+|["']+$/g,'').trim());
           // For new format: ID, Name, Date, Assessor
           // For old format: Name, Date, Assessor
-          let appId = '', name = '', datum = '', beoordelaar = '';
+          let appId = '', name = '', date = '', assessor = '';
           if (cols.length >= 4 && (cols[0].match(/^\w+-\d+/) || cols[0].match(/^[A-Z0-9-]+$/))) {
             // New format: ID, Name, Date, Assessor
             appId = cols[0];
             name = cols[1];
-            datum = cols[2];
-            beoordelaar = cols[3];
+            date = cols[2];
+            assessor = cols[3];
           } else {
             // Old format: Name, Date, Assessor
             name = cols[0];
-            datum = cols[1];
-            beoordelaar = cols[2];
+            date = cols[1];
+            assessor = cols[2];
           }
           if (!name) continue;
           const id = uid();
-          state.apps[id] = { name, appId:appId||'', datum:datum||'', beoordelaar:beoordelaar||'', scores:{}, weights:{}, remarks:{} };
+          state.apps[id] = { name, appId:appId||'', date:date||'', assessor:assessor||'', scores:{}, weights:{}, remarks:{} };
           state.order.push(id);
           added++;
         }
