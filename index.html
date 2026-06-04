@@ -53,6 +53,10 @@
   .hbtn.help-btn:hover { background:var(--sivon-white); color:var(--sivon-light-blue); }
   .hbtn.help-btn svg { width:13px; height:13px; vertical-align:-1.5px; margin-right:3px; fill:var(--sivon-blue); }
   .hbtn.help-btn:hover svg { fill:var(--sivon-light-blue); }
+  .hbtn.language-btn { background:var(--sivon-white); color:var(--sivon-blue); font-weight:600; }
+  .hbtn.language-btn:hover { background:var(--sivon-white); color:var(--sivon-light-blue); }
+  .hbtn.language-btn svg { width:10px; height:13px; vertical-align:-1.5px; margin-right:3px; fill:var(--sivon-blue); }
+  .hbtn.language-btn:hover svg { fill:var(--sivon-light-blue); }
 
   .container { max-width:1200px; margin:0 auto; padding:1rem 1.5rem 3rem; flex: 1; }
 
@@ -347,38 +351,45 @@
   <div class="header-left">
       <div class="header-logo">
         <a href="https://sivon.nl/"><img src="https://sivon.nl/wp-content/themes/haicu26_sivon/images/logo-SIVON.png" alt="SIVON Logo"></a>
-        <h1>Publieke Waarden Assessment Framework</h1>
+        <h1 data-i18n="ui.headerTitle">Publieke Waarden Assessment Framework</h1>
       </div>
   </div>
   <div class="header-right">
     <div class="dropdown">
-      <button class="hbtn" onclick="toggleDropdown('importMenu')">Importeer &#9662;</button>
-      <div class="dropdown-menu" id="importMenu">
-        <button class="dropdown-item" onclick="importData();closeDropdowns()">JSON importeren<small>Eerder geexporteerde assessments</small></button>
-        <button class="dropdown-item" onclick="importCSVApps();closeDropdowns()">Applicatielijst (CSV)<small>Bulk: meerdere applicaties in een keer</small></button>
-        <button class="dropdown-item" onclick="downloadCSVTemplate();closeDropdowns()">Download CSV-template<small>Templatebestand voor bulk-import</small></button>
+      <button class="hbtn language-btn" onclick="toggleDropdown('languageMenu')"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="#000000" stroke-width="2" d="M12,23 C18.0751322,23 23,18.0751322 23,12 C23,5.92486775 18.0751322,1 12,1 C5.92486775,1 1,5.92486775 1,12 C1,18.0751322 5.92486775,23 12,23 Z M12,23 C15,23 16,18 16,12 C16,6 15,1 12,1 C9,1 8,6 8,12 C8,18 9,23 12,23 Z M2,16 L22,16 M2,8 L22,8"/></svg></button>
+      <div class="dropdown-menu" id="languageMenu">
+        <button class="dropdown-item" onclick="setLang('en');applyI18n();closeDropdowns()">English</button>
+        <button class="dropdown-item" onclick="setLang('nl');applyI18n();closeDropdowns()">Nederlands</button>
       </div>
     </div>
     <div class="dropdown">
-      <button class="hbtn" onclick="toggleDropdown('exportMenu')">Exporteer &#9662;</button>
-      <div class="dropdown-menu" id="exportMenu">
-        <button class="dropdown-item" onclick="exportAll();closeDropdowns()">JSON (volledig)<small>Alle data, scores en wegingen</small></button>
-        <div class="dropdown-sep"></div>
-        <button class="dropdown-item" onclick="exportCSV();closeDropdowns()">CSV (samenvatting)<small>Scores per dimensie en niveau</small></button>
-        <button class="dropdown-item" onclick="exportODF();closeDropdowns()">CSV (gedetailleerd)<small>Alle indicatorscores per applicatie</small></button>
+      <button class="hbtn" onclick="toggleDropdown('importMenu')" data-i18n="ui.headerMenuImportBtn">Importeer &#9662;</button>
+      <div class="dropdown-menu" id="importMenu">
+        <button class="dropdown-item" onclick="importData();closeDropdowns()"><span data-i18n="ui.headerMenuImportJson">JSON importeren</span><small data-i18n="ui.headerMenuImportJsonSub">Eerder geexporteerde assessments</small></button>
+        <button class="dropdown-item" onclick="importCSVApps();closeDropdowns()"><span data-i18n="ui.headerMenuImportCsv">Applicatielijst (CSV)</span><small data-i18n="ui.headerMenuImportCsvSub">Bulk: meerdere applicaties in een keer</small></button>
+        <button class="dropdown-item" onclick="downloadCSVTemplate();closeDropdowns()"><span data-i18n="ui.headerMenuDownloadTpl">Download CSV-template</span><small data-i18n="ui.headerMenuDownloadTplSub">Templatebestand voor bulk-import</small></button>
       </div>
     </div>
-    <button class="hbtn" id="headerWeightsBtn" onclick="openWeightsModalCurrent()" style="display:none">Wegingen aanpassen</button>
-    <button class="hbtn" onclick="showChangelog()" id="changelogBtn" style="position:relative"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:13px;height:13px;vertical-align:-1.5px;margin-right:3px;fill:currentColor"><path d="M13 3a9 9 0 00-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42A8.954 8.954 0 0013 21a9 9 0 000-18zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg>Changelog</button>
-    <button class="hbtn help-btn" onclick="openHelp()"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg>Handleiding</button>
+    <div class="dropdown">
+      <button class="hbtn" onclick="toggleDropdown('exportMenu')" data-i18n="ui.headerMenuExportBtn">Exporteer &#9662;</button>
+      <div class="dropdown-menu" id="exportMenu">
+        <button class="dropdown-item" onclick="exportAll();closeDropdowns()"><span data-i18n="ui.headerMenuExportJson">JSON (volledig)</span><small data-i18n="ui.headerMenuExportJsonSub">Alle data, scores en wegingen</small></button>
+        <div class="dropdown-sep"></div>
+        <button class="dropdown-item" onclick="exportCSV();closeDropdowns()"><span data-i18n="ui.headerMenuExportCsvSum">CSV (samenvatting)</span><small data-i18n="ui.headerMenuExportCsvSumSub">Scores per dimensie en niveau</small></button>
+        <button class="dropdown-item" onclick="exportODF();closeDropdowns()"><span data-i18n="ui.headerMenuExportCsvDet">CSV (gedetailleerd)</span><small data-i18n="ui.headerMenuExportCsvDetSub">Alle indicatorscores per applicatie</small></button>
+      </div>
+    </div>
+    <button class="hbtn" id="headerWeightsBtn" onclick="openWeightsModalCurrent()" style="display:none" data-i18n="ui.headerMenuWeightsBtn">Wegingen aanpassen</button>
+    <button class="hbtn" onclick="showChangelog()" id="changelogBtn" style="position:relative"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:13px;height:13px;vertical-align:-1.5px;margin-right:3px;fill:currentColor"><path d="M13 3a9 9 0 00-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42A8.954 8.954 0 0013 21a9 9 0 000-18zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg><span data-i18n="ui.headerMenuChangeLogBtn">Changelog</span></button>
+    <button class="hbtn help-btn" onclick="openHelp()"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg><span data-i18n="ui.headerMenuHelpBtn">Handleiding</span></button>
   </div>
 </div>
 
 <div class="tab-wrapper">
   <button class="tab-scroll-btn hidden" id="tabScrollLeft" onclick="scrollTabs(-200)">&lsaquo;</button>
   <div class="tab-bar" id="tabBar" onscroll="updateScrollBtns()">
-    <button class="tab overview active" onclick="showView('overview')">Overzicht</button>
-    <button class="add-tab" onclick="addApp()" title="Applicatie toevoegen">+</button>
+    <button class="tab overview active" onclick="showView('overview')" data-i18n="ui.overviewBtn">Overzicht</button>
+    <button class="add-tab" onclick="addApp()" data-i18n-attr="title:ui.headerTabsAddAppBtn" title="Applicatie toevoegen">+</button>
   </div>
   <span class="tab-count" id="tabCount"></span>
   <button class="tab-scroll-btn hidden" id="tabScrollRight" onclick="scrollTabs(200)">&rsaquo;</button>
@@ -388,13 +399,13 @@
   <!-- OVERVIEW VIEW -->
   <div class="view active" id="view-overview">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.8rem">
-      <h2 class="sivon" style="font-size:1.1rem;color:var(--sivon-blue)">Assessment overzicht</h2>
-      <button class="hbtn primary" onclick="addApp()" style="font-size:0.8rem">+ Applicatie toevoegen</button>
+      <h2 class="sivon" style="font-size:1.1rem;color:var(--sivon-blue)" data-i18n="ui.overviewTitle">Assessment overzicht</h2>
+      <button class="hbtn primary" onclick="addApp()" style="font-size:0.8rem" data-i18n="ui.overviewAddAppBtn">+ Applicatie toevoegen</button>
     </div>
     <div id="overviewContent">
       <div style="text-align:center;padding:3rem;color:#bbb">
-        <p style="font-size:1.2rem;margin-bottom:0.5rem">Nog geen applicaties beoordeeld</p>
-        <p style="font-size:0.85rem">Klik op <strong>+ Applicatie toevoegen</strong> om te beginnen, of importeer een applicatielijst via CSV.</p>
+        <p style="font-size:1.2rem;margin-bottom:0.5rem" data-i18n="ui.overviewNoApps">Nog geen applicaties beoordeeld</p>
+        <p style="font-size:0.85rem" data-i18n-html="ui.overviewNoAppsHintHtml">Klik op <strong>+ Applicatie toevoegen</strong> om te beginnen, of importeer een applicatielijst via CSV.</p>
       </div>
     </div>
   </div>
@@ -407,77 +418,10 @@
 <div class="modal-overlay" id="helpModal">
   <div class="modal">
     <div class="modal-header">
-      <h2 class="sivon">Handleiding Publieke Waarden Assessment Tool</h2>
+      <h2 class="sivon" data-i18n="ui.helpModalTitle">Handleiding Publieke Waarden Assessment Tool</h2>
       <button class="modal-close" onclick="closeHelp()">&times;</button>
     </div>
-    <div class="modal-body">
-      <h3>Wat is het PVAF?</h3>
-      <p>
-        Het Publieke Waarden Assessment Framework (PVAF; Engels: Public Values Assessment Framework)
-        helpt organisaties om de conformiteit met de <a href="https://www.kennisnet.nl/tools/waardenwijzer/">publieke waarden van het onderwijs</a>
-        van hun applicatielandschap te beoordelen. Het framework meet 30 indicatoren verdeeld over 8 dimensies en 3 analyseniveaus.
-      </p>
-
-      <h3>Hoe werkt het?</h3>
-      <p>Het assessment verloopt in vier stappen:</p>
-      <ul>
-        <li><strong>Applicatie toevoegen:</strong> klik op "+ Applicatie toevoegen" of importeer een lijst via CSV</li>
-        <li><strong>Indicatoren scoren:</strong> geef elke indicator een score van 1 tot 5. Klik op een indicator voor scorebeschrijvingen en toelichting</li>
-        <li><strong>Resultaat bekijken:</strong> scores worden automatisch berekend. Het overzicht toont alle applicaties naast elkaar</li>
-        <li><strong>Exporteren:</strong> sla resultaten op als JSON of CSV</li>
-      </ul>
-
-      <h3>De drie analyseniveaus</h3>
-      <p><strong style="color:var(--sivon-red)">Niveau 1: Risico-exposure</strong> (dimensies A-B). Meet hoe groot het externe risico is. Een lage score (1) betekent weinig risico, een hoge score (5) veel risico.</p>
-      <p><strong style="color:var(--green)">Niveau 2: Mitigatie-capaciteit</strong> (dimensies C-E). Meet hoe goed de organisatie risico's kan beheersen. Een lage score (1) is zwak, een hoge score (5) is sterk.</p>
-      <p><strong style="color:#555">Niveau 3: Strategisch belang</strong> (dimensies F-H). Meet hoe belangrijk de applicatie is. Een lage score (1) is weinig belang, een hoge score (5) is kritiek.</p>
-
-      <div class="tip"><strong>Let op de kleurrichting:</strong> Bij niveau 1 en 3 is score 1 groen (goed vanuit publieke waarden perspectief), bij niveau 2 is score 5 groen (sterke mitigatie).</div>
-
-      <h3>Berekening</h3>
-      <p>De publieke waarden score wordt in vier stappen berekend:</p>
-      <ul>
-        <li><strong>Stap 1, Dimensiescore:</strong> Per dimensie het gewogen gemiddelde van de indicatorscores. De weging bepaalt hoeveel invloed elke indicator heeft.</li>
-        <li><strong>Stap 2, Niveauscore:</strong> Per niveau het gemiddelde van de dimensiescores. Dimensies wegen gelijk.</li>
-        <li><strong>Stap 3, Ruwe score:</strong> <code>Mitigatie / (Risico x Belang)</code>. Bereik: 0,04 (worst case) tot 5,0 (best case).</li>
-        <li><strong>Stap 4, Normalisatie:</strong> De ruwe score wordt via een logaritmische schaal omgezet naar 1-10.</li>
-      </ul>
-      <div class="tip"><strong>Waarom logaritmisch?</strong> De formule deelt Mitigatie (max 5) door Risico x Belang (max 25). Daardoor liggen de meeste ruwe scores tussen 0,1 en 0,5. Zonder correctie zou 90% van de applicaties een eindscore tussen 1 en 3 krijgen, onbruikbaar om te vergelijken. De logaritmische schaal spreidt deze scores uit over het hele bereik van 1 tot 10, zodat verschillen tussen applicaties zichtbaar en vergelijkbaar worden.</div>
-      <p><strong>Vuistregels:</strong> 7+ = goede positie (groen), 5-7 = acceptabel (oranje), 3-5 = zorgwekkend (donkeroranje), &lt;3 = kritiek (rood).</p>
-
-      <h3>Wat zegt de score?</h3>
-      <p>De publieke waarden score is geen maat voor "hoe conform met de publieke waarden is deze applicatie" maar voor <strong>hoe urgent is het publieke waarden probleem</strong>. De score combineert drie dingen: hoe groot is het risico, hoe goed kun je het beheersen, en hoe belangrijk is de applicatie.</p>
-      <p>Een <strong>hoge score</strong> kan twee dingen betekenen: de risico's zijn goed gemitigeerd (sterke contracten, alternatieven beschikbaar, kennis in huis), of de applicatie heeft weinig strategisch belang (en dus is het publieke waarden probleem minder urgent). Beide situaties zijn positief vanuit besluitvorming: er is geen acute actie nodig.</p>
-      <p>Een <strong>lage score</strong> betekent: er is een combinatie van hoog risico, zwakke mitigatie en/of hoog strategisch belang. Dat vraagt om actie: migreren, mitigeren of bewust accepteren.</p>
-      <div class="tip"><strong>Verbeteren:</strong> Strategisch belang (niveau 3) ligt grotendeels vast; een applicatie wordt niet minder belangrijk. Verbeteringen zitten in <strong>Risico-exposure verlagen</strong> (niveau 1, bijv. migreren naar EU-provider) en <strong>Mitigatie-capaciteit verhogen</strong> (niveau 2, bijv. alternatieven ontwikkelen, contracten versterken, kennis opbouwen). Gebruik de drie niveauscores apart om te bepalen waar de grootste winst te behalen is.</div>
-
-      <h3>Het kwadrant</h3>
-      <p>Het kwadrant toont applicaties op twee assen: <strong>Risico x Belang</strong> (horizontaal) en <strong>Mitigatie</strong> (verticaal). Twee applicaties met dezelfde 1-10 score kunnen op verschillende plekken in het kwadrant staan, waardoor de aanbevolen actie verschilt.</p>
-
-      <h3>Wegingen aanpassen</h3>
-      <p>Elke indicator heeft een standaardweging (2 of 3). Via het scherm "Wegingen aanpassen" kun je de wegingen aanpassen (1-5). De weging bepaalt hoeveel invloed een indicator heeft <strong>binnen zijn dimensie</strong>. Bijvoorbeeld: als je C1 (Alternatief beschikbaar) op weging 5 zet en C2 op weging 1, telt C1 vijf keer zo zwaar mee in de dimensiescore van "Technische weerbaarheid". adjustede wegingen worden rood weergegeven. Doe dit alleen in overleg met je organisatie of sector om onderlinge vergelijkbaarheid te behouden.</p>
-
-      <h3>Opmerkingen per indicator</h3>
-      <p>Bij elke indicator kun je een opmerking plaatsen om je score te onderbouwen. Dit is optioneel maar aangeraden: het maakt je beoordeling transparant en reproduceerbaar. Opmerkingen worden meegenomen bij JSON-export en -import.</p>
-
-      <h3>Quick scan</h3>
-      <p>Schakel naar "Quick scan" om alleen de 9 kernindicatoren te tonen (1 per dimensie + A3 Hosting). De berekening werkt identiek, maar is gebaseerd op minder datapunten. De score is <strong>indicatief</strong>; voor een volledige beoordeling gebruik je het volledige assessment.</p>
-
-      <h3>Importeren en exporteren</h3>
-      <p><strong>JSON importeren:</strong> Laad eerder geexporteerde assessments weer in. Alle scores, wegingen en metadata blijven behouden.</p>
-      <p><strong>Applicatielijst (CSV):</strong> Importeer een lijst met applicatienamen om snel meerdere applicaties aan te maken. Download eerst het CSV-template als voorbeeld.</p>
-      <p><strong>Exportformaten:</strong></p>
-      <ul>
-        <li><strong>JSON:</strong> Volledig: alle data, scores, wegingen en berekende resultaten. Geschikt voor herimport.</li>
-        <li><strong>CSV:</strong> Samenvatting per applicatie met scores per dimensie en niveau. Geschikt voor verdere analyse in Excel.</li>
-        <li><strong>CSV (gedetailleerd):</strong> Alle individuele indicatorscores per applicatie. Semicolon-gescheiden met BOM voor Excel-compatibiliteit.</li>
-      </ul>
-
-      <h3>Data opslaan</h3>
-      <p>Alle ingevulde data wordt automatisch opgeslagen in je browser (localStorage). Je kunt dus je browser sluiten en later verdergaan. Exporteer regelmatig een JSON-backup voor zekerheid.</p>
-
-      <div class="tip"><strong>Meerdere beoordelaars?</strong> Laat elke beoordelaar het assessment onafhankelijk invullen en exporteer de resultaten als JSON. Een coordinator kan de bestanden importeren en de scores vergelijken in het overzicht.</div>
-    </div>
+    <div class="modal-body" id="helpModalBody"></div>
   </div>
 </div>
 
@@ -485,13 +429,13 @@
 <div class="modal-overlay" id="weightsModal">
   <div class="modal">
     <div class="modal-header">
-      <h2 class="sivon">Wegingen aanpassen</h2>
+      <h2 class="sivon" data-i18n="ui.weightsModalTitle">Wegingen aanpassen</h2>
       <button class="modal-close" onclick="closeWeightsModal()">&times;</button>
     </div>
     <div class="modal-body">
-      <div class="tip"><strong>Wat zijn wegingen?</strong> De wegingen bepalen hoeveel invloed elke indicator heeft binnen zijn dimensie. Standaardwegingen zijn afgestemd op het PVAF-model. Pas wegingen alleen aan in overleg met je organisatie of sector, anders worden resultaten onderling niet vergelijkbaar.</div>
+      <div class="tip" data-i18n-html="ui.weightsModalTipHtml"><strong>Wat zijn wegingen?</strong> De wegingen bepalen hoeveel invloed elke indicator heeft binnen zijn dimensie. Standaardwegingen zijn afgestemd op het PVAF-model. Pas wegingen alleen aan in overleg met je organisatie of sector, anders worden resultaten onderling niet vergelijkbaar.</div>
       <div id="weightsContent"></div>
-      <button class="hbtn primary" onclick="resetWeights()" style="margin-top:1rem;width:100%;text-align:center">Reset naar standaard</button>
+      <button class="hbtn primary" onclick="resetWeights()" style="margin-top:1rem;width:100%;text-align:center" data-i18n="ui.weightsModalResetBtn">Reset naar standaard</button>
     </div>
   </div>
 </div>
@@ -499,8 +443,8 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-left">
-      <strong>PVAF v0.8.2</strong> | &copy; 2026 Universiteit Utrecht & SIVON | Tim van Neerbos<br>
-      Vrij te gebruiken door onderwijs-, non-profit- en overheidsorganisaties. Niet voor commercieel gebruik.<br>
+      <strong>PVAF v0.8.2</strong> | &copy; 2026 <span data-i18n="ui.footerCopyrights">Universiteit Utrecht & SIVON</span> | <span data-i18n-html="ui.footerCreditsHtml">Gebaseerd op <a href="https://github.com/UtrechtUniversity/digital-autonomy-assessment-tool">DAAF</a> door Tim van Neerbos</span><br>
+      <span data-i18n="ui.footerLicenseSummary">Vrij te gebruiken door onderwijs-, non-profit- en overheidsorganisaties. Niet voor commercieel gebruik.</span><br>
     </div>
     <div class="footer-right">
       <a class="cc-badge" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">
@@ -512,6 +456,8 @@
 </footer>
 
 <script>
+const CURRENT_VERSION = '0.8.2';
+
 // === INDICATOR DEFINITIONS ===
 const INDICATORS = [
   {
@@ -1121,6 +1067,513 @@ document.addEventListener('mouseout', e => {
   ttTimeout = setTimeout(() => { ttPopup.classList.remove('visible'); }, 100);
 });
 
+// === LOCALIZATION ===
+
+let lang = localStorage.getItem('pvaf_lang') || 'nl';
+const LOCALES = ['en', 'nl'];
+const I18N = {
+  "en": {
+    "ui": {
+      "assessedAppAssessors": "Assessor(s)",
+      "assessedAppAssessorsPlaceholder": "Names…",
+      "assessedAppDate": "Date",
+      "assessedAppId": "Application ID",
+      "assessedAppIdPlaceholder": "E.g. SOFT-1234…",
+      "assessedAppName": "Application Name",
+      "assessedAppNameCopiedPostfix": "copy",
+      "assessedAppNamePlaceholder": "E.g. Microsoft Teams…",
+      "assessedAppScoreCardImportanceLabel": "Strategic importance",
+      "assessedAppScoreCardImportanceSub": "High = critical application",
+      "assessedAppScoreCardImportanceTip": "How important is the application? Average of dimension F, G and H. Low score = little importance. High score = critical.",
+      "assessedAppScoreCardMitigationLabel": "Mitigation capacity",
+      "assessedAppScoreCardMitigitionSub": "High = strong mitigation (good)",
+      "assessedAppScoreCardMitigitionTip": "How well can the organisation manage risks? Average of dimension C, D and E. Low score = weak. High score = strong.",
+      "assessedAppScoreCardPvLabel": "Public Values Score",
+      "assessedAppScoreCardPvSub": "Low score = urgent problem",
+      "assessedAppScoreCardPvTip": "How large is the public values problem? A high score means: well mitigated and/or low risk. A low score means: urgent problem. Calculated as Mitigation / (Risk × Importance), normalised to 1-10.",
+      "assessedAppScoreCardRiskLabel": "Risk exposure",
+      "assessedAppScoreCardRiskSub": "Low = little risk (good)",
+      "assessedAppScoreCardRiskTip": "How large is the external risk? Average of dimension A and B. Low score = little risk (good). High score = much risk.",
+      "assessModeControlFullBtn": "Full",
+      "assessModeControlHintIndicators": "indicators",
+      "assessModeControlHintKeyIndicators": "core indicators (indicative score)",
+      "assessModeControlHintOf": "of",
+      "assessModeControlQuickBtn": "Quick scan",
+      "assessModePickerFullBtn": "Full assessment",
+      "assessModePickerFullBtnSub": "indicators",
+      "assessModePickerLabel": "How do you want to assess?",
+      "assessModePickerQuickBtn": "Quick scan",
+      "assessModePickerQuickBtnSub": "key indicators",
+      "changelogCloseBtn": "Close",
+      "changelogNewBadge": "NEW",
+      "changelogTitle": "Changelog",
+      "exportReminderDismissTitle": "Remind me later",
+      "exportReminderExportBtn": "Export now",
+      "exportReminderText1": "You have ",
+      "exportReminderText2": " applications",
+      "exportReminderText3": " saved in your browser. Export regularly to JSON to avoid losing your work.",
+      "footerCopyrights": "University of Utrecht & SIVON",
+      "footerCreditsHtml": "Based on <a href='https://github.com/UtrechtUniversity/digital-autonomy-assessment-tool'>DAAF</a> by Tim van Neerbos",
+      "footerLicenseSummary": "Free to use by educational, non-profit and government organizations. Not for commercial use.",
+      "headerAppPlural": "applications",
+      "headerAppSingular": "application",
+      "headerMenuChangeLogBtn": "Changelog",
+      "headerMenuDownloadTpl": "Download CSV template",
+      "headerMenuDownloadTplSub": "Template file for bulk import",
+      "headerMenuExportBtn": "Export ▾",
+      "headerMenuExportCsvDet": "CSV (detailed)",
+      "headerMenuExportCsvDetSub": "All indicator scores per application",
+      "headerMenuExportCsvSum": "CSV (summary)",
+      "headerMenuExportCsvSumSub": "Scores per dimension and level",
+      "headerMenuExportJson": "JSON (complete)",
+      "headerMenuExportJsonSub": "All data, scores and weights",
+      "headerMenuHelpBtn": "User Guide",
+      "headerMenuImportBtn": "Import ▾",
+      "headerMenuImportCsv": "Application list (CSV)",
+      "headerMenuImportCsvSub": "Bulk: multiple applications at once",
+      "headerMenuImportJson": "Import JSON",
+      "headerMenuImportJsonSub": "Previously exported assessments",
+      "headerMenuResetWeightsBtn": "Reset to default",
+      "headerMenuWeightsBtn": "Adjust Weights",
+      "headerTabsAddAppBtn": "Add Application",
+      "headerTitle": "Public Values Assessment Framework",
+      "helpModalTitle": "User Guide – Public Values Assessment Tool",
+      "levelRowHeaderColIndicator": "Indicator",
+      "levelRowHeaderColScore": "Score (1-5)",
+      "levelRowHeaderColWeight": "Weight",
+      "levelRowHeaderLevel1Hint": "1 = low risk (good) ... 5 = high risk",
+      "levelRowHeaderLevel1Name": "Risk exposure",
+      "levelRowHeaderLevel2Hint": "1 = poor mitigation ... 5 = strong mitigation (good)",
+      "levelRowHeaderLevel2Name": "Mitigation capacity",
+      "levelRowHeaderLevel3Hint": "1 = low importance ... 5 = high importance (urgent)",
+      "levelRowHeaderLevel3Name": "Strategic importance",
+      "levelRowHeaderLevelPrefix": "Level",
+      "levelRowHeaderRubricsBtn": "Rubrics ▾",
+      "levelRowHeaderRubricsBtnTitle": "Show/hide all rubrics",
+      "levelRowScaleBarBad": "bad",
+      "levelRowScaleBarGood": "good",
+      "levelRowScaleBarHigh": "high",
+      "levelRowScaleBarLow": "low",
+      "overviewAddAppBtn": "+ Add Application",
+      "overviewAlertEmptyFile": "Empty file.",
+      "overviewAlertImportErr": "Error importing: ",
+      "overviewAlertImported": "imported.",
+      "overviewAlertInvalidFile": "Invalid file: ",
+      "overviewAlertNoApps": "No application names found.",
+      "overviewBtn": "Overview",
+      "overviewNoApps": "No applications assessed yet",
+      "overviewNoAppsHintHtml": "Click <strong>+ Add Application</strong> to get started, or import an application list via CSV.",
+      "overviewQuadrantAttention": "ATTENTION POINT",
+      "overviewQuadrantAttentionDescHtml": "Build mitigation or,<br>consciously accept risk",
+      "overviewQuadrantCritical": "CRITICAL",
+      "overviewQuadrantCriticalDescHtml": "Urgent action required:<br>migrate or mitigate",
+      "overviewQuadrantEmptyHint": "Complete at least all dimensions to plot applications in the quadrant",
+      "overviewQuadrantFormulaBoxLabelHtml": "<strong>Calculation:</strong> Per indicator score (1-5) x weighting. Per dimension, weighted average. Per level, average of dimensions. <code>Raw score = Mitigation / (Risk x Importance)</code>. Normalized to 1-10 via a logarithmic scale.",
+      "overviewQuadrantHigh": "High",
+      "overviewQuadrantLow": "Low",
+      "overviewQuadrantManageable": "MANAGEABLE",
+      "overviewQuadrantManageableDescHtml": "Risks accepted<br>with good fallback",
+      "overviewQuadrantMitigation": "Mitigation",
+      "overviewQuadrantOptimal": "OPTIMAL",
+      "overviewQuadrantOptimalDescHtml": "Maintain current situation,<br>monitor periodically",
+      "overviewQuadrantTitle": "Public Values Quadrant",
+      "overviewQuadrantXLabel": "Risk exposure × Strategic importance",
+      "overviewQuadrantYLabel": "Mitigation",
+      "overviewTableCopyBtn": "Copy",
+      "overviewTableDeleteSelectedBtn": "Delete selected",
+      "overviewTableHeaderApp": "Application",
+      "overviewTableHeaderId": "ID",
+      "overviewTableHeaderImportance": "Importance",
+      "overviewTableHeaderMitigation": "Mitigation",
+      "overviewTableHeaderProgress": "Progress",
+      "overviewTableHeaderRawScore": "Raw score",
+      "overviewTableHeaderRisk": "Risk",
+      "overviewTableHeaderScore": "Score (1-10)",
+      "overviewTableSelectedLabel": "selected",
+      "overviewTitle": "Assessment Overview",
+      "scoreRowDimADesc": "Under what legislation does the supplier fall and where is the data? Geopolitical and jurisdiction risks.",
+      "scoreRowDimAName": "Geopolitical and legal compliance risk",
+      "scoreRowDimBDesc": "How many products and services do you use from the same supplier?",
+      "scoreRowDimBName": "Supplier and supply chain dependencies",
+      "scoreRowDimCDesc": "Can you technically switch? Are there alternatives, is data exportable, is the software open?",
+      "scoreRowDimCName": "Technical resilience",
+      "scoreRowDimDDesc": "Do you have the knowledge, plans and backups to actually make a switch?",
+      "scoreRowDimDName": "Organisational resilience",
+      "scoreRowDimEDesc": "What is contractually arranged about exit, data transfer and flexibility?",
+      "scoreRowDimEName": "Contractual resilience",
+      "scoreRowDimFDesc": "How important is this application for the organisation and how much depends on it?",
+      "scoreRowDimFName": "Organisational importance",
+      "scoreRowDimGDesc": "What sensitive data and metadata does this system process, who has access and how is usage contractually and technically arranged?",
+      "scoreRowDimGName": "Data sensitivity, access management and policy",
+      "scoreRowDimHDesc": "Does this application affect academic freedom, collaboration or long-term archiving? Is there user influence?",
+      "scoreRowDimHName": "Education impact",
+      "scoreRowDimensionPrefix": "Dimension",
+      "scoreRowExplanation": "Guidance:",
+      "scoreRowRemarkPlaceholder": "Comment or justification…",
+      "unnamed": "Unnamed",
+      "weightsModalDimensionLabel": "Dimension",
+      "weightsModalResetBtn": "Reset to defaults",
+      "weightsModalResetConfirmation": "Are you sure you want to reset all weights to the default values?",
+      "weightsModalTipHtml": "<strong>What are weights?</strong> Weights determine how much influence each indicator has within its dimension. Default weights are calibrated for the PVAF model. Only adjust weights in consultation with your organisation or sector, otherwise results become incomparable.",
+      "weightsModalTitle": "Adjust Weights"
+    },
+    "changelog": [
+      {
+        "version": "0.8.2",
+        "date": "2026-06-01",
+        "items": [
+          "<strong>Quick delete:</strong> remove applications without a confirmation dialog, with 10 seconds to undo.",
+          "<strong>Bulk delete:</strong> select multiple applications in the overview and delete them at once.",
+          "<strong>Export reminder:</strong> a notification when you have 3 or more applications and haven't exported in more than a week.",
+          "<strong>Changelog:</strong> view version history via the button in the toolbar."
+        ]
+      },
+      {
+        "version": "0.8.1",
+        "date": "2026-03-15",
+        "items": [
+          "<strong>Quick scan mode:</strong> assess applications quickly with 9 core indicators.",
+          "<strong>Autonomy quadrant:</strong> visual overview of risk exposure vs. mitigation.",
+          "<strong>Adjustable weights:</strong> adjust indicator weights per application.",
+          "<strong>JSON and CSV export:</strong> export all assessments in multiple formats.",
+          "<strong>Glossary:</strong> tooltips with explanations for technical terms in rubrics."
+        ]
+      },
+      {
+        "version": "0.8.0",
+        "date": "2026-02-01",
+        "items": [
+          "<strong>First public version:</strong> 22 indicators, 8 dimensions, 3 levels.",
+          "<strong>Local storage:</strong> assessments are automatically saved in the browser."
+        ]
+      }
+    ],
+    "help": `
+        <h3>What is PVAF?</h3>
+        <p>The Public Values Assessment Framework (PVAF) helps organisations assess the conformity of their application landscape with the <a href="https://www.kennisnet.nl/tools/waardenwijzer/">public values in education</a>. The framework measures 30 indicators across 8 dimensions and 3 analysis levels.</p>
+        <h3>How does it work?</h3>
+        <p>The assessment follows four steps:</p>
+        <ul>
+            <li><strong>Add application:</strong> click "+ Add Application" or import a list via CSV</li>
+            <li><strong>Score indicators:</strong> give each indicator a score from 1 to 5. Click an indicator for score descriptions and guidance</li>
+            <li><strong>View results:</strong> scores are calculated automatically. The overview shows all applications side by side</li>
+            <li><strong>Export:</strong> save results as JSON or CSV</li>
+        </ul>
+        <h3>The three analysis levels</h3>
+        <p><strong style="color:var(--sivon-red)">Level 1: Risk exposure</strong> (dimensions A-B). Measures how large the external risk is. A low score (1) means little risk, a high score (5) means high risk.</p>
+        <p><strong style="color:var(--green)">Level 2: Mitigation capacity</strong> (dimensions C-E). Measures how well the organisation can manage risks. A low score (1) is weak, a high score (5) is strong.</p>
+        <p><strong style="color:#555">Level 3: Strategic importance</strong> (dimensions F-H). Measures how important the application is. A low score (1) means little importance, a high score (5) is critical.</p>
+        <div class="tip"><strong>Note the colour direction:</strong> For levels 1 and 3, score 1 is green (good from a public values perspective); for level 2, score 5 is green (strong mitigation).</div>
+        <h3>Calculation</h3>
+        <p>The public values score is calculated in four steps:</p>
+        <ul>
+            <li><strong>Step 1, Dimension score:</strong> Per dimension, the weighted average of indicator scores. The weight determines how much influence each indicator has.</li>
+            <li><strong>Step 2, Level score:</strong> Per level, the average of dimension scores. Dimensions have equal weight.</li>
+            <li><strong>Step 3, Raw score:</strong> <code>Mitigation / (Risk × Importance)</code>. Range: 0.04 (worst case) to 5.0 (best case).</li>
+            <li><strong>Step 4, Normalisation:</strong> The raw score is converted to 1–10 via a logarithmic scale.</li>
+        </ul>
+        <div class="tip"><strong>Why logarithmic?</strong> The formula divides Mitigation (max 5) by Risk × Importance (max 25). As a result, most raw scores fall between 0.1 and 0.5. Without correction, 90% of applications would get a final score between 1 and 3, too narrow to compare meaningfully. The logarithmic scale spreads these scores across the full 1–10 range, making differences visible and comparable.</div>
+        <p><strong>Rules of thumb:</strong> 7+ = good position (green), 5–7 = acceptable (orange), 3–5 = concerning (dark orange), &lt;3 = critical (red).</p>
+        <h3>What does the score mean?</h3>
+        <p>The public values score is not a measure of "how compliant with public values is this application" but of <strong>how urgent is the public values problem</strong>. The score combines three things: how large is the risk, how well can you manage it, and how important is the application.</p>
+        <p>A <strong>high score</strong> can mean two things: the risks are well mitigated (strong contracts, alternatives available, in-house expertise), or the application has little strategic importance (and thus the public values problem is less urgent). Both situations are positive from a decision-making perspective: no immediate action is needed.</p>
+        <p>A <strong>low score</strong> means: there is a combination of high risk, weak mitigation and/or high strategic importance. That calls for action: migrate, mitigate, or consciously accept.</p>
+        <div class="tip"><strong>Improving:</strong> Strategic importance (level 3) is largely fixed; an application does not become less important. Improvements lie in <strong>reducing risk exposure</strong> (level 1, e.g. migrating to an EU provider) and <strong>increasing mitigation capacity</strong> (level 2, e.g. developing alternatives, strengthening contracts, building expertise). Use the three level scores separately to identify where the greatest gains can be made.</div>
+        <h3>The quadrant</h3>
+        <p>The quadrant shows applications on two axes: <strong>Risk × Importance</strong> (horizontal) and <strong>Mitigation</strong> (vertical). Two applications with the same 1–10 score can appear in different quadrant positions, leading to different recommended actions.</p>
+        <h3>Adjusting weights</h3>
+        <p>Each indicator has a default weight (2 or 3). Via the "Adjust Weights" screen you can adjust weights (1–5). The weight determines how much influence an indicator has <strong>within its dimension</strong>. For example: if you set C1 (Alternative available) to weight 5 and C2 to weight 1, C1 counts five times as heavily in the dimension score for "Technical resilience". Adjusted weights are shown in red. Only do this in consultation with your organisation or sector to maintain mutual comparability.</p>
+        <h3>Comments per indicator</h3>
+        <p>For each indicator you can add a comment to substantiate your score. This is optional but recommended: it makes your assessment transparent and reproducible. Comments are included in JSON export and import.</p>
+        <h3>Quick scan</h3>
+        <p>Switch to "Quick scan" to show only the 9 core indicators (1 per dimension + A3 Hosting). The calculation works identically but is based on fewer data points. The score is <strong>indicative</strong>; for a full assessment use the complete assessment.</p>
+        <h3>Importing and exporting</h3>
+        <p><strong>Import JSON:</strong> Load previously exported assessments. All scores, weights and metadata are preserved.</p>
+        <p><strong>Application list (CSV):</strong> Import a list of application names to quickly create multiple applications. Download the CSV template first as an example.</p>
+        <p><strong>Export formats:</strong></p>
+        <ul>
+            <li><strong>JSON:</strong> Complete: all data, scores, weights and calculated results. Suitable for re-import.</li>
+            <li><strong>CSV:</strong> Summary per application with scores per dimension and level. Suitable for further analysis in Excel.</li>
+            <li><strong>CSV (detailed):</strong> All individual indicator scores per application. Semicolon-separated with BOM for Excel compatibility.</li>
+        </ul>
+        <h3>Saving data</h3>
+        <p>All entered data is automatically saved in your browser (localStorage). You can close your browser and continue later. Export a JSON backup regularly for safety.</p>
+        <div class="tip"><strong>Multiple assessors?</strong> Have each assessor complete the assessment independently and export the results as JSON. A coordinator can import the files and compare scores in the overview.</div>`
+  },
+  "nl": {
+    "ui": {
+      "assessedAppAssessors": "Beoordelaar(s)",
+      "assessedAppAssessorsPlaceholder": "Namen…",
+      "assessedAppDate": "Datum",
+      "assessedAppId": "Applicatie-ID",
+      "assessedAppIdPlaceholder": "Bijv. SOFT-1234…",
+      "assessedAppName": "Applicatienaam",
+      "assessedAppNameCopiedPostfix": "kopie",
+      "assessedAppNamePlaceholder": "Bijv. Microsoft Teams…",
+      "assessedAppScoreCardImportanceLabel": "Strategisch belang",
+      "assessedAppScoreCardImportanceSub": "Hoog = kritieke applicatie",
+      "assessedAppScoreCardImportanceTip": "Hoe belangrijk is de applicatie? Gemiddelde van dimensie F, G en H. Lage score = weinig belang. Hoge score = kritiek.",
+      "assessedAppScoreCardMitigationLabel": "Mitigatie-capaciteit",
+      "assessedAppScoreCardMitigitionSub": "Hoog = sterke mitigatie (goed)",
+      "assessedAppScoreCardMitigitionTip": "Hoe goed kan de organisatie risico's beheersen? Gemiddelde van dimensie C, D en E. Lage score = zwak. Hoge score = sterk.",
+      "assessedAppScoreCardPvLabel": "Publieke Waarden Score",
+      "assessedAppScoreCardPvSub": "Lage score = urgent probleem",
+      "assessedAppScoreCardPvTip": "Hoe groot is het publieke waarde probleem? Een hoge score betekent: goed gemitigeerd en/of laag risico. Een lage score betekent: urgent probleem. Berekend als Mitigatie / (Risico x Belang), genormaliseerd naar 1-10. Zie Handleiding voor details.",
+      "assessedAppScoreCardRiskLabel": "Risico-exposure",
+      "assessedAppScoreCardRiskSub": "Laag = weinig risico (goed)",
+      "assessedAppScoreCardRiskTip": "Hoe groot is het externe risico? Gemiddelde van dimensie A (Geopolitiek risico) en B (Leveranciersafhankelijkheid). Lage score = weinig risico (goed). Hoge score = veel risico.",
+      "assessModeControlFullBtn": "Volledig",
+      "assessModeControlHint": "indicatoren",
+      "assessModeControlHintIndicators": "indicatoren",
+      "assessModeControlHintKeyIndicators": "kernindicatoren (indicatieve score)",
+      "assessModeControlHintOf": "of",
+      "assessModeControlQuickBtn": "Quick scan",
+      "assessModePickerFullBtn": "Volledig assessment",
+      "assessModePickerFullBtnSub": "indicatoren",
+      "assessModePickerLabel": "Hoe wil je beoordelen?",
+      "assessModePickerQuickBtn": "Quick scan",
+      "assessModePickerQuickBtnSub": "kernindicatoren",
+      "changelogCloseBtn": "Sluiten",
+      "changelogNewBadge": "NIEUW",
+      "changelogTitle": "Changelog",
+      "exportReminderDismissTitle": "Herinner me later",
+      "exportReminderExportBtn": "Exporteer nu",
+      "exportReminderText1": "Je hebt ",
+      "exportReminderText2": " applicaties",
+      "exportReminderText3": " in je browser opgeslagen. Exporteer regelmatig naar JSON om je werk niet kwijt te raken.",
+      "footerCopyrights": "Universiteit Utrecht & SIVON",
+      "footerCreditsHtml": "Gebaseerd op <a href='https://github.com/UtrechtUniversity/digital-autonomy-assessment-tool'>DAAF</a> door Tim van Neerbos",
+      "footerLicenseSummary": "Vrij te gebruiken door onderwijs-, non-profit- en overheidsorganisaties. Niet voor commercieel gebruik.",
+      "headerAppPlural": "applicaties",
+      "headerAppSingular": "applicatie",
+      "headerMenuChangeLogBtn": "Changelog",
+      "headerMenuDownloadTpl": "Download CSV-template",
+      "headerMenuDownloadTplSub": "Templatebestand voor bulk-import",
+      "headerMenuExportBtn": "Exporteer ▾",
+      "headerMenuExportCsvDet": "CSV (gedetailleerd)",
+      "headerMenuExportCsvDetSub": "Alle indicatorscores per applicatie",
+      "headerMenuExportCsvSum": "CSV (samenvatting)",
+      "headerMenuExportCsvSumSub": "Scores per dimensie en niveau",
+      "headerMenuExportJson": "JSON (volledig)",
+      "headerMenuExportJsonSub": "Alle data, scores en wegingen",
+      "headerMenuHelpBtn": "Handleiding",
+      "headerMenuImportBtn": "Importeer ▾",
+      "headerMenuImportCsv": "Applicatielijst (CSV)",
+      "headerMenuImportCsvSub": "Bulk: meerdere applicaties in een keer",
+      "headerMenuImportJson": "JSON importeren",
+      "headerMenuImportJsonSub": "Eerder geëxporteerde assessments",
+      "headerMenuWeightsBtn": "Wegingen aanpassen",
+      "headerTabsAddAppBtn": "Applicatie toevoegen",
+      "headerTitle": "Publieke Waarden Assessment Framework",
+      "helpModalTitle": "Handleiding Publieke Waarden Assessment Tool",
+      "levelRowHeaderColIndicator": "Indicator",
+      "levelRowHeaderColScore": "Score (1-5)",
+      "levelRowHeaderColWeight": "Weging",
+      "levelRowHeaderLevel1Hint": "1 = laag risico (goed) ... 5 = hoog risico",
+      "levelRowHeaderLevel1Name": "Risico-exposure",
+      "levelRowHeaderLevel2Hint": "1 = slechte mitigatie ... 5 = sterke mitigatie (goed)",
+      "levelRowHeaderLevel2Name": "Mitigatie-capaciteit",
+      "levelRowHeaderLevel3Hint": "1 = laag belang ... 5 = hoog belang (urgent)",
+      "levelRowHeaderLevel3Name": "Strategisch belang",
+      "levelRowHeaderLevelPrefix": "Niveau",
+      "levelRowHeaderRubricsBtn": "Rubrieken ▾",
+      "levelRowHeaderRubricsBtnTitle": "Alle rubrieken tonen/verbergen",
+      "levelRowScaleBarBad": "slecht",
+      "levelRowScaleBarGood": "goed",
+      "levelRowScaleBarHigh": "hoog",
+      "levelRowScaleBarLow": "laag",
+      "overviewAddAppBtn": "+ Applicatie toevoegen",
+      "overviewAlertEmptyFile": "Leeg bestand.",
+      "overviewAlertImportErr": "Fout bij importeren: ",
+      "overviewAlertImported": "geïmporteerd.",
+      "overviewAlertInvalidFile": "Ongeldig bestand: ",
+      "overviewAlertNoApps": "Geen applicatienamen gevonden.",
+      "overviewBtn": "Overzicht",
+      "overviewNoApps": "Nog geen applicaties beoordeeld",
+      "overviewNoAppsHintHtml": "Klik op <strong>+ Applicatie toevoegen</strong> om te beginnen, of importeer een applicatielijst via CSV.",
+      "overviewQuadrantAttention": "AANDACHTSPUNT",
+      "overviewQuadrantAttentionDescHtml": "Bouw mitigatie op of<br>accepteer risico bewust",
+      "overviewQuadrantCritical": "KRITIEK",
+      "overviewQuadrantCriticalDescHtml": "Urgente actie vereist:<br>migreer of mitigeer",
+      "overviewQuadrantEmptyHint": "Vul minimaal alle dimensies in om applicaties in het kwadrant te plotten",
+      "overviewQuadrantFormulaBoxLabelHtml": "<strong>Berekening:</strong> Per indicator score (1-5) x weging. Per dimensie gewogen gemiddelde. Per niveau gemiddelde van dimensies. <code>Ruwe score = Mitigatie / (Risico x Belang)</code>. Genormaliseerd naar 1-10 via logaritmische schaal.",
+      "overviewQuadrantHigh": "Hoog",
+      "overviewQuadrantLow": "Laag",
+      "overviewQuadrantManageable": "BEHEERSBAAR",
+      "overviewQuadrantManageableDesc": "Risico's geaccepteerd<br>nmet goede fallback",
+      "overviewQuadrantMitigation": "Mitigatie",
+      "overviewQuadrantOptimal": "OPTIMAAL",
+      "overviewQuadrantOptimalDesc": "Behoud huidige situatie,<br>monitor periodiek",
+      "overviewQuadrantTitle": "Publieke Waarden-kwadrant",
+      "overviewQuadrantXLabel": "Risico-exposure x Strategisch belang",
+      "overviewQuadrantYLabel": "Mitigatie",
+      "overviewTableCopyBtn": "Kopieer",
+      "overviewTableDeleteSelectedBtn": "Verwijder geselecteerde",
+      "overviewTableHeaderApp": "Applicatie",
+      "overviewTableHeaderId": "ID",
+      "overviewTableHeaderImportance": "Belang",
+      "overviewTableHeaderMitigation": "Mitigatie",
+      "overviewTableHeaderProgress": "Voortgang",
+      "overviewTableHeaderRawScore": "Ruwe score",
+      "overviewTableHeaderRisk": "Risico",
+      "overviewTableHeaderScore": "Score (1-10)",
+      "overviewTableSelectedLabel": "geselecteerd",
+      "overviewTitle": "Assessment overzicht",
+      "scoreRowDimADesc": "Onder welke wetgeving valt de leverancier en waar staat de data? Geopolitieke en jurisdictierisico's.",
+      "scoreRowDimAName": "Geopolitiek en wettelijke conformiteit risico",
+      "scoreRowDimBDesc": "Hoeveel producten en diensten neem je af bij dezelfde leverancier?",
+      "scoreRowDimBName": "Leveranciers- en ketenafhankelijkheden",
+      "scoreRowDimCDesc": "Kun je technisch gezien overstappen? Zijn er alternatieven, is data exporteerbaar, is de software open?",
+      "scoreRowDimCName": "Technische weerbaarheid",
+      "scoreRowDimDDesc": "Heb je de kennis, plannen en backups om een overstap daadwerkelijk uit te voeren?",
+      "scoreRowDimDName": "Organisatorische weerbaarheid",
+      "scoreRowDimEDesc": "Wat is er contractueel geregeld over vertrek, data-overdracht en flexibiliteit?",
+      "scoreRowDimEName": "Contractuele weerbaarheid",
+      "scoreRowDimFDesc": "Hoe belangrijk is deze applicatie voor de organisatie en hoeveel hangt ervan af?",
+      "scoreRowDimFName": "Organisatorisch belang",
+      "scoreRowDimGDesc": "Welke gevoelige data en metadata verwerkt dit systeem, wie heeft toegang en hoe is gebruik contractueel en technisch geregeld?",
+      "scoreRowDimGName": "Data-gevoeligheid, toegangsbeheer en beleid",
+      "scoreRowDimHDesc": "Raakt deze applicatie aan onderwijsvrijheid, samenwerking of langetermijnarchivering? Is er sprake van gebruikersbeïnvloeding?",
+      "scoreRowDimHName": "Onderwijs impact",
+      "scoreRowDimensionPrefix": "Dimensie",
+      "scoreRowExplanation": "Toelichting:",
+      "scoreRowRemarkPlaceholder": "Opmerking of onderbouwing…",
+      "unnamed": "Naamloos",
+      "weightsModalDimensionLabel": "Dimensie",
+      "weightsModalResetBtn": "Reset naar standaard",
+      "weightsModalResetConfirmation": "Weet je zeker dat je alle wegingen wilt resetten naar standaard?",
+      "weightsModalTipHtml": "<strong>Wat zijn wegingen?</strong> De wegingen bepalen hoeveel invloed elke indicator heeft binnen zijn dimensie. Standaardwegingen zijn afgestemd op het PVAF-model. Pas wegingen alleen aan in overleg met je organisatie of sector, anders worden resultaten onderling niet vergelijkbaar.",
+      "weightsModalTitle": "Wegingen aanpassen"
+    },
+    "changelog": [
+      {
+        "version": "0.8.2",
+        "date": "2026-06-01",
+        "items": [
+          "<strong>Snel verwijderen:</strong> applicaties verwijderen zonder bevestigingsdialoog, met 10 seconden om het ongedaan te maken.",
+          "<strong>Bulk verwijderen:</strong> selecteer meerdere applicaties in het overzicht en verwijder ze in een keer.",
+          "<strong>Export-herinnering:</strong> een melding als je 3 of meer applicaties hebt en langer dan een week niet hebt geëxporteerd.",
+          "<strong>Changelog:</strong> versiehistorie bekijken via de knop in de werkbalk."
+        ]
+      },
+      {
+        "version": "0.8.1",
+        "date": "2026-03-15",
+        "items": [
+          "<strong>Quick scan modus:</strong> beoordeel applicaties snel met 9 kernindicatoren.",
+          "<strong>Autonomie-kwadrant:</strong> visueel overzicht van risico-exposure vs. mitigatie.",
+          "<strong>Wegingen aanpasbaar:</strong> pas indicatorwegingen aan per applicatie.",
+          "<strong>JSON en CSV export:</strong> exporteer alle assessments in meerdere formaten.",
+          "<strong>Woordenlijst:</strong> tooltips met uitleg bij vakjargon in rubrieken."
+        ]
+      },
+      {
+        "version": "0.8.0",
+        "date": "2026-02-01",
+        "items": [
+          "<strong>Eerste publieke versie:</strong> 22 indicatoren, 8 dimensies, 3 niveaus.",
+          "<strong>Lokale opslag:</strong> assessments worden automatisch bewaard in de browser."
+        ]
+      }
+    ],
+    "help": `
+        <h3>Wat is het PVAF?</h3>
+        <p>Het Publieke Waarden Assessment Framework (PVAF; Engels: Public Values Assessment Framework) helpt organisaties om de conformiteit met de <a href="https://www.kennisnet.nl/tools/waardenwijzer/">publieke waarden van het onderwijs</a> van hun applicatielandschap te beoordelen. Het framework meet 30 indicatoren verdeeld over 8 dimensies en 3 analyseniveaus.</p>
+        <h3>Hoe werkt het?</h3>
+        <p>Het assessment verloopt in vier stappen:</p>
+        <ul>
+          <li><strong>Applicatie toevoegen:</strong> klik op "+ Applicatie toevoegen" of importeer een lijst via CSV</li>
+          <li><strong>Indicatoren scoren:</strong> geef elke indicator een score van 1 tot 5. Klik op een indicator voor scorebeschrijvingen en toelichting</li>
+          <li><strong>Resultaat bekijken:</strong> scores worden automatisch berekend. Het overzicht toont alle applicaties naast elkaar</li>
+          <li><strong>Exporteren:</strong> sla resultaten op als JSON of CSV</li>
+        </ul>
+        <h3>De drie analyseniveaus</h3>
+        <p><strong style="color:var(--sivon-red)">Niveau 1: Risico-exposure</strong> (dimensies A-B). Meet hoe groot het externe risico is. Een lage score (1) betekent weinig risico, een hoge score (5) veel risico.</p>
+        <p><strong style="color:var(--green)">Niveau 2: Mitigatie-capaciteit</strong> (dimensies C-E). Meet hoe goed de organisatie risico's kan beheersen. Een lage score (1) is zwak, een hoge score (5) is sterk.</p>
+        <p><strong style="color:#555">Niveau 3: Strategisch belang</strong> (dimensies F-H). Meet hoe belangrijk de applicatie is. Een lage score (1) is weinig belang, een hoge score (5) is kritiek.</p>
+        <div class="tip"><strong>Let op de kleurrichting:</strong> Bij niveau 1 en 3 is score 1 groen (goed vanuit publieke waarden perspectief), bij niveau 2 is score 5 groen (sterke mitigatie).</div>
+        <h3>Berekening</h3>
+        <p>De publieke waarden score wordt in vier stappen berekend:</p>
+        <ul>
+          <li><strong>Stap 1, Dimensiescore:</strong> Per dimensie het gewogen gemiddelde van de indicatorscores. De weging bepaalt hoeveel invloed elke indicator heeft.</li>
+          <li><strong>Stap 2, Niveauscore:</strong> Per niveau het gemiddelde van de dimensiescores. Dimensies wegen gelijk.</li>
+          <li><strong>Stap 3, Ruwe score:</strong> <code>Mitigatie / (Risico x Belang)</code>. Bereik: 0,04 (worst case) tot 5,0 (best case).</li>
+          <li><strong>Stap 4, Normalisatie:</strong> De ruwe score wordt via een logaritmische schaal omgezet naar 1-10.</li>
+        </ul>
+        <div class="tip"><strong>Waarom logaritmisch?</strong> De formule deelt Mitigatie (max 5) door Risico x Belang (max 25). Daardoor liggen de meeste ruwe scores tussen 0,1 en 0,5. Zonder correctie zou 90% van de applicaties een eindscore tussen 1 en 3 krijgen, onbruikbaar om te vergelijken. De logaritmische schaal spreidt deze scores uit over het hele bereik van 1 tot 10, zodat verschillen tussen applicaties zichtbaar en vergelijkbaar worden.</div>
+        <p><strong>Vuistregels:</strong> 7+ = goede positie (groen), 5-7 = acceptabel (oranje), 3-5 = zorgwekkend (donkeroranje), &lt;3 = kritiek (rood).</p>
+        <h3>Wat zegt de score?</h3>
+        <p>De publieke waarden score is geen maat voor "hoe conform met de publieke waarden is deze applicatie" maar voor <strong>hoe urgent is het publieke waarden probleem</strong>. De score combineert drie dingen: hoe groot is het risico, hoe goed kun je het beheersen, en hoe belangrijk is de applicatie.</p>
+        <p>Een <strong>hoge score</strong> kan twee dingen betekenen: de risico's zijn goed gemitigeerd (sterke contracten, alternatieven beschikbaar, kennis in huis), of de applicatie heeft weinig strategisch belang (en dus is het publieke waarden probleem minder urgent). Beide situaties zijn positief vanuit besluitvorming: er is geen acute actie nodig.</p>
+        <p>Een <strong>lage score</strong> betekent: er is een combinatie van hoog risico, zwakke mitigatie en/of hoog strategisch belang. Dat vraagt om actie: migreren, mitigeren of bewust accepteren.</p>
+        <div class="tip"><strong>Verbeteren:</strong> Strategisch belang (niveau 3) ligt grotendeels vast; een applicatie wordt niet minder belangrijk. Verbeteringen zitten in <strong>Risico-exposure verlagen</strong> (niveau 1, bijv. migreren naar EU-provider) en <strong>Mitigatie-capaciteit verhogen</strong> (niveau 2, bijv. alternatieven ontwikkelen, contracten versterken, kennis opbouwen). Gebruik de drie niveauscores apart om te bepalen waar de grootste winst te behalen is.</div>
+        <h3>Het kwadrant</h3>
+        <p>Het kwadrant toont applicaties op twee assen: <strong>Risico x Belang</strong> (horizontaal) en <strong>Mitigatie</strong> (verticaal). Twee applicaties met dezelfde 1-10 score kunnen op verschillende plekken in het kwadrant staan, waardoor de aanbevolen actie verschilt.</p>
+        <h3>Wegingen aanpassen</h3>
+        <p>Elke indicator heeft een standaardweging (2 of 3). Via het scherm "Wegingen aanpassen" kun je de wegingen aanpassen (1-5). De weging bepaalt hoeveel invloed een indicator heeft <strong>binnen zijn dimensie</strong>. Bijvoorbeeld: als je C1 (Alternatief beschikbaar) op weging 5 zet en C2 op weging 1, telt C1 vijf keer zo zwaar mee in de dimensiescore van "Technische weerbaarheid". Aangepaste wegingen worden rood weergegeven. Doe dit alleen in overleg met je organisatie of sector om onderlinge vergelijkbaarheid te behouden.</p>
+        <h3>Opmerkingen per indicator</h3>
+        <p>Bij elke indicator kun je een opmerking plaatsen om je score te onderbouwen. Dit is optioneel maar aangeraden: het maakt je beoordeling transparant en reproduceerbaar. Opmerkingen worden meegenomen bij JSON-export en -import.</p>
+        <h3>Quick scan</h3>
+        <p>Schakel naar "Quick scan" om alleen de 9 kernindicatoren te tonen (1 per dimensie + A3 Hosting). De berekening werkt identiek, maar is gebaseerd op minder datapunten. De score is <strong>indicatief</strong>; voor een volledige beoordeling gebruik je het volledige assessment.</p>
+        <h3>Importeren en exporteren</h3>
+        <p><strong>JSON importeren:</strong> Laad eerder geëxporteerde assessments weer in. Alle scores, wegingen en metadata blijven behouden.</p>
+        <p><strong>Applicatielijst (CSV):</strong> Importeer een lijst met applicatienamen om snel meerdere applicaties aan te maken. Download eerst het CSV-template als voorbeeld.</p>
+        <p><strong>Exportformaten:</strong></p>
+        <ul>
+          <li><strong>JSON:</strong> Volledig: alle data, scores, wegingen en berekende resultaten. Geschikt voor herimport.</li>
+          <li><strong>CSV:</strong> Samenvatting per applicatie met scores per dimensie en niveau. Geschikt voor verdere analyse in Excel.</li>
+          <li><strong>CSV (gedetailleerd):</strong> Alle individuele indicatorscores per applicatie. Semicolon-gescheiden met BOM voor Excel-compatibiliteit.</li>
+        </ul>
+        <h3>Data opslaan</h3>
+        <p>Alle ingevulde data wordt automatisch opgeslagen in je browser (localStorage). Je kunt dus je browser sluiten en later verdergaan. Exporteer regelmatig een JSON-backup voor zekerheid.</p>
+        <div class="tip"><strong>Meerdere beoordelaars?</strong> Laat elke beoordelaar het assessment onafhankelijk invullen en exporteer de resultaten als JSON. Een coordinator kan de bestanden importeren en de scores vergelijken in het overzicht.</div>`
+  }
+};
+
+function applyI18n(root = document) {
+  root.querySelectorAll('[data-i18n]').forEach(el => {
+    el.textContent = t(el.dataset.i18n);
+  });
+
+  root.querySelectorAll('[data-i18n-html]').forEach(el => {
+    el.innerHTML = t(el.dataset.i18nHtml);
+  });
+
+  root.querySelectorAll('[data-i18n-attr]').forEach(el => {
+    el.dataset.i18nAttr.split(';').forEach(pair => {
+      const [attr, key] = pair.split(':').map(s => s.trim());
+      if (attr && key) el.setAttribute(attr, t(key));
+    });
+  });
+}
+
+function setLang(nextLang) {
+  if (!LOCALES.includes(nextLang)) {
+    console.error(`Invalid language: ${nextLang}`);
+    return;
+  }
+  lang = nextLang;
+  localStorage.setItem('pvaf_lang', nextLang);
+  document.documentElement.lang = nextLang;
+}
+
+function t(path) {
+  return path
+    .split('.')
+    .reduce((obj, key) => obj?.[key], I18N[lang])
+    ?? path
+    .split('.')
+    .reduce((obj, key) => obj?.[key], I18N.en)
+    ?? path;
+}
+
+if (lang !== 'nl') {
+    setTimeout(function() {
+        setLang(lang);
+        applyI18n();
+    }, 10);
+}
+
 // === STATE ===
 let state = { apps:{}, order:[], currentView:'overview', modes:{} };
 let appCounter = 0;
@@ -1155,7 +1608,10 @@ function closeDropdowns() { document.querySelectorAll('.dropdown-menu').forEach(
 document.addEventListener('click', e => { if (!e.target.closest('.dropdown')) closeDropdowns(); });
 
 // === HELP MODAL ===
-function openHelp() { document.getElementById('helpModal').classList.add('open'); }
+function openHelp() {
+  document.getElementById('helpModalBody').innerHTML = t('help');
+  document.getElementById('helpModal').classList.add('open');
+}
 function closeHelp() { document.getElementById('helpModal').classList.remove('open'); }
 document.getElementById('helpModal').addEventListener('click', e => { if (e.target===e.currentTarget) closeHelp(); });
 
@@ -1217,7 +1673,7 @@ function chgWModal(id, code, delta) {
 }
 function resetWeights() {
   if (!currentWeightsAppId) return;
-  if (!confirm('Weet je zeker dat je alle wegingen wilt resetten naar standaard?')) return;
+  if (!confirm(t('ui.weightsModalResetConfirmation'))) return;
   const app = state.apps[currentWeightsAppId];
   app.weights = {};
   save();
@@ -1306,6 +1762,7 @@ function addApp(name) {
   save();
   rebuildTabs();
   showView(id);
+  applyI18n();
   setTimeout(()=>{const el=document.getElementById('name-'+id);if(el&&!name)el.focus();},100);
 }
 
@@ -1372,7 +1829,7 @@ function duplicateApp(id) {
   const src = state.apps[id];
   const nid = uid();
   state.apps[nid] = JSON.parse(JSON.stringify(src));
-  state.apps[nid].name = (src.name||'Naamloos') + ' (kopie)';
+  state.apps[nid].name = (src.name|| `${t('ui.unnamed')} (${t('ui.assessedAppNameCopiedPostfix')})`);
   state.order.push(nid);
   save();
   rebuildTabs();
@@ -1382,21 +1839,21 @@ function duplicateApp(id) {
 // === VIEWS ===
 function rebuildTabs() {
   const bar = document.getElementById('tabBar');
-  let h = '<button class="tab overview'+(state.currentView==='overview'?' active':'')+'" onclick="showView(\'overview\')">Overzicht</button>';
+  let h = '<button class="tab overview'+(state.currentView==='overview'?' active':'')+'" onclick="showView(\'overview\')" data-i18n="ui.overviewBtn">Overzicht</button>';
   const pendingIds = new Set(pendingDeletes.map(p=>p.id));
   for (const id of state.order) {
     if (pendingIds.has(id)) continue;
     const app = state.apps[id];
-    const name = app.name || 'Naamloos';
+    const name = app.name || t('ui.unnamed');
     const active = state.currentView===id?' active':'';
     h += `<button class="tab${active}" onclick="showView('${id}')">${esc(name.substring(0,20))}${name.length>20?'...':''}<span class="close-tab" onclick="event.stopPropagation();removeApp('${id}')">&times;</span></button>`;
   }
-  h += '<button class="add-tab" onclick="addApp()" title="Applicatie toevoegen">+</button>';
+  h += '<button class="add-tab" onclick="addApp()" data-i18n-attr="title:ui.headerTabsAddAppBtn" title="Applicatie toevoegen">+</button>';
   bar.innerHTML = h;
   // Update tab count
   const cnt = document.getElementById('tabCount');
   const visCount = state.order.length - pendingIds.size;
-  if (cnt) cnt.textContent = visCount > 0 ? visCount + ' app' + (visCount!==1?'s':'') : '';
+  if (cnt) cnt.textContent = visCount > 0 ? visCount + (visCount!==1 ? ' ' + t('ui.headerAppPlural') : ' ' + t('ui.headerAppSingular')) : '';
   setTimeout(updateScrollBtns, 50);
 }
 
@@ -1419,7 +1876,7 @@ function showView(id) {
 function renderOverview() {
   const c = document.getElementById('overviewContent');
   if (state.order.length===0) {
-    c.innerHTML = '<div style="text-align:center;padding:3rem;color:#bbb"><p style="font-size:1.2rem;margin-bottom:0.5rem">Nog geen applicaties beoordeeld</p><p style="font-size:0.85rem">Klik op <strong>+ Applicatie toevoegen</strong> om te beginnen, of importeer een applicatielijst via CSV.</p></div>';
+    c.innerHTML = '<div style="text-align:center;padding:3rem;color:#bbb"><p style="font-size:1.2rem;margin-bottom:0.5rem" data-i18n="ui.overviewNoApps">Nog geen applicaties beoordeeld</p><p style="font-size:0.85rem" data-i18n-html="ui.overviewNoAppsHintHtml">Klik op <strong>+ Applicatie toevoegen</strong> om te beginnen, of importeer een applicatielijst via CSV.</p></div>';
     return;
   }
   const pendingIds = new Set(pendingDeletes.map(p=>p.id));
@@ -1431,14 +1888,23 @@ function renderOverview() {
     const daysSince = (Date.now() - lastAction) / (1000 * 60 * 60 * 24);
     if (daysSince >= 7 || lastAction === 0) {
       h += '<div class="export-reminder" id="exportReminder">';
-      h += '<span>Je hebt <strong>' + visibleOrder.length + ' applicaties</strong> in je browser opgeslagen. Exporteer regelmatig naar JSON om je werk niet kwijt te raken.</span>';
-      h += '<span style="display:flex;gap:0.4rem;align-items:center"><button class="er-export" onclick="exportAllAndDismissReminder()">Exporteer nu</button>';
-      h += '<button class="er-close" onclick="dismissExportReminder()" title="Herinner me later">&times;</button></span>';
+      h += '<span><span data-i18n="ui.exportReminderText1>Je hebt </span><strong>' + visibleOrder.length + '<span data-i18n="ui.exportReminderText2"> applicaties</span></strong><span data-i18n="ui.exportReminderText3"> in je browser opgeslagen. Exporteer regelmatig naar JSON om je werk niet kwijt te raken.</span></span>';
+      h += '<span style="display:flex;gap:0.4rem;align-items:center"><button class="er-export" data-i18n="ui.exportReminderExportBtn" onclick="exportAllAndDismissReminder()">Exporteer nu</button>';
+      h += '<button class="er-close" data-i18n-attr="title:ui.exportReminderDismissTitle" onclick="dismissExportReminder()" title="Herinner me later">&times;</button></span>';
       h += '</div>';
     }
   }
-  h += '<div class="bulk-bar" id="bulkBar" style="display:none"><button class="hbtn primary" onclick="bulkDeleteSelected()">Verwijder geselecteerde</button><span id="bulkCount"></span></div>';
-  h += '<table class="overview-grid"><tr><th><input type="checkbox" id="selectAll" onchange="toggleSelectAll(this)"></th><th>Applicatie</th><th>ID</th><th>Voortgang</th><th>Score (1-10)</th><th>Risico</th><th>Mitigatie</th><th>Belang</th><th>Ruwe score</th><th></th></tr>';
+  h += '<div class="bulk-bar" id="bulkBar" style="display:none"><button class="hbtn primary" onclick="bulkDeleteSelected()" data-i18n="ui.overviewTableDeleteSelectedBtn">Verwijder geselecteerde</button><span id="bulkCount"></span></div>';
+  h += '<table class="overview-grid"><tr><th><input type="checkbox" id="selectAll" onchange="toggleSelectAll(this)"></th>';
+  h += '<th data-i18n="ui.overviewTableHeaderApp">Applicatie</th>';
+  h += '<th data-i18n="ui.overviewTableHeaderId">ID</th>';
+  h += '<th data-i18n="ui.overviewTableHeaderProgress">Voortgang</th>';
+  h += '<th data-i18n="ui.overviewTableHeaderScore">Score (1-10)</th>';
+  h += '<th data-i18n="ui.overviewTableHeaderRisk">Risico</th>';
+  h += '<th data-i18n="ui.overviewTableHeaderMitigation">Mitigatie</th>';
+  h += '<th data-i18n="ui.overviewTableHeaderImportance">Belang</th>';
+  h += '<th data-i18n="ui.overviewTableHeaderRawScore">Ruwe score</th>';
+  h += '<th></th></tr>';
   for (const id of visibleOrder) {
     const app = state.apps[id];
     const mode = state.modes?.[id] || 'full';
@@ -1447,7 +1913,7 @@ function renderOverview() {
     const pcolor = pct===100?'var(--green)':pct>50?'var(--orange)':'#ccc';
     h += `<tr>`;
     h += `<td><input type="checkbox" class="row-check" value="${id}" onchange="updateBulkBar()"></td>`;
-    h += `<td class="app-name" onclick="showView('${id}')">${esc(app.name)||'Naamloos'}</td>`;
+    h += `<td class="app-name" onclick="showView('${id}')">${esc(app.name)||t('ui.unnamed')}</td>`;
     h += `<td style="font-size:0.75rem;color:#999">${esc(app.appId||'--')}</td>`;
     h += `<td>${pct}%<span class="progress-bar"><span class="progress-fill" style="width:${pct}%;background:${pcolor}"></span></span></td>`;
     h += `<td>${scorePill(res.score10)}</td>`;
@@ -1455,27 +1921,27 @@ function renderOverview() {
     h += `<td style="font-size:0.75rem;color:var(--green)">${res.lvls.mitigation?res.lvls.mitigation.toFixed(2):'--'}</td>`;
     h += `<td style="font-size:0.75rem;color:var(--orange)">${res.lvls.importance?res.lvls.importance.toFixed(2):'--'}</td>`;
     h += `<td style="font-size:0.72rem;color:#aaa">${res.raw?res.raw.toFixed(3):'--'}</td>`;
-    h += `<td><button class="hbtn" style="font-size:0.65rem;padding:0.2rem 0.5rem;color:#888;background:#f5f5f5" onclick="duplicateApp('${id}')">Kopieer</button></td>`;
+    h += `<td><button class="hbtn" style="font-size:0.65rem;padding:0.2rem 0.5rem;color:#888;background:#f5f5f5" onclick="duplicateApp('${id}')" data-i18n="ui.overviewTableCopyBtn">Kopieer</button></td>`;
     h += `</tr>`;
   }
   h += '</table>';
 
   // === QUADRANT ===
-  h += `<div class="quadrant-wrap"><h3 class="sivon">Publieke Waarden-kwadrant</h3>`;
-  h += `<div class="q-xticks-row"><div class="q-side-spacer"></div><div class="q-xticks"><span></span><span>Laag</span><span></span><span>Hoog</span><span></span></div></div>`;
+  h += `<div class="quadrant-wrap"><h3 class="sivon" data-i18n="ui.overviewQuadrantTitle">Publieke Waarden-kwadrant</h3>`;
+  h += `<div class="q-xticks-row"><div class="q-side-spacer"></div><div class="q-xticks"><span data-i18n="ui.overviewQuadrantLow">Laag</span><span></span><span data-i18n="ui.overviewQuadrantHigh">Hoog</span></div></div>`;
   h += `<div class="quadrant-outer">`;
-  h += `<div class="q-ylabel">Mitigatie</div>`;
-  h += `<div class="q-yticks"><span>Hoog</span><span>Laag</span></div>`;
+  h += `<div class="q-ylabel" data-i18n="ui.overviewQuadrantMitigation">Mitigatie</div>`;
+  h += `<div class="q-yticks"><span data-i18n="ui.overviewQuadrantHigh">Hoog</span><span data-i18n="ui.overviewQuadrantLow">Laag</span></div>`;
   h += `<div class="q-main">`;
   h += `<div class="quadrant-grid" id="quadrantGrid">`;
-  h += `<div class="q-cell q-tl"><div class="q-label">OPTIMAAL</div><div class="q-desc">Behoud huidige situatie,<br>monitor periodiek</div></div>`;
-  h += `<div class="q-cell q-tr"><div class="q-label">BEHEERSBAAR</div><div class="q-desc">Risico's geaccepteerd<br>met goede fallback</div></div>`;
-  h += `<div class="q-cell q-bl"><div class="q-label">AANDACHTSPUNT</div><div class="q-desc">Bouw mitigatie op of<br>accepteer risico bewust</div></div>`;
-  h += `<div class="q-cell q-br"><div class="q-label">KRITIEK</div><div class="q-desc">Urgente actie vereist:<br>migreer of mitigeer</div></div>`;
+  h += `<div class="q-cell q-tl"><div class="q-label" data-i18n="ui.overviewQuadrantOptimal">OPTIMAAL</div><div class="q-desc" data-i18n-html="ui.overviewQuadrantOptimalDescHtml">Behoud huidige situatie,<br>monitor periodiek</div></div>`;
+  h += `<div class="q-cell q-tr"><div class="q-label" data-i18n="ui.overviewQuadrantManageable">BEHEERSBAAR</div><div class="q-desc" data-i18n-html="ui.overviewQuadrantManageableDescHtml">Risico's geaccepteerd<br>met goede fallback</div></div>`;
+  h += `<div class="q-cell q-bl"><div class="q-label" data-i18n="ui.overviewQuadrantAttention">AANDACHTSPUNT</div><div class="q-desc" data-i18n-html="ui.overviewQuadrantAttentionDescHtml">Bouw mitigatie op of<br>accepteer risico bewust</div></div>`;
+  h += `<div class="q-cell q-br"><div class="q-label" data-i18n="ui.overviewQuadrantCritical">KRITIEK</div><div class="q-desc" data-i18n-html="ui.overviewQuadrantCriticalDescHtml">Urgente actie vereist:<br>migreer of mitigeer</div></div>`;
   h += `<div class="q-dots-layer" id="quadrantDots"></div>`;
   h += `</div>`;
   h += `</div></div>`;
-  h += `<div class="q-xlabel">Risico-exposure x Strategisch belang</div>`;
+  h += `<div class="q-xlabel" data-i18n="ui.overviewQuadrantXLabel">Risico-exposure x Strategisch belang</div>`;
   // Legend
   h += `<div class="q-legend">`;
   const plotted = [];
@@ -1484,16 +1950,16 @@ function renderOverview() {
     const a = state.apps[aid];
     const r = calcApp(a, state.modes?.[aid] || 'full');
     if (r.lvls.risk && r.lvls.mitigation && r.lvls.importance) {
-      plotted.push({id:aid, name:a.name||'Naamloos', num:idx+1, risk:r.lvls.risk, mitigation:r.lvls.mitigation, importance:r.lvls.importance});
+      plotted.push({id:aid, name:a.name||t('ui.unnamed'), num:idx+1, risk:r.lvls.risk, mitigation:r.lvls.mitigation, importance:r.lvls.importance});
     }
   }
   for (const p of plotted) {
     h += `<span><span class="q-legend-dot"></span>${p.num}. ${esc(p.name)}</span>`;
   }
-  if (plotted.length===0) h += `<span style="color:#bbb">Vul minimaal alle dimensies in om applicaties in het kwadrant te plotten</span>`;
+  if (plotted.length===0) h += `<span style="color:#bbb" data-i18n="ui.overviewQuadrantEmptyHint">Vul minimaal alle dimensies in om applicaties in het kwadrant te plotten</span>`;
   h += `</div>`;
 
-  h += `<div class="formula-box" style="margin-top:0.6rem"><strong>Berekening:</strong> Per indicator score (1-5) x weging. Per dimensie gewogen gemiddelde. Per niveau gemiddelde van dimensies. <code>Ruwe score = Mitigatie / (Risico x Belang)</code>. Genormaliseerd naar 1-10 via logaritmische schaal.</div>`;
+  h += `<div class="formula-box" style="margin-top:0.6rem" data-i18n-html="ui.overviewQuadrantFormulaBoxLabelHtml"><strong>Berekening:</strong> Per indicator score (1-5) x weging. Per dimensie gewogen gemiddelde. Per niveau gemiddelde van dimensies. <code>Ruwe score = Mitigatie / (Risico x Belang)</code>. Genormaliseerd naar 1-10 via logaritmische schaal.</div>`;
   h += `</div>`;
   c.innerHTML = h;
 
@@ -1534,41 +2000,41 @@ function renderAppView(id) {
   let h = '';
   h += `<div class="assess-header">`;
   h += `<div class="assess-meta">`;
-  h += `<div class="meta-field"><label>Applicatie-ID</label><input id="appId-${id}" value="${esc(app.appId||'')}" placeholder="Bijv. SOFT-1234..." onchange="updateMeta('${id}','appId',this.value)"></div>`;
-  h += `<div class="meta-field" style="flex:2"><label>Applicatienaam</label><input id="name-${id}" value="${esc(app.name)}" placeholder="Bijv. Microsoft Teams..." onchange="updateMeta('${id}','name',this.value)"></div>`;
-  h += `<div class="meta-field"><label>Datum</label><input type="date" value="${app.date}" onchange="updateMeta('${id}','date',this.value)"></div>`;
-  h += `<div class="meta-field"><label>Beoordelaar(s)</label><input value="${esc(app.assessor)}" placeholder="Namen..." onchange="updateMeta('${id}','assessor',this.value)"></div>`;
+  h += `<div class="meta-field"><label data-i18n="ui.assessedAppId">Applicatie-ID</label><input id="appId-${id}" value="${esc(app.appId||'')}" placeholder="Bijv. SOFT-1234..." data-i18n-attr="placeholder:ui.assessedAppIdPlaceholder" onchange="updateMeta('${id}','appId',this.value)"></div>`;
+  h += `<div class="meta-field" style="flex:2"><label data-i18n="ui.assessedAppName">Applicatienaam</label><input id="name-${id}" value="${esc(app.name)}" placeholder="Bijv. Microsoft Teams..." data-i18n-attr="placeholder:ui.assessedAppNamePlaceholder" onchange="updateMeta('${id}','name',this.value)"></div>`;
+  h += `<div class="meta-field"><label data-i18n="ui.assessedAppDate">Datum</label><input type="date" value="${app.date}" onchange="updateMeta('${id}','date',this.value)"></div>`;
+  h += `<div class="meta-field"><label data-i18n="ui.assessedAppAssessors">Beoordelaar(s)</label><input value="${esc(app.assessor)}" placeholder="Namen..." data-i18n-attr="placeholder:ui.assessedAppAssessorsPlaceholder" onchange="updateMeta('${id}','assessor',this.value)"></div>`;
   h += `</div>`;
   h += `<div class="assess-controls">`;
   h += `<div class="seg-control" id="segCtrl-${id}">`;
-  h += `<button class="seg-btn active" data-mode="full" onclick="setMode('${id}','full')">Volledig (${INDICATORS.length})</button>`;
-  h += `<button class="seg-btn" data-mode="quick" onclick="setMode('${id}','quick')">Quick scan (9)</button>`;
+  h += `<button class="seg-btn active" data-mode="full" onclick="setMode('${id}','full')"><span data-i18n="ui.assessModeControlFullBtn">Volledig</span> (${INDICATORS.length})</button>`;
+  h += `<button class="seg-btn" data-mode="quick" onclick="setMode('${id}','quick')"><span data-i18n="ui.assessModeControlQuickBtn">Quick scan</span> (9)</button>`;
   h += `</div>`;
   h += `<span class="assess-mode-hint" id="modeHint-${id}"></span>`;
   h += `</div></div>`;
 
   h += `<div class="score-row">`;
-  h += `<div class="score-card main-score"><div class="sc-label">Publieke Waarden Score <span class="tt" data-tip="Hoe groot is het publieke waarde probleem? Een hoge score betekent: goed gemitigeerd en/of laag risico. Een lage score betekent: urgent probleem. Berekend als Mitigatie / (Risico x Belang), genormaliseerd naar 1-10. Zie Handleiding voor details." style="cursor:help;font-size:0.55rem;color:#bbb;border-bottom:1px dotted #ccc">&#9432;</span></div><div class="sc-value" id="sc10-${id}">--</div><div class="sc-sub">Lage score = urgent probleem</div></div>`;
-  h += `<div class="score-card risk"><div class="sc-label">Risico-exposure <span class="tt" data-tip="Hoe groot is het externe risico? Gemiddelde van dimensie A (Geopolitiek risico) en B (Leveranciersafhankelijkheid). Lage score = weinig risico (goed). Hoge score = veel risico. Dit niveau kun je verbeteren, bijv. door te migreren naar een EU-provider." style="cursor:help;font-size:0.55rem;color:#bbb;border-bottom:1px dotted #ccc">&#9432;</span></div><div class="sc-value" id="scR-${id}">--</div><div class="sc-sub">Laag = weinig risico (goed)</div></div>`;
-  h += `<div class="score-card mitigation"><div class="sc-label">Mitigatie-capaciteit <span class="tt" data-tip="Hoe goed kan de organisatie risico's beheersen? Gemiddelde van dimensie C (Technische weerbaarheid), D (Organisatorische weerbaarheid) en E (Contractuele weerbaarheid). Lage score = zwak. Hoge score = sterk. Dit niveau kun je verbeteren, bijv. door alternatieven te ontwikkelen, contracten te versterken of kennis op te bouwen." style="cursor:help;font-size:0.55rem;color:#bbb;border-bottom:1px dotted #ccc">&#9432;</span></div><div class="sc-value" id="scM-${id}">--</div><div class="sc-sub">Hoog = sterke mitigatie (goed)</div></div>`;
-  h += `<div class="score-card importance"><div class="sc-label">Strategisch belang <span class="tt" data-tip="Hoe belangrijk is de applicatie? Gemiddelde van dimensie F (Organisatorisch belang), G (Data-gevoeligheid) en H (Onderwijs impact). Lage score = weinig belang. Hoge score = kritiek. Dit niveau ligt grotendeels vast; een applicatie wordt niet minder belangrijk." style="cursor:help;font-size:0.55rem;color:#bbb;border-bottom:1px dotted #ccc">&#9432;</span></div><div class="sc-value" id="scI-${id}">--</div><div class="sc-sub">Hoog = kritieke applicatie</div></div>`;
+  h += `<div class="score-card main-score"><div class="sc-label"><span data-i18n="ui.assessedAppScoreCardPvLabel">Publieke Waarden Score</span> <span class="tt" data-tip="Hoe groot is het publieke waarde probleem? Een hoge score betekent: goed gemitigeerd en/of laag risico. Een lage score betekent: urgent probleem. Berekend als Mitigatie / (Risico x Belang), genormaliseerd naar 1-10. Zie Handleiding voor details." data-i18n-attr="data-tip:ui.assessedAppScoreCardPvTip" style="cursor:help;font-size:0.55rem;color:#bbb;border-bottom:1px dotted #ccc">&#9432;</span></div><div class="sc-value" id="sc10-${id}">--</div><div class="sc-sub" data-i18n="ui.assessedAppScoreCardPvSub">Lage score = urgent probleem</div></div>`;
+  h += `<div class="score-card risk"><div class="sc-label"><span data-i18n="ui.assessedAppScoreCardRiskLabel">Risico-exposure</span> <span class="tt" data-tip="Hoe groot is het externe risico? Gemiddelde van dimensie A (Geopolitiek risico) en B (Leveranciersafhankelijkheid). Lage score = weinig risico (goed). Hoge score = veel risico. Dit niveau kun je verbeteren, bijv. door te migreren naar een EU-provider." data-i18n-attr="data-tip:ui.assessedAppScoreCardRiskTip" style="cursor:help;font-size:0.55rem;color:#bbb;border-bottom:1px dotted #ccc">&#9432;</span></div><div class="sc-value" id="scR-${id}">--</div><div class="sc-sub" data-i18n="ui.assessedAppScoreCardRiskSub">Laag = weinig risico (goed)</div></div>`;
+  h += `<div class="score-card mitigation"><div class="sc-label"><span data-i18n="ui.assessedAppScoreCardMitigationLabel">Mitigatie-capaciteit</span> <span class="tt" data-tip="Hoe goed kan de organisatie risico's beheersen? Gemiddelde van dimensie C (Technische weerbaarheid), D (Organisatorische weerbaarheid) en E (Contractuele weerbaarheid). Lage score = zwak. Hoge score = sterk. Dit niveau kun je verbeteren, bijv. door alternatieven te ontwikkelen, contracten te versterken of kennis op te bouwen." data-i18n-attr="data-tip:ui.assessedAppScoreCardMitigitionTip" style="cursor:help;font-size:0.55rem;color:#bbb;border-bottom:1px dotted #ccc">&#9432;</span></div><div class="sc-value" id="scM-${id}">--</div><div class="sc-sub" data-i18n="ui.assessedAppScoreCardMitigitionSub">Hoog = sterke mitigatie (goed)</div></div>`;
+  h += `<div class="score-card importance"><div class="sc-label"><span data-i18n="ui.assessedAppScoreCardImportanceLabel">Strategisch belang</span> <span class="tt" data-tip="Hoe belangrijk is de applicatie? Gemiddelde van dimensie F (Organisatorisch belang), G (Data-gevoeligheid) en H (Onderwijs impact). Lage score = weinig belang. Hoge score = kritiek. Dit niveau ligt grotendeels vast; een applicatie wordt niet minder belangrijk." data-i18n-attr="data-tip:ui.assessedAppScoreCardImportanceTip" style="cursor:help;font-size:0.55rem;color:#bbb;border-bottom:1px dotted #ccc">&#9432;</span></div><div class="sc-value" id="scI-${id}">--</div><div class="sc-sub" data-i18n="ui.assessedAppScoreCardImportanceSub">Hoog = kritieke applicatie</div></div>`;
   h += `</div>`;
 
   for (const lvl of [1,2,3]) {
     const dims = LVL_DIMS[lvl];
     h += `<div class="lvl-section">`;
-    h += `<div class="lvl-bar ${LVL_CLS[lvl]}"><span>Niveau ${lvl}: ${LVL_NAMES[lvl]}</span><span class="lvl-hint">${LVL_HINTS[lvl]}</span></div>`;
+    h += `<div class="lvl-bar ${LVL_CLS[lvl]}"><span><span data-i18n="ui.levelRowHeaderLevelPrefix">Niveau</span> ${lvl}: <span data-i18n="ui.levelRowHeaderLevel${lvl}Name">${LVL_NAMES[lvl]}</span></span><span class="lvl-hint" data-i18n="ui.levelRowHeaderLevel${lvl}Hint">${LVL_HINTS[lvl]}</span></div>`;
     h += `<div class="lvl-body" id="lvlBody-${id}-${lvl}">`;
     for (const dim of dims) {
       const dinds = INDICATORS.filter(i=>i.dim===dim);
       h += `<div class="dim-row" id="dimRow-${id}-${dim}">`;
-      h += `<div class="dim-title" style="flex-direction:column;align-items:flex-start"><div style="display:flex;justify-content:space-between;align-items:center;width:100%"><span onclick="toggleDimV('${id}','${dim}')" style="flex:1;cursor:pointer">Dimensie ${dim}: ${DIMS[dim]}</span><div class="dim-actions"><button class="dim-toggle-all" onclick="event.stopPropagation();toggleAllRubs('${id}','${dim}')" title="Alle rubrieken tonen/verbergen">Rubrieken &#9662;</button></div>${dimPill(null)}</div><div style="font-size:0.7rem;color:#999;font-weight:400;margin-top:0.3rem;margin-left:0">${DIM_DESC[dim]}</div></div>`;
+      h += `<div class="dim-title" style="flex-direction:column;align-items:flex-start"><div style="display:flex;justify-content:space-between;align-items:center;width:100%"><span onclick="toggleDimV('${id}','${dim}')" style="flex:1;cursor:pointer"><span data-i18n="ui.scoreRowDimensionPrefix">Dimensie</span> ${dim}: <span data-i18n="ui.scoreRowDim${dim}Name">${DIMS[dim]}</span></span><div class="dim-actions"><button class="dim-toggle-all" onclick="event.stopPropagation();toggleAllRubs('${id}','${dim}')" title="Alle rubrieken tonen/verbergen" data-i18n-attr="title:ui.levelRowHeaderRubricsBtnTitle"><span data-i18n="ui.levelRowHeaderRubricsBtn">Rubrieken ▾</span></button></div>${dimPill(null)}</div><div style="font-size:0.7rem;color:#999;font-weight:400;margin-top:0.3rem;margin-left:0" data-i18n="ui.scoreRowDim${dim}Desc">${DIM_DESC[dim]}</div></div>`;
       h += `<div class="dim-inds" id="dimInds-${id}-${dim}">`;
-      h += `<div class="ind-colheader"><span></span><span>Indicator</span><span class="ch-wgt">Weging</span><span class="ch-score">Score (1-5)</span></div>`;
+      h += `<div class="ind-colheader"><span></span><span data-i18n="ui.levelRowHeaderColIndicator">Indicator</span><span class="ch-wgt" data-i18n="ui.levelRowHeaderColWeight">Weging</span><span class="ch-score" data-i18n="ui.levelRowHeaderColScore">Score (1-5)</span></div>`;
       for (const ind of dinds) {
         const dir = ind.lvl===2?'asc':'desc';
-        const hL = ind.lvl===2?'laag':'goed';
-        const hR = ind.lvl===2?'hoog':'slecht';
+        const hL = ind.lvl===2?t('ui.levelRowScaleBarLow'):t('ui.levelRowScaleBarGood');
+        const hR = ind.lvl===2?t('ui.levelRowScaleBarHigh'):t('ui.levelRowScaleBarBad');
         const rubDir = ind.lvl===2?'rub-asc':'rub-desc';
         const isQuick = QUICK_CODES.has(ind.code);
         h += `<div class="ind-row" data-code="${ind.code}" data-quick="${isQuick?1:0}" onclick="indRowClick(event,'${id}','${ind.code}')">`;
@@ -1582,13 +2048,13 @@ function renderAppView(id) {
           const act = app.scores[ind.code]===s?' active':'';
           h += `<button class="sbar-opt ${dir}-${s}${act}" id="sb-${id}-${ind.code}-${s}" onclick="setS('${id}','${ind.code}',${s})">${s}</button>`;
         }
-        h += `</div><div class="sbar-hint">${hL} &#8592; &#8594; ${hR}</div></div></div>`;
+        h += `</div><div class="sbar-hint"><span data-i18n="ui.levelRowScaleBarLow">${hL}</span> &#8592; &#8594; <span data-i18n="ui.levelRowScaleBarHigh">${hR}</span></div></div></div>`;
         h += `</div>`;
         h += `<div class="ind-detail" id="rub-${id}-${ind.code}"><div class="ind-detail-inner"><table class="rub-tbl ${rubDir}">`;
         for (let s=1;s<=5;s++) h += `<tr class="rs${s}"><td>${s}</td><td>${addTooltips(ind.r[s-1])}</td></tr>`;
         h += `</table>`;
-        if (ind.h) h += `<div class="hulp"><strong>Toelichting:</strong> ${addTooltips(ind.h)}</div>`;
-        h += `<div class="ind-remark"><textarea id="rem-${id}-${ind.code}" placeholder="Opmerking of onderbouwing..." oninput="saveRemark('${id}','${ind.code}',this.value)">${esc(app.remarks[ind.code]||'')}</textarea></div>`;
+        if (ind.h) h += `<div class="hulp"><strong data-i18n="ui.scoreRowExplanation">Toelichting:</strong> ${addTooltips(ind.h)}</div>`;
+        h += `<div class="ind-remark"><textarea id="rem-${id}-${ind.code}" placeholder="Opmerking of onderbouwing..." data-i18n-attr="placeholder:ui.scoreRowRemarkPlaceholder" oninput="saveRemark('${id}','${ind.code}',this.value)">${esc(app.remarks[ind.code]||'')}</textarea></div>`;
         h += `</div></div>`;
         h += `<div class="ind-remark" id="rem-sibling-${id}-${ind.code}" style="display:none"></div>`;
       }
@@ -1606,7 +2072,7 @@ function renderAppView(id) {
     const picker = document.createElement('div');
     picker.id = `modePicker-${id}`;
     picker.className = 'mode-picker';
-    picker.innerHTML = `<span class="mode-picker-label">Hoe wil je beoordelen?</span><div class="mode-picker-opts"><button class="mode-opt" onclick="pickMode('${id}','quick')"><span class="mode-icon">\u26A1</span><span class="mode-text"><strong>Quick scan</strong><span>9 kernindicatoren</span></span></button><button class="mode-opt" onclick="pickMode('${id}','full')"><span class="mode-icon">\uD83D\uDCCB</span><span class="mode-text"><strong>Volledig assessment</strong><span>${INDICATORS.length} indicatoren</span></span></button></div>`;
+    picker.innerHTML = `<span class="mode-picker-label" data-i18n="ui.assessModePickerLabel">Hoe wil je beoordelen?</span><div class="mode-picker-opts"><button class="mode-opt" onclick="pickMode('${id}','quick')"><span class="mode-icon">\u26A1</span><span class="mode-text"><strong data-i18n="ui.assessModePickerQuickBtn">Quick scan</strong><span>9 <span data-i18n="ui.assessModePickerQuickBtnSub">kernindicatoren</span></span></span></button><button class="mode-opt" onclick="pickMode('${id}','full')"><span class="mode-icon">\uD83D\uDCCB</span><span class="mode-text"><strong data-i18n="ui.assessModePickerFullBtn">Volledig assessment</strong><span>${INDICATORS.length} <span data-i18n="ui.assessModePickerFullBtnSub">indicatoren</span></span></span></button></div>`;
     div.prepend(picker);
   } else {
     const savedMode = hasSavedMode || 'full';
@@ -1702,8 +2168,8 @@ function setMode(id, mode) {
     const total = isQuick ? QUICK_CODES.size : INDICATORS.length;
     const filled = Object.keys(app.scores).filter(c => VALID_CODES.has(c) && (isQuick ? QUICK_CODES.has(c) : true)).length;
     hint.innerHTML = isQuick
-      ? `<strong>${filled} van ${total}</strong> kernindicatoren (indicatieve score)`
-      : `<strong>${filled} van ${total}</strong> indicatoren`;
+      ? `<strong>${filled} <span data-i18n="ui.assessModeControlHintOf">van</span> ${total}</strong> <span data-i18n="ui.assessModeControlHintCoreIndicators">kernindicatoren (indicatieve score)</span>`
+      : `<strong>${filled} <span data-i18n="ui.assessModeControlHintOf">van</span> ${total}</strong> <span span data-i18n="ui.assessModeControlHintIndicators">indicatoren</span>`;
   }
   // Store mode preference
   if (!state.modes) state.modes = {};
@@ -1746,8 +2212,8 @@ function recalcApp(id) {
     const total = isQuick ? QUICK_CODES.size : INDICATORS.length;
     const filled = Object.keys(app.scores).filter(c => VALID_CODES.has(c) && (isQuick ? QUICK_CODES.has(c) : true)).length;
     hint.innerHTML = isQuick
-      ? `<strong>${filled} van ${total}</strong> kernindicatoren (indicatieve score)`
-      : `<strong>${filled} van ${total}</strong> indicatoren`;
+      ? `<strong>${filled} <span data-i18n="ui.assessModeControlHintOf">van</span> ${total}</strong> <span data-i18n="ui.assessModeControlHintCoreIndicators">kernindicatoren (indicatieve score)</span>`
+      : `<strong>${filled} <span data-i18n="ui.assessModeControlHintOf">van</span> ${total}</strong> <span span data-i18n="ui.assessModeControlHintIndicators">indicatoren</span>`;
   }
 }
 
@@ -1758,7 +2224,7 @@ function exportAll() {
     const app = state.apps[id];
     const appMode = state.modes?.[id] || 'full';
     const res = calcApp(app, appMode);
-    data.applications[app.name||'Naamloos'] = {
+    data.applications[app.name||t('ui.unnamed')] = {
       appId:app.appId||'', modus:appMode, date:app.date, assessor:app.assessor,
       scores:app.scores, weights:app.weights, remarks:app.remarks||{},
       result: { score10:res.score10?+res.score10.toFixed(1):null, raw:res.raw?+res.raw.toFixed(4):null,
@@ -1782,7 +2248,7 @@ function exportCSV() {
   for (const id of state.order) {
     const app = state.apps[id];
     const res = calcApp(app, state.modes?.[id] || 'full');
-    csv += `"${(app.appId||'').replace(/"/g,'""')}";"${(app.name||'Naamloos').replace(/"/g,'""')}";"${app.date}";"${(app.assessor||'').replace(/"/g,'""')}"`;
+    csv += `"${(app.appId||'').replace(/"/g,'""')}";"${(app.name||t('ui.unnamed')).replace(/"/g,'""')}";"${app.date}";"${(app.assessor||'').replace(/"/g,'""')}"`;
     csv += `;${res.score10?res.score10.toFixed(1):''}`;
     csv += `;${res.lvls.risk?res.lvls.risk.toFixed(2):''}`;
     csv += `;${res.lvls.mitigation?res.lvls.mitigation.toFixed(2):''}`;
@@ -1800,7 +2266,7 @@ function exportODF() {
   for (const id of state.order) {
     const app = state.apps[id];
     const res = calcApp(app, state.modes?.[id] || 'full');
-    const appName = app.name||'Naamloos';
+    const appName = app.name|| t('ui.unnamed');
     const appId = app.appId||'';
     for (const ind of INDICATORS) {
       const sc = app.scores[ind.code];
@@ -1847,7 +2313,7 @@ function importData() {
         for (const id of state.order) renderAppView(id);
         showView('overview');
         renderOverview();
-      } catch(err) { alert('Ongeldig bestand: '+err.message); }
+      } catch(err) { alert(t('ui.overviewAlertInvalidFile')+err.message); }
     };
     reader.readAsText(file);
   };
@@ -1864,7 +2330,7 @@ function importCSVApps() {
       try {
         const text = ev.target.result.replace(/^\uFEFF/,'');
         const lines = text.split(/\r?\n/).map(l=>l.trim()).filter(l=>l);
-        if (lines.length===0) { alert('Leeg bestand.'); return; }
+        if (lines.length===0) { alert(t('ui.overviewAlertEmptyFile')); return; }
         // Detect header
         const firstLower = lines[0].toLowerCase();
         let startIdx = 0;
@@ -1897,15 +2363,15 @@ function importCSVApps() {
           state.order.push(id);
           added++;
         }
-        if (added===0) { alert('Geen applicatienamen gevonden.'); return; }
+        if (added===0) { alert(t('ui.overviewAlertNoApps')); return; }
         save();
         rebuildTabs();
         document.getElementById('appViews').innerHTML = '';
         for (const id of state.order) renderAppView(id);
         showView('overview');
         renderOverview();
-        alert(`${added} applicatie${added!==1?'s':''} geimporteerd.`);
-      } catch(err) { alert('Fout bij importeren: '+err.message); }
+        alert(`${added} applicatie${added!==1?'s':''} ${t('ui.overviewAlertImported')}`);
+      } catch(err) { alert(t('ui.overviewAlertImportErr')+err.message); }
     };
     reader.readAsText(file);
   };
@@ -1940,7 +2406,7 @@ function updateBulkBar() {
   const bar = document.getElementById('bulkBar');
   const cnt = document.getElementById('bulkCount');
   if (bar) bar.style.display = checked.length > 0 ? 'flex' : 'none';
-  if (cnt) cnt.textContent = checked.length + ' geselecteerd';
+  if (cnt) cnt.textContent =  `${checked.length} ${t('ui.overviewTableSelectedLabel')}`;
   const sa = document.getElementById('selectAll');
   const all = document.querySelectorAll('.row-check');
   if (sa && all.length > 0) sa.checked = checked.length === all.length;
@@ -1950,28 +2416,6 @@ function bulkDeleteSelected() {
   if (ids.length === 0) return;
   bulkRemoveApps(ids);
 }
-
-// === WHAT'S NEW MODAL ===
-const CHANGELOG = [
-  { version:'0.8.2', date:'2026-06-01', items:[
-    '<strong>Snel verwijderen:</strong> applicaties verwijderen zonder bevestigingsdialoog, met 10 seconden om het ongedaan te maken.',
-    '<strong>Bulk verwijderen:</strong> selecteer meerdere applicaties in het overzicht en verwijder ze in een keer.',
-    '<strong>Export-herinnering:</strong> een melding als je 3 of meer applicaties hebt en langer dan een week niet hebt geëxporteerd.',
-    '<strong>Changelog:</strong> versiehistorie bekijken via de knop in de werkbalk.'
-  ]},
-  { version:'0.8.1', date:'2026-03-15', items:[
-    '<strong>Quick scan modus:</strong> beoordeel applicaties snel met 9 kernindicatoren.',
-    '<strong>Autonomie-kwadrant:</strong> visueel overzicht van risico-exposure vs. mitigatie.',
-    '<strong>Wegingen aanpasbaar:</strong> pas indicatorwegingen aan per applicatie.',
-    '<strong>JSON en CSV export:</strong> exporteer alle assessments in meerdere formaten.',
-    '<strong>Woordenlijst:</strong> tooltips met uitleg bij vakjargon in rubrieken.'
-  ]},
-  { version:'0.8.0', date:'2026-02-01', items:[
-    '<strong>Eerste publieke versie:</strong> 22 indicatoren, 8 dimensies, 3 niveaus.',
-    '<strong>Lokale opslag:</strong> assessments worden automatisch bewaard in de browser.'
-  ]}
-];
-const CURRENT_VERSION = '0.8.2';
 
 function markExportAction() {
   localStorage.setItem('pvaf_lastExportAction', String(Date.now()));
@@ -1993,16 +2437,17 @@ function showChangelog() {
   const ov = document.createElement('div');
   ov.className = 'wn-overlay';
   ov.onclick = function(e) { if (e.target === ov) closeChangelog(); };
-  let html = '<div class="wn-modal"><button class="wn-close" onclick="closeChangelog()">&times;</button><h2 class="sivon">Changelog</h2>';
+  const changelog = t('changelog');
   const lastSeen = localStorage.getItem('pvaf_lastSeenVersion') || '0.0.0';
-  for (const entry of CHANGELOG) {
+  let html = '<div class="wn-modal"><button class="wn-close" onclick="closeChangelog()">&times;</button><h2 class="sivon">' + t('ui.changelogTitle') + '</h2>';
+  for (const entry of changelog) {
     const isNew = entry.version > lastSeen;
-    html += '<div class="cl-version"><h3>v' + entry.version + (isNew ? '<span class="cl-new-badge">NIEUW</span>' : '') + '</h3>';
+    html += '<div class="cl-version"><h3>v' + entry.version + (isNew ? '<span class="cl-new-badge">' + t('ui.changelogNewBadge') + '</span>' : '') + '</h3>';
     html += '<div class="cl-date">' + entry.date + '</div><ul>';
     for (const item of entry.items) html += '<li>' + item + '</li>';
     html += '</ul></div>';
   }
-  html += '<button class="wn-ok" onclick="closeChangelog()">Sluiten</button></div>';
+  html += '<button class="wn-ok" onclick="closeChangelog()">' + t('ui.changelogCloseBtn') + '</button></div>';
   ov.innerHTML = html;
   document.body.appendChild(ov);
 }
