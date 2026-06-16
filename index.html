@@ -1645,9 +1645,9 @@ function openWeightsModal(id) {
         h += `<div style="display:flex;justify-content:space-between;align-items:center;padding:0.4rem;background:#faf8f2;margin-bottom:0.3rem;border-radius:4px">`;
         h += `<span style="font-size:0.8rem">${ind.code} ${ind.title}</span>`;
         h += `<div style="display:flex;align-items:center;gap:0.3rem">`;
-        h += `<button class="wgt-btn" onclick="chgWModal('${id}','${ind.code}',-1)">-</button>`;
+        h += `<button class="wgt-btn" onclick="changeWeightsModal('${id}','${ind.code}',-1)">-</button>`;
         h += `<span class="wgt-val${isModified?' modified':''}" id="wv-modal-${id}-${ind.code}" style="min-width:1.5rem;text-align:center">${curW}</span>`;
-        h += `<button class="wgt-btn" onclick="chgWModal('${id}','${ind.code}',1)">+</button>`;
+        h += `<button class="wgt-btn" onclick="changeWeightsModal('${id}','${ind.code}',1)">+</button>`;
         h += `</div></div>`;
       }
       h += `</div>`;
@@ -1660,7 +1660,7 @@ function closeWeightsModal() {
   document.getElementById('weightsModal').classList.remove('open');
   currentWeightsAppId = null;
 }
-function chgWModal(id, code, delta) {
+function changeWeightsModal(id, code, delta) {
   const app = state.apps[id];
   const ind = INDICATORS.find(i=>i.code===code);
   const cur = app.weights[code]||ind.w;
