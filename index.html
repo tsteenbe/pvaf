@@ -460,518 +460,36 @@ const CURRENT_VERSION = '0.8.2';
 
 // === INDICATOR DEFINITIONS ===
 const INDICATORS = [
-  {
-    code: 'A1',
-    title: 'Jurisdictie leverancier',
-    dim: 'A',
-    dn: 'Geopolitiek en wettelijke conformiteit risico',
-    lvl: 1,
-    w: 3,
-    q: 'Onder welke jurisdictie valt de leverancier?',
-    r: [
-      'EU/EER-jurisdictie. Geen extraterritoriale claims. Volledige EU-bescherming.',
-      'EU/EER met beperkte extraterritoriale claims. CLOUD Act n.v.t.',
-      'Adequaatheidsbesluit, maar extraterritoriale wetgeving (CLOUD Act, FISA 702) geeft buitenlandse overheid potentieel toegang.',
-      'Geen adequaatheidsbesluit maar contractuele waarborgen (SCCs). Juridische bescherming beperkt.',
-      'Geen adequaatheidsbesluit, geen waarborgen. Directe toegang buitenlandse overheden.'
-    ],
-    h: 'Waar is de leverancier gevestigd? Extraterritoriale wetgeving? Adequaatheidsbesluit? Let op: het EU-US Data Privacy Framework (2023) is het derde adequaatheidsbesluit voor de VS; de vorige twee zijn door het Europese Hof vernietigd. De onderliggende wetgeving (CLOUD Act, FISA 702) is echter niet veranderd. Weeg zelf of je dit als score 3 of 4 beschouwt.'
-  },
-  {
-    code: 'A2',
-    title: 'Sanctie- en geopolitiek risico',
-    dim: 'A',
-    dn: 'Geopolitiek en wettelijke conformiteit risico',
-    lvl: 1,
-    w: 2,
-    q: 'Hoe groot is het geopolitieke risico voor de dienstverlening?',
-    r: [
-      'Stabiele relaties met EU. Geen sanctierisico.',
-      'Minimaal risico. Geen recente spanningen.',
-      'Enig risico door verschuivende handelsrelaties.',
-      'Verhoogd risico. Geopolitieke spanningen of handelsconflicten. Nog geen voorbeelden van directe gevolgen voor Europese partijen.',
-      'Hoog risico. Actieve sancties of beperkingen. Voorbeelden van dienstverstoring of blokkade voor Europese partijen.'
-    ],
-    h: 'Actuele sancties of handelsgeschillen? Eerder diensten beperkt aan Europese partijen? Houd ook rekening met ideologische verschillen (normen en waarden) tussen de leverancier/overheid en de Europese context.'
-  },
-  {
-    code: 'A3',
-    title: 'Hosting en datalocatie',
-    dim: 'A',
-    dn: 'Geopolitiek en wettelijke conformiteit risico',
-    lvl: 1,
-    w: 2,
-    q: 'Waar worden data en applicatie fysiek gehost en hoe is dat geborgd?',
-    r: [
-      'Data uitsluitend in EU/EER. Contractueel vastgelegd.',
-      'Data in EU/EER. Backups of replicatie mogelijk in land met adequaatheidsbesluit.',
-      'Data in EU/EER, maar geen contractuele garantie over locatie. Kan wijzigen.',
-      'Data deels buiten EU, met contractuele waarborgen (SCCs of adequaatheidsbesluit).',
-      'Data buiten EU, geen waarborgen, of onduidelijk waar data staat.'
-    ],
-    h: 'Waar staan de servers fysiek? Is de data- en applicatielocatie contractueel vastgelegd? Kunnen backups of replicatie buiten de EU terechtkomen? Let op: data en applicatie kunnen op verschillende locaties draaien (bijv. applicatie in Ierland, database in Frankfurt, beheerconsole in de VS). Check of er ergens in de keten een niet-Europese jurisdictie meespeelt en neem de slechtste jurisdictie als uitgangspunt.'
-  },
-  {
-    code: 'A4',
-    title: 'Wettelijke conformiteit',
-    dim: 'A',
-    dn: 'Geopolitiek en wettelijke conformiteit risico',
-    lvl: 1,
-    w: 2,
-    q: 'Hoe zit het met naleving met de wettelijke eisen, zoals toegankelijkheidseisen (WCAG), beveiliging en privacywetgeving?',
-    r: [
-      'Volledig aangetoonde conformiteit inclusief procedures gedocumenteerd; jaarlijks extern auditrapport publiek beschikbaar; leverancier toont actief leiderschap in (sector)samenwerking om conformiteit in de toeleveringsketen te verbeteren.',
-      'Volledig aangetoonde conformiteit inclusief procedures gedocumenteerd; jaarlijks extern auditrapport beschikbaar; leverancier participeert in (sector)samenwerking om conformiteit in de keten te verbeteren.',
-      'Gedocumenteerde conformiteit met wettlijke eisen met vermelding van gebruikte processen. Jaarlijks extern auditrapport optioneel beschikbaar.',
-      'Documentatie specificeert welke wettelijke eisen (bijv. WCAG, privacy, beveiliging) worden getest en geeft beperkt inzicht in de conformiteitsprocessen.',
-      'Geen of beperkte documentatie over wettelijke conformiteit beschikbaar.'
-    ],
-    h:
-      'Controleer of de leverancier aantoont welke wettelijke eisen en standaarden worden geborgd (bijv. WCAG‑niveau, AVG/privacy, informatiebeveiligingsnormen zoals ISO 27001) en of hiervoor concrete processen, tests en verantwoordelijkheden zijn vastgelegd. Vraag naar bewijs (auditrapporten, testresultaten, certificaten), de frequentie van controles en of audits publiek of op verzoek beschikbaar zijn. Let ook op reikwijdte (alle diensten/onderdelen of alleen kerncomponenten), ketenimpact (leveranciers/subcontractors) en welke corrigerende maatregelen worden toegepast bij non‑conformiteit.'
-  },
-  {
-    code: 'B1',
-    title: 'Vendor concentratie',
-    dim: 'B',
-    dn: 'Leveranciers- en ketenafhankelijkheden',
-    lvl: 1,
-    w: 3,
-    q: 'Hoeveel producten en diensten gebruik je van dezelfde leverancier?',
-    r: [
-      '1 product of dienst bij deze leverancier.',
-      '2-3 producten/diensten bij deze leverancier.',
-      '4-6 producten/diensten bij deze leverancier.',
-      '7-15 producten/diensten bij deze leverancier.',
-      'Heel ecosysteem (>15 producten/diensten) bij deze leverancier.'
-    ],
-    h: 'Tel alle producten, diensten, licenties en platformen die je van deze leverancier gebruikt, zowel afgenomen diensten als gekochte software. Denk ook aan onderliggende platformen (bijv. Azure AD, SharePoint, Intune naast Office 365).'
-  },
-  {
-    code: 'B2',
-    title: 'Inzicht software opbouw en toeleveringsketen',
-    dim: 'B',
-    dn: 'Leveranciers- en ketenafhankelijkheden',
-    lvl: 1,
-    w: 3,
-    q: 'Is er een software bill of materials (SBOM) beschikbaar voor dit product of dienst?',
-    r: [
-      'Volledige SBOM bij elke release: CycloneDX ≥1.6 en/of SPDX ≥2.2, alle afhankelijkheden (inclusief closed‑source) zo volledig als de klant redelijkerwijs mag verwachten. Gevalideerd door een onafhankelijke derde partij.',
-      'Volledige SBOM bij elke release: CycloneDX ≥1.6 en/of SPDX ≥2.2, alle afhankelijkheden (inclusief closed‑source) zo volledig als de klant redelijkerwijs mag verwachten.',
-      'SBOM bij elke release: CycloneDX ≥1.6 en/of ≥SPDX 2.2, minimaal alle directe afhankelijkheden (inclusief closed‑source).',
-      'Beknopt componentoverzicht beschikbaar in documentatie of op verzoek (geen gestructureerde SBOM).',
-      'Geen SBOM beschikbaar.',
-    ],
-    h: 'Welke closed-source en open source componenten worden gebruikt? Een SBOM (Software Bill of Materials) is een gestructureerde lijst van alle softwarecomponenten en afhankelijkheden die inzicht geeft in licentierisico’s, bekende beveiligingskwetsbaarheden (CVEs) en supply‑chain risico’s. Gebruikelijke standaarden zijn CycloneDX en SPDX.'
-  },
-  {
-    code: 'C1',
-    title: 'Alternatief beschikbaar',
-    dim: 'C',
-    dn: 'Technische weerbaarheid',
-    lvl: 2,
-    w: 3,
-    q: 'Bestaan er vergelijkbare diensten als vervanging?',
-    r: [
-      'Geen alternatief. Uniek product zonder concurrenten.',
-      'Alternatief bestaat maar onvolwassen of functioneel beperkt.',
-      'Meerdere alternatieven bij vergelijkbare organisaties. Dekt het meeste.',
-      'Volwassen alternatieven incl. Europese optie.',
-      'Breed aanbod incl. Europese en open source opties. Competitieve markt.'
-    ],
-    h: 'Welke alternatieven? Gebruikt door andere universiteiten? Europees/open source?'
-  },
-  {
-    code: 'C2',
-    title: 'Migratiecomplexiteit',
-    dim: 'C',
-    dn: 'Technische weerbaarheid',
-    lvl: 2,
-    w: 3,
-    q: 'Hoe lang duurt het om over te stappen naar een alternatief?',
-    r: [
-      'Meer dan 2 jaar.',
-      '1-2 jaar.',
-      '6-12 maanden.',
-      '3-6 maanden.',
-      'Minder dan 3 maanden. Of: self-hosting optie direct beschikbaar.'
-    ],
-    h: 'Schat de doorlooptijd van een volledige migratie. Houd rekening met: datavolume, aantal koppelingen, leveranciersspecifieke onderdelen, beschikbaarheid van migratietools, en benodigde aanpassingen aan werkprocessen. Neem naast doorlooptijd ook de verwachte kosten mee in je afweging (inhuur, licenties, omscholing).'
-  },
-  {
-    code: 'C3',
-    title: 'Data-portabiliteit',
-    dim: 'C',
-    dn: 'Technische weerbaarheid',
-    lvl: 2,
-    w: 3,
-    q: 'Kunnen we data volledig en bruikbaar exporteren?',
-    r: [
-      'Geen export mogelijk. Data alleen via leverancierssysteem.',
-      'Beperkte handmatige export. Geen metadata, onbruikbaar formaat.',
-      'Export in gangbare (open standaard) formaten, redelijk volledig. Mogelijk ontbreken metadata.',
-      'Volledige export in open formaten met API. Inclusief metadata.',
-      'Volledige portabiliteit: open formaten, metadata, historie, relaties. Direct bruikbaar.'
-    ],
-    h: 'Is er een export API beschikbaar? Kan de metadata worden meegenomen? Als de applicatie ook self-hosted beschikbaar is, kan dat de portabiliteit aanzienlijk verbeteren.'
-  },
-  {
-    code: 'C4',
-    title: 'Encryptiebeheer',
-    dim: 'C',
-    dn: 'Technische weerbaarheid',
-    lvl: 2,
-    w: 2,
-    opt: true,
-    q: 'Controle over versleuteling? (optioneel)',
-    r: [
-      'Geen inzicht in of en hoe data versleuteld is.',
-      'Versleuteld, leverancier beheert sleutels volledig.',
-      'Versleuteld. Leverancier beheert de sleutels, maar met transparant en gedocumenteerd beleid over sleutelbeheer.',
-      'BYOK: eigen sleutels inbrengen en beheren.',
-      'Client-side encryption: data versleuteld voor verzending met eigen sleutels.'
-    ],
-    h: 'Het gaat hier om controle over de encryptiesleutels, niet om of encryptie nodig is. Wie beheert de sleutels bepaalt wie bij de data kan, ook bij een dataverzoek van een buitenlandse overheid of bij vertrek van de leverancier.'
-  },
-  {
-    code: 'C5',
-    title: 'Transparantie en openheid software',
-    dim: 'C',
-    dn: 'Technische weerbaarheid',
-    lvl: 2,
-    w: 3,
-    q: 'Is de broncode beschikbaar en onafhankelijk te gebruiken?',
-    r: [
-      'Volledig gesloten. Geen broncode, geen inzicht.',
-      'Gesloten met openbare API-documentatie. Beperkt inzicht.',
-      'Deels open source, kern gesloten. Of source-available onder beperkte licentie.',
-      'Open source, actieve community, permissive licentie. Mogelijk om een onafhankelijke kopie (fork) te maken.',
-      'Volledig open source, meerdere partijen bieden ondersteuning. Overstappen naar een andere partij of een fork (laten) doorontwikkelen is realistisch.'
-    ],
-    h: 'Is de broncode van de applicatie beschikbaar? Zo ja, onder welke licentie? Is er een actieve community die meewerkt aan de ontwikkeling van de applicatie? Is het mogelijk om de applicatie onafhankelijk (te laten) doorontwikkelen (fork)?'
-  },
-  {
-    code: 'C6',
-    title: 'Algoritmes en AI transparantie',
-    dim: 'C',
-    dn: 'Technische weerbaarheid',
-    lvl: 2,
-    w: 2,
-    q: 'Hoe inzichtelijk is het gebruik van algoritmes en AI?',
-    r: [
-      'Volledig gesloten. Geen inzicht in werking algoritme- en AI-functionaliteit.',
-      'Gedeeltelijk gesloten: gesloten implementatie, met openbare documentatie over algoritmes en AI. Beperkt inzicht.',
-      'Deels open: openbare algoritme en AI-documentatie maar kern algoritmes en AI modellen voornamelijk gesloten; delen beschikbaar als open source of onder source-available licentie.',
-      'Grotendeels open: gebruik van open source (of open weights) algoritmes en AI, registratie in een algoritmeregister om te voldoen aan wet‑ en regelgeving en voor maatschappelijke transparantie wordt ondersteund.',
-      'Volledige transparantie: alleen open source gelicenseerde algoritmes en AI-modellen; overstap naar een andere partij met behoud van algoritme- en AI-functionaliteit is realistisch.'
-    ],
-    h: 'Kan de leverancier inzicht geven in de werking van algoritmes en AI om onbedoelde benadeling of bias te voorkomen?'
-  },
-  {
-    code: 'D1',
-    title: 'Interne expertise en kennisborging',
-    dim: 'D',
-    dn: 'Organisatorische weerbaarheid',
-    lvl: 2,
-    w: 3,
-    q: 'Hoeveel interne kennis hebben we over dit systeem?',
-    r: [
-      'Geen interne kennis. Volledig afhankelijk van leverancier.',
-      'Kennis bij een of twee personen, niet vastgelegd.',
-      'Kennis bij meerdere personen, basisdocumentatie aanwezig.',
-      'Kennis breed gedeeld en gedocumenteerd. Niet persoonsafhankelijk.',
-      'Kennis structureel geborgd. Volledige documentatie, periodiek bijgewerkt.'
-    ],
-    h: 'Denk aan alle relevante kennis: functioneel (wat doet het systeem), technisch (configuratie, koppelingen), data (welke data zit erin, hoe exporteer je die). Niet alleen technisch beheer. Wat gebeurt er als de belangrijkste expert vertrekt?'
-  },
-  {
-    code: 'D2',
-    title: 'Exit-plan aanwezig',
-    dim: 'D',
-    dn: 'Organisatorische weerbaarheid',
-    lvl: 2,
-    w: 3,
-    q: 'Is er een concreet plan voor als we moeten overstappen?',
-    r: [
-      'Geen exit-plan. Nooit over nagedacht.',
-      'Besproken maar niets concreet. Geen stappen of tijdlijn.',
-      "Globaal plan, niet getest. Niet gedetailleerd genoeg.",
-      "Gedetailleerd met stappen, tijdlijn, risico's. Verantwoordelijkheden belegd.",
-      "Volledig, getest via proefmigratie, periodiek bijgewerkt. Incl. communicatieplan."
-    ],
-    h: 'Is er een exitplan voor deze applicatie? Hoe gedetailleerd is dit plan? Wanneer is het plan voor het laatst bijgewerkt en getest?'
-  },
-  {
-    code: 'D3',
-    title: 'Backup-strategie',
-    dim: 'D',
-    dn: 'Organisatorische weerbaarheid',
-    lvl: 2,
-    w: 2,
-    q: 'Onafhankelijke kopie van data buiten leverancier?',
-    r: [
-      'Geen onafhankelijke backup. Alles alleen bij leverancier.',
-      'Leverancier maakt backups, niet verifieerbaar. Geen eigen kopie.',
-      'Periodiek kopie, beperkt, terugzetten niet getest.',
-      'Volledige backup buiten leverancier, regelmatig geverifieerd.',
-      'Volledige backup met bewezen terugzetprocedure. Regelmatig getest.'
-    ],
-    h: 'Is er een databack-up voor deze applicatie buiten de leverancier mogelijk? Hoe volledig zijn de back-ups? Wanneer is het terugzetten van een back-up voor het laatst getest?'
-  },
-  {
-    code: 'E1',
-    title: 'Exit-clausules en transitieregeling',
-    dim: 'E',
-    dn: 'Contractuele weerbaarheid',
-    lvl: 2,
-    w: 3,
-    q: 'Wat is contractueel geregeld over data-overdracht bij beëindiging?',
-    r: [
-      'Geen afspraken over beëindiging.',
-      'Minimale bepalingen, zonder termijn of formaat.',
-      'Exit-clausules met transitieperiode aanwezig.',
-      'Uitgebreide exit-regeling: open formaten, transitieperiode, actieve medewerking leverancier.',
-      'Uitgebreide exit-regeling met afdwingbare consequenties bij niet-nakoming (boeteclausule, escalatieprocedure, verwijdergarantie).'
-    ],
-    h: 'Wat is er contractueel geregeld over de beëindiging van de samenwerking? In welk formaat wordt de data aangeleverd bij overdracht? Is er een transitieperiode afgesproken waarin de leverancier medewerking verleent? Welke consequenties zijn er als de leverancier de afspraken niet nakomt?'
-  },
-  {
-    code: 'E2',
-    title: 'Contractuele flexibiliteit',
-    dim: 'E',
-    dn: 'Contractuele weerbaarheid',
-    lvl: 2,
-    w: 2,
-    q: 'Hoe snel kun je contractueel weg bij deze leverancier?',
-    r: [
-      'Langlopend (>3 jaar), niet tussentijds opzegbaar.',
-      'Meerjarig, opzegtermijn langer dan 12 maanden.',
-      'Jaarcontract, 6-12 maanden opzegtermijn.',
-      'Flexibel opzegbaar, 3-6 maanden opzegtermijn.',
-      'Maandelijks opzegbaar of betalen naar gebruik.'
-    ],
-    h: 'Kijk naar de contractuele binding: looptijd, opzegtermijn en automatische verlenging. Let ook op licentievoorwaarden die de leverancier eenzijdig kan wijzigen (prijsverhogingen, gebruiksbeperkingen, feature-verwijdering). De technische doorlooptijd van een migratie valt onder C2 (Migratiecomplexiteit).'
-  },
-  {
-    code: 'E3',
-    title: 'Overname of fusie',
-    dim: 'E',
-    dn: 'Contractuele weerbaarheid',
-    lvl: 2,
-    w: 2,
-    q: 'Wat is er contractueel geregeld als de leverancier wordt overgenomen of fuseert?',
-    r: [
-        'Niets geregeld; contract blijft volledig in stand zonder rechten voor klant.',
-        'Beperkt geregeld; alleen algemene bepaling, geen specifieke exit-, data- of jurisdictiewaarborgen.',
-        'Basisafspraken; melding bij overname of fusie en recht tot heronderhandeling of opzegging met standaardtermijn.',
-        'Goed geregeld; recht op opzegging bij overname of fusie met redelijke termijn, behoud van afgesproken jurisdictie/datalocatie.',
-        'Uitstekend geregeld; expliciete change-of-control clausules met kosteloze exit, volledige dataportabiliteit, migratie-ondersteuning en waarborgen voor financiën en operatie, evenals behoud van jurisdictie en datalocatie.'
-    ],
-    h: 'Let op clausules rond change of control: meldplicht, recht op opzegging of heronderhandeling, ondersteuning bij migratie, en gevolgen voor toepasselijk recht, datalocatie en subverwerkers. Controleer ook of servicelevels, prijzen en datatoegang geborgd blijven bij een nieuwe eigenaar.'
-  },
-  {
-    code: 'F1',
-    title: 'Impact bij uitval',
-    dim: 'F',
-    dn: 'Organisatorisch belang',
-    lvl: 3,
-    w: 3,
-    q: 'Wat is de impact als dit systeem uitvalt?',
-    r: [
-      'Geen merkbare impact bij uitval.',
-      'Minimale hinder. Organisatie draait door.',
-      'Meerdere processen verstoord maar niet stilgevallen.',
-      'Belangrijke processen stilgevallen.',
-      'Organisatiebrede stilstand.'
-    ],
-    h: 'Stel dat het systeem 48 uur uitvalt. Wat is de impact? Dit geldt voor alle processen: onderwijs, onderzoek en bedrijfsvoering. Weeg mee: het aantal getroffen gebruikers, de beschikbaarheid van workarounds, en hoe kritiek de getroffen processen zijn.'
-  },
-  {
-    code: 'F2',
-    title: 'Integratie-afhankelijkheden',
-    dim: 'F',
-    dn: 'Organisatorisch belang',
-    lvl: 3,
-    w: 2,
-    q: 'Hoeveel systemen zijn afhankelijk van dit systeem?',
-    r: [
-      'Losstaand, geen koppelingen.',
-      '1-2 koppelingen.',
-      '3-5 koppelingen.',
-      '5-10 koppelingen.',
-      'Centraal knooppunt (>10 koppelingen).'
-    ],
-    h: 'Hoeveel andere systemen zijn gekoppeld aan dit systeem? Als dit systeem uitvalt, welke andere systemen vallen dan ook (deels) uit?'
-  },
-  {
-    code: 'G1',
-    title: 'Persoonsgegevens',
-    dim: 'G',
-    dn: 'Data-gevoeligheid, toegangsbeheer en beleid',
-    lvl: 3,
-    w: 3,
-    q: 'Welke persoonsgegevens worden verwerkt?',
-    r: [
-      'Geen persoonsgegevens.',
-      'Basisgegevens: naam, e-mail, functie. Beperkt aantal.',
-      'Studie-/werkgegevens, beoordelingen, financieel. Significant.',
-      'Bijzondere persoonsgegevens of grootschalige verwerking.',
-      'Grootschalig bijzondere gegevens van kwetsbare groepen.'
-    ],
-    h: 'Welke gegevens? Gevoelige categorieen? Hoeveel personen? DPIA?'
-  },
-  {
-    code: 'G2',
-    title: 'Onderwijsdata en kennisveiligheid',
-    dim: 'G',
-    dn: 'Data-gevoeligheid, toegangsbeheer en beleid',
-    lvl: 3,
-    w: 3,
-    q: 'Hoe gevoelig zijn de onderwijsgegevens en kennis in dit systeem?',
-    r: [
-      'Geen onderwijsdata.',
-      'Alleen openbare/gepubliceerde data.',
-      'Vertrouwelijk, nog niet gepubliceerd. Voortijdige toegang door derden is onwenselijk.',
-      'Gevoelig of strategisch waardevol. Concurrentiegevoelig.',
-      'Nationale veiligheid, exportcontrole, dual-use. Buitenlandse toegang ernstig.'
-    ],
-    h: "Onderwijsdata? Hoe gevoelig? Embargo's? Buitenlandse toegang problematisch? Denk breder dan alleen datasets: ook onderwijsmethoden en strategische kennis vallen hieronder."
-  },
-  {
-    code: 'G3',
-    title: 'Intellectueel eigendom',
-    dim: 'G',
-    dn: 'Data-gevoeligheid, toegangsbeheer en beleid',
-    lvl: 3,
-    w: 2,
-    q: 'Hoe waardevol is het IP in dit systeem?',
-    r: [
-      'Geen IP van waarde.',
-      'Beperkt: algemeen beschikbaar materiaal.',
-      'Waardevol: bijv. uniek cursusmateriaal, methoden, algoritmen.',
-      'Significant: bijv. patentwaardige vindingen, unieke datasets.',
-      'Kritiek: actieve patenten of strategisch IP. Toegang door derden levert grote schade op.'
-    ],
-    h: 'Welk intellectueel eigendom zit in dit systeem? Denk aan uniek cursusmateriaal, onderzoeksmethoden, algoritmen, datasets, patenten. Wat is de schade als een derde partij hier toegang toe krijgt?'
-  },
-  {
-    code: 'G4',
-    title: 'Toegang tot data',
-    dim: 'G',
-    dn: 'Data-gevoeligheid, toegangsbeheer en beleid',
-    lvl: 3,
-    w: 2,
-    q: 'Wie heeft toegang tot jouw data?',
-    r: [
-      'Vrije toegang; leverancier kan data gebruiken, inzien of hergebruiken zonder duidelijke beperkingen.',
-      'Brede toegang; leverancier heeft inzage voor beheer, support of analyse, met beperkte contractuele begrenzing.',
-      'Beperkte toegang; toegang is alleen toegestaan voor vooraf gedefinieerde rollen of taken, met logging en interne autorisatie.',
-      'Zeer beperkte toegang; toegang is technisch en contractueel afgeschermd, alleen met jouw expliciete toestemming of strikt noodzakelijke support.',
-      'Geen toegang of dataverstrekking; leverancier heeft geen toegang tot opgeslagen data en verstrekking aan niet-EU-overheden is contractueel onmogelijk zonder jouw toestemming.'
-    ],
-    h: 'Let op technische en contractuele toegang tot data, inclusief beheer, support, subverwerkers en doorgifte buiten de EU. Controleer logging, autorisaties, noodtoegang en of toegang of verstrekking aan derden expliciet kan worden beperkt. Check conformiteit met de Data Governance Act (DGA).'
-  },
-  {
-    code: 'G5',
-    title: 'Databeleid en regie',
-    dim: 'G',
-    dn: 'Data-gevoeligheid, toegangsbeheer en beleid',
-    lvl: 3,
-    w: 2,
-    q: 'In hoeverre zijn databeleid, doelbinding en gebruikersregie geborgd?',
-    r: [
-      'Onvoldoende geregeld; databeleid is onduidelijk en er is geen inzicht in welke data en metadata worden opgeslagen.',
-      'Beperkt geregeld; er is enige informatie over databeleid, maar doel, gebruik en wijziging zijn niet helder vastgelegd.',
-      'Basis geregeld; de leverancier communiceert databeleid, maar gebruikers hebben beperkt inzicht of instelmogelijkheden.',
-      'Goed geregeld; alleen noodzakelijke data en metadata worden opgeslagen, het doel is vastgelegd en gebruikers kunnen eigen data inzien en deels instellen.',
-      'Uitstekend geregeld; databeleid en wijzigingen zijn openbaar, alleen noodzakelijke data en metadata worden opgeslagen, doel en functie zijn vastgelegd, en gebruikers kunnen data en metadata volledig inzien en naar wens instellen.'
-    ],
-    h: 'Controleer of het databeleid openbaar en begrijpelijk is, of doelbinding van data en metadata contractueel of technisch is vastgelegd, en of gebruikers eigen data en metadata kunnen inzien en beheren.'
-  },
-  {
-    code: 'G6',
-    title: 'Data-minimalizatie en verwijdering',
-    dim: 'G',
-    dn: 'Data-gevoeligheid, toegangsbeheer en beleid',
-    lvl: 2,
-    w: 2,
-    q: 'Wat zijn de mogelijkheden om datacollectie te beperken of data te verwijderen?',
-    r: [
-      'Geen opties; data kan alleen door de leverancier worden beheerd of verwijderd.',
-      'Beperkte mogelijkheden; data kan deels worden beperkt of verwijderd, maar zonder duidelijke garanties.',
-      'Ondersteuning voor dataminimalisatie en verwijdering conform AVG, inclusief verwerking van backups en kopieën.',
-      'Sterke ondersteuning conform AVG; datacollectie kan worden beperkt tot het noodzakelijke en verwijdering is contractueel geborgd en toetsbaar.',
-      'Volledige ondersteuning conform AVG; datacollectie is strikt geminimaliseerd, verwijdering is volledig contractueel geborgd en toetsbaar. Gevalideerd door een onafhankelijke derde partij.'
-    ],
-    h: 'Kan data collectie worden beperkt tot alleen data noodzakelijk voor het functioneren van het product of dienst? Kan gebruikersdata worden verwijdert conform de AVG?'
-  },
-  {
-    code: 'H1',
-    title: 'Onderwijsvrijheid',
-    dim: 'H',
-    dn: 'Onderwijs impact',
-    lvl: 3,
-    w: 3,
-    q: 'Kan de leverancier invloed uitoefenen op de onderwijs activiteiten?',
-    r: [
-      'Geen relatie met onderwijs.',
-      'Theoretisch risico, geen eerdere gevallen bekend.',
-      'Toegang tot onderwijsmaterialen. Beperkt risico op indirecte beinvloeding.',
-      'Reëel risico. Land waar overheden onderwijs kunnen censureren.',
-      'Aangetoonde censuur of datavordering bij deze leverancier of overheid.'
-    ],
-    h: 'Kan de leverancier of een buitenlandse overheid inzicht krijgen in onderwijsactiviteiten? Zijn er eerdere gevallen van censuur of datavordering bij deze leverancier?'
-  },
-  {
-    code: 'H2',
-    title: 'Onderwijssamenwerking',
-    dim: 'H',
-    dn: 'Onderwijs impact',
-    lvl: 3,
-    w: 2,
-    q: 'Belang voor onderwijssamenwerking (nationaal en internationaal)?',
-    r: [
-      'Geen rol. Puur intern.',
-      'Marginale rol. Direct alternatieven voor partners.',
-      'Ondersteunend. Gebruik wenselijk maar niet noodzakelijk.',
-      'Belangrijk platform. Meerdere partners gebruiken het.',
-      'Essentieel en onvervangbaar. Standaard in vakgebied.'
-    ],
-    h: 'Partners met zelfde systeem? Standaard in vakgebied? Gevolgen overstap? Dit geldt voor zowel internationale als nationale samenwerkingsverbanden.'
-  },
-  {
-    code: 'H3',
-    title: 'Langetermijnarchivering',
-    dim: 'H',
-    dn: 'Onderwijs impact',
-    lvl: 3,
-    w: 2,
-    q: 'Hoe lang moet data bewaard en toegankelijk blijven?',
-    r: [
-      'Geen archiveringseis. Puur operationeel.',
-      '<5 jaar. Beperkte afhankelijkheidsduur.',
-      '5-10 jaar. Verificatie en audit moeten mogelijk blijven.',
-      '10-25 jaar. Wetenschappelijke reproduceerbaarheid vereist.',
-      'Permanent (>25 jaar) of wettelijke verplichting.'
-    ],
-    h: 'Hoe lang bewaren? Wettelijke plicht? Reproduceerbaarheid? Hoe langer de bewaartermijn, hoe groter het risico van langdurige leveranciersafhankelijkheid. Voor het formaat waarin data wordt opgeslagen, zie C3 (Data-portabiliteit).'
-  },
-  {
-    code: 'H4',
-    title: 'Gebruikersbeïnvloeding en transparantie',
-    dim: 'H',
-    dn: 'Onderwijs impact',
-    lvl: 3,
-    w: 2,
-    q: 'In hoeverre is de gebruikersinterface transparant, vrij van manipulatie en gericht op autonomie van de gebruiker?',
-    r: [
-        'Onvoldoende geregeld; de interface is onduidelijk, stuurt gedrag sterk en maakt niet zichtbaar of een mens of bot reageert.',
-        'Beperkt geregeld; er is enige transparantie, maar dark patterns, gokelementen of persuasieve keuzes zijn niet aantoonbaar uitgesloten.',
-        'Basis geregeld; de interface geeft soms aan of sprake is van mens of bot, maar transparantie en autonomie zijn niet consequent geborgd.',
-        'Goed geregeld; de interface maakt altijd duidelijk of sprake is van mens of bot en is vrij van dark patterns, gokelementen en verslavende elementen.',
-        'Uitstekend geregeld; de interface is altijd transparant, vrij van dark patterns, gokelementen, persuasieve en verslavende elementen, met opt-out mogelijkheden. Gevalideerd door een onafhankelijke derde partij.'
-    ],
-    h: 'Beoordeel de verschillende delen van de gebruikersinterface samen met (potentiële) gebruikers. Dark patterns zijn misleidende of sturende ontwerppatronen, gokelementen zijn kans- of beloningsmechanismen, persuasieve elementen zijn subtiele gedragsprikkels en verslavende elementen stimuleren herhaald of dwangmatig gebruik.'
-  }
+  { code: 'A1', dim: 'A', lvl: 1, w: 3 },
+  { code: 'A2', dim: 'A', lvl: 1, w: 2 },
+  { code: 'A3', dim: 'A', lvl: 1, w: 2 },
+  { code: 'A4', dim: 'A', lvl: 1, w: 2 },
+  { code: 'B1', dim: 'B', lvl: 1, w: 3 },
+  { code: 'B2', dim: 'B', lvl: 1, w: 3 },
+  { code: 'C1', dim: 'C', lvl: 2, w: 3 },
+  { code: 'C2', dim: 'C', lvl: 2, w: 3 },
+  { code: 'C3', dim: 'C', lvl: 2, w: 3 },
+  { code: 'C4', dim: 'C', lvl: 2, w: 2, opt: true },
+  { code: 'C5', dim: 'C', lvl: 2, w: 3 },
+  { code: 'C6', dim: 'C', lvl: 2, w: 2 },
+  { code: 'D1', dim: 'D', lvl: 2, w: 3 },
+  { code: 'D2', dim: 'D', lvl: 2, w: 3 },
+  { code: 'D3', dim: 'D', lvl: 2, w: 2 },
+  { code: 'E1', dim: 'E', lvl: 2, w: 3 },
+  { code: 'E2', dim: 'E', lvl: 2, w: 2 },
+  { code: 'E3', dim: 'E', lvl: 2, w: 2 },
+  { code: 'F1', dim: 'F', lvl: 3, w: 3 },
+  { code: 'F2', dim: 'F', lvl: 3, w: 2 },
+  { code: 'G1', dim: 'G', lvl: 3, w: 3 },
+  { code: 'G2', dim: 'G', lvl: 3, w: 3 },
+  { code: 'G3', dim: 'G', lvl: 3, w: 2 },
+  { code: 'G4', dim: 'G', lvl: 3, w: 2 },
+  { code: 'G5', dim: 'G', lvl: 3, w: 2 },
+  { code: 'G6', dim: 'G', lvl: 2, w: 2 },
+  { code: 'H1', dim: 'H', lvl: 3, w: 3 },
+  { code: 'H2', dim: 'H', lvl: 3, w: 2 },
+  { code: 'H3', dim: 'H', lvl: 3, w: 2 },
+  { code: 'H4', dim: 'H', lvl: 3, w: 2 },
 ];
 
 const DIM_DESC={A:'Onder welke wetgeving valt de leverancier en waar staat de data? Geopolitieke en jurisdictierisico\'s.',B:'Hoeveel producten en diensten neem je af bij dezelfde leverancier?',C:'Kun je technisch gezien overstappen? Zijn er alternatieven, is data exporteerbaar, is de software open?',D:'Heb je de kennis, plannen en backups om een overstap daadwerkelijk uit te voeren?',E:'Wat is er contractueel geregeld over vertrek, data-overdracht en flexibiliteit?',F:'Hoe belangrijk is deze applicatie voor de organisatie en hoeveel hangt ervan af?',G:'Welke gevoelige data en metadata verwerkt dit systeem, wie heeft toegang en hoe is gebruik contractueel en technisch geregeld??',H:'Raakt deze applicatie aan onderwijsvrijheid, samenwerking of langetermijnarchivering? Is er sprake van gebruikersbeïnvloeding?'};
@@ -1307,6 +825,368 @@ const I18N = {
       "source-available": "Source code that is publicly viewable, but the license does not permit free use, modification or distribution. More restrictive than true open source.",
       "trial migration": "A test migration where the complete transition process is carried out in a test environment, to verify that data and functionality transfer correctly before the actual migration.",
       "vendor lock-in": "A situation where an organisation is so dependent on a provider that switching to an alternative becomes disproportionately expensive or complex."
+    },
+    "indicators": {
+      "A1": {
+        "title": "Supplier jurisdiction",
+        "q": "Under which jurisdiction does the supplier fall?",
+        "r": [
+          "EU/EEA jurisdiction. No extraterritorial claims. Full EU protection.",
+          "EU/EEA with limited extraterritorial claims. CLOUD Act not applicable.",
+          "Adequacy decision in place, but extraterritorial legislation (CLOUD Act, FISA 702) gives foreign governments potential access.",
+          "No adequacy decision but contractual safeguards (SCCs). Legal protection is limited.",
+          "No adequacy decision, no safeguards. Direct access by foreign governments."
+        ],
+        "h": "Where is the supplier established? Any extraterritorial legislation? Adequacy decision in place? Note: the EU-US Data Privacy Framework (2023) is the third adequacy decision for the US; the previous two were annulled by the European Court. The underlying legislation (CLOUD Act, FISA 702) has not changed. Weigh for yourself whether to score this 3 or 4."
+      },
+      "A2": {
+        "title": "Sanctions and geopolitical risk",
+        "q": "How significant is the geopolitical risk to service delivery?",
+        "r": [
+          "Stable relations with the EU. No sanctions risk.",
+          "Minimal risk. No recent tensions.",
+          "Some risk due to shifting trade relations.",
+          "Elevated risk. Geopolitical tensions or trade conflicts. No examples yet of direct consequences for European parties.",
+          "High risk. Active sanctions or restrictions. Examples of service disruption or blockade for European parties."
+        ],
+        "h": "Current sanctions or trade disputes? Services previously restricted to European parties? Also consider ideological differences (norms and values) between the supplier/government and the European context."
+      },
+      "A3": {
+        "title": "Hosting and data location",
+        "q": "Where are data and application physically hosted and how is this guaranteed?",
+        "r": [
+          "Data exclusively in EU/EEA. Contractually established.",
+          "Data in EU/EEA. Backups or replication possible in a country with an adequacy decision.",
+          "Data in EU/EEA, but no contractual guarantee on location. May change.",
+          "Data partially outside the EU, with contractual safeguards (SCCs or adequacy decision).",
+          "Data outside the EU, no safeguards, or unclear where data is stored."
+        ],
+        "h": "Where are the servers physically located? Is data and application location contractually established? Can backups or replication end up outside the EU? Note: data and application can run at different locations (e.g. application in Ireland, database in Frankfurt, management console in the US). Check whether any link in the chain involves a non-European jurisdiction and take the worst jurisdiction as the baseline."
+      },
+      "A4": {
+        "title": "Legal compliance",
+        "q": "What about compliance with legal requirements, such as accessibility (WCAG), security and privacy legislation?",
+        "r": [
+          "Fully demonstrated compliance including documented procedures; annual external audit report publicly available; supplier actively demonstrates leadership in (sector) collaboration to improve compliance throughout the supply chain.",
+          "Fully demonstrated compliance including documented procedures; annual external audit report available; supplier participates in (sector) collaboration to improve compliance throughout the chain.",
+          "Documented compliance with legal requirements indicating the processes used. Annual external audit report optionally available.",
+          "Documentation specifies which legal requirements (e.g. WCAG, privacy, security) are tested and provides limited insight into compliance processes.",
+          "No or limited documentation on legal compliance available."
+        ],
+        "h": "Check whether the supplier demonstrates which legal requirements and standards are upheld (e.g. WCAG level, GDPR/privacy, information security standards such as ISO 27001) and whether concrete processes, tests and responsibilities are documented. Ask for evidence (audit reports, test results, certificates), frequency of checks and whether audits are publicly or on-request available. Also note scope (all services/components or only core components), chain impact (suppliers/subcontractors) and corrective measures applied in case of non-compliance."
+      },
+      "B1": {
+        "title": "Vendor concentration",
+        "q": "How many products and services do you use from the same supplier?",
+        "r": [
+          "1 product or service from this supplier.",
+          "2-3 products/services from this supplier.",
+          "4-6 products/services from this supplier.",
+          "7-15 products/services from this supplier.",
+          "Entire ecosystem (>15 products/services) from this supplier."
+        ],
+        "h": "Count all products, services, licences and platforms from this supplier, both contracted services and purchased software. Also consider underlying platforms (e.g. Azure AD, SharePoint, Intune alongside Office 365). The more products from one supplier, the greater the vendor lock-in risk."
+      },
+      "B2": {
+        "title": "Software composition and supply chain insight",
+        "q": "Is a software bill of materials (SBOM) available for this product or service?",
+        "r": [
+          "Full SBOM with every release: CycloneDX ≥1.6 and/or SPDX ≥2.2, all dependencies (including closed-source) as complete as the customer can reasonably expect. Validated by an independent third party.",
+          "Full SBOM with every release: CycloneDX ≥1.6 and/or SPDX ≥2.2, all dependencies (including closed-source) as complete as the customer can reasonably expect.",
+          "SBOM with every release: CycloneDX ≥1.6 and/or SPDX ≥2.2, at minimum all direct dependencies (including closed-source).",
+          "Brief component overview available in documentation or on request (no structured SBOM).",
+          "No SBOM available."
+        ],
+        "h": "Which closed-source and open source components are used? An SBOM (Software Bill of Materials) is a structured list of all software components and dependencies that provides insight into licence risks, known security vulnerabilities (CVEs) and supply-chain risks. Common standards are CycloneDX and SPDX."
+      },
+      "C1": {
+        "title": "Alternative available",
+        "q": "Do comparable services exist as alternatives?",
+        "r": [
+          "No alternative. Unique product without competitors.",
+          "Alternative exists but immature or functionally limited.",
+          "Multiple alternatives used by comparable organisations. Covers most needs.",
+          "Mature alternatives including a European option.",
+          "Wide range of alternatives including European and open source options. Competitive market."
+        ],
+        "h": "Which alternatives exist? Used by other universities? European/open source? The availability of open source options can significantly reduce vendor lock-in risk."
+      },
+      "C2": {
+        "title": "Migration complexity",
+        "q": "How long does it take to switch to an alternative?",
+        "r": [
+          "More than 2 years.",
+          "1-2 years.",
+          "6-12 months.",
+          "3-6 months.",
+          "Less than 3 months. Or: self-hosting option immediately available."
+        ],
+        "h": "Estimate the lead time for a full migration. Consider: data volume, number of integrations, supplier-specific components, availability of migration tools, and required adjustments to workflows. In addition to lead time, factor in expected costs (staffing, licences, retraining). A trial migration can help validate feasibility and timeline before the actual switch."
+      },
+      "C3": {
+        "title": "Data portability",
+        "q": "Can we export data completely and in a usable format?",
+        "r": [
+          "No export possible. Data only accessible via supplier system.",
+          "Limited manual export. No metadata, unusable format.",
+          "Export in common (open standards) formats, reasonably complete. Metadata may be missing.",
+          "Full export in open formats with API. Including metadata.",
+          "Full portability: open formats, metadata, history, relationships. Directly usable."
+        ],
+        "h": "Is there an export API available? Can metadata be included? If the application is also available self-hosted, that can significantly improve portability."
+      },
+      "C4": {
+        "title": "Encryption management",
+        "q": "Control over encryption? (optional)",
+        "r": [
+          "No insight into whether and how data is encrypted.",
+          "Encrypted, supplier fully manages keys.",
+          "Encrypted. Supplier manages keys, but with transparent and documented key management policy.",
+          "BYOK: bring and manage your own encryption keys.",
+          "Client-side encryption: data encrypted before transmission using your own keys."
+        ],
+        "h": "This is about control over the encryption keys, not whether encryption is needed. Who manages the keys determines who can access the data, including in response to a data request from a foreign government or upon departure of the supplier."
+      },
+      "C5": {
+        "title": "Software transparency and openness",
+        "q": "Is the source code available and independently usable?",
+        "r": [
+          "Fully closed. No source code, no insight.",
+          "Closed with public API documentation. Limited insight.",
+          "Partially open source, core closed. Or source-available under a restrictive licence.",
+          "Open source, active community, permissive license. Possible to create an independent copy (fork).",
+          "Fully open source, multiple parties provide support. Switching to another party or having a fork developed independently is realistic."
+        ],
+        "h": "Is the application's source code available? If so, under which licence? Is there an active community contributing to the application? Is it possible to independently develop a fork of the application?"
+      },
+      "C6": {
+        "title": "Algorithm and AI transparency",
+        "q": "How transparent is the use of algorithms and AI?",
+        "r": [
+          "Fully closed. No insight into the workings of algorithm and AI functionality.",
+          "Partially closed: closed implementation, with public documentation on algorithms and AI. Limited insight.",
+          "Partially open: public algorithm and AI documentation but core algorithms and AI models primarily closed; parts available as open source or under a source-available licence.",
+          "Largely open: use of open source (or open weights) algorithms and AI; registration in an algorithm registry to comply with legislation and for public transparency is supported.",
+          "Full transparency: only open source licensed algorithms and AI models; switching to another party while retaining algorithm and AI functionality is realistic."
+        ],
+        "h": "Can the supplier provide insight into the workings of algorithms and AI to prevent unintended discrimination or bias?"
+      },
+      "D1": {
+        "title": "Internal expertise and knowledge continuity",
+        "q": "How much internal knowledge do we have about this system?",
+        "r": [
+          "No internal knowledge. Completely dependent on supplier.",
+          "Knowledge held by one or two people, not documented.",
+          "Knowledge held by multiple people, basic documentation available.",
+          "Knowledge widely shared and documented. Not person-dependent.",
+          "Knowledge structurally secured. Complete documentation, periodically updated."
+        ],
+        "h": "Consider all relevant knowledge: functional (what does the system do), technical (configuration, integrations), data (which data is in it, how to export it). Not just technical management. What happens if the key expert leaves?"
+      },
+      "D2": {
+        "title": "Exit plan in place",
+        "q": "Is there a concrete plan for if we need to switch?",
+        "r": [
+          "No exit plan. Never considered.",
+          "Discussed but nothing concrete. No steps or timeline.",
+          "Outline plan, not tested. Not detailed enough.",
+          "Detailed with steps, timeline, risks. Responsibilities assigned.",
+          "Complete, tested via trial migration, periodically updated. Including communication plan."
+        ],
+        "h": "Is there an exit plan for this application? How detailed is this plan? When was the plan last updated and tested?"
+      },
+      "D3": {
+        "title": "Backup strategy",
+        "q": "Independent copy of data outside the supplier?",
+        "r": [
+          "No independent backup. Everything only with the supplier.",
+          "Supplier makes backups, not verifiable. No own copy.",
+          "Periodic copy, limited, restore not tested.",
+          "Full backup outside supplier, regularly verified.",
+          "Full backup with proven restore procedure. Regularly tested."
+        ],
+        "h": "Is a data backup for this application possible outside the supplier? How complete are the backups? When was a backup restore last tested?"
+      },
+      "E1": {
+        "title": "Exit clauses and transition arrangement",
+        "q": "What is contractually arranged regarding data transfer upon termination?",
+        "r": [
+          "No agreements on termination.",
+          "Minimal provisions, without deadline or format.",
+          "Exit clauses with transition period in place.",
+          "Comprehensive exit arrangement: open formats, transition period, active supplier cooperation.",
+          "Comprehensive exit arrangement with enforceable consequences for non-compliance (penalty clause, escalation procedure, deletion guarantee)."
+        ],
+        "h": "What is contractually arranged regarding termination? In what format is data delivered upon transfer? Is a transition period agreed in which the supplier actively cooperates? Are KPIs defined for supplier performance and which SLA commitments apply, so you can hold the supplier accountable if agreements are not met?"
+      },
+      "E2": {
+        "title": "Contractual flexibility",
+        "q": "How quickly can you contractually leave this supplier?",
+        "r": [
+          "Long-term (>3 years), not terminable during the term.",
+          "Multi-year, notice period longer than 12 months.",
+          "Annual contract, 6-12 months notice period.",
+          "Flexibly terminable, 3-6 months notice period.",
+          "Monthly terminable or pay-per-use."
+        ],
+        "h": "Review the contractual binding: duration, notice period and automatic renewal. Also consider licence terms the supplier can unilaterally change (price increases, usage restrictions, feature removal). The technical lead time for a migration falls under C2 (Migration complexity)."
+      },
+      "E3": {
+        "title": "Acquisition or merger",
+        "q": "What is contractually arranged if the supplier is acquired or merges?",
+        "r": [
+          "Nothing arranged; contract remains fully in force without rights for the customer.",
+          "Minimally arranged; only a general provision, no specific exit, data or jurisdiction safeguards.",
+          "Basic agreements; notification of acquisition or merger and right to renegotiate or terminate with standard notice period.",
+          "Well arranged; right to terminate upon acquisition or merger with reasonable notice period, retention of agreed jurisdiction/data location.",
+          "Excellently arranged; explicit change-of-control clauses with fee-free exit, full data portability, migration support and safeguards for finances and operations, as well as retention of jurisdiction and data location."
+        ],
+        "h": "Look for change-of-control clauses: notification obligation, right to terminate or renegotiate, migration support, and consequences for applicable law, data location and sub-processors. Also check whether SLA commitments, prices and data access remain guaranteed with a new owner."
+      },
+      "F1": {
+        "title": "Impact on outage",
+        "q": "What is the impact if this system goes down?",
+        "r": [
+          "No noticeable impact on outage.",
+          "Minimal disruption. Organisation continues.",
+          "Multiple processes disrupted but not stopped.",
+          "Key processes stopped.",
+          "Organisation-wide standstill."
+        ],
+        "h": "Suppose the system goes down for 48 hours. What is the impact? This applies to all processes: education, research and operations. Weigh in: the number of affected users, the availability of workarounds, and how critical the affected processes are."
+      },
+      "F2": {
+        "title": "Integration dependencies",
+        "q": "How many systems depend on this system?",
+        "r": [
+          "Stand-alone, no integrations.",
+          "1-2 integrations.",
+          "3-5 integrations.",
+          "5-10 integrations.",
+          "Central hub (>10 integrations)."
+        ],
+        "h": "How many other systems are connected to this system? If this system goes down, which other systems also (partially) go down?"
+      },
+      "G1": {
+        "title": "Personal data",
+        "q": "What personal data is processed?",
+        "r": [
+          "No personal data.",
+          "Basic data: name, email, job title. Limited number.",
+          "Study/work data, assessments, financial. Significant.",
+          "Special category personal data or large-scale processing.",
+          "Large-scale special category data of vulnerable groups."
+        ],
+        "h": "Which data? Sensitive categories? How many people? DPIA required?"
+      },
+      "G2": {
+        "title": "Education data and knowledge security",
+        "q": "How sensitive is the education data and knowledge in this system?",
+        "r": [
+          "No education data.",
+          "Only public/published data.",
+          "Confidential, not yet published. Premature access by third parties is undesirable.",
+          "Sensitive or strategically valuable. Competitively sensitive.",
+          "National security, export control, dual-use. Foreign access is serious."
+        ],
+        "h": "Education data? How sensitive? Embargoes? Foreign access problematic? Think broader than just datasets: teaching methods and strategic knowledge are included too."
+      },
+      "G3": {
+        "title": "Intellectual property",
+        "q": "How valuable is the IP in this system?",
+        "r": [
+          "No IP of value.",
+          "Limited: generally available material.",
+          "Valuable: e.g. unique course material, methods, algorithms.",
+          "Significant: e.g. patentable discoveries, unique datasets.",
+          "Critical: active patents or strategic IP. Access by third parties causes major damage."
+        ],
+        "h": "What intellectual property is in this system? Think of unique course material, research methods, algorithms, datasets, patents. What is the damage if a third party gains access?"
+      },
+      "G4": {
+        "title": "Data access",
+        "q": "Who has access to your data?",
+        "r": [
+          "Open access; supplier can use, view or reuse data without clear restrictions.",
+          "Broad access; supplier has access for management, support or analysis, with limited contractual constraints.",
+          "Limited access; access is only permitted for predefined roles or tasks, with logging and internal authorisation.",
+          "Very limited access; access is technically and contractually restricted, only with your explicit consent or strictly necessary support.",
+          "No access or data provision; supplier has no access to stored data and provision to non-EU governments is contractually impossible without your consent."
+        ],
+        "h": "Note technical and contractual access to data, including management, support, sub-processors and transfers outside the EU. Check logging, authorisations, emergency access and whether access or provision to third parties can be explicitly restricted. Check compliance with the Data Governance Act (DGA)."
+      },
+      "G5": {
+        "title": "Data policy and governance",
+        "q": "To what extent are data policy, purpose limitation and user governance ensured?",
+        "r": [
+          "Insufficiently arranged; data policy is unclear and there is no insight into which data and metadata are stored.",
+          "Minimally arranged; there is some information on data policy, but purpose, use and modification are not clearly documented.",
+          "Basically arranged; the supplier communicates data policy, but users have limited insight or configuration options.",
+          "Well arranged; only necessary data and metadata are stored, the purpose is documented and users can view and partially configure their own data.",
+          "Excellently arranged; data policy and changes are public, only necessary data and metadata are stored, purpose and function are documented, and users can fully view and configure data and metadata as desired."
+        ],
+        "h": "Check whether the data policy is public and understandable, whether purpose limitation of data and metadata is contractually or technically established, and whether users can view and manage their own data and metadata."
+      },
+      "G6": {
+        "title": "Data minimisation and deletion",
+        "q": "What options exist to limit data collection or delete data?",
+        "r": [
+          "No options; data can only be managed or deleted by the supplier.",
+          "Limited options; data can be partially restricted or deleted, but without clear guarantees.",
+          "Support for data minimisation and deletion in accordance with GDPR, including processing of backups and copies.",
+          "Strong support in accordance with GDPR; data collection can be limited to what is necessary and deletion is contractually guaranteed and auditable.",
+          "Full support in accordance with GDPR; data collection is strictly minimised, deletion is fully contractually guaranteed and auditable. Validated by an independent third party."
+        ],
+        "h": "Can data collection be limited to only data necessary for the functioning of the product or service? Can user data be deleted in accordance with GDPR?"
+      },
+      "H1": {
+        "title": "Academic freedom",
+        "q": "Can the supplier exert influence on educational activities?",
+        "r": [
+          "No relation to education.",
+          "Theoretical risk, no previous cases known.",
+          "Access to educational materials. Limited risk of indirect influence.",
+          "Real risk. Country where governments can censor education.",
+          "Demonstrated censorship or data seizure by this supplier or government."
+        ],
+        "h": "Can the supplier or a foreign government gain insight into educational activities? Are there previous cases of censorship or data seizure at this supplier?"
+      },
+      "H2": {
+        "title": "Educational collaboration",
+        "q": "Importance for educational collaboration (national and international)?",
+        "r": [
+          "No role. Purely internal.",
+          "Marginal role. Direct alternatives available for partners.",
+          "Supportive. Use is desirable but not necessary.",
+          "Important platform. Multiple partners use it.",
+          "Essential and irreplaceable. Standard in the field."
+        ],
+        "h": "Partners using the same system? Standard in the field? Consequences of switching? This applies to both international and national collaborative arrangements."
+      },
+      "H3": {
+        "title": "Long-term archiving",
+        "q": "How long must data be retained and remain accessible?",
+        "r": [
+          "No archiving requirement. Purely operational.",
+          "<5 years. Limited dependency duration.",
+          "5-10 years. Verification and audit must remain possible.",
+          "10-25 years. Scientific reproducibility required.",
+          "Permanent (>25 years) or legal obligation."
+        ],
+        "h": "How long to retain? Legal obligation? Reproducibility? The longer the retention period, the greater the risk of prolonged supplier dependency. For the format in which data is stored, see C3 (Data portability)."
+      },
+      "H4": {
+        "title": "User influence and transparency",
+        "q": "To what extent is the user interface transparent, free from manipulation and focused on user autonomy?",
+        "r": [
+          "Insufficiently arranged; the interface is unclear, strongly steers behaviour and does not indicate whether a human or bot is responding.",
+          "Minimally arranged; there is some transparency, but dark patterns, gambling elements or persuasive choices are not demonstrably excluded.",
+          "Basically arranged; the interface sometimes indicates whether a human or bot is involved, but transparency and autonomy are not consistently ensured.",
+          "Well arranged; the interface always makes clear whether a human or bot is involved and is free from dark patterns, gambling elements and addictive elements.",
+          "Excellently arranged; the interface is always transparent, free from dark patterns, gambling elements, persuasive and addictive elements, with opt-out options. Validated by an independent third party."
+        ],
+        "h": "Assess the different parts of the user interface together with (potential) users. Dark patterns are misleading or steering design patterns, gambling elements are chance or reward mechanisms, persuasive elements are subtle behavioural nudges and addictive elements stimulate repeated or compulsive use."
+      }
     }
   },
   "nl": {
@@ -1564,6 +1444,368 @@ const I18N = {
       "source-available": "Broncode is publiek inzichtelijk, maar de licentie staat niet toe om de software vrij te gebruiken, aan te passen of te distribueren. Beperkter dan echte open source.",
       "vendor lock-in": "Situatie waarin een organisatie zo afhankelijk is van een leverancier dat overstappen naar een alternatief buitensporig duur of complex wordt.",
       "verwijdergarantie": "Contractuele garantie dat de leverancier na overdracht al jouw data volledig verwijdert van hun systemen, inclusief backups en kopieën."
+    },
+    "indicators": {
+      "A1": {
+        "title": "Jurisdictie leverancier",
+        "q": "Onder welke jurisdictie valt de leverancier?",
+        "r": [
+          "EU/EER-jurisdictie. Geen extraterritoriale claims. Volledige EU-bescherming.",
+          "EU/EER met beperkte extraterritoriale claims. CLOUD Act n.v.t.",
+          "Adequaatheidsbesluit, maar extraterritoriale wetgeving (CLOUD Act, FISA 702) geeft buitenlandse overheid potentieel toegang.",
+          "Geen adequaatheidsbesluit maar contractuele waarborgen (SCCs). Juridische bescherming beperkt.",
+          "Geen adequaatheidsbesluit, geen waarborgen. Directe toegang buitenlandse overheden."
+        ],
+        "h": "Waar is de leverancier gevestigd? Extraterritoriale wetgeving? Adequaatheidsbesluit? Let op: het EU-US Data Privacy Framework (2023) is het derde adequaatheidsbesluit voor de VS; de vorige twee zijn door het Europese Hof vernietigd. De onderliggende wetgeving (CLOUD Act, FISA 702) is echter niet veranderd. Weeg zelf of je dit als score 3 of 4 beschouwt."
+      },
+      "A2": {
+        "title": "Sanctie- en geopolitiek risico",
+        "q": "Hoe groot is het geopolitieke risico voor de dienstverlening?",
+        "r": [
+          "Stabiele relaties met EU. Geen sanctierisico.",
+          "Minimaal risico. Geen recente spanningen.",
+          "Enig risico door verschuivende handelsrelaties.",
+          "Verhoogd risico. Geopolitieke spanningen of handelsconflicten. Nog geen voorbeelden van directe gevolgen voor Europese partijen.",
+          "Hoog risico. Actieve sancties of beperkingen. Voorbeelden van dienstverstoring of blokkade voor Europese partijen."
+        ],
+        "h": "Actuele sancties of handelsgeschillen? Eerder diensten beperkt aan Europese partijen? Houd ook rekening met ideologische verschillen (normen en waarden) tussen de leverancier/overheid en de Europese context."
+      },
+      "A3": {
+        "title": "Hosting en datalocatie",
+        "q": "Waar worden data en applicatie fysiek gehost en hoe is dat geborgd?",
+        "r": [
+          "Data uitsluitend in EU/EER. Contractueel vastgelegd.",
+          "Data in EU/EER. Backups of replicatie mogelijk in land met adequaatheidsbesluit.",
+          "Data in EU/EER, maar geen contractuele garantie over locatie. Kan wijzigen.",
+          "Data deels buiten EU, met contractuele waarborgen (SCCs of adequaatheidsbesluit).",
+          "Data buiten EU, geen waarborgen, of onduidelijk waar data staat."
+        ],
+        "h": "Waar staan de servers fysiek? Is de data- en applicatielocatie contractueel vastgelegd? Kunnen backups of replicatie buiten de EU terechtkomen? Let op: data en applicatie kunnen op verschillende locaties draaien (bijv. applicatie in Ierland, database in Frankfurt, beheerconsole in de VS). Check of er ergens in de keten een niet-Europese jurisdictie meespeelt en neem de slechtste jurisdictie als uitgangspunt."
+      },
+      "A4": {
+        "title": "Wettelijke conformiteit",
+        "q": "Hoe zit het met naleving met de wettelijke eisen, zoals toegankelijkheidseisen (WCAG), beveiliging en privacywetgeving?",
+        "r": [
+          "Volledig aangetoonde conformiteit inclusief procedures gedocumenteerd; jaarlijks extern auditrapport publiek beschikbaar; leverancier toont actief leiderschap in (sector)samenwerking om conformiteit in de toeleveringsketen te verbeteren.",
+          "Volledig aangetoonde conformiteit inclusief procedures gedocumenteerd; jaarlijks extern auditrapport beschikbaar; leverancier participeert in (sector)samenwerking om conformiteit in de keten te verbeteren.",
+          "Gedocumenteerde conformiteit met wettlijke eisen met vermelding van gebruikte processen. Jaarlijks extern auditrapport optioneel beschikbaar.",
+          "Documentatie specificeert welke wettelijke eisen (bijv. WCAG, privacy, beveiliging) worden getest en geeft beperkt inzicht in de conformiteitsprocessen.",
+          "Geen of beperkte documentatie over wettelijke conformiteit beschikbaar."
+        ],
+        "h": "Controleer of de leverancier aantoont welke wettelijke eisen en standaarden worden geborgd (bijv. WCAG‑niveau, AVG/privacy, informatiebeveiligingsnormen zoals ISO 27001) en of hiervoor concrete processen, tests en verantwoordelijkheden zijn vastgelegd. Vraag naar bewijs (auditrapporten, testresultaten, certificaten), de frequentie van controles en of audits publiek of op verzoek beschikbaar zijn. Let ook op reikwijdte (alle diensten/onderdelen of alleen kerncomponenten), ketenimpact (leveranciers/subcontractors) en welke corrigerende maatregelen worden toegepast bij non‑conformiteit."
+      },
+      "B1": {
+        "title": "Vendor concentratie",
+        "q": "Hoeveel producten en diensten gebruik je van dezelfde leverancier?",
+        "r": [
+          "1 product of dienst bij deze leverancier.",
+          "2-3 producten/diensten bij deze leverancier.",
+          "4-6 producten/diensten bij deze leverancier.",
+          "7-15 producten/diensten bij deze leverancier.",
+          "Heel ecosysteem (>15 producten/diensten) bij deze leverancier."
+        ],
+        "h": "Tel alle producten, diensten, licenties en platformen die je van deze leverancier gebruikt, zowel afgenomen diensten als gekochte software. Denk ook aan onderliggende platformen (bijv. Azure AD, SharePoint, Intune naast Office 365)."
+      },
+      "B2": {
+        "title": "Inzicht software opbouw en toeleveringsketen",
+        "q": "Is er een software bill of materials (SBOM) beschikbaar voor dit product of dienst?",
+        "r": [
+          "Volledige SBOM bij elke release: CycloneDX ≥1.6 en/of SPDX ≥2.2, alle afhankelijkheden (inclusief closed‑source) zo volledig als de klant redelijkerwijs mag verwachten. Gevalideerd door een onafhankelijke derde partij.",
+          "Volledige SBOM bij elke release: CycloneDX ≥1.6 en/of SPDX ≥2.2, alle afhankelijkheden (inclusief closed‑source) zo volledig als de klant redelijkerwijs mag verwachten.",
+          "SBOM bij elke release: CycloneDX ≥1.6 en/of ≥SPDX 2.2, minimaal alle directe afhankelijkheden (inclusief closed‑source).",
+          "Beknopt componentoverzicht beschikbaar in documentatie of op verzoek (geen gestructureerde SBOM).",
+          "Geen SBOM beschikbaar."
+        ],
+        "h": "Welke closed-source en open source componenten worden gebruikt? Een SBOM (Software Bill of Materials) is een gestructureerde lijst van alle softwarecomponenten en afhankelijkheden die inzicht geeft in licentierisico’s, bekende beveiligingskwetsbaarheden (CVEs) en supply‑chain risico’s. Gebruikelijke standaarden zijn CycloneDX en SPDX."
+      },
+      "C1": {
+        "title": "Alternatief beschikbaar",
+        "q": "Bestaan er vergelijkbare diensten als vervanging?",
+        "r": [
+          "Geen alternatief. Uniek product zonder concurrenten.",
+          "Alternatief bestaat maar onvolwassen of functioneel beperkt.",
+          "Meerdere alternatieven bij vergelijkbare organisaties. Dekt het meeste.",
+          "Volwassen alternatieven incl. Europese optie.",
+          "Breed aanbod incl. Europese en open source opties. Competitieve markt."
+        ],
+        "h": "Welke alternatieven? Gebruikt door andere universiteiten? Europees/open source?"
+      },
+      "C2": {
+        "title": "Migratiecomplexiteit",
+        "q": "Hoe lang duurt het om over te stappen naar een alternatief?",
+        "r": [
+          "Meer dan 2 jaar.",
+          "1-2 jaar.",
+          "6-12 maanden.",
+          "3-6 maanden.",
+          "Minder dan 3 maanden. Of: self-hosting optie direct beschikbaar."
+        ],
+        "h": "Schat de doorlooptijd van een volledige migratie. Houd rekening met: datavolume, aantal koppelingen, leveranciersspecifieke onderdelen, beschikbaarheid van migratietools, en benodigde aanpassingen aan werkprocessen. Neem naast doorlooptijd ook de verwachte kosten mee in je afweging (inhuur, licenties, omscholing)."
+      },
+      "C3": {
+        "title": "Data-portabiliteit",
+        "q": "Kunnen we data volledig en bruikbaar exporteren?",
+        "r": [
+          "Geen export mogelijk. Data alleen via leverancierssysteem.",
+          "Beperkte handmatige export. Geen metadata, onbruikbaar formaat.",
+          "Export in gangbare (open standaard) formaten, redelijk volledig. Mogelijk ontbreken metadata.",
+          "Volledige export in open formaten met API. Inclusief metadata.",
+          "Volledige portabiliteit: open formaten, metadata, historie, relaties. Direct bruikbaar."
+        ],
+        "h": "Is er een export API beschikbaar? Kan de metadata worden meegenomen? Als de applicatie ook self-hosted beschikbaar is, kan dat de portabiliteit aanzienlijk verbeteren."
+      },
+      "C4": {
+        "title": "Encryptiebeheer",
+        "q": "Controle over versleuteling? (optioneel)",
+        "r": [
+          "Geen inzicht in of en hoe data versleuteld is.",
+          "Versleuteld, leverancier beheert sleutels volledig.",
+          "Versleuteld. Leverancier beheert de sleutels, maar met transparant en gedocumenteerd beleid over sleutelbeheer.",
+          "BYOK: eigen sleutels inbrengen en beheren.",
+          "Client-side encryption: data versleuteld voor verzending met eigen sleutels."
+        ],
+        "h": "Het gaat hier om controle over de encryptiesleutels, niet om of encryptie nodig is. Wie beheert de sleutels bepaalt wie bij de data kan, ook bij een dataverzoek van een buitenlandse overheid of bij vertrek van de leverancier."
+      },
+      "C5": {
+        "title": "Transparantie en openheid software",
+        "q": "Is de broncode beschikbaar en onafhankelijk te gebruiken?",
+        "r": [
+          "Volledig gesloten. Geen broncode, geen inzicht.",
+          "Gesloten met openbare API-documentatie. Beperkt inzicht.",
+          "Deels open source, kern gesloten. Of source-available onder beperkte licentie.",
+          "Open source, actieve community, permissive licentie. Mogelijk om een onafhankelijke kopie (fork) te maken.",
+          "Volledig open source, meerdere partijen bieden ondersteuning. Overstappen naar een andere partij of een fork (laten) doorontwikkelen is realistisch."
+        ],
+        "h": "Is de broncode van de applicatie beschikbaar? Zo ja, onder welke licentie? Is er een actieve community die meewerkt aan de ontwikkeling van de applicatie? Is het mogelijk om de applicatie onafhankelijk (te laten) doorontwikkelen (fork)?"
+      },
+      "C6": {
+        "title": "Algoritmes en AI transparantie",
+        "q": "Hoe inzichtelijk is het gebruik van algoritmes en AI?",
+        "r": [
+          "Volledig gesloten. Geen inzicht in werking algoritme- en AI-functionaliteit.",
+          "Gedeeltelijk gesloten: gesloten implementatie, met openbare documentatie over algoritmes en AI. Beperkt inzicht.",
+          "Deels open: openbare algoritme en AI-documentatie maar kern algoritmes en AI modellen voornamelijk gesloten; delen beschikbaar als open source of onder source-available licentie.",
+          "Grotendeels open: gebruik van open source (of open weights) algoritmes en AI, registratie in een algoritmeregister om te voldoen aan wet‑ en regelgeving en voor maatschappelijke transparantie wordt ondersteund.",
+          "Volledige transparantie: alleen open source gelicenseerde algoritmes en AI-modellen; overstap naar een andere partij met behoud van algoritme- en AI-functionaliteit is realistisch."
+        ],
+        "h": "Kan de leverancier inzicht geven in de werking van algoritmes en AI om onbedoelde benadeling of bias te voorkomen?"
+      },
+      "D1": {
+        "title": "Interne expertise en kennisborging",
+        "q": "Hoeveel interne kennis hebben we over dit systeem?",
+        "r": [
+          "Geen interne kennis. Volledig afhankelijk van leverancier.",
+          "Kennis bij een of twee personen, niet vastgelegd.",
+          "Kennis bij meerdere personen, basisdocumentatie aanwezig.",
+          "Kennis breed gedeeld en gedocumenteerd. Niet persoonsafhankelijk.",
+          "Kennis structureel geborgd. Volledige documentatie, periodiek bijgewerkt."
+        ],
+        "h": "Denk aan alle relevante kennis: functioneel (wat doet het systeem), technisch (configuratie, koppelingen), data (welke data zit erin, hoe exporteer je die). Niet alleen technisch beheer. Wat gebeurt er als de belangrijkste expert vertrekt?"
+      },
+      "D2": {
+        "title": "Exit-plan aanwezig",
+        "q": "Is er een concreet plan voor als we moeten overstappen?",
+        "r": [
+          "Geen exit-plan. Nooit over nagedacht.",
+          "Besproken maar niets concreet. Geen stappen of tijdlijn.",
+          "Globaal plan, niet getest. Niet gedetailleerd genoeg.",
+          "Gedetailleerd met stappen, tijdlijn, risico's. Verantwoordelijkheden belegd.",
+          "Volledig, getest via proefmigratie, periodiek bijgewerkt. Incl. communicatieplan."
+        ],
+        "h": "Is er een exitplan voor deze applicatie? Hoe gedetailleerd is dit plan? Wanneer is het plan voor het laatst bijgewerkt en getest?"
+      },
+      "D3": {
+        "title": "Backup-strategie",
+        "q": "Onafhankelijke kopie van data buiten leverancier?",
+        "r": [
+          "Geen onafhankelijke backup. Alles alleen bij leverancier.",
+          "Leverancier maakt backups, niet verifieerbaar. Geen eigen kopie.",
+          "Periodiek kopie, beperkt, terugzetten niet getest.",
+          "Volledige backup buiten leverancier, regelmatig geverifieerd.",
+          "Volledige backup met bewezen terugzetprocedure. Regelmatig getest."
+        ],
+        "h": "Is er een databack-up voor deze applicatie buiten de leverancier mogelijk? Hoe volledig zijn de back-ups? Wanneer is het terugzetten van een back-up voor het laatst getest?"
+      },
+      "E1": {
+        "title": "Exit-clausules en transitieregeling",
+        "q": "Wat is contractueel geregeld over data-overdracht bij beëindiging?",
+        "r": [
+          "Geen afspraken over beëindiging.",
+          "Minimale bepalingen, zonder termijn of formaat.",
+          "Exit-clausules met transitieperiode aanwezig.",
+          "Uitgebreide exit-regeling: open formaten, transitieperiode, actieve medewerking leverancier.",
+          "Uitgebreide exit-regeling met afdwingbare consequenties bij niet-nakoming (boeteclausule, escalatieprocedure, verwijdergarantie)."
+        ],
+        "h": "Wat is er contractueel geregeld over de beëindiging van de samenwerking? In welk formaat wordt de data aangeleverd bij overdracht? Is er een transitieperiode afgesproken waarin de leverancier medewerking verleent? Welke consequenties zijn er als de leverancier de afspraken niet nakomt?"
+      },
+      "E2": {
+        "title": "Contractuele flexibiliteit",
+        "q": "Hoe snel kun je contractueel weg bij deze leverancier?",
+        "r": [
+          "Langlopend (>3 jaar), niet tussentijds opzegbaar.",
+          "Meerjarig, opzegtermijn langer dan 12 maanden.",
+          "Jaarcontract, 6-12 maanden opzegtermijn.",
+          "Flexibel opzegbaar, 3-6 maanden opzegtermijn.",
+          "Maandelijks opzegbaar of betalen naar gebruik."
+        ],
+        "h": "Kijk naar de contractuele binding: looptijd, opzegtermijn en automatische verlenging. Let ook op licentievoorwaarden die de leverancier eenzijdig kan wijzigen (prijsverhogingen, gebruiksbeperkingen, feature-verwijdering). De technische doorlooptijd van een migratie valt onder C2 (Migratiecomplexiteit)."
+      },
+      "E3": {
+        "title": "Overname of fusie",
+        "q": "Wat is er contractueel geregeld als de leverancier wordt overgenomen of fuseert?",
+        "r": [
+          "Niets geregeld; contract blijft volledig in stand zonder rechten voor klant.",
+          "Beperkt geregeld; alleen algemene bepaling, geen specifieke exit-, data- of jurisdictiewaarborgen.",
+          "Basisafspraken; melding bij overname of fusie en recht tot heronderhandeling of opzegging met standaardtermijn.",
+          "Goed geregeld; recht op opzegging bij overname of fusie met redelijke termijn, behoud van afgesproken jurisdictie/datalocatie.",
+          "Uitstekend geregeld; expliciete change-of-control clausules met kosteloze exit, volledige dataportabiliteit, migratie-ondersteuning en waarborgen voor financiën en operatie, evenals behoud van jurisdictie en datalocatie."
+        ],
+        "h": "Let op clausules rond change of control: meldplicht, recht op opzegging of heronderhandeling, ondersteuning bij migratie, en gevolgen voor toepasselijk recht, datalocatie en subverwerkers. Controleer ook of servicelevels, prijzen en datatoegang geborgd blijven bij een nieuwe eigenaar."
+      },
+      "F1": {
+        "title": "Impact bij uitval",
+        "q": "Wat is de impact als dit systeem uitvalt?",
+        "r": [
+          "Geen merkbare impact bij uitval.",
+          "Minimale hinder. Organisatie draait door.",
+          "Meerdere processen verstoord maar niet stilgevallen.",
+          "Belangrijke processen stilgevallen.",
+          "Organisatiebrede stilstand."
+        ],
+        "h": "Stel dat het systeem 48 uur uitvalt. Wat is de impact? Dit geldt voor alle processen: onderwijs, onderzoek en bedrijfsvoering. Weeg mee: het aantal getroffen gebruikers, de beschikbaarheid van workarounds, en hoe kritiek de getroffen processen zijn."
+      },
+      "F2": {
+        "title": "Integratie-afhankelijkheden",
+        "q": "Hoeveel systemen zijn afhankelijk van dit systeem?",
+        "r": [
+          "Losstaand, geen koppelingen.",
+          "1-2 koppelingen.",
+          "3-5 koppelingen.",
+          "5-10 koppelingen.",
+          "Centraal knooppunt (>10 koppelingen)."
+        ],
+        "h": "Hoeveel andere systemen zijn gekoppeld aan dit systeem? Als dit systeem uitvalt, welke andere systemen vallen dan ook (deels) uit?"
+      },
+      "G1": {
+        "title": "Persoonsgegevens",
+        "q": "Welke persoonsgegevens worden verwerkt?",
+        "r": [
+          "Geen persoonsgegevens.",
+          "Basisgegevens: naam, e-mail, functie. Beperkt aantal.",
+          "Studie-/werkgegevens, beoordelingen, financieel. Significant.",
+          "Bijzondere persoonsgegevens of grootschalige verwerking.",
+          "Grootschalig bijzondere gegevens van kwetsbare groepen."
+        ],
+        "h": "Welke gegevens? Gevoelige categorieen? Hoeveel personen? DPIA?"
+      },
+      "G2": {
+        "title": "Onderwijsdata en kennisveiligheid",
+        "q": "Hoe gevoelig zijn de onderwijsgegevens en kennis in dit systeem?",
+        "r": [
+          "Geen onderwijsdata.",
+          "Alleen openbare/gepubliceerde data.",
+          "Vertrouwelijk, nog niet gepubliceerd. Voortijdige toegang door derden is onwenselijk.",
+          "Gevoelig of strategisch waardevol. Concurrentiegevoelig.",
+          "Nationale veiligheid, exportcontrole, dual-use. Buitenlandse toegang ernstig."
+        ],
+        "h": "Onderwijsdata? Hoe gevoelig? Embargo's? Buitenlandse toegang problematisch? Denk breder dan alleen datasets: ook onderwijsmethoden en strategische kennis vallen hieronder."
+      },
+      "G3": {
+        "title": "Intellectueel eigendom",
+        "q": "Hoe waardevol is het IP in dit systeem?",
+        "r": [
+          "Geen IP van waarde.",
+          "Beperkt: algemeen beschikbaar materiaal.",
+          "Waardevol: bijv. uniek cursusmateriaal, methoden, algoritmen.",
+          "Significant: bijv. patentwaardige vindingen, unieke datasets.",
+          "Kritiek: actieve patenten of strategisch IP. Toegang door derden levert grote schade op."
+        ],
+        "h": "Welk intellectueel eigendom zit in dit systeem? Denk aan uniek cursusmateriaal, onderzoeksmethoden, algoritmen, datasets, patenten. Wat is de schade als een derde partij hier toegang toe krijgt?"
+      },
+      "G4": {
+        "title": "Toegang tot data",
+        "q": "Wie heeft toegang tot jouw data?",
+        "r": [
+          "Vrije toegang; leverancier kan data gebruiken, inzien of hergebruiken zonder duidelijke beperkingen.",
+          "Brede toegang; leverancier heeft inzage voor beheer, support of analyse, met beperkte contractuele begrenzing.",
+          "Beperkte toegang; toegang is alleen toegestaan voor vooraf gedefinieerde rollen of taken, met logging en interne autorisatie.",
+          "Zeer beperkte toegang; toegang is technisch en contractueel afgeschermd, alleen met jouw expliciete toestemming of strikt noodzakelijke support.",
+          "Geen toegang of dataverstrekking; leverancier heeft geen toegang tot opgeslagen data en verstrekking aan niet-EU-overheden is contractueel onmogelijk zonder jouw toestemming."
+        ],
+        "h": "Let op technische en contractuele toegang tot data, inclusief beheer, support, subverwerkers en doorgifte buiten de EU. Controleer logging, autorisaties, noodtoegang en of toegang of verstrekking aan derden expliciet kan worden beperkt. Check conformiteit met de Data Governance Act (DGA)."
+      },
+      "G5": {
+        "title": "Databeleid en regie",
+        "q": "In hoeverre zijn databeleid, doelbinding en gebruikersregie geborgd?",
+        "r": [
+          "Onvoldoende geregeld; databeleid is onduidelijk en er is geen inzicht in welke data en metadata worden opgeslagen.",
+          "Beperkt geregeld; er is enige informatie over databeleid, maar doel, gebruik en wijziging zijn niet helder vastgelegd.",
+          "Basis geregeld; de leverancier communiceert databeleid, maar gebruikers hebben beperkt inzicht of instelmogelijkheden.",
+          "Goed geregeld; alleen noodzakelijke data en metadata worden opgeslagen, het doel is vastgelegd en gebruikers kunnen eigen data inzien en deels instellen.",
+          "Uitstekend geregeld; databeleid en wijzigingen zijn openbaar, alleen noodzakelijke data en metadata worden opgeslagen, doel en functie zijn vastgelegd, en gebruikers kunnen data en metadata volledig inzien en naar wens instellen."
+        ],
+        "h": "Controleer of het databeleid openbaar en begrijpelijk is, of doelbinding van data en metadata contractueel of technisch is vastgelegd, en of gebruikers eigen data en metadata kunnen inzien en beheren."
+      },
+      "G6": {
+        "title": "Data-minimalizatie en verwijdering",
+        "q": "Wat zijn de mogelijkheden om datacollectie te beperken of data te verwijderen?",
+        "r": [
+          "Geen opties; data kan alleen door de leverancier worden beheerd of verwijderd.",
+          "Beperkte mogelijkheden; data kan deels worden beperkt of verwijderd, maar zonder duidelijke garanties.",
+          "Ondersteuning voor dataminimalisatie en verwijdering conform AVG, inclusief verwerking van backups en kopieën.",
+          "Sterke ondersteuning conform AVG; datacollectie kan worden beperkt tot het noodzakelijke en verwijdering is contractueel geborgd en toetsbaar.",
+          "Volledige ondersteuning conform AVG; datacollectie is strikt geminimaliseerd, verwijdering is volledig contractueel geborgd en toetsbaar. Gevalideerd door een onafhankelijke derde partij."
+        ],
+        "h": "Kan data collectie worden beperkt tot alleen data noodzakelijk voor het functioneren van het product of dienst? Kan gebruikersdata worden verwijdert conform de AVG?"
+      },
+      "H1": {
+        "title": "Onderwijsvrijheid",
+        "q": "Kan de leverancier invloed uitoefenen op de onderwijs activiteiten?",
+        "r": [
+          "Geen relatie met onderwijs.",
+          "Theoretisch risico, geen eerdere gevallen bekend.",
+          "Toegang tot onderwijsmaterialen. Beperkt risico op indirecte beinvloeding.",
+          "Reël risico. Land waar overheden onderwijs kunnen censureren.",
+          "Aangetoonde censuur of datavordering bij deze leverancier of overheid."
+        ],
+        "h": "Kan de leverancier of een buitenlandse overheid inzicht krijgen in onderwijsactiviteiten? Zijn er eerdere gevallen van censuur of datavordering bij deze leverancier?"
+      },
+      "H2": {
+        "title": "Onderwijssamenwerking",
+        "q": "Belang voor onderwijssamenwerking (nationaal en internationaal)?",
+        "r": [
+          "Geen rol. Puur intern.",
+          "Marginale rol. Direct alternatieven voor partners.",
+          "Ondersteunend. Gebruik wenselijk maar niet noodzakelijk.",
+          "Belangrijk platform. Meerdere partners gebruiken het.",
+          "Essentieel en onvervangbaar. Standaard in vakgebied."
+        ],
+        "h": "Partners met zelfde systeem? Standaard in vakgebied? Gevolgen overstap? Dit geldt voor zowel internationale als nationale samenwerkingsverbanden."
+      },
+      "H3": {
+        "title": "Langetermijnarchivering",
+        "q": "Hoe lang moet data bewaard en toegankelijk blijven?",
+        "r": [
+          "Geen archiveringseis. Puur operationeel.",
+          "<5 jaar. Beperkte afhankelijkheidsduur.",
+          "5-10 jaar. Verificatie en audit moeten mogelijk blijven.",
+          "10-25 jaar. Wetenschappelijke reproduceerbaarheid vereist.",
+          "Permanent (>25 jaar) of wettelijke verplichting."
+        ],
+        "h": "Hoe lang bewaren? Wettelijke plicht? Reproduceerbaarheid? Hoe langer de bewaartermijn, hoe groter het risico van langdurige leveranciersafhankelijkheid. Voor het formaat waarin data wordt opgeslagen, zie C3 (Data-portabiliteit)."
+      },
+      "H4": {
+        "title": "Gebruikersbeïnvloeding en transparantie",
+        "q": "In hoeverre is de gebruikersinterface transparant, vrij van manipulatie en gericht op autonomie van de gebruiker?",
+        "r": [
+          "Onvoldoende geregeld; de interface is onduidelijk, stuurt gedrag sterk en maakt niet zichtbaar of een mens of bot reageert.",
+          "Beperkt geregeld; er is enige transparantie, maar dark patterns, gokelementen of persuasieve keuzes zijn niet aantoonbaar uitgesloten.",
+          "Basis geregeld; de interface geeft soms aan of sprake is van mens of bot, maar transparantie en autonomie zijn niet consequent geborgd.",
+          "Goed geregeld; de interface maakt altijd duidelijk of sprake is van mens of bot en is vrij van dark patterns, gokelementen en verslavende elementen.",
+          "Uitstekend geregeld; de interface is altijd transparant, vrij van dark patterns, gokelementen, persuasieve en verslavende elementen, met opt-out mogelijkheden. Gevalideerd door een onafhankelijke derde partij."
+        ],
+        "h": "Beoordeel de verschillende delen van de gebruikersinterface samen met (potentiële) gebruikers. Dark patterns zijn misleidende of sturende ontwerppatronen, gokelementen zijn kans- of beloningsmechanismen, persuasieve elementen zijn subtiele gedragsprikkels en verslavende elementen stimuleren herhaald of dwangmatig gebruik."
+      }
     }
   }
 };
@@ -1667,12 +1909,12 @@ function openWeightsModal(id) {
     const dims = LVL_DIMS[lvl];
     for (const dim of dims) {
       const dinds = INDICATORS.filter(i=>i.dim===dim);
-      h += `<div style="margin-bottom:1.2rem"><h3 style="font-size:0.9rem;color:var(--sivon-blue);margin-bottom:0.5rem">Dimensie ${dim}: ${DIMS[dim]}</h3>`;
+      h += `<div style="margin-bottom:1.2rem"><h3 style="font-size:0.9rem;color:var(--sivon-blue);margin-bottom:0.5rem">${t('ui.scoreRowDimensionPrefix')} ${dim}: ${t('ui.scoreRowDim'+dim+'Name')}</h3>`;
       for (const ind of dinds) {
         const curW = app.weights[ind.code]!==undefined ? app.weights[ind.code] : ind.w;
         const isModified = app.weights[ind.code]!==undefined && app.weights[ind.code]!==ind.w;
         h += `<div style="display:flex;justify-content:space-between;align-items:center;padding:0.4rem;background:#faf8f2;margin-bottom:0.3rem;border-radius:4px">`;
-        h += `<span style="font-size:0.8rem">${ind.code} ${ind.title}</span>`;
+        h += `<span style="font-size:0.8rem">${ind.code} ${I18N[lang].indicators[ind.code].title}</span>`;
         h += `<div style="display:flex;align-items:center;gap:0.3rem">`;
         h += `<button class="wgt-btn" onclick="changeWeightsModal('${id}','${ind.code}',-1)">-</button>`;
         h += `<span class="wgt-val${isModified?' modified':''}" id="wv-modal-${id}-${ind.code}" style="min-width:1.5rem;text-align:center">${curW}</span>`;
@@ -2070,7 +2312,8 @@ function renderAppView(id) {
         const isQuick = QUICK_CODES.has(ind.code);
         h += `<div class="ind-row" data-code="${ind.code}" data-quick="${isQuick?1:0}" onclick="indRowClick(event,'${id}','${ind.code}')">`;
         h += `<span class="ind-code">${ind.code}</span>`;
-        h += `<div class="ind-info"><div class="ind-title">${ind.title}${ind.opt?' <span style="font-size:0.6rem;color:#bbb">(opt.)</span>':''}</div><div class="ind-q">${ind.q}</div></div>`;
+        const indText = I18N[lang].indicators[ind.code];
+        h += `<div class="ind-info"><div class="ind-title">${indText.title}${ind.opt?' <span style="font-size:0.6rem;color:#bbb">(opt.)</span>':''}</div><div class="ind-q">${indText.q}</div></div>`;
         const curW = app.weights[ind.code]||ind.w;
         const wModified = app.weights[ind.code]!==undefined && app.weights[ind.code]!==ind.w;
         h += `<span class="wgt-val${wModified?' modified':''}" id="wv-${id}-${ind.code}" style="text-align:center">${curW}</span>`;
@@ -2082,9 +2325,9 @@ function renderAppView(id) {
         h += `</div><div class="sbar-hint"><span data-i18n="ui.levelRowScaleBarLow">${hL}</span> &#8592; &#8594; <span data-i18n="ui.levelRowScaleBarHigh">${hR}</span></div></div></div>`;
         h += `</div>`;
         h += `<div class="ind-detail" id="rub-${id}-${ind.code}"><div class="ind-detail-inner"><table class="rub-tbl ${rubDir}">`;
-        for (let s=1;s<=5;s++) h += `<tr class="rs${s}"><td>${s}</td><td>${addTooltips(ind.r[s-1])}</td></tr>`;
+        for (let s=1;s<=5;s++) h += `<tr class="rs${s}"><td>${s}</td><td>${addTooltips(indText.r[s-1])}</td></tr>`;
         h += `</table>`;
-        if (ind.h) h += `<div class="hulp"><strong data-i18n="ui.scoreRowExplanation">Toelichting:</strong> ${addTooltips(ind.h)}</div>`;
+        if (indText.h) h += `<div class="hulp"><strong data-i18n="ui.scoreRowExplanation">Toelichting:</strong> ${addTooltips(indText.h)}</div>`;
         h += `<div class="ind-remark"><textarea id="rem-${id}-${ind.code}" placeholder="Opmerking of onderbouwing..." data-i18n-attr="placeholder:ui.scoreRowRemarkPlaceholder" oninput="saveRemark('${id}','${ind.code}',this.value)">${esc(app.remarks[ind.code]||'')}</textarea></div>`;
         h += `</div></div>`;
         h += `<div class="ind-remark" id="rem-sibling-${id}-${ind.code}" style="display:none"></div>`;
@@ -2302,7 +2545,7 @@ function exportODF() {
     for (const ind of INDICATORS) {
       const sc = app.scores[ind.code];
       const w = app.weights[ind.code]||ind.w;
-      csv += `"${appId}";"${appName}";"${ind.code}";"${ind.title}";${w};${sc||''};${sc?sc*w:''};"${ind.dim}. ${DIMS[ind.dim]}";${res.dims[ind.dim]?res.dims[ind.dim].toFixed(2):''};`;
+      csv += `"${appId}";"${appName}";"${ind.code}";"${I18N[lang].indicators[ind.code].title}";${w};${sc||''};${sc?sc*w:''};"${ind.dim}. ${DIMS[ind.dim]}";${res.dims[ind.dim]?res.dims[ind.dim].toFixed(2):''};`;
       if (ind.code==='A1'||ind.code==='C1'||ind.code==='F1') {
         const lvlKey = ind.lvl===1?'risico':ind.lvl===2?'mitigatie':'belang';
         csv += res.lvls[lvlKey]?res.lvls[lvlKey].toFixed(2):'';
