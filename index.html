@@ -1069,8 +1069,17 @@ document.addEventListener('mouseout', e => {
 
 // === LOCALIZATION ===
 
-let lang = localStorage.getItem('pvaf_lang') || 'nl';
 const LOCALES = ['en', 'nl'];
+
+function detectBrowserLang() {
+  for (const l of (navigator.languages || [navigator.language])) {
+    const primary = l.split('-')[0].toLowerCase();
+    if (LOCALES.includes(primary)) return primary;
+  }
+  return 'en';
+}
+
+let lang = localStorage.getItem('pvaf_lang') || detectBrowserLang();
 const I18N = {
   "en": {
     "ui": {
@@ -1565,13 +1574,6 @@ function t(path) {
     .split('.')
     .reduce((obj, key) => obj?.[key], I18N.en)
     ?? path;
-}
-
-if (lang !== 'nl') {
-    setTimeout(function() {
-        setLang(lang);
-        applyI18n();
-    }, 10);
 }
 
 // === STATE ===
@@ -2482,6 +2484,8 @@ updateChangelogDot();
 if (localStorage.getItem('pvaf_lastSeenVersion') !== CURRENT_VERSION) {
   showChangelog();
 }
+setLang(lang);
+applyI18n();
 </script>
 </body>
 </html>
