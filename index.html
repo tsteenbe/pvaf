@@ -1259,14 +1259,14 @@ const I18N = {
     ],
     "help": `
         <h3>What is PVAF?</h3>
-        <p>The Public Values Assessment Framework (PVAF) helps organisations assess the conformity of their application landscape with the <a href="https://www.kennisnet.nl/tools/waardenwijzer/">public values in education</a>. The framework measures 30 indicators across 8 dimensions and 3 analysis levels.</p>
+        <p>The Public Values Assessment Framework (PVAF) helps organisations assess the extent to which their application landscape complies with the <a href="https://www.kennisnet.nl/tools/waardenwijzer/">public values in education</a>. The framework measures 30 indicators across 8 dimensions and 3 analysis levels.</p>
         <h3>How does it work?</h3>
         <p>The assessment follows four steps:</p>
         <ul>
-            <li><strong>Add application:</strong> click "+ Add Application" or import a list via CSV</li>
-            <li><strong>Score indicators:</strong> give each indicator a score from 1 to 5. Click an indicator for score descriptions and guidance</li>
-            <li><strong>View results:</strong> scores are calculated automatically. The overview shows all applications side by side</li>
-            <li><strong>Export:</strong> save results as JSON or CSV</li>
+            <li><strong>Add application:</strong> click "+ Add Application" or import a list via CSV.</li>
+            <li><strong>Score indicators:</strong> give each indicator a score from 1 to 5. Click an indicator for score descriptions and guidance.</li>
+            <li><strong>View results:</strong> scores are calculated automatically. The overview shows all applications side by side.</li>
+            <li><strong>Export:</strong> save results as JSON or CSV.</li>
         </ul>
         <h3>The three analysis levels</h3>
         <p><strong style="color:var(--sivon-red)">Level 1: Risk exposure</strong> (dimensions A-B). Measures how large the external risk is. A low score (1) means little risk, a high score (5) means high risk.</p>
@@ -1276,15 +1276,15 @@ const I18N = {
         <h3>Calculation</h3>
         <p>The public values score is calculated in four steps:</p>
         <ul>
-            <li><strong>Step 1, Dimension score:</strong> Per dimension, the weighted average of indicator scores. The weight determines how much influence each indicator has.</li>
-            <li><strong>Step 2, Level score:</strong> Per level, the average of dimension scores. Dimensions have equal weight.</li>
-            <li><strong>Step 3, Raw score:</strong> <code>Mitigation / (Risk × Importance)</code>. Range: 0.04 (worst case) to 5.0 (best case).</li>
-            <li><strong>Step 4, Normalisation:</strong> The raw score is converted to 1–10 via a logarithmic scale.</li>
+            <li><strong>Step 1 Dimension score:</strong> Per dimension, the weighted average of indicator scores. The weight determines how much influence each indicator has.</li>
+            <li><strong>Step 2 Level score:</strong> Per level, the average of dimension scores. Dimensions have equal weight.</li>
+            <li><strong>Step 3 Raw score:</strong> <code>Mitigation / (Risk × Importance)</code>. Range: 0.04 (worst case) to 5.0 (best case).</li>
+            <li><strong>Step 4 Normalisation:</strong> The raw score is converted to 1–10 via a logarithmic scale.</li>
         </ul>
         <div class="tip"><strong>Why logarithmic?</strong> The formula divides Mitigation (max 5) by Risk × Importance (max 25). As a result, most raw scores fall between 0.1 and 0.5. Without correction, 90% of applications would get a final score between 1 and 3, too narrow to compare meaningfully. The logarithmic scale spreads these scores across the full 1–10 range, making differences visible and comparable.</div>
         <p><strong>Rules of thumb:</strong> 7+ = good position (green), 5–7 = acceptable (orange), 3–5 = concerning (dark orange), &lt;3 = critical (red).</p>
         <h3>What does the score mean?</h3>
-        <p>The public values score is not a measure of "how compliant with public values is this application" but of <strong>how urgent is the public values problem</strong>. The score combines three things: how large is the risk, how well can you manage it, and how important is the application.</p>
+        <p>The public values score does not indicate the extent to which an application aligns with public values, but rather <strong>how urgent the risks to public values are</strong>. The score combines three things: the risk, the manageability of that risk, and the strategic importance of the application.</p>
         <p>A <strong>high score</strong> can mean two things: the risks are well mitigated (strong contracts, alternatives available, in-house expertise), or the application has little strategic importance (and thus the public values problem is less urgent). Both situations are positive from a decision-making perspective: no immediate action is needed.</p>
         <p>A <strong>low score</strong> means: there is a combination of high risk, weak mitigation and/or high strategic importance. That calls for action: migrate, mitigate, or consciously accept.</p>
         <div class="tip"><strong>Improving:</strong> Strategic importance (level 3) is largely fixed; an application does not become less important. Improvements lie in <strong>reducing risk exposure</strong> (level 1, e.g. migrating to an EU provider) and <strong>increasing mitigation capacity</strong> (level 2, e.g. developing alternatives, strengthening contracts, building expertise). Use the three level scores separately to identify where the greatest gains can be made.</div>
@@ -1487,14 +1487,14 @@ const I18N = {
     ],
     "help": `
         <h3>Wat is het PVAF?</h3>
-        <p>Het Publieke Waarden Assessment Framework (PVAF; Engels: Public Values Assessment Framework) helpt organisaties om de conformiteit met de <a href="https://www.kennisnet.nl/tools/waardenwijzer/">publieke waarden van het onderwijs</a> van hun applicatielandschap te beoordelen. Het framework meet 30 indicatoren verdeeld over 8 dimensies en 3 analyseniveaus.</p>
+        <p>Het Publieke Waarden Assessment Framework (PVAF; Engels: Public Values Assessment Framework) helpt organisaties bij het beoordelen in hoeverre hun applicatielandschap voldoet aan de <a href="https://www.kennisnet.nl/tools/waardenwijzer/">publieke waarden van het onderwijs</a>. Het framework meet 30 indicatoren verdeeld over 8 dimensies en 3 analyseniveaus.</p>
         <h3>Hoe werkt het?</h3>
         <p>Het assessment verloopt in vier stappen:</p>
         <ul>
-          <li><strong>Applicatie toevoegen:</strong> klik op "+ Applicatie toevoegen" of importeer een lijst via CSV</li>
-          <li><strong>Indicatoren scoren:</strong> geef elke indicator een score van 1 tot 5. Klik op een indicator voor scorebeschrijvingen en toelichting</li>
-          <li><strong>Resultaat bekijken:</strong> scores worden automatisch berekend. Het overzicht toont alle applicaties naast elkaar</li>
-          <li><strong>Exporteren:</strong> sla resultaten op als JSON of CSV</li>
+          <li><strong>Applicatie toevoegen:</strong> klik op "+ Applicatie toevoegen" of importeer een lijst via CSV.</li>
+          <li><strong>Indicatoren scoren:</strong> geef elke indicator een score van 1 tot 5. Klik op een indicator voor scorebeschrijvingen en toelichting.</li>
+          <li><strong>Resultaat bekijken:</strong> scores worden automatisch berekend. Het overzicht toont alle applicaties naast elkaar.</li>
+          <li><strong>Exporteren:</strong> sla resultaten op als JSON of CSV.</li>
         </ul>
         <h3>De drie analyseniveaus</h3>
         <p><strong style="color:var(--sivon-red)">Niveau 1: Risico-exposure</strong> (dimensies A-B). Meet hoe groot het externe risico is. Een lage score (1) betekent weinig risico, een hoge score (5) veel risico.</p>
@@ -1504,15 +1504,15 @@ const I18N = {
         <h3>Berekening</h3>
         <p>De publieke waarden score wordt in vier stappen berekend:</p>
         <ul>
-          <li><strong>Stap 1, Dimensiescore:</strong> Per dimensie het gewogen gemiddelde van de indicatorscores. De weging bepaalt hoeveel invloed elke indicator heeft.</li>
-          <li><strong>Stap 2, Niveauscore:</strong> Per niveau het gemiddelde van de dimensiescores. Dimensies wegen gelijk.</li>
-          <li><strong>Stap 3, Ruwe score:</strong> <code>Mitigatie / (Risico x Belang)</code>. Bereik: 0,04 (worst case) tot 5,0 (best case).</li>
-          <li><strong>Stap 4, Normalisatie:</strong> De ruwe score wordt via een logaritmische schaal omgezet naar 1-10.</li>
+          <li><strong>Stap 1 Dimensiescore:</strong> Per dimensie het gewogen gemiddelde van de indicatorscores. De weging bepaalt hoeveel invloed elke indicator heeft.</li>
+          <li><strong>Stap 2 Niveauscore:</strong> Per niveau het gemiddelde van de dimensiescores. Dimensies wegen gelijk.</li>
+          <li><strong>Stap 3 Ruwe score:</strong> <code>Mitigatie / (Risico x Belang)</code>. Bereik: 0,04 (worst case) tot 5,0 (best case).</li>
+          <li><strong>Stap 4 Normalisatie:</strong> De ruwe score wordt via een logaritmische schaal omgezet naar 1-10.</li>
         </ul>
         <div class="tip"><strong>Waarom logaritmisch?</strong> De formule deelt Mitigatie (max 5) door Risico x Belang (max 25). Daardoor liggen de meeste ruwe scores tussen 0,1 en 0,5. Zonder correctie zou 90% van de applicaties een eindscore tussen 1 en 3 krijgen, onbruikbaar om te vergelijken. De logaritmische schaal spreidt deze scores uit over het hele bereik van 1 tot 10, zodat verschillen tussen applicaties zichtbaar en vergelijkbaar worden.</div>
         <p><strong>Vuistregels:</strong> 7+ = goede positie (groen), 5-7 = acceptabel (oranje), 3-5 = zorgwekkend (donkeroranje), &lt;3 = kritiek (rood).</p>
         <h3>Wat zegt de score?</h3>
-        <p>De publieke waarden score is geen maat voor "hoe conform met de publieke waarden is deze applicatie" maar voor <strong>hoe urgent is het publieke waarden probleem</strong>. De score combineert drie dingen: hoe groot is het risico, hoe goed kun je het beheersen, en hoe belangrijk is de applicatie.</p>
+        <p>De publieke waarden score geeft niet aan in hoeverre een applicatie aansluit bij de publieke waarden maar voor <strong>hoe urgent de risico's voor de publieke waarden zijn</strong>. De score combineert drie dingen: het risico, de beheersbaarheid van dat risico, en het strategisch belang van de applicatie.</p>
         <p>Een <strong>hoge score</strong> kan twee dingen betekenen: de risico's zijn goed gemitigeerd (sterke contracten, alternatieven beschikbaar, kennis in huis), of de applicatie heeft weinig strategisch belang (en dus is het publieke waarden probleem minder urgent). Beide situaties zijn positief vanuit besluitvorming: er is geen acute actie nodig.</p>
         <p>Een <strong>lage score</strong> betekent: er is een combinatie van hoog risico, zwakke mitigatie en/of hoog strategisch belang. Dat vraagt om actie: migreren, mitigeren of bewust accepteren.</p>
         <div class="tip"><strong>Verbeteren:</strong> Strategisch belang (niveau 3) ligt grotendeels vast; een applicatie wordt niet minder belangrijk. Verbeteringen zitten in <strong>Risico-exposure verlagen</strong> (niveau 1, bijv. migreren naar EU-provider) en <strong>Mitigatie-capaciteit verhogen</strong> (niveau 2, bijv. alternatieven ontwikkelen, contracten versterken, kennis opbouwen). Gebruik de drie niveauscores apart om te bepalen waar de grootste winst te behalen is.</div>
@@ -1521,7 +1521,7 @@ const I18N = {
         <h3>Wegingen aanpassen</h3>
         <p>Elke indicator heeft een standaardweging (2 of 3). Via het scherm "Wegingen aanpassen" kun je de wegingen aanpassen (1-5). De weging bepaalt hoeveel invloed een indicator heeft <strong>binnen zijn dimensie</strong>. Bijvoorbeeld: als je C1 (Alternatief beschikbaar) op weging 5 zet en C2 op weging 1, telt C1 vijf keer zo zwaar mee in de dimensiescore van "Technische weerbaarheid". Aangepaste wegingen worden rood weergegeven. Doe dit alleen in overleg met je organisatie of sector om onderlinge vergelijkbaarheid te behouden.</p>
         <h3>Opmerkingen per indicator</h3>
-        <p>Bij elke indicator kun je een opmerking plaatsen om je score te onderbouwen. Dit is optioneel maar aangeraden: het maakt je beoordeling transparant en reproduceerbaar. Opmerkingen worden meegenomen bij JSON-export en -import.</p>
+        <p>Bij elke indicator kun je een opmerking plaatsen om je score te onderbouwen. Dit is optioneel maar raden we wel aan: het maakt je beoordeling transparant en reproduceerbaar. Opmerkingen worden meegenomen bij JSON-export en -import.</p>
         <h3>Quick scan</h3>
         <p>Schakel naar "Quick scan" om alleen de 9 kernindicatoren te tonen (1 per dimensie + A3 Hosting). De berekening werkt identiek, maar is gebaseerd op minder datapunten. De score is <strong>indicatief</strong>; voor een volledige beoordeling gebruik je het volledige assessment.</p>
         <h3>Importeren en exporteren</h3>
@@ -1535,7 +1535,7 @@ const I18N = {
         </ul>
         <h3>Data opslaan</h3>
         <p>Alle ingevulde data wordt automatisch opgeslagen in je browser (localStorage). Je kunt dus je browser sluiten en later verdergaan. Exporteer regelmatig een JSON-backup voor zekerheid.</p>
-        <div class="tip"><strong>Meerdere beoordelaars?</strong> Laat elke beoordelaar het assessment onafhankelijk invullen en exporteer de resultaten als JSON. Een coordinator kan de bestanden importeren en de scores vergelijken in het overzicht.</div>`
+        <div class="tip"><strong>Meerdere beoordelaars?</strong> Laat elke beoordelaar het assessment onafhankelijk invullen en exporteer de resultaten als JSON. Een coördinator kan de bestanden importeren en de scores vergelijken in het overzicht.</div>`
   }
 };
 
