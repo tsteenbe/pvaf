@@ -984,39 +984,9 @@ const QUICK_CODES=new Set(['A1','A3','B1','C1','D1','E1','F1','G1','H1']);
 const LIGHT_CODES=QUICK_CODES; // backward compat
 const VALID_CODES=new Set(INDICATORS.map(i=>i.code));
 
-// === GLOSSARY (tooltips for jargon) ===
-const GLOSSARY = {
-  'EU/EER': 'Europese Unie / Europese Economische Ruimte: de 27 EU-lidstaten plus IJsland, Liechtenstein en Noorwegen. Binnen dit gebied gelden dezelfde regels voor gegevensbescherming (AVG/GDPR).',
-  'CLOUD Act': 'Clarifying Lawful Overseas Use of Data Act (VS, 2018): Amerikaanse wet die de VS-overheid het recht geeft data op te vragen bij Amerikaanse techbedrijven, ook als die data buiten de VS is opgeslagen.',
-  'FISA 702': 'Foreign Intelligence Surveillance Act, Section 702 (VS): staat de NSA toe om zonder huiszoekingsbevel communicatie van niet-Amerikanen buiten de VS te onderscheppen via Amerikaanse techbedrijven.',
-  'adequaatheidsbesluit': 'Besluit van de Europese Commissie dat een land buiten de EU/EER een gelijkwaardig niveau van gegevensbescherming biedt. Hierdoor mag persoonsdata zonder aanvullende waarborgen naar dat land worden doorgegeven.',
-  'Adequaatheidsbesluit': 'Besluit van de Europese Commissie dat een land buiten de EU/EER een gelijkwaardig niveau van gegevensbescherming biedt. Hierdoor mag persoonsdata zonder aanvullende waarborgen naar dat land worden doorgegeven.',
-  'SCCs': 'Standard Contractual Clauses: door de Europese Commissie goedgekeurde modelcontracten die organisaties kunnen gebruiken als juridische basis voor het doorgeven van persoonsdata naar landen buiten de EU/EER.',
-  'extraterritoriale': 'Wetgeving die ook buiten het eigen grondgebied geldt. Bijvoorbeeld: de Amerikaanse CLOUD Act claimt jurisdictie over data van Amerikaanse bedrijven, ongeacht waar die data fysiek is opgeslagen.',
-  'BYOK': 'Bring Your Own Key: een model waarbij de klant zelf de encryptiesleutels beheert en inbrengt bij de cloudleverancier, in plaats van dat de leverancier de sleutels genereert en beheert.',
-  'Client-side encryption': 'Versleuteling die plaatsvindt op het apparaat van de gebruiker, voordat data naar de leverancier wordt verstuurd. De leverancier kan de inhoud niet inzien omdat alleen de klant de sleutels heeft.',
-  'source-available': 'Broncode is publiek inzichtelijk, maar de licentie staat niet toe om de software vrij te gebruiken, aan te passen of te distribueren. Beperkter dan echte open source.',
-  'permissive licentie': 'Open-source licentie met weinig beperkingen (bijv. MIT, Apache 2.0). Staat toe om de software vrij te gebruiken, aan te passen en te distribueren, ook in commerciele producten.',
-  'SLA': 'Service Level Agreement: contractuele afspraken over het minimale serviceniveau, zoals beschikbaarheid (uptime), responstijden en compensatie bij niet-nakoming.',
-  'KPI\'s': 'Key Performance Indicators: meetbare prestatie-indicatoren waarop een leverancier wordt beoordeeld, zoals uptime-percentage, responstijd en doorlooptijd van incidenten.',
-  'DPIA': 'Data Protection Impact Assessment (Gegevensbeschermingseffectbeoordeling): verplichte risicoanalyse onder de AVG bij verwerkingen die een hoog privacyrisico opleveren.',
-  'dual-use': 'Goederen of technologie met zowel civiele als militaire toepassingen. Onderzoeksdata met dual-use karakter kan onder exportcontrole vallen en mag niet onbeperkt gedeeld worden.',
-  'exportcontrole': 'Regelgeving die de uitvoer van bepaalde goederen, software of kennis naar het buitenland beperkt, vaak vanwege veiligheidsbelangen. Relevant voor gevoelig onderzoek.',
-  'proefmigratie': 'Een testmigratie waarbij het volledige overstapproces wordt doorlopen in een testomgeving, om te controleren of data en functionaliteit correct overkomen voordat de echte migratie plaatsvindt.',
-  'API': 'Application Programming Interface: een gestandaardiseerde manier waarop softwaresystemen met elkaar communiceren. Via een API kun je geautomatiseerd data uitwisselen met een dienst.',
-  'open source': 'Software waarvan de broncode vrij beschikbaar is om te bekijken, aan te passen en te distribueren. Voorbeelden: Linux, Firefox, LibreOffice.',
-  'open standaarden': 'Technische specificaties die vrij beschikbaar en leverancieronafhankelijk zijn. Gebruik van open standaarden voorkomt vendor lock-in. Voorbeelden: PDF, HTML, ODF, SQL.',
-  'vendor lock-in': 'Situatie waarin een organisatie zo afhankelijk is van een leverancier dat overstappen naar een alternatief buitensporig duur of complex wordt.',
-  'AVG': 'Algemene Verordening Gegevensbescherming (Engels: GDPR): Europese privacywet die regelt hoe organisaties persoonsgegevens mogen verzamelen, opslaan en verwerken.',
-  'escalatieprocedure': 'Een vooraf afgesproken stapsgewijze procedure als de leverancier niet meewerkt bij vertrek. Bijvoorbeeld: eerst accountmanager, dan management, dan juridische stappen.',
-  'verwijdergarantie': 'Contractuele garantie dat de leverancier na overdracht al jouw data volledig verwijdert van hun systemen, inclusief backups en kopieën.',
-  'boeteclausule': 'Contractuele bepaling die financiële consequenties oplegt als de leverancier zich niet aan de exit-afspraken houdt, bijvoorbeeld een boete per dag vertraging.',
-  'fork': 'Een onafhankelijke kopie van de broncode van een softwareproject. Met een fork kun je de software zelfstandig (laten) doorontwikkelen, onafhankelijk van de oorspronkelijke leverancier of community.',
-  'exit-plan': 'Een exitplan voor een applicatie is een gedocumenteerd plan dat beschrijft hoe een organisatie op een gecontroleerde manier kan overstappen naar een andere applicatie of leverancier, zonder dat er data verloren gaat of de continuïteit in gevaar komt.'
-};
-
 function addTooltips(text) {
-  const terms = Object.keys(GLOSSARY).sort((a,b) => b.length - a.length);
+  const glossary = I18N[lang].glossary;
+  const terms = Object.keys(glossary).sort((a,b) => b.length - a.length);
   let result = text;
   const used = new Set();
   for (const term of terms) {
@@ -1027,7 +997,7 @@ function addTooltips(text) {
     const key = term.toLowerCase();
     if (used.has(key)) continue;
     used.add(key);
-    const tipText = GLOSSARY[term].replace(/"/g, '&quot;');
+    const tipText = glossary[term].replace(/"/g, '&quot;');
     result = result.substring(0, idx) + `<span class="tt" data-tip="${tipText}">${term}</span>` + result.substring(idx + term.length);
   }
   return result;
@@ -1308,7 +1278,36 @@ const I18N = {
         </ul>
         <h3>Saving data</h3>
         <p>All entered data is automatically saved in your browser (localStorage). You can close your browser and continue later. Export a JSON backup regularly for safety.</p>
-        <div class="tip"><strong>Multiple assessors?</strong> Have each assessor complete the assessment independently and export the results as JSON. A coordinator can import the files and compare scores in the overview.</div>`
+        <div class="tip"><strong>Multiple assessors?</strong> Have each assessor complete the assessment independently and export the results as JSON. A coordinator can import the files and compare scores in the overview.</div>`,
+    "glossary": {
+      "adequacy decision":  "A European Commission decision establishing that a country outside the EU/EEA offers an equivalent level of data protection. This allows personal data to be transferred to that country without additional safeguards.",
+      "Adequacy decision": "A European Commission decision establishing that a country outside the EU/EEA offers an equivalent level of data protection. This allows personal data to be transferred to that country without additional safeguards.",
+      "API": "Application Programming Interface: a standardised way for software systems to communicate with each other. Via an API you can automatically exchange data with a service.",
+      "BYOK": "Bring Your Own Key: a model where the customer manages and supplies their own encryption keys to the cloud provider, rather than the provider generating and managing the keys.",
+      "Client-side encryption": "Encryption that takes place on the user's device before data is sent to the provider. The provider cannot access the content because only the customer holds the keys.",
+      "CLOUD Act": "Clarifying Lawful Overseas Use of Data Act (US, 2018): US law giving the US government the right to request data from US tech companies, even if that data is stored outside the US.",
+      "deletion guarantee": "A contractual guarantee that the provider will fully delete all your data from their systems after transfer, including backups and copies.",
+      "DPIA": "Data Protection Impact Assessment: a mandatory risk analysis under the GDPR for processing operations that present a high privacy risk.",
+      "dual-use": "Goods or technology with both civilian and military applications. Research data with dual-use characteristics may be subject to export controls and cannot be shared freely.",
+      "escalation procedure": "A pre-agreed step-by-step procedure if the provider does not cooperate at exit. For example: first account manager, then management, then legal steps.",
+      "EU/EEA": "European Union / European Economic Area: the 27 EU member states plus Iceland, Liechtenstein and Norway. The same data protection rules (GDPR) apply throughout this area.",
+      "exit plan": "A documented plan describing how an organisation can switch to another application or provider in a controlled manner, without data loss or disruption to continuity.",
+      "export control": "Regulations restricting the export of certain goods, software or knowledge abroad, often for security reasons. Relevant for sensitive research.",
+      "extraterritorial": "Legislation that applies beyond a country's own territory. For example: the US CLOUD Act claims jurisdiction over data held by US companies, regardless of where that data is physically stored.",
+      "FISA 702": "Foreign Intelligence Surveillance Act, Section 702 (US): allows the NSA to intercept communications of non-Americans outside the US via US tech companies, without a search warrant.",
+      "fork": "An independent copy of a software project's source code. A fork allows the software to be developed independently, without reliance on the original provider or community.",
+      "GDPR": "General Data Protection Regulation: European privacy law governing how organisations may collect, store and process personal data.",
+      "KPIs": "Key Performance Indicators: measurable performance metrics by which a provider is assessed, such as uptime percentage, response time and incident resolution time.",
+      "open source": "Software whose source code is freely available to view, modify and distribute. Examples: Linux, Firefox, LibreOffice.",
+      "open standards": "Technical specifications that are freely available and vendor-independent. Using open standards prevents vendor lock-in. Examples: PDF, HTML, ODF, SQL.",
+      "penalty clause": "A contractual provision imposing financial consequences if the provider fails to comply with exit agreements, for example a fine per day of delay.",
+      "permissive license": "An open source license with few restrictions (e.g. MIT, Apache 2.0). Allows the software to be freely used, modified and distributed, including in commercial products.",
+      "SCCs": "Standard Contractual Clauses: model contracts approved by the European Commission that organisations can use as a legal basis for transferring personal data to countries outside the EU/EEA.",
+      "SLA": "Service Level Agreement: contractual commitments regarding the minimum service level, such as availability (uptime), response times and compensation for non-compliance.",
+      "source-available": "Source code that is publicly viewable, but the license does not permit free use, modification or distribution. More restrictive than true open source.",
+      "trial migration": "A test migration where the complete transition process is carried out in a test environment, to verify that data and functionality transfer correctly before the actual migration.",
+      "vendor lock-in": "A situation where an organisation is so dependent on a provider that switching to an alternative becomes disproportionately expensive or complex."
+    }
   },
   "nl": {
     "ui": {
@@ -1536,7 +1535,36 @@ const I18N = {
         </ul>
         <h3>Data opslaan</h3>
         <p>Alle ingevulde data wordt automatisch opgeslagen in je browser (localStorage). Je kunt dus je browser sluiten en later verdergaan. Exporteer regelmatig een JSON-backup voor zekerheid.</p>
-        <div class="tip"><strong>Meerdere beoordelaars?</strong> Laat elke beoordelaar het assessment onafhankelijk invullen en exporteer de resultaten als JSON. Een coördinator kan de bestanden importeren en de scores vergelijken in het overzicht.</div>`
+        <div class="tip"><strong>Meerdere beoordelaars?</strong> Laat elke beoordelaar het assessment onafhankelijk invullen en exporteer de resultaten als JSON. Een coördinator kan de bestanden importeren en de scores vergelijken in het overzicht.</div>`,
+    "glossary": {
+      "adequaatheidsbesluit": "Besluit van de Europese Commissie dat een land buiten de EU/EER een gelijkwaardig niveau van gegevensbescherming biedt. Hierdoor mag persoonsdata zonder aanvullende waarborgen naar dat land worden doorgegeven.",
+      "Adequaatheidsbesluit": "Besluit van de Europese Commissie dat een land buiten de EU/EER een gelijkwaardig niveau van gegevensbescherming biedt. Hierdoor mag persoonsdata zonder aanvullende waarborgen naar dat land worden doorgegeven.",
+      "API": "Application Programming Interface: een gestandaardiseerde manier waarop softwaresystemen met elkaar communiceren. Via een API kun je geautomatiseerd data uitwisselen met een dienst.",
+      "AVG": "Algemene Verordening Gegevensbescherming (Engels: GDPR): Europese privacywet die regelt hoe organisaties persoonsgegevens mogen verzamelen, opslaan en verwerken.",
+      "boeteclausule": "Contractuele bepaling die financiële consequenties oplegt als de leverancier zich niet aan de exit-afspraken houdt, bijvoorbeeld een boete per dag vertraging.",
+      "BYOK": "Bring Your Own Key: een model waarbij de klant zelf de encryptiesleutels beheert en inbrengt bij de cloudleverancier, in plaats van dat de leverancier de sleutels genereert en beheert.",
+      "Client-side encryption": "Versleuteling die plaatsvindt op het apparaat van de gebruiker, voordat data naar de leverancier wordt verstuurd. De leverancier kan de inhoud niet inzien omdat alleen de klant de sleutels heeft.",
+      "CLOUD Act": "Clarifying Lawful Overseas Use of Data Act (VS, 2018): Amerikaanse wet die de VS-overheid het recht geeft data op te vragen bij Amerikaanse techbedrijven, ook als die data buiten de VS is opgeslagen.",
+      "DPIA": "Data Protection Impact Assessment (Gegevensbeschermingseffectbeoordeling): verplichte risicoanalyse onder de AVG bij verwerkingen die een hoog privacyrisico opleveren.",
+      "dual-use": "Goederen of technologie met zowel civiele als militaire toepassingen. Onderzoeksdata met dual-use karakter kan onder exportcontrole vallen en mag niet onbeperkt gedeeld worden.",
+      "escalatieprocedure": "Een vooraf afgesproken stapsgewijze procedure als de leverancier niet meewerkt bij vertrek. Bijvoorbeeld: eerst accountmanager, dan management, dan juridische stappen.",
+      "EU/EER": "Europese Unie / Europese Economische Ruimte: de 27 EU-lidstaten plus IJsland, Liechtenstein en Noorwegen. Binnen dit gebied gelden dezelfde regels voor gegevensbescherming (AVG/GDPR).",
+      "exit-plan": "Een exitplan voor een applicatie is een gedocumenteerd plan dat beschrijft hoe een organisatie op een gecontroleerde manier kan overstappen naar een andere applicatie of leverancier, zonder dat er data verloren gaat of de continuïteit in gevaar komt.",
+      "exportcontrole": "Regelgeving die de uitvoer van bepaalde goederen, software of kennis naar het buitenland beperkt, vaak vanwege veiligheidsbelangen. Relevant voor gevoelig onderzoek.",
+      "extraterritoriale": "Wetgeving die ook buiten het eigen grondgebied geldt. Bijvoorbeeld: de Amerikaanse CLOUD Act claimt jurisdictie over data van Amerikaanse bedrijven, ongeacht waar die data fysiek is opgeslagen.",
+      "FISA 702": "Foreign Intelligence Surveillance Act, Section 702 (VS): staat de NSA toe om zonder huiszoekingsbevel communicatie van niet-Amerikanen buiten de VS te onderscheppen via Amerikaanse techbedrijven.",
+      "fork": "Een onafhankelijke kopie van de broncode van een softwareproject. Met een fork kun je de software zelfstandig (laten) doorontwikkelen, onafhankelijk van de oorspronkelijke leverancier of community.",
+      "KPI's": "Key Performance Indicators: meetbare prestatie-indicatoren waarop een leverancier wordt beoordeeld, zoals uptime-percentage, responstijd en doorlooptijd van incidenten.",
+      "open source": "Software waarvan de broncode vrij beschikbaar is om te bekijken, aan te passen en te distribueren. Voorbeelden: Linux, Firefox, LibreOffice.",
+      "open standaarden": "Technische specificaties die vrij beschikbaar en leverancieronafhankelijk zijn. Gebruik van open standaarden voorkomt vendor lock-in. Voorbeelden: PDF, HTML, ODF, SQL.",
+      "permissive licentie": "Open source licentie met weinig beperkingen (bijv. MIT, Apache 2.0). Staat toe om de software vrij te gebruiken, aan te passen en te distribueren, ook in commerciele producten.",
+      "proefmigratie": "Een testmigratie waarbij het volledige overstapproces wordt doorlopen in een testomgeving, om te controleren of data en functionaliteit correct overkomen voordat de echte migratie plaatsvindt.",
+      "SCCs": "Standard Contractual Clauses: door de Europese Commissie goedgekeurde modelcontracten die organisaties kunnen gebruiken als juridische basis voor het doorgeven van persoonsdata naar landen buiten de EU/EER.",
+      "SLA": "Service Level Agreement: contractuele afspraken over het minimale serviceniveau, zoals beschikbaarheid (uptime), responstijden en compensatie bij niet-nakoming.",
+      "source-available": "Broncode is publiek inzichtelijk, maar de licentie staat niet toe om de software vrij te gebruiken, aan te passen of te distribueren. Beperkter dan echte open source.",
+      "vendor lock-in": "Situatie waarin een organisatie zo afhankelijk is van een leverancier dat overstappen naar een alternatief buitensporig duur of complex wordt.",
+      "verwijdergarantie": "Contractuele garantie dat de leverancier na overdracht al jouw data volledig verwijdert van hun systemen, inclusief backups en kopieën."
+    }
   }
 };
 
