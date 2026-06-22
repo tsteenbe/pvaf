@@ -1820,10 +1820,10 @@ const I18N = {
       "overviewQuadrantHigh": "Hoog",
       "overviewQuadrantLow": "Laag",
       "overviewQuadrantManageable": "BEHEERSBAAR",
-      "overviewQuadrantManageableDesc": "Risico's geaccepteerd<br>nmet goede fallback",
+      "overviewQuadrantManageableDescHtml": "Risico's geaccepteerd<br>nmet goede fallback",
       "overviewQuadrantMitigation": "Mitigatie",
       "overviewQuadrantOptimal": "OPTIMAAL",
-      "overviewQuadrantOptimalDesc": "Behoud huidige situatie,<br>monitor periodiek",
+      "overviewQuadrantOptimalDescHtml": "Behoud huidige situatie,<br>monitor periodiek",
       "overviewQuadrantTitle": "Publieke Waarden-kwadrant",
       "overviewQuadrantXLabel": "Risico-exposure x Strategisch belang",
       "overviewQuadrantYLabel": "Mitigatie",
@@ -1888,6 +1888,8 @@ function applyI18n(root = document) {
 function changeLanguage(nextLang) {
   setLang(nextLang);
   if (state.currentView && state.currentView !== 'overview') renderAppView(state.currentView);
+  rebuildTabs();
+  renderOverview();
   applyI18n();
 }
 
@@ -2176,7 +2178,7 @@ function duplicateApp(id) {
 // === VIEWS ===
 function rebuildTabs() {
   const bar = document.getElementById('tabBar');
-  let h = '<button class="tab overview'+(state.currentView==='overview'?' active':'')+'" onclick="showView(\'overview\')" data-i18n="ui.overviewBtn">Overzicht</button>';
+  let h = `<button class="tab overview ${(state.currentView==='overview'?' active':'')}" onclick="showView('overview')">${t('ui.overviewBtn')}</button>`;
   const pendingIds = new Set(pendingDeletes.map(p=>p.id));
   for (const id of state.order) {
     if (pendingIds.has(id)) continue;
@@ -2213,7 +2215,7 @@ function showView(id) {
 function renderOverview() {
   const c = document.getElementById('overviewContent');
   if (state.order.length===0) {
-    c.innerHTML = '<div style="text-align:center;padding:3rem;color:#bbb"><p style="font-size:1.2rem;margin-bottom:0.5rem" data-i18n="ui.overviewNoApps">Nog geen applicaties beoordeeld</p><p style="font-size:0.85rem" data-i18n-html="ui.overviewNoAppsHintHtml">Klik op <strong>+ Applicatie toevoegen</strong> om te beginnen, of importeer een applicatielijst via CSV.</p></div>';
+    c.innerHTML = `<div style="text-align:center;padding:3rem;color:#bbb"><p style="font-size:1.2rem;margin-bottom:0.5rem">${t('ui.overviewNoApps')}</p><p style="font-size:0.85rem">${t('ui.overviewNoAppsHintHtml')}</p></div>`;
     return;
   }
   const pendingIds = new Set(pendingDeletes.map(p=>p.id));
@@ -2225,22 +2227,22 @@ function renderOverview() {
     const daysSince = (Date.now() - lastAction) / (1000 * 60 * 60 * 24);
     if (daysSince >= 7 || lastAction === 0) {
       h += '<div class="export-reminder" id="exportReminder">';
-      h += '<span><span data-i18n="ui.exportReminderText1>Je hebt </span><strong>' + visibleOrder.length + '<span data-i18n="ui.exportReminderText2"> applicaties</span></strong><span data-i18n="ui.exportReminderText3"> in je browser opgeslagen. Exporteer regelmatig naar JSON om je werk niet kwijt te raken.</span></span>';
-      h += '<span style="display:flex;gap:0.4rem;align-items:center"><button class="er-export" data-i18n="ui.exportReminderExportBtn" onclick="exportAllAndDismissReminder()">Exporteer nu</button>';
-      h += '<button class="er-close" data-i18n-attr="title:ui.exportReminderDismissTitle" onclick="dismissExportReminder()" title="Herinner me later">&times;</button></span>';
+      h += `<span>${t('ui.exportReminderText1')}<strong>${visibleOrder.length} ${t('ui.exportReminderText2')}</strong>${t('ui.exportReminderText3')}</span>`;
+      h += `<span style="display:flex;gap:0.4rem;align-items:center"><button class="er-export" onclick="exportAllAndDismissReminder()">${t('ui.exportReminderExportBtn')}</button>`;
+      h += `<button class="er-close" onclick="dismissExportReminder()" title="${t('ui.exportReminderDismissTitle')}">&times;</button></span>`;
       h += '</div>';
     }
   }
-  h += '<div class="bulk-bar" id="bulkBar" style="display:none"><button class="hbtn primary" onclick="bulkDeleteSelected()" data-i18n="ui.overviewTableDeleteSelectedBtn">Verwijder geselecteerde</button><span id="bulkCount"></span></div>';
-  h += '<table class="overview-grid"><tr><th><input type="checkbox" id="selectAll" onchange="toggleSelectAll(this)"></th>';
-  h += '<th data-i18n="ui.overviewTableHeaderApp">Applicatie</th>';
-  h += '<th data-i18n="ui.overviewTableHeaderId">ID</th>';
-  h += '<th data-i18n="ui.overviewTableHeaderProgress">Voortgang</th>';
-  h += '<th data-i18n="ui.overviewTableHeaderScore">Score (1-10)</th>';
-  h += '<th data-i18n="ui.overviewTableHeaderRisk">Risico</th>';
-  h += '<th data-i18n="ui.overviewTableHeaderMitigation">Mitigatie</th>';
-  h += '<th data-i18n="ui.overviewTableHeaderImportance">Belang</th>';
-  h += '<th data-i18n="ui.overviewTableHeaderRawScore">Ruwe score</th>';
+  h += `<div class="bulk-bar" id="bulkBar" style="display:none"><button class="hbtn primary" onclick="bulkDeleteSelected()">${t('ui.overviewTableDeleteSelectedBtn')}</button><span id="bulkCount"></span></div>`;
+  h += `<table class="overview-grid"><tr><th><input type="checkbox" id="selectAll" onchange="toggleSelectAll(this)"></th>`;
+  h += `<th>${t('ui.overviewTableHeaderApp')}</th>`;
+  h += `<th>${t('ui.overviewTableHeaderId')}</th>`;
+  h += `<th>${t('ui.overviewTableHeaderProgress')}</th>`;
+  h += `<th>${t('ui.overviewTableHeaderScore')}</th>`;
+  h += `<th>${t('ui.overviewTableHeaderRisk')}</th>`;
+  h += `<th>${t('ui.overviewTableHeaderMitigation')}</th>`;
+  h += `<th>${t('ui.overviewTableHeaderImportance')}</th>`;
+  h += `<th>${t('ui.overviewTableHeaderRawScore')}</th>`;
   h += '<th></th></tr>';
   for (const id of visibleOrder) {
     const app = state.apps[id];
@@ -2258,27 +2260,27 @@ function renderOverview() {
     h += `<td style="font-size:0.75rem;color:var(--green)">${res.lvls.mitigation?res.lvls.mitigation.toFixed(2):'--'}</td>`;
     h += `<td style="font-size:0.75rem;color:var(--orange)">${res.lvls.importance?res.lvls.importance.toFixed(2):'--'}</td>`;
     h += `<td style="font-size:0.72rem;color:#aaa">${res.raw?res.raw.toFixed(3):'--'}</td>`;
-    h += `<td><button class="hbtn" style="font-size:0.65rem;padding:0.2rem 0.5rem;color:#888;background:#f5f5f5" onclick="duplicateApp('${id}')" data-i18n="ui.overviewTableCopyBtn">Kopieer</button></td>`;
+    h += `<td><button class="hbtn" style="font-size:0.65rem;padding:0.2rem 0.5rem;color:#888;background:#f5f5f5" onclick="duplicateApp('${id}')">${t('ui.overviewTableCopyBtn')}</button></td>`;
     h += `</tr>`;
   }
   h += '</table>';
 
   // === QUADRANT ===
-  h += `<div class="quadrant-wrap"><h3 class="sivon" data-i18n="ui.overviewQuadrantTitle">Publieke Waarden-kwadrant</h3>`;
-  h += `<div class="q-xticks-row"><div class="q-side-spacer"></div><div class="q-xticks"><span data-i18n="ui.overviewQuadrantLow">Laag</span><span></span><span data-i18n="ui.overviewQuadrantHigh">Hoog</span></div></div>`;
+  h += `<div class="quadrant-wrap"><h3 class="sivon">${t('ui.overviewQuadrantTitle')}</h3>`;
+  h += `<div class="q-xticks-row"><div class="q-side-spacer"></div><div class="q-xticks"><span>${t('ui.overviewQuadrantLow')}</span><span></span><span>${t('ui.overviewQuadrantHigh')}</span></div></div>`;
   h += `<div class="quadrant-outer">`;
-  h += `<div class="q-ylabel" data-i18n="ui.overviewQuadrantMitigation">Mitigatie</div>`;
-  h += `<div class="q-yticks"><span data-i18n="ui.overviewQuadrantHigh">Hoog</span><span data-i18n="ui.overviewQuadrantLow">Laag</span></div>`;
+  h += `<div class="q-ylabel">${t('ui.overviewQuadrantMitigation')}</div>`;
+  h += `<div class="q-yticks"><span>${t('ui.overviewQuadrantHigh')}</span><span>${t('ui.overviewQuadrantLow')}</span></div>`;
   h += `<div class="q-main">`;
   h += `<div class="quadrant-grid" id="quadrantGrid">`;
-  h += `<div class="q-cell q-tl"><div class="q-label" data-i18n="ui.overviewQuadrantOptimal">OPTIMAAL</div><div class="q-desc" data-i18n-html="ui.overviewQuadrantOptimalDescHtml">Behoud huidige situatie,<br>monitor periodiek</div></div>`;
-  h += `<div class="q-cell q-tr"><div class="q-label" data-i18n="ui.overviewQuadrantManageable">BEHEERSBAAR</div><div class="q-desc" data-i18n-html="ui.overviewQuadrantManageableDescHtml">Risico's geaccepteerd<br>met goede fallback</div></div>`;
-  h += `<div class="q-cell q-bl"><div class="q-label" data-i18n="ui.overviewQuadrantAttention">AANDACHTSPUNT</div><div class="q-desc" data-i18n-html="ui.overviewQuadrantAttentionDescHtml">Bouw mitigatie op of<br>accepteer risico bewust</div></div>`;
-  h += `<div class="q-cell q-br"><div class="q-label" data-i18n="ui.overviewQuadrantCritical">KRITIEK</div><div class="q-desc" data-i18n-html="ui.overviewQuadrantCriticalDescHtml">Urgente actie vereist:<br>migreer of mitigeer</div></div>`;
+  h += `<div class="q-cell q-tl"><div class="q-label">${t('ui.overviewQuadrantOptimal')}</div><div class="q-desc">${t('ui.overviewQuadrantOptimalDescHtml')}</div></div>`;
+  h += `<div class="q-cell q-tr"><div class="q-label">${t('ui.overviewQuadrantManageable')}</div><div class="q-desc">${t('ui.overviewQuadrantManageableDescHtml')}</div></div>`;
+  h += `<div class="q-cell q-bl"><div class="q-label">${t('ui.overviewQuadrantAttention')}</div><div class="q-desc">${t('ui.overviewQuadrantAttentionDescHtml')}</div></div>`;
+  h += `<div class="q-cell q-br"><div class="q-label">${t('ui.overviewQuadrantCritical')}</div><div class="q-desc">${t('ui.overviewQuadrantCriticalDescHtml')}</div></div>`;
   h += `<div class="q-dots-layer" id="quadrantDots"></div>`;
   h += `</div>`;
   h += `</div></div>`;
-  h += `<div class="q-xlabel" data-i18n="ui.overviewQuadrantXLabel">Risico-exposure x Strategisch belang</div>`;
+  h += `<div class="q-xlabel">${t('ui.overviewQuadrantXLabel')}</div>`;
   // Legend
   h += `<div class="q-legend">`;
   const plotted = [];
@@ -2293,10 +2295,10 @@ function renderOverview() {
   for (const p of plotted) {
     h += `<span><span class="q-legend-dot"></span>${p.num}. ${esc(p.name)}</span>`;
   }
-  if (plotted.length===0) h += `<span style="color:#bbb" data-i18n="ui.overviewQuadrantEmptyHint">Vul minimaal alle dimensies in om applicaties in het kwadrant te plotten</span>`;
+  if (plotted.length===0) h += `<span style="color:#bbb">${t('ui.overviewQuadrantEmptyHint')}</span>`;
   h += `</div>`;
 
-  h += `<div class="formula-box" style="margin-top:0.6rem" data-i18n-html="ui.overviewQuadrantFormulaBoxLabelHtml"><strong>Berekening:</strong> Per indicator score (1-5) x weging. Per dimensie gewogen gemiddelde. Per niveau gemiddelde van dimensies. <code>Ruwe score = Mitigatie / (Risico x Belang)</code>. Genormaliseerd naar 1-10 via logaritmische schaal.</div>`;
+  h += `<div class="formula-box" style="margin-top:0.6rem">${t('ui.overviewQuadrantFormulaBoxLabelHtml')}</div>`;
   h += `</div>`;
   c.innerHTML = h;
 
