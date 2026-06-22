@@ -12,18 +12,21 @@ The Public Values Assessment Framework (PVAF) is a structured approach to assess
 2. **Mitigation capacity**: what measures are in place to manage those risks?
 3. **Strategic importance**: how critical is the application to the organisation?
 
-This tool implements the framework as an interactive, browser-based assessment. Based on 30 indicators across 8 dimensions, it calculates an public values score (1-10) per application. Results are presented in a summary table and an public values quadrant that provides immediate insight into which applications require attention.
-
-> **Note:** The tool interface is currently in Dutch. An English version is planned for a future release.
+This tool implements the framework as an interactive, browser-based assessment. Based on 30 indicators across 8 dimensions, it calculates a public values score (1-10) per application. Results are presented in a summary table and a public values quadrant that provides immediate insight into which applications require attention.
 
 ## Features
 
 - Fully client-side: runs entirely in the browser, no server required
 - Data is stored locally in the browser (localStorage)
-- Quick scan (9 indicators) and full assessment (22 indicators)
+- Quick scan (9 indicators) and full assessment (30 indicators)
 - Assess and compare multiple applications side by side
 - Import/export via JSON and CSV
 - Guided scoring with rubrics per indicator
+- Adjustable indicator weights per application
+- Quick delete with undo and bulk delete
+- Export reminder to prevent data loss
+- Changelog viewer for version history
+- Multi-language interface: Danish, Dutch, English, French, German, Italian and Spanish
 
 ## Usage
 
@@ -31,7 +34,7 @@ Open `index.html` in a browser of your choice.
 
 ### Getting started
 
-1. Click "Nieuwe applicatie" (New application) and enter a name
+1. Click "Add Application" and enter a name
 2. Choose Quick scan or Full assessment
 3. Score each indicator using the provided rubrics
 4. View the results in the overview table and public values quadrant
