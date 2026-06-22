@@ -6276,9 +6276,13 @@ if (state.currentView && state.currentView !== 'overview' && state.apps[state.cu
 } else {
   showView('overview');
 }
-updateChangelogDot();
-if (localStorage.getItem('pvaf_lastSeenVersion') !== CURRENT_VERSION) {
-  showChangelog();
+if (localStorage.getItem('pvaf_lastSeenVersion') !== null) {
+  updateChangelogDot();
+  if (localStorage.getItem('pvaf_lastSeenVersion') !== CURRENT_VERSION) {
+    showChangelog();
+  }
+} else {
+  localStorage.setItem('pvaf_lastSeenVersion', CURRENT_VERSION);
 }
 setLang(lang);
 applyI18n();
