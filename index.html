@@ -358,6 +358,7 @@
     <div class="dropdown">
       <button class="hbtn language-btn" onclick="toggleDropdown('languageMenu')"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="#000000" stroke-width="2" d="M12,23 C18.0751322,23 23,18.0751322 23,12 C23,5.92486775 18.0751322,1 12,1 C5.92486775,1 1,5.92486775 1,12 C1,18.0751322 5.92486775,23 12,23 Z M12,23 C15,23 16,18 16,12 C16,6 15,1 12,1 C9,1 8,6 8,12 C8,18 9,23 12,23 Z M2,16 L22,16 M2,8 L22,8"/></svg></button>
       <div class="dropdown-menu" id="languageMenu">
+        <button class="dropdown-item" onclick="changeLanguage('da');closeDropdowns();">Dansk</button>
         <button class="dropdown-item" onclick="changeLanguage('en');closeDropdowns();">English</button>
         <button class="dropdown-item" onclick="changeLanguage('nl');closeDropdowns();">Nederlands</button>
       </div>
@@ -554,7 +555,7 @@ document.addEventListener('mouseout', e => {
 
 // === LOCALIZATION ===
 
-const LOCALES = ['en', 'nl'];
+const LOCALES = ['da', 'en', 'nl'];
 
 function detectBrowserLang() {
   for (const l of (navigator.languages || [navigator.language])) {
@@ -566,6 +567,656 @@ function detectBrowserLang() {
 
 let lang = localStorage.getItem('pvaf_lang') || detectBrowserLang();
 const I18N = {
+    "da": {
+    "changelog": [
+        {
+        "version": "0.8.2",
+        "date": "2026-06-01",
+        "items": [
+            "<strong>Hurtig sletning:</strong> fjern applikationer uden bekræftelsesdialog, med 10 sekunder til at fortryde.",
+            "<strong>Massesletning:</strong> vælg flere applikationer i oversigten og slet dem på én gang.",
+            "<strong>Eksportpåmindelse:</strong> en notifikation når du har 3 eller flere applikationer og ikke har eksporteret i mere end en uge.",
+            "<strong>Ændringslog:</strong> se versionshistorik via knappen i værktøjslinjen."
+        ]
+        },
+        {
+        "version": "0.8.1",
+        "date": "2026-03-15",
+        "items": [
+            "<strong>Hurtig scanning:</strong> vurder applikationer hurtigt med 9 kerneindiktatorer.",
+            "<strong>Autonomikvadrant:</strong> visuel oversigt over risikoeksponering vs. afbødning.",
+            "<strong>Justerbare vægte:</strong> juster indikatorvægte per applikation.",
+            "<strong>JSON og CSV eksport:</strong> eksporter alle vurderinger i flere formater.",
+            "<strong>Ordliste:</strong> værktøjstip med forklaringer til tekniske termer i rubrikker."
+        ]
+        },
+        {
+        "version": "0.8.0",
+        "date": "2026-02-01",
+        "items": [
+            "<strong>Første offentlige version:</strong> 22 indikatorer, 8 dimensioner, 3 niveauer.",
+            "<strong>Lokal lagring:</strong> vurderinger gemmes automatisk i browseren."
+        ]
+        }
+    ],
+    "file": {
+        "columnApplication": "Applikation",
+        "columnAssessedAppAssessors": "Vurderer(e)",
+        "columnAssessedAppDate": "Dato",
+        "columnAssessedAppId": "Applikations-ID",
+        "columnAssessedAppName": "Applikationsnavn",
+        "columnAssessor": "Vurderer",
+        "columnCode": "Kode",
+        "columnDimension": "Dimension",
+        "columnDimScore": "Dimensionsscore",
+        "columnImportance": "Strategisk vigtighed",
+        "columnIndicator": "Indikator",
+        "columnLvlScore": "Niveauscore",
+        "columnMitigation": "Afbødningskapacitet",
+        "columnPvScore": "Score for offentlige værdier (1-10)",
+        "columnRaw": "Råscore",
+        "columnRisk": "Risikoeksponering",
+        "columnScore": "Score",
+        "columnWeighted": "Vægtet",
+        "columnWeights": "Vægte",
+        "optional": "valgfri",
+        "scoreRowDimAName": "Geopolitisk og juridisk overholdelses risiko",
+        "scoreRowDimBName": "Leverandør- og forsyningskædeafhængigheder",
+        "scoreRowDimCName": "Teknisk robusthed",
+        "scoreRowDimDName": "Organisatorisk robusthed",
+        "scoreRowDimEName": "Kontraktmæssig robusthed",
+        "scoreRowDimFName": "Organisatorisk vigtighed",
+        "scoreRowDimGName": "Datafølsomhed, adgangsstyring og politik",
+        "scoreRowDimHName": "Uddannelsesindvirkning",
+        "unnamed": "Unavngivet"
+    },
+    "glossary": {
+        "adequacy decision":  "En afgørelse fra Europa-Kommissionen om, at et land uden for EU/EØS tilbyder et tilsvarende niveau for databeskyttelse. Dette giver mulighed for at overføre personoplysninger til det pågældende land uden yderligere sikkerhedsforanstaltninger.",
+        "Adequacy decision": "En afgørelse fra Europa-Kommissionen om, at et land uden for EU/EØS tilbyder et tilsvarende niveau for databeskyttelse. Dette giver mulighed for at overføre personoplysninger til det pågældende land uden yderligere sikkerhedsforanstaltninger.",
+        "API": "Application Programming Interface: en standardiseret måde for softwaresystemer at kommunikere med hinanden på. Via en API kan du automatisk udveksle data med en tjeneste.",
+        "BYOK": "Bring Your Own Key: en model, hvor kunden administrerer og leverer sine egne krypteringsnøgler til cloud-udbyderen, i stedet for at udbyderen genererer og administrerer nøglerne.",
+        "Client-side encryption": "Kryptering, der finder sted på brugerens enhed, inden data sendes til udbyderen. Udbyderen kan ikke tilgå indholdet, fordi kun kunden besidder nøglerne.",
+        "CLOUD Act": "Clarifying Lawful Overseas Use of Data Act (USA, 2018): amerikansk lov, der giver den amerikanske regering ret til at anmode om data fra amerikanske teknologivirksomheder, selv hvis data er lagret uden for USA.",
+        "deletion guarantee": "En kontraktmæssig garanti for, at udbyderen fuldt ud sletter alle dine data fra deres systemer efter overførslen, herunder sikkerhedskopier og kopier.",
+        "DPIA": "Data Protection Impact Assessment: en obligatorisk risikoanalyse i henhold til GDPR for behandlingsoperationer, der udgør en høj privatlivsrisiko.",
+        "dual-use": "Varer eller teknologi med både civile og militære anvendelser. Forskningsdata med dual-use-karakteristika kan være underlagt eksportkontrol og kan ikke deles frit.",
+        "escalation procedure": "En på forhånd aftalt trinvis procedure, hvis udbyderen ikke samarbejder ved exit. For eksempel: først accountmanager, derefter ledelse, derefter juridiske skridt.",
+        "EU/EEA": "Den Europæiske Union / Det Europæiske Økonomiske Samarbejdsområde: de 27 EU-medlemsstater plus Island, Liechtenstein og Norge. De samme databeskyttelsesregler (GDPR) gælder i hele dette område.",
+        "exit plan": "En dokumenteret plan, der beskriver, hvordan en organisation kan skifte til en anden applikation eller udbyder på en kontrolleret måde, uden datatab eller afbrydelse af driften.",
+        "export control": "Regler, der begrænser eksporten af visse varer, software eller viden til udlandet, ofte af sikkerhedsmæssige årsager. Relevant for følsom forskning.",
+        "extraterritorial": "Lovgivning, der gælder ud over et lands eget territorium. For eksempel: den amerikanske CLOUD Act kræver jurisdiktion over data, der opbevares af amerikanske virksomheder, uanset hvor disse data fysisk befinder sig.",
+        "FISA 702": "Foreign Intelligence Surveillance Act, Section 702 (USA): giver NSA tilladelse til at opsnappe kommunikation fra ikke-amerikanere uden for USA via amerikanske teknologivirksomheder, uden en retskendelse.",
+        "fork": "En uafhængig kopi af et softwareprojekts kildekode. En fork giver mulighed for at udvikle softwaren uafhængigt, uden afhængighed af den originale udbyder eller fællesskab.",
+        "GDPR": "General Data Protection Regulation: europæisk privatlivslov, der regulerer, hvordan organisationer må indsamle, lagre og behandle personoplysninger.",
+        "KPIs": "Key Performance Indicators: målbare præstationsmålinger, som en udbyder vurderes efter, såsom oppetidsprocent, svartid og tid til løsning af hændelser.",
+        "open source": "Software, hvis kildekode frit kan ses, ændres og distribueres. Eksempler: Linux, Firefox, LibreOffice.",
+        "open standards": "Tekniske specifikationer, der er frit tilgængelige og leverandøruafhængige. Brug af åbne standarder forhindrer leverandørafhængighed. Eksempler: PDF, HTML, ODF, SQL.",
+        "penalty clause": "En kontraktmæssig bestemmelse, der pålægger finansielle konsekvenser, hvis udbyderen ikke overholder exit-aftaler, for eksempel en bøde pr. dags forsinkelse.",
+        "permissive license": "En open source-licens med få begrænsninger (f.eks. MIT, Apache 2.0). Giver mulighed for frit at bruge, ændre og distribuere softwaren, herunder i kommercielle produkter.",
+        "SCCs": "Standard Contractual Clauses: modelkontrakter godkendt af Europa-Kommissionen, som organisationer kan bruge som juridisk grundlag for overførsel af personoplysninger til lande uden for EU/EØS.",
+        "SLA": "Service Level Agreement: kontraktmæssige forpligtelser vedrørende det minimale serviceniveau, såsom tilgængelighed (oppetid), svartider og kompensation for manglende overholdelse.",
+        "source-available": "Kildekode, der er offentligt tilgængelig, men licensen tillader ikke fri brug, ændring eller distribution. Mere restriktiv end egentlig open source.",
+        "trial migration": "En testmigration, hvor den komplette overgangsproces gennemføres i et testmiljø, for at verificere at data og funktionalitet overføres korrekt inden den faktiske migration.",
+        "vendor lock-in": "En situation, hvor en organisation er så afhængig af en udbyder, at det at skifte til et alternativ bliver uforholdsmæssigt dyrt eller komplekst."
+    },
+    "help": `
+        <h3>Hvad er PVAF?</h3>
+        <p>Public Values Assessment Framework (PVAF) hjælper organisationer med at vurdere, i hvilken grad deres applikationslandskab overholder <a href="https://www.kennisnet.nl/tools/waardenwijzer/">de offentlige værdier i uddannelse</a>. Rammeværket måler 30 indikatorer på tværs af 8 dimensioner og 3 analyseniveauer.</p>
+        <h3>Hvordan fungerer det?</h3>
+        <p>Vurderingen følger fire trin:</p>
+        <ul>
+            <li><strong>Tilføj applikation:</strong> klik på "+ Tilføj applikation" eller importer en liste via CSV.</li>
+            <li><strong>Score indikatorer:</strong> giv hver indikator en score fra 1 til 5. Klik på en indikator for scorebeskrivelser og vejledning.</li>
+            <li><strong>Se resultater:</strong> scorer beregnes automatisk. Oversigten viser alle applikationer side om side.</li>
+            <li><strong>Eksporter:</strong> gem resultater som JSON eller CSV.</li>
+        </ul>
+        <h3>De tre analyseniveauer</h3>
+        <p><strong style="color:var(--sivon-red)">Niveau 1: Risikoeksponering</strong> (dimensioner A-B). Måler hvor stor den eksterne risiko er. En lav score (1) betyder lille risiko, en høj score (5) betyder høj risiko.</p>
+        <p><strong style="color:var(--green)">Niveau 2: Afbødningskapacitet</strong> (dimensioner C-E). Måler hvor godt organisationen kan håndtere risici. En lav score (1) er svag, en høj score (5) er stærk.</p>
+        <p><strong style="color:#555">Niveau 3: Strategisk vigtighed</strong> (dimensioner F-H). Måler hvor vigtig applikationen er. En lav score (1) betyder lille vigtighed, en høj score (5) er kritisk.</p>
+        <div class="tip"><strong>Bemærk farveretningen:</strong> For niveau 1 og 3 er score 1 grøn (godt set fra et offentlige værdier-perspektiv); for niveau 2 er score 5 grøn (stærk afbødning).</div>
+        <h3>Beregning</h3>
+        <p>Scoren for offentlige værdier beregnes i fire trin:</p>
+        <ul>
+            <li><strong>Trin 1 Dimensionsscore:</strong> Per dimension, det vægtede gennemsnit af indikatorscorer. Vægten bestemmer, hvor meget indflydelse hver indikator har.</li>
+            <li><strong>Trin 2 Niveauscore:</strong> Per niveau, gennemsnittet af dimensionsscorer. Dimensioner har ens vægt.</li>
+            <li><strong>Trin 3 Råscore:</strong> <code>Afbødning / (Risiko × Vigtighed)</code>. Interval: 0,04 (værste tilfælde) til 5,0 (bedste tilfælde).</li>
+            <li><strong>Trin 4 Normalisering:</strong> Råscoren konverteres til 1–10 via en logaritmisk skala.</li>
+        </ul>
+        <div class="tip"><strong>Hvorfor logaritmisk?</strong> Formlen dividerer Afbødning (maks 5) med Risiko × Vigtighed (maks 25). Som følge heraf falder de fleste råscorer mellem 0,1 og 0,5. Uden korrektion ville 90 % af applikationerne få en slutscore mellem 1 og 3, for snævert til at sammenligne meningsfyldt. Den logaritmiske skala spreder disse scorer over hele 1–10-intervallet og gør forskelle synlige og sammenlignelige.</div>
+        <p><strong>Tommelfingerregler:</strong> 7+ = god position (grøn), 5–7 = acceptabel (orange), 3–5 = bekymrende (mørk orange), &lt;3 = kritisk (rød).</p>
+        <h3>Hvad betyder scoren?</h3>
+        <p>Scoren for offentlige værdier angiver ikke i hvilken grad en applikation er i overensstemmelse med offentlige værdier, men snarere <strong>hvor presserende risiciene for offentlige værdier er</strong>. Scoren kombinerer tre ting: risikoen, håndterbarheden af den risiko og applikationens strategiske vigtighed.</p>
+        <p>En <strong>høj score</strong> kan betyde to ting: risiciene er velafbødet (stærke kontrakter, alternativer tilgængelige, intern ekspertise), eller applikationen har lille strategisk vigtighed (og dermed er problemet med offentlige værdier mindre presserende). Begge situationer er positive fra et beslutningsperspektiv: der er ingen øjeblikkelig handling nødvendig.</p>
+        <p>En <strong>lav score</strong> betyder: der er en kombination af høj risiko, svag afbødning og/eller høj strategisk vigtighed. Det kræver handling: migrer, afbød eller accepter bevidst.</p>
+        <div class="tip"><strong>Forbedring:</strong> Strategisk vigtighed (niveau 3) er i vid udstrækning fast; en applikation bliver ikke mindre vigtig. Forbedringer ligger i <strong>reducering af risikoeksponering</strong> (niveau 1, f.eks. migrering til en EU-udbyder) og <strong>øgning af afbødningskapacitet</strong> (niveau 2, f.eks. udvikling af alternativer, styrkelse af kontrakter, opbygning af ekspertise). Brug de tre niveauscorer separat til at identificere, hvor de største gevinster kan opnås.</div>
+        <h3>Kvadranten</h3>
+        <p>Kvadranten viser applikationer på to akser: <strong>Risiko × Vigtighed</strong> (vandret) og <strong>Afbødning</strong> (lodret). To applikationer med den samme 1–10 score kan fremstå i forskellige kvadrantpositioner og føre til forskellige anbefalede handlinger.</p>
+        <h3>Justering af vægte</h3>
+        <p>Hver indikator har en standardvægt (2 eller 3). Via skærmen "Juster vægte" kan du justere vægte (1–5). Vægten bestemmer, hvor meget indflydelse en indikator har <strong>inden for sin dimension</strong>. For eksempel: hvis du sætter C1 (Alternativ tilgængeligt) til vægt 5 og C2 til vægt 1, tæller C1 fem gange så meget i dimensionsscoren for "Teknisk robusthed". Justerede vægte vises med rødt. Gør kun dette i samråd med din organisation eller sektor for at opretholde gensidig sammenlignelighed.</p>
+        <h3>Kommentarer per indikator</h3>
+        <p>For hver indikator kan du tilføje en kommentar for at underbygge din score. Dette er valgfrit, men anbefalet: det gør din vurdering gennemsigtig og reproducerbar. Kommentarer er inkluderet i JSON eksport og import.</p>
+        <h3>Hurtig scanning</h3>
+        <p>Skift til "Hurtig scanning" for kun at vise de 9 kerneindiktatorer (1 per dimension + A3 Hosting). Beregningen fungerer identisk, men er baseret på færre datapunkter. Scoren er <strong>vejledende</strong>; for en fuld vurdering brug den komplette vurdering.</p>
+        <h3>Import og eksport</h3>
+        <p><strong>Importer JSON:</strong> Indlæs tidligere eksporterede vurderinger. Alle scorer, vægte og metadata bevares.</p>
+        <p><strong>Applikationsliste (CSV):</strong> Importer en liste over applikationsnavne for hurtigt at oprette flere applikationer. Download CSV-skabelonen først som et eksempel.</p>
+        <p><strong>Eksportformater:</strong></p>
+        <ul>
+            <li><strong>JSON:</strong> Komplet: alle data, scorer, vægte og beregnede resultater. Egnet til genimport.</li>
+            <li><strong>CSV:</strong> Opsummering per applikation med scorer per dimension og niveau. Egnet til videre analyse i Excel.</li>
+            <li><strong>CSV (detaljeret):</strong> Alle individuelle indikatorscorer per applikation. Semikolon-adskilt med BOM for Excel-kompatibilitet.</li>
+        </ul>
+        <h3>Lagring af data</h3>
+        <p>Alle indtastede data gemmes automatisk i din browser (localStorage). Du kan lukke din browser og fortsætte senere. Eksporter en JSON-sikkerhedskopi regelmæssigt for sikkerheds skyld.</p>
+        <div class="tip"><strong>Flere vurderere?</strong> Lad hver vurderer gennemføre vurderingen uafhængigt og eksporter resultaterne som JSON. En koordinator kan importere filerne og sammenligne scorer i oversigten.</div>`,
+    "indicators": {
+        "A1": {
+        "title": "Leverandørjurisdiktion",
+        "q": "Under hvilken jurisdiktion hører leverandøren?",
+        "r": [
+            "EU/EØS-jurisdiktion. Ingen ekstraterritoriale krav. Fuld EU-beskyttelse.",
+            "EU/EØS med begrænsede ekstraterritoriale krav. CLOUD Act ikke gældende.",
+            "Tilstrækkelighedsafgørelse på plads, men eksterritorial lovgivning (CLOUD Act, FISA 702) giver fremmede regeringer potentiel adgang.",
+            "Ingen tilstrækkelighedsafgørelse, men kontraktmæssige sikkerhedsforanstaltninger (SCC'er). Retlig beskyttelse er begrænset.",
+            "Ingen tilstrækkelighedsafgørelse, ingen sikkerhedsforanstaltninger. Direkte adgang af fremmede regeringer."
+        ],
+        "h": "Hvor er leverandøren etableret? Er der eksterritorial lovgivning? Er der en tilstrækkelighedsafgørelse? Bemærk: EU-US Data Privacy Framework (2023) er den tredje tilstrækkelighedsafgørelse for USA; de to foregående blev annulleret af EU-Domstolen. Den underliggende lovgivning (CLOUD Act, FISA 702) er ikke ændret. Overvej selv, om du skal score dette 3 eller 4."
+        },
+        "A2": {
+        "title": "Sanktioner og geopolitisk risiko",
+        "q": "Hvor stor er den geopolitiske risiko for levering af tjenester?",
+        "r": [
+            "Stabile relationer med EU. Ingen sanktionsrisiko.",
+            "Minimal risiko. Ingen nylige spændinger.",
+            "Nogen risiko på grund af skiftende handelsrelationer.",
+            "Forhøjet risiko. Geopolitiske spændinger eller handelskonflikter. Ingen eksempler endnu på direkte konsekvenser for europæiske parter.",
+            "Høj risiko. Aktive sanktioner eller restriktioner. Eksempler på serviceafbrydelse eller blokade for europæiske parter."
+        ],
+        "h": "Aktuelle sanktioner eller handelstvister? Tjenester tidligere begrænset for europæiske parter? Overvej også ideologiske forskelle (normer og værdier) mellem leverandøren/regeringen og den europæiske kontekst."
+        },
+        "A3": {
+        "title": "Hosting og datalokation",
+        "q": "Hvor hostes data og applikation fysisk, og hvordan er dette garanteret?",
+        "r": [
+            "Data udelukkende i EU/EØS. Kontraktmæssigt fastlagt.",
+            "Data i EU/EØS. Sikkerhedskopier eller replikering muligt i et land med tilstrækkelighedsafgørelse.",
+            "Data i EU/EØS, men ingen kontraktmæssig garanti for lokation. Kan ændre sig.",
+            "Data delvist uden for EU, med kontraktmæssige sikkerhedsforanstaltninger (SCC'er eller tilstrækkelighedsafgørelse).",
+            "Data uden for EU, ingen sikkerhedsforanstaltninger, eller uklart hvor data er lagret."
+        ],
+        "h": "Hvor befinder serverne sig fysisk? Er data- og applikationslokation kontraktmæssigt fastlagt? Kan sikkerhedskopier eller replikering ende uden for EU? Bemærk: data og applikation kan køre på forskellige lokationer (f.eks. applikation i Irland, database i Frankfurt, administrationskonsol i USA). Kontroller om noget led i kæden involverer en ikke-europæisk jurisdiktion og tag den værste jurisdiktion som udgangspunkt."
+        },
+        "A4": {
+        "title": "Juridisk overholdelse",
+        "q": "Hvad med overholdelse af juridiske krav, såsom tilgængelighed (WCAG), sikkerheds- og privatlivslovgivning?",
+        "r": [
+            "Fuldt dokumenteret overholdelse inkl. dokumenterede procedurer; årlig ekstern auditrapport offentligt tilgængelig; leverandøren demonstrerer aktivt lederskab i (sektor)samarbejde for at forbedre overholdelse i hele forsyningskæden.",
+            "Fuldt dokumenteret overholdelse inkl. dokumenterede procedurer; årlig ekstern auditrapport tilgængelig; leverandøren deltager i (sektor)samarbejde for at forbedre overholdelse i hele kæden.",
+            "Dokumenteret overholdelse af juridiske krav med angivelse af de anvendte processer. Årlig ekstern auditrapport eventuelt tilgængelig.",
+            "Dokumentation specificerer hvilke juridiske krav (f.eks. WCAG, privatliv, sikkerhed) der testes og giver begrænset indsigt i overholdelsesprocesser.",
+            "Ingen eller begrænset dokumentation om juridisk overholdelse tilgængelig."
+        ],
+        "h": "Kontroller om leverandøren dokumenterer hvilke juridiske krav og standarder der overholdes (f.eks. WCAG-niveau, GDPR/privatliv, informationssikkerhedsstandarder som ISO 27001) og om konkrete processer, tests og ansvarsområder er dokumenteret. Bed om beviser (auditrapporter, testresultater, certifikater), hyppighed af kontroller og om audits er offentligt eller efter anmodning tilgængelige. Bemærk også omfang (alle tjenester/komponenter eller kun kernekomponer), kædeindvirkning (leverandører/underleverandører) og korrigerende foranstaltninger anvendt i tilfælde af manglende overholdelse."
+        },
+        "B1": {
+        "title": "Leverandørkoncentration",
+        "q": "Hvor mange produkter og tjenester bruger du fra den samme leverandør?",
+        "r": [
+            "1 produkt eller tjeneste fra denne leverandør.",
+            "2-3 produkter/tjenester fra denne leverandør.",
+            "4-6 produkter/tjenester fra denne leverandør.",
+            "7-15 produkter/tjenester fra denne leverandør.",
+            "Helt økosystem (>15 produkter/tjenester) fra denne leverandør."
+        ],
+        "h": "Tæl alle produkter, tjenester, licenser og platforme fra denne leverandør, både kontrakterede tjenester og købt software. Overvej også underliggende platforme (f.eks. Azure AD, SharePoint, Intune ved siden af Office 365). Jo flere produkter fra én leverandør, jo større risiko for leverandørafhængighed."
+        },
+        "B2": {
+        "title": "Softwaresammensætning og forsyningskædeoverblik",
+        "q": "Er et software-materialefortegnelse (SBOM) tilgængeligt for dette produkt eller denne tjeneste?",
+        "r": [
+            "Fuld SBOM med hver udgivelse: CycloneDX ≥1.6 og/eller SPDX ≥2.2, alle afhængigheder (inkl. closed-source) så komplet som kunden med rimelighed kan forvente. Valideret af en uafhængig tredjepart.",
+            "Fuld SBOM med hver udgivelse: CycloneDX ≥1.6 og/eller SPDX ≥2.2, alle afhængigheder (inkl. closed-source) så komplet som kunden med rimelighed kan forvente.",
+            "SBOM med hver udgivelse: CycloneDX ≥1.6 og/eller SPDX ≥2.2, som minimum alle direkte afhængigheder (inkl. closed-source).",
+            "Kort komponentoversigt tilgængelig i dokumentation eller på anmodning (ingen struktureret SBOM).",
+            "Ingen SBOM tilgængelig."
+        ],
+        "h": "Hvilke closed-source og open source komponenter bruges? Et SBOM (Software Bill of Materials) er en struktureret liste over alle softwarekomponenter og afhængigheder, der giver indsigt i licensrisici, kendte sikkerhedssårbarheder (CVE'er) og forsyningskæderisici. Almindelige standarder er CycloneDX og SPDX."
+        },
+        "C1": {
+        "title": "Alternativ tilgængeligt",
+        "q": "Findes der sammenlignelige tjenester som alternativer?",
+        "r": [
+            "Intet alternativ. Unikt produkt uden konkurrenter.",
+            "Alternativ findes, men umodent eller funktionelt begrænset.",
+            "Flere alternativer brugt af sammenlignelige organisationer. Dækker de fleste behov.",
+            "Modne alternativer inkl. en europæisk mulighed.",
+            "Bredt udvalg af alternativer inkl. europæiske og open source muligheder. Konkurrencepræget marked."
+        ],
+        "h": "Hvilke alternativer findes? Bruges af andre universiteter? Europæisk/open source? Tilgængeligheden af open source muligheder kan markant reducere risikoen for leverandørafhængighed."
+        },
+        "C2": {
+        "title": "Migrationskompleksitet",
+        "q": "Hvor lang tid tager det at skifte til et alternativ?",
+        "r": [
+            "Mere end 2 år.",
+            "1-2 år.",
+            "6-12 måneder.",
+            "3-6 måneder.",
+            "Mindre end 3 måneder. Eller: self-hosting mulighed umiddelbart tilgængelig."
+        ],
+        "h": "Estimer gennemløbstiden for en fuld migration. Overvej: datamængde, antal integrationer, leverandørspecifikke komponenter, tilgængelighed af migrationsværktøjer og nødvendige justeringer af arbejdsgange. Udover gennemløbstid, tag højde for forventede omkostninger (personale, licenser, omuddannelse). En testmigration kan hjælpe med at validere gennemførlighed og tidsplan inden det faktiske skift."
+        },
+        "C3": {
+        "title": "Dataportabilitet",
+        "q": "Kan vi eksportere data komplet og i et anvendeligt format?",
+        "r": [
+            "Ingen eksport mulig. Data kun tilgængelig via leverandørsystem.",
+            "Begrænset manuel eksport. Ingen metadata, uanvendeligt format.",
+            "Eksport i almindelige (åbne standarder) formater, rimeligt komplet. Metadata kan mangle.",
+            "Fuld eksport i åbne formater med API. Inkl. metadata.",
+            "Fuld portabilitet: åbne formater, metadata, historik, relationer. Direkte anvendelig."
+        ],
+        "h": "Er der en eksport-API tilgængelig? Kan metadata inkluderes? Hvis applikationen også er tilgængelig self-hosted, kan det markant forbedre portabilitet."
+        },
+        "C4": {
+        "title": "Krypteringsstyring",
+        "q": "Kontrol over kryptering? (valgfri)",
+        "r": [
+            "Ingen indsigt i om og hvordan data er krypteret.",
+            "Krypteret, leverandøren administrerer nøgler fuldt ud.",
+            "Krypteret. Leverandøren administrerer nøgler, men med gennemsigtig og dokumenteret nøglehåndteringspolitik.",
+            "BYOK: medbring og administrer dine egne krypteringsnøgler.",
+            "Client-side kryptering: data krypteret inden transmission med dine egne nøgler."
+        ],
+        "h": "Dette handler om kontrol over krypteringsnøglerne, ikke om kryptering er nødvendig. Hvem der administrerer nøglerne bestemmer hvem der kan tilgå data, herunder som svar på en dataanmodning fra en fremmed regering eller ved leverandørens ophør."
+        },
+        "C5": {
+        "title": "Softwaretransparens og åbenhed",
+        "q": "Er kildekoden tilgængelig og uafhængigt anvendelig?",
+        "r": [
+            "Fuldt lukket. Ingen kildekode, ingen indsigt.",
+            "Lukket med offentlig API-dokumentation. Begrænset indsigt.",
+            "Delvist open source, kerne lukket. Eller source-available under en restriktiv licens.",
+            "Open source, aktivt fællesskab, permissiv licens. Muligt at oprette en uafhængig kopi (fork).",
+            "Fuldt open source, flere parter yder support. At skifte til en anden part eller få en fork udviklet uafhængigt er realistisk."
+        ],
+        "h": "Er applikationens kildekode tilgængelig? Hvis ja, under hvilken licens? Er der et aktivt fællesskab, der bidrager til applikationen? Er det muligt uafhængigt at udvikle en fork af applikationen?"
+        },
+        "C6": {
+        "title": "Algoritme- og AI-transparens",
+        "q": "Hvor transparent er brugen af algoritmer og AI?",
+        "r": [
+            "Fuldt lukket. Ingen indsigt i algoritme- og AI-funktionalitetens virkemåde.",
+            "Delvist lukket: lukket implementering, med offentlig dokumentation om algoritmer og AI. Begrænset indsigt.",
+            "Delvist åben: offentlig algoritme- og AI-dokumentation, men kernealgoritmer og AI-modeller primært lukkede; dele tilgængelige som open source eller under en source-available licens.",
+            "Overvejende åben: brug af open source (eller open weights) algoritmer og AI; registrering i et algoritmeregister for at overholde lovgivning og for offentlig transparens understøttes.",
+            "Fuld transparens: kun open source-licenserede algoritmer og AI-modeller; at skifte til en anden part mens algoritme- og AI-funktionalitet bevares er realistisk."
+        ],
+        "h": "Kan leverandøren give indsigt i algoritmer og AI's virkemåde for at forhindre utilsigtet diskriminering eller bias?"
+        },
+        "D1": {
+        "title": "Intern ekspertise og videnkontinuitet",
+        "q": "Hvor meget intern viden har vi om dette system?",
+        "r": [
+            "Ingen intern viden. Fuldstændigt afhængig af leverandøren.",
+            "Viden indeholdt hos én eller to personer, ikke dokumenteret.",
+            "Viden indeholdt hos flere personer, grundlæggende dokumentation tilgængelig.",
+            "Viden bredt delt og dokumenteret. Ikke personafhængig.",
+            "Viden strukturelt sikret. Komplet dokumentation, periodisk opdateret."
+        ],
+        "h": "Overvej al relevant viden: funktionel (hvad gør systemet), teknisk (konfiguration, integrationer), data (hvilke data er i det, hvordan eksporteres det). Ikke kun teknisk administration. Hvad sker der, hvis nøgleeksperten forlader?"
+        },
+        "D2": {
+        "title": "Exit-plan på plads",
+        "q": "Er der en konkret plan for hvis vi skal skifte?",
+        "r": [
+            "Ingen exit-plan. Aldrig overvejet.",
+            "Diskuteret men intet konkret. Ingen trin eller tidslinje.",
+            "Overordnet plan, ikke testet. Ikke detaljeret nok.",
+            "Detaljeret med trin, tidslinje, risici. Ansvar tildelt.",
+            "Komplet, testet via testmigration, periodisk opdateret. Inkl. kommunikationsplan."
+        ],
+        "h": "Er der en exit-plan for denne applikation? Hvor detaljeret er denne plan? Hvornår blev planen sidst opdateret og testet?"
+        },
+        "D3": {
+        "title": "Backup-strategi",
+        "q": "Uafhængig kopi af data uden for leverandøren?",
+        "r": [
+            "Ingen uafhængig backup. Alt kun hos leverandøren.",
+            "Leverandøren tager sikkerhedskopier, ikke verificerbart. Ingen egen kopi.",
+            "Periodisk kopi, begrænset, gendannelse ikke testet.",
+            "Fuld backup uden for leverandøren, regelmæssigt verificeret.",
+            "Fuld backup med bevist gendannelsesprocedure. Regelmæssigt testet."
+        ],
+        "h": "Er en data-backup for denne applikation mulig uden for leverandøren? Hvor komplette er sikkerhedskopier? Hvornår blev en backup-gendannelse sidst testet?"
+        },
+        "E1": {
+        "title": "Exit-klausuler og overgangsordning",
+        "q": "Hvad er kontraktmæssigt aftalt vedrørende dataoverførsel ved opsigelse?",
+        "r": [
+            "Ingen aftaler om opsigelse.",
+            "Minimale bestemmelser, uden frist eller format.",
+            "Exit-klausuler med overgangsperiode på plads.",
+            "Omfattende exit-ordning: åbne formater, overgangsperiode, aktivt leverandørsamarbejde.",
+            "Omfattende exit-ordning med håndhævelige konsekvenser for manglende overholdelse (bødeklausul, eskaleringsprocedure, sletningsgaranti)."
+        ],
+        "h": "Hvad er kontraktmæssigt aftalt vedrørende opsigelse? I hvilket format leveres data ved overførslen? Er der aftalt en overgangsperiode, hvori leverandøren aktivt samarbejder? Er KPI'er defineret for leverandørens præstation og hvilke SLA-forpligtelser gælder, så du kan holde leverandøren ansvarlig, hvis aftaler ikke overholdes?"
+        },
+        "E2": {
+        "title": "Kontraktmæssig fleksibilitet",
+        "q": "Hvor hurtigt kan du kontraktmæssigt forlade denne leverandør?",
+        "r": [
+            "Langsigtet (>3 år), ikke opsigelig i løbetiden.",
+            "Flerårig, opsigelsesperiode over 12 måneder.",
+            "Årskontrakt, 6-12 måneders opsigelsesperiode.",
+            "Fleksibelt opsigeligt, 3-6 måneders opsigelsesperiode.",
+            "Månedligt opsigeligt eller betal-per-brug."
+        ],
+        "h": "Gennemgå den kontraktmæssige binding: varighed, opsigelsesperiode og automatisk fornyelse. Overvej også licensvilkår, som leverandøren ensidigt kan ændre (prisforhøjelser, brugsbegrænsninger, fjernelse af funktioner). Den tekniske gennemløbstid for en migration henhører under C2 (Migrationskompleksitet)."
+        },
+        "E3": {
+        "title": "Overtagelse eller fusion",
+        "q": "Hvad er kontraktmæssigt aftalt, hvis leverandøren overtages eller fusionerer?",
+        "r": [
+            "Intet aftalt; kontrakt forbliver fuldt i kraft uden rettigheder for kunden.",
+            "Minimalt aftalt; kun en generel bestemmelse, ingen specifikke exit-, data- eller jurisdiktionssikkerhedsforanstaltninger.",
+            "Grundlæggende aftaler; underretning om overtagelse eller fusion og ret til at genforhandle eller opsige med standard opsigelsesperiode.",
+            "Velordnet; ret til at opsige ved overtagelse eller fusion med rimelig opsigelsesperiode, bevarelse af aftalt jurisdiktion/datalokation.",
+            "Fremragende ordnet; eksplicitte change-of-control-klausuler med gebyrfrit exit, fuld dataportabilitet, migrationshjælp og garantier for økonomi og drift, samt bevarelse af jurisdiktion og datalokation."
+        ],
+        "h": "Kig efter change-of-control-klausuler: underretningspligt, ret til at opsige eller genforhandle, migrationshjælp og konsekvenser for gældende ret, datalokation og underdatabehandlere. Kontroller også om SLA-forpligtelser, priser og dataadgang forbliver garanteret med en ny ejer."
+        },
+        "F1": {
+        "title": "Indvirkning ved nedetid",
+        "q": "Hvad er indvirkningen, hvis dette system går ned?",
+        "r": [
+            "Ingen mærkbar indvirkning ved nedetid.",
+            "Minimal forstyrrelse. Organisationen fortsætter.",
+            "Flere processer forstyrret, men ikke standset.",
+            "Nøgleprocesser standset.",
+            "Organisationsdækkende standsning."
+        ],
+        "h": "Antag, at systemet går ned i 48 timer. Hvad er indvirkningen? Dette gælder alle processer: uddannelse, forskning og drift. Vej ind: antal berørte brugere, tilgængelighed af omveje og hvor kritiske de berørte processer er."
+        },
+        "F2": {
+        "title": "Integrationsafhængigheder",
+        "q": "Hvor mange systemer er afhængige af dette system?",
+        "r": [
+            "Selvstændigt, ingen integrationer.",
+            "1-2 integrationer.",
+            "3-5 integrationer.",
+            "5-10 integrationer.",
+            "Centralt knudepunkt (>10 integrationer)."
+        ],
+        "h": "Hvor mange andre systemer er forbundet til dette system? Hvis dette system går ned, hvilke andre systemer går (delvist) ned som konsekvens?"
+        },
+        "G1": {
+        "title": "Personoplysninger",
+        "q": "Hvilke personoplysninger behandles?",
+        "r": [
+            "Ingen personoplysninger.",
+            "Grundlæggende data: navn, e-mail, jobtitel. Begrænset antal.",
+            "Studie-/arbejdsdata, vurderinger, finansielle. Betydeligt.",
+            "Særlige kategorier af personoplysninger eller storstilet behandling.",
+            "Storstilet særlige kategorier af data om sårbare grupper."
+        ],
+        "h": "Hvilke data? Følsomme kategorier? Hvor mange personer? DPIA påkrævet?"
+        },
+        "G2": {
+        "title": "Uddannelsesdata og videnssikkerhed",
+        "q": "Hvor følsomme er uddannelsesdata og viden i dette system?",
+        "r": [
+            "Ingen uddannelsesdata.",
+            "Kun offentlige/udgivne data.",
+            "Fortrolige, endnu ikke udgivet. Prematur adgang af tredjeparter er uønsket.",
+            "Følsomme eller strategisk værdifulde. Konkurrencemæssigt følsomme.",
+            "National sikkerhed, eksportkontrol, dual-use. Fremmed adgang er alvorlig."
+        ],
+        "h": "Uddannelsesdata? Hvor følsomt? Embargoer? Fremmed adgang problematisk? Tænk bredere end bare datasæt: undervisningsmetoder og strategisk viden er inkluderet."
+        },
+        "G3": {
+        "title": "Intellektuel ejendomsret",
+        "q": "Hvor værdifuld er IP'en i dette system?",
+        "r": [
+            "Ingen værdifuld IP.",
+            "Begrænset: generelt tilgængeligt materiale.",
+            "Værdifuldt: f.eks. unikt kursusmateriale, metoder, algoritmer.",
+            "Betydeligt: f.eks. patenterbare opdagelser, unikke datasæt.",
+            "Kritisk: aktive patenter eller strategisk IP. Adgang af tredjeparter forårsager stor skade."
+        ],
+        "h": "Hvilken intellektuel ejendomsret befinder sig i dette system? Tænk på unikt kursusmateriale, forskningsmetoder, algoritmer, datasæt, patenter. Hvad er skaden, hvis en tredjepart får adgang?"
+        },
+        "G4": {
+        "title": "Dataadgang",
+        "q": "Hvem har adgang til dine data?",
+        "r": [
+            "Åben adgang; leverandøren kan bruge, se eller genanvende data uden klare begrænsninger.",
+            "Bred adgang; leverandøren har adgang til administration, support eller analyse, med begrænsede kontraktmæssige begrænsninger.",
+            "Begrænset adgang; adgang er kun tilladt for foruddefinerede roller eller opgaver, med logning og intern autorisation.",
+            "Meget begrænset adgang; adgang er teknisk og kontraktmæssigt begrænset, kun med dit eksplicitte samtykke eller strengt nødvendig support.",
+            "Ingen adgang eller datadeling; leverandøren har ingen adgang til lagrede data og deling til ikke-EU-regeringer er kontraktmæssigt umuligt uden dit samtykke."
+        ],
+        "h": "Bemærk teknisk og kontraktmæssig adgang til data, herunder administration, support, underdatabehandlere og overførsler uden for EU. Kontroller logning, autorisationer, nødadgang og om adgang til eller deling med tredjeparter eksplicit kan begrænses. Kontroller overholdelse af Dataforvaltningsloven (DGA)."
+        },
+        "G5": {
+        "title": "Datapolitik og -styring",
+        "q": "I hvilken grad er datapolitik, formålsbegrænsning og brugerstyring sikret?",
+        "r": [
+            "Utilstrækkeligt ordnet; datapolitikken er uklar og der er ingen indsigt i hvilke data og metadata der lagres.",
+            "Minimalt ordnet; der er nogen information om datapolitik, men formål, brug og ændring er ikke tydeligt dokumenteret.",
+            "Grundlæggende ordnet; leverandøren kommunikerer datapolitik, men brugere har begrænset indsigt eller konfigurationsmuligheder.",
+            "Velordnet; kun nødvendige data og metadata lagres, formålet er dokumenteret og brugere kan se og delvist konfigurere egne data.",
+            "Fremragende ordnet; datapolitik og ændringer er offentlige, kun nødvendige data og metadata lagres, formål og funktion er dokumenteret, og brugere kan fuldt ud se og konfigurere data og metadata som ønsket."
+        ],
+        "h": "Kontroller om datapolitikken er offentlig og forståelig, om formålsbegrænsning af data og metadata er kontraktmæssigt eller teknisk fastlagt, og om brugere kan se og administrere egne data og metadata."
+        },
+        "G6": {
+        "title": "Dataminimering og sletning",
+        "q": "Hvilke muligheder findes for at begrænse dataindsamling eller slette data?",
+        "r": [
+            "Ingen muligheder; data kan kun administreres eller slettes af leverandøren.",
+            "Begrænsede muligheder; data kan delvist begrænses eller slettes, men uden klare garantier.",
+            "Support til dataminimering og sletning i overensstemmelse med GDPR, herunder behandling af sikkerhedskopier og kopier.",
+            "Stærk support i overensstemmelse med GDPR; dataindsamling kan begrænses til det nødvendige og sletning er kontraktmæssigt garanteret og reviderbart.",
+            "Fuld support i overensstemmelse med GDPR; dataindsamling er strengt minimeret, sletning er fuldt kontraktmæssigt garanteret og reviderbart. Valideret af en uafhængig tredjepart."
+        ],
+        "h": "Kan dataindsamling begrænses til kun data nødvendig for produktets eller tjenestens funktion? Kan brugerdata slettes i overensstemmelse med GDPR?"
+        },
+        "H1": {
+        "title": "Akademisk frihed",
+        "q": "Kan leverandøren udøve indflydelse på uddannelsesaktiviteter?",
+        "r": [
+            "Ingen relation til uddannelse.",
+            "Teoretisk risiko, ingen tidligere tilfælde kendte.",
+            "Adgang til undervisningsmateriale. Begrænset risiko for indirekte indflydelse.",
+            "Reel risiko. Land hvor regeringer kan censurere uddannelse.",
+            "Påvist censur eller databeslag af denne leverandør eller regering."
+        ],
+        "h": "Kan leverandøren eller en fremmed regering få indsigt i uddannelsesaktiviteter? Er der tidligere tilfælde af censur eller databeslag hos denne leverandør?"
+        },
+        "H2": {
+        "title": "Uddannelsessamarbejde",
+        "q": "Vigtighed for uddannelsessamarbejde (nationalt og internationalt)?",
+        "r": [
+            "Ingen rolle. Rent intern.",
+            "Marginal rolle. Direkte alternativer tilgængelige for partnere.",
+            "Støttende. Brug er ønskelig, men ikke nødvendig.",
+            "Vigtig platform. Flere partnere bruger den.",
+            "Essentiel og uerstattelig. Standard i feltet."
+        ],
+        "h": "Partnere der bruger samme system? Standard i feltet? Konsekvenser af skift? Dette gælder både internationale og nationale samarbejdsarrangementer."
+        },
+        "H3": {
+        "title": "Langtidsarkivering",
+        "q": "Hvor længe skal data opbevares og forblive tilgængelig?",
+        "r": [
+            "Intet arkiveringskrav. Rent operationelt.",
+            "<5 år. Begrænset afhængighedsvarighed.",
+            "5-10 år. Verificering og audit skal forblive muligt.",
+            "10-25 år. Videnskabelig reproducerbarhed krævet.",
+            "Permanent (>25 år) eller juridisk forpligtelse."
+        ],
+        "h": "Hvor længe skal opbevares? Juridisk forpligtelse? Reproducerbarhed? Jo længere opbevaringsperiode, jo større risiko for langvarig leverandørafhængighed. For det format hvori data lagres, se C3 (Dataportabilitet)."
+        },
+        "H4": {
+        "title": "Brugerindflydelse og transparens",
+        "q": "I hvilken grad er brugergrænsefladen transparent, fri for manipulation og fokuseret på brugerautonomi?",
+        "r": [
+            "Utilstrækkeligt ordnet; grænsefladen er uklar, styrer adfærd kraftigt og angiver ikke om det er et menneske eller en bot, der svarer.",
+            "Minimalt ordnet; der er nogen transparens, men dark patterns, spilelementer eller overtalende valg er ikke demonstrativt udelukket.",
+            "Grundlæggende ordnet; grænsefladen angiver sommetider om et menneske eller en bot er involveret, men transparens og autonomi er ikke konsekvent sikret.",
+            "Velordnet; grænsefladen gør altid klart om et menneske eller en bot er involveret og er fri for dark patterns, spilelementer og vanedannende elementer.",
+            "Fremragende ordnet; grænsefladen er altid transparent, fri for dark patterns, spilelementer, overtalende og vanedannende elementer, med fravalgsindstillinger. Valideret af en uafhængig tredjepart."
+        ],
+        "h": "Vurder de forskellige dele af brugergrænsefladen sammen med (potentielle) brugere. Dark patterns er vildledende eller styrende designmønstre, spilelementer er chance- eller belønningsmekanismer, overtalende elementer er subtile adfærdspirrere og vanedannende elementer stimulerer gentagen eller tvangsmæssig brug."
+        }
+    },
+    "ui": {
+        "assessedAppAssessors": "Vurderer(e)",
+        "assessedAppAssessorsPlaceholder": "Navne…",
+        "assessedAppDate": "Dato",
+        "assessedAppId": "Applikations-ID",
+        "assessedAppIdPlaceholder": "F.eks. SOFT-1234…",
+        "assessedAppName": "Applikationsnavn",
+        "assessedAppNameCopiedPostfix": "kopi",
+        "assessedAppNamePlaceholder": "F.eks. Microsoft Teams…",
+        "assessedAppScoreCardImportanceLabel": "Strategisk vigtighed",
+        "assessedAppScoreCardImportanceSub": "Høj = kritisk applikation",
+        "assessedAppScoreCardImportanceTip": "Hvor vigtig er applikationen? Gennemsnit af dimension F, G og H. Lav score = lille vigtighed. Høj score = kritisk.",
+        "assessedAppScoreCardMitigationLabel": "Afbødningskapacitet",
+        "assessedAppScoreCardMitigitionSub": "Høj = stærk afbødning (godt)",
+        "assessedAppScoreCardMitigitionTip": "Hvor godt kan organisationen håndtere risici? Gennemsnit af dimension C, D og E. Lav score = svag. Høj score = stærk.",
+        "assessedAppScoreCardPvLabel": "Score for offentlige værdier",
+        "assessedAppScoreCardPvSub": "Lav score = hastende problem",
+        "assessedAppScoreCardPvTip": "Hvor stort er problemet med offentlige værdier? En høj score betyder: velafbødet og/eller lav risiko. En lav score betyder: hastende problem. Beregnet som Afbødning / (Risiko × Vigtighed), normaliseret til 1-10.",
+        "assessedAppScoreCardRiskLabel": "Risikoeksponering",
+        "assessedAppScoreCardRiskSub": "Lav = lille risiko (godt)",
+        "assessedAppScoreCardRiskTip": "Hvor stor er den eksterne risiko? Gennemsnit af dimension A og B. Lav score = lille risiko (godt). Høj score = stor risiko.",
+        "assessModeControlFullBtn": "Fuld",
+        "assessModeControlHintIndicators": "indikatorer",
+        "assessModeControlHintKeyIndicators": "kerneindiktatorer (vejledende score)",
+        "assessModeControlHintOf": "af",
+        "assessModeControlQuickBtn": "Hurtig scanning",
+        "assessModePickerFullBtn": "Fuld vurdering",
+        "assessModePickerFullBtnSub": "indikatorer",
+        "assessModePickerLabel": "Hvordan vil du vurdere?",
+        "assessModePickerQuickBtn": "Hurtig scanning",
+        "assessModePickerQuickBtnSub": "kerneindiktatorer",
+        "changelogCloseBtn": "Luk",
+        "changelogNewBadge": "NY",
+        "changelogTitle": "Ændringslog",
+        "exportReminderDismissTitle": "Påmind mig senere",
+        "exportReminderExportBtn": "Eksporter nu",
+        "exportReminderText1": "Du har ",
+        "exportReminderText2": " applikationer",
+        "exportReminderText3": " gemt i din browser. Eksporter regelmæssigt til JSON for at undgå at miste dit arbejde.",
+        "footerCopyrights": "Universitetet i Utrecht & SIVON",
+        "footerCreditsHtml": "Baseret på <a href='https://github.com/UtrechtUniversity/digital-autonomy-assessment-tool'>DAAF</a> af Tim van Neerbos",
+        "footerLicenseSummary": "Gratis at bruge for uddannelses-, nonprofit- og statslige organisationer. Ikke til kommerciel brug.",
+        "headerAppPlural": "applikationer",
+        "headerAppSingular": "applikation",
+        "headerMenuChangeLogBtn": "Ændringslog",
+        "headerMenuDownloadTpl": "Download CSV-skabelon",
+        "headerMenuDownloadTplSub": "Skabelonfil til masseimport",
+        "headerMenuExportBtn": "Eksporter ▾",
+        "headerMenuExportCsvDet": "CSV (detaljeret)",
+        "headerMenuExportCsvDetSub": "Alle indikatorscorer pr. applikation",
+        "headerMenuExportCsvSum": "CSV (opsummering)",
+        "headerMenuExportCsvSumSub": "Scorer pr. dimension og niveau",
+        "headerMenuExportJson": "JSON (komplet)",
+        "headerMenuExportJsonSub": "Alle data, scorer og vægte",
+        "headerMenuHelpBtn": "Brugervejledning",
+        "headerMenuImportBtn": "Importer ▾",
+        "headerMenuImportCsv": "Applikationsliste (CSV)",
+        "headerMenuImportCsvSub": "Masse: flere applikationer på én gang",
+        "headerMenuImportJson": "Importer JSON",
+        "headerMenuImportJsonSub": "Tidligere eksporterede vurderinger",
+        "headerMenuResetWeightsBtn": "Nulstil til standard",
+        "headerMenuWeightsBtn": "Juster vægte",
+        "headerTabsAddAppBtn": "Tilføj applikation",
+        "headerTitle": "Public Values Assessment Framework",
+        "helpModalTitle": "Brugervejledning – Public Values Assessment Tool",
+        "levelRowHeaderColIndicator": "Indikator",
+        "levelRowHeaderColScore": "Score (1-5)",
+        "levelRowHeaderColWeight": "Vægt",
+        "levelRowHeaderLevel1Hint": "1 = lav risiko (godt) ... 5 = høj risiko",
+        "levelRowHeaderLevel1Name": "Risikoeksponering",
+        "levelRowHeaderLevel2Hint": "1 = dårlig afbødning ... 5 = stærk afbødning (godt)",
+        "levelRowHeaderLevel2Name": "Afbødningskapacitet",
+        "levelRowHeaderLevel3Hint": "1 = lav vigtighed ... 5 = høj vigtighed (hastende)",
+        "levelRowHeaderLevel3Name": "Strategisk vigtighed",
+        "levelRowHeaderLevelPrefix": "Niveau",
+        "levelRowHeaderRubricsBtn": "Rubrikker ▾",
+        "levelRowHeaderRubricsBtnTitle": "Vis/skjul alle rubrikker",
+        "levelRowScaleBarBad": "dårlig",
+        "levelRowScaleBarGood": "god",
+        "levelRowScaleBarHigh": "høj",
+        "levelRowScaleBarLow": "lav",
+        "overviewAddAppBtn": "+ Tilføj applikation",
+        "overviewAlertEmptyFile": "Tom fil.",
+        "overviewAlertImportErr": "Fejl ved import: ",
+        "overviewAlertImported": "importeret.",
+        "overviewAlertInvalidFile": "Ugyldig fil: ",
+        "overviewAlertNoApps": "Ingen applikationsnavne fundet.",
+        "overviewBtn": "Oversigt",
+        "overviewNoApps": "Ingen applikationer vurderet endnu",
+        "overviewNoAppsHintHtml": "Klik på <strong>+ Tilføj applikation</strong> for at komme i gang, eller importer en applikationsliste via CSV.",
+        "overviewQuadrantAttention": "OPMÆRKSOMHEDSPUNKT",
+        "overviewQuadrantAttentionDescHtml": "Byg afbødning eller,<br>accepter risikoen bevidst",
+        "overviewQuadrantCritical": "KRITISK",
+        "overviewQuadrantCriticalDescHtml": "Øjeblikkelig handling påkrævet:<br>migrer eller afbød",
+        "overviewQuadrantEmptyHint": "Udfyld mindst alle dimensioner for at placere applikationer i kvadranten",
+        "overviewQuadrantFormulaBoxLabelHtml": "<strong>Beregning:</strong> Per indikator score (1-5) x vægtning. Per dimension, vægtet gennemsnit. Per niveau, gennemsnit af dimensioner. <code>Råscore = Afbødning / (Risiko x Vigtighed)</code>. Normaliseret til 1-10 via en logaritmisk skala.",
+        "overviewQuadrantHigh": "Høj",
+        "overviewQuadrantLow": "Lav",
+        "overviewQuadrantManageable": "HÅNDTERBAR",
+        "overviewQuadrantManageableDescHtml": "Risici accepteret<br>med god backup",
+        "overviewQuadrantMitigation": "Afbødning",
+        "overviewQuadrantOptimal": "OPTIMAL",
+        "overviewQuadrantOptimalDescHtml": "Oprethold nuværende situation,<br>overvåg periodisk",
+        "overviewQuadrantTitle": "Kvadrant for offentlige værdier",
+        "overviewQuadrantXLabel": "Risikoeksponering × Strategisk vigtighed",
+        "overviewQuadrantYLabel": "Afbødning",
+        "overviewTableCopyBtn": "Kopier",
+        "overviewTableDeleteSelectedBtn": "Slet valgte",
+        "overviewTableHeaderApp": "Applikation",
+        "overviewTableHeaderId": "ID",
+        "overviewTableHeaderImportance": "Vigtighed",
+        "overviewTableHeaderMitigation": "Afbødning",
+        "overviewTableHeaderProgress": "Fremskridt",
+        "overviewTableHeaderRawScore": "Råscore",
+        "overviewTableHeaderRisk": "Risiko",
+        "overviewTableHeaderScore": "Score (1-10)",
+        "overviewTableSelectedLabel": "valgt",
+        "overviewTitle": "Vurderingsoversigt",
+        "scoreRowDimADesc": "Under hvilken lovgivning hører leverandøren, og hvor er dataene? Geopolitiske og jurisdiktionsrisici.",
+        "scoreRowDimAName": "Geopolitisk og juridisk overholdelses risiko",
+        "scoreRowDimBDesc": "Hvor mange produkter og tjenester bruger du fra den samme leverandør?",
+        "scoreRowDimBName": "Leverandør- og forsyningskædeafhængigheder",
+        "scoreRowDimCDesc": "Kan du teknisk set skifte? Er der alternativer, kan data eksporteres, er softwaren åben?",
+        "scoreRowDimCName": "Teknisk robusthed",
+        "scoreRowDimDDesc": "Har du viden, planer og sikkerhedskopier til faktisk at foretage et skift?",
+        "scoreRowDimDName": "Organisatorisk robusthed",
+        "scoreRowDimEDesc": "Hvad er kontraktmæssigt aftalt om exit, dataoverførsel og fleksibilitet?",
+        "scoreRowDimEName": "Kontraktmæssig robusthed",
+        "scoreRowDimFDesc": "Hvor vigtig er denne applikation for organisationen, og hvor meget afhænger af den?",
+        "scoreRowDimFName": "Organisatorisk vigtighed",
+        "scoreRowDimGDesc": "Hvilke følsomme data og metadata behandler dette system, hvem har adgang og hvordan er brugen kontraktmæssigt og teknisk reguleret?",
+        "scoreRowDimGName": "Datafølsomhed, adgangsstyring og politik",
+        "scoreRowDimHDesc": "Påvirker denne applikation akademisk frihed, samarbejde eller langtidsarkivering? Er der brugerindflydelse?",
+        "scoreRowDimHName": "Uddannelsesindvirkning",
+        "scoreRowDimensionPrefix": "Dimension",
+        "scoreRowExplanation": "Vejledning:",
+        "scoreRowRemarkPlaceholder": "Kommentar eller begrundelse…",
+        "unnamed": "Unavngivet",
+        "weightsModalDimensionLabel": "Dimension",
+        "weightsModalResetBtn": "Nulstil til standard",
+        "weightsModalResetConfirmation": "Er du sikker på, at du vil nulstille alle vægte til standardværdierne?",
+        "weightsModalTipHtml": "<strong>Hvad er vægte?</strong> Vægte bestemmer, hvor meget indflydelse hver indikator har inden for sin dimension. Standardvægte er kalibreret til PVAF-modellen. Juster kun vægte i samråd med din organisation eller sektor, ellers bliver resultaterne usammenlignelige.",
+        "weightsModalTitle": "Juster vægte"
+    }
+  },
   "en": {
     "changelog": [
       {
