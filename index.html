@@ -497,11 +497,11 @@ const INDICATORS = [
   { code: 'H4', dim: 'H', lvl: 3, w: 2 },
 ];
 
-const LVL_DIMS={1:['A','B'],2:['C','D','E'],3:['F','G','H']};
-const LVL_CLS={1:'n1',2:'n2',3:'n3'};
-const QUICK_CODES=new Set(['A1','A3','B1','C1','D1','E1','F1','G1','H1']);
-const LIGHT_CODES=QUICK_CODES; // backward compat
-const VALID_CODES=new Set(INDICATORS.map(i=>i.code));
+const LVL_DIMS = {1:['A','B'],2:['C','D','E'],3:['F','G','H']};
+const LVL_CLS = {1:'n1',2:'n2',3:'n3'};
+const QUICK_CODES = new Set(['A1','A3','B1','C1','D1','E1','F1','G1','H1']);
+const LIGHT_CODES = QUICK_CODES; // backward compat
+const VALID_CODES = new Set(INDICATORS.map(i=>i.code));
 
 function addTooltips(text) {
   const glossary = I18N[lang].glossary;
@@ -2018,7 +2018,7 @@ const I18N = {
         </ul>
         <h3>Saving data</h3>
         <p>All entered data is automatically saved in your browser (localStorage). You can close your browser and continue later. Export a JSON backup regularly for safety.</p>
-        <div class="tip"><strong>Multiple assessors?</strong> Have each assessor complete the assessment independently and export the results as JSON. A coordinator can import the files and compare scores in the overview.</div>`,
+        <div class = "tip"><strong>Multiple assessors?</strong> Have each assessor complete the assessment independently and export the results as JSON. A coordinator can import the files and compare scores in the overview.</div>`,
     "indicators": {
       "A1": {
         "title": "Supplier jurisdiction",
@@ -2668,7 +2668,7 @@ const I18N = {
         </ul>
         <h3>Guardar datos</h3>
         <p>Todos los datos introducidos se guardan automáticamente en tu navegador (localStorage). Puedes cerrar el navegador y continuar más tarde. Exporta regularmente una copia de seguridad JSON por seguridad.</p>
-        <div class="tip"><strong>¿Varios evaluadores?</strong> Pide a cada evaluador que complete la evaluación de forma independiente y exporte los resultados en JSON. Un coordinador puede importar los archivos y comparar las puntuaciones en la vista general.</div>`,
+        <div class = "tip"><strong>¿Varios evaluadores?</strong> Pide a cada evaluador que complete la evaluación de forma independiente y exporte los resultados en JSON. Un coordinador puede importar los archivos y comparar las puntuaciones en la vista general.</div>`,
     "indicators": {
       "A1": {
         "title": "Jurisdicción del proveedor",
@@ -3930,10 +3930,10 @@ const I18N = {
             <li><strong>Esporta:</strong> salva i risultati in formato JSON o CSV.</li>
         </ul>
         <h3>I tre livelli di analisi</h3>
-        <p><strong style="color:var(--sivon-red)">Livello 1: Esposizione al rischio</strong> (dimensioni A-B). Misura l'entità del rischio esterno. Un punteggio basso (1) significa poco rischio, un punteggio alto (5) significa rischio elevato.</p>
+        <p><strong style = "color:var(--sivon-red)">Livello 1: Esposizione al rischio</strong> (dimensioni A-B). Misura l'entità del rischio esterno. Un punteggio basso (1) significa poco rischio, un punteggio alto (5) significa rischio elevato.</p>
         <p><strong style="color:var(--green)">Livello 2: Capacità di attenuazione</strong> (dimensioni C-E). Misura la capacità dell'organizzazione di gestire i rischi. Un punteggio basso (1) è debole, un punteggio alto (5) è forte.</p>
-        <p><strong style="color:#555">Livello 3: Importanza strategica</strong> (dimensioni F-H). Misura l'importanza dell'applicazione. Un punteggio basso (1) significa poca importanza, un punteggio alto (5) è critico.</p>
-        <div class="tip"><strong>Nota la direzione dei colori:</strong> Per i livelli 1 e 3, il punteggio 1 è verde (buono dal punto di vista dei valori pubblici); per il livello 2, il punteggio 5 è verde (forte attenuazione).</div>
+        <p><strong style = "color:#555">Livello 3: Importanza strategica</strong> (dimensioni F-H). Misura l'importanza dell'applicazione. Un punteggio basso (1) significa poca importanza, un punteggio alto (5) è critico.</p>
+        <div class = "tip"><strong>Nota la direzione dei colori:</strong> Per i livelli 1 e 3, il punteggio 1 è verde (buono dal punto di vista dei valori pubblici); per il livello 2, il punteggio 5 è verde (forte attenuazione).</div>
         <h3>Calcolo</h3>
         <p>Il punteggio dei valori pubblici viene calcolato in quattro passi:</p>
         <ul>
@@ -5166,20 +5166,44 @@ function setLang(nextLang) {
 function t(path) {
   return path
     .split('.')
-    .reduce((obj, key) => obj?.[key], I18N[lang])
-    ?? path
+    .reduce((obj, key) => obj?.[key], I18N[lang]) ?? path
     .split('.')
-    .reduce((obj, key) => obj?.[key], I18N.en)
-    ?? path;
+    .reduce((obj, key) => obj?.[key], I18N.en) ?? path;
 }
 
 // === STATE ===
-let state = { apps:{}, order:[], currentView:'overview', modes:{} };
+let state = {
+  apps: {},
+  order: [],
+  currentView: 'overview',
+  modes: {}
+};
 let appCounter = 0;
 
-function save() { try { localStorage.setItem('pvaf_state', JSON.stringify(state)); } catch(e){} }
-function load() { try { const s=localStorage.getItem('pvaf_state'); if(s){state=JSON.parse(s);appCounter=state.order.length;if(!state.modes)state.modes={};for(const id of state.order){if(!state.apps[id].remarks)state.apps[id].remarks={};if(state.apps[id].appId===undefined)state.apps[id].appId='';}} } catch(e){} }
-function uid() { return 'app_'+(++appCounter)+'_'+Date.now().toString(36); }
+function save() {
+  try {
+    localStorage.setItem('pvaf_state', JSON.stringify(state));
+  } catch (e) {}
+}
+
+function load() {
+  try {
+    const s = localStorage.getItem('pvaf_state');
+    if (s) {
+      state = JSON.parse(s);
+      appCounter = state.order.length;
+      if (!state.modes) state.modes = {};
+      for (const id of state.order) {
+        if (!state.apps[id].remarks) state.apps[id].remarks = {};
+        if (state.apps[id].appId === undefined) state.apps[id].appId = '';
+      }
+    }
+  } catch (e) {}
+}
+
+function uid() {
+  return 'app_' + (++appCounter) + '_' + Date.now().toString(36);
+}
 
 // === DROPDOWN ===
 function toggleDropdown(id) {
@@ -5203,42 +5227,55 @@ function toggleDropdown(id) {
     });
   }
 }
-function closeDropdowns() { document.querySelectorAll('.dropdown-menu').forEach(m=>m.classList.remove('open')); }
-document.addEventListener('click', e => { if (!e.target.closest('.dropdown')) closeDropdowns(); });
+
+function closeDropdowns() {
+  document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('open'));
+}
+document.addEventListener('click', e => {
+  if (!e.target.closest('.dropdown')) closeDropdowns();
+});
 
 // === HELP MODAL ===
 function openHelp() {
   document.getElementById('helpModalBody').innerHTML = t('help');
   document.getElementById('helpModal').classList.add('open');
 }
-function closeHelp() { document.getElementById('helpModal').classList.remove('open'); }
-document.getElementById('helpModal').addEventListener('click', e => { if (e.target===e.currentTarget) closeHelp(); });
+
+function closeHelp() {
+  document.getElementById('helpModal').classList.remove('open');
+}
+document.getElementById('helpModal').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeHelp();
+});
 
 // === WEIGHTS MODAL ===
 let currentWeightsAppId = null;
+
 function openWeightsModalCurrent() {
   if (state.currentView && state.currentView !== 'overview' && state.apps[state.currentView]) {
     openWeightsModal(state.currentView);
   }
 }
+
 function updateHeaderWeightsBtn() {
   const btn = document.getElementById('headerWeightsBtn');
   if (btn) btn.style.display = (state.currentView && state.currentView !== 'overview' && state.apps[state.currentView]) ? '' : 'none';
 }
+
 function openWeightsModal(id) {
   currentWeightsAppId = id;
   const app = state.apps[id];
   const modal = document.getElementById('weightsModal');
   const content = document.getElementById('weightsContent');
   let h = '';
-  for (const lvl of [1,2,3]) {
+  for (const lvl of [1, 2, 3]) {
     const dims = LVL_DIMS[lvl];
     for (const dim of dims) {
-      const dinds = INDICATORS.filter(i=>i.dim===dim);
+      const dinds = INDICATORS.filter(i => i.dim === dim);
       h += `<div style="margin-bottom:1.2rem"><h3 style="font-size:0.9rem;color:var(--sivon-blue);margin-bottom:0.5rem">${t('ui.scoreRowDimensionPrefix')} ${dim}: ${t('ui.scoreRowDim'+dim+'Name')}</h3>`;
       for (const ind of dinds) {
-        const curW = app.weights[ind.code]!==undefined ? app.weights[ind.code] : ind.w;
-        const isModified = app.weights[ind.code]!==undefined && app.weights[ind.code]!==ind.w;
+        const curW = app.weights[ind.code] !== undefined ? app.weights[ind.code] : ind.w;
+        const isModified = app.weights[ind.code] !== undefined && app.weights[ind.code] !== ind.w;
         h += `<div style="display:flex;justify-content:space-between;align-items:center;padding:0.4rem;background:#faf8f2;margin-bottom:0.3rem;border-radius:4px">`;
         h += `<span style="font-size:0.8rem">${ind.code} ${I18N[lang].indicators[ind.code].title}</span>`;
         h += `<div style="display:flex;align-items:center;gap:0.3rem">`;
@@ -5253,23 +5290,32 @@ function openWeightsModal(id) {
   content.innerHTML = h;
   modal.classList.add('open');
 }
+
 function closeWeightsModal() {
   document.getElementById('weightsModal').classList.remove('open');
   currentWeightsAppId = null;
 }
+
 function changeWeightsModal(id, code, delta) {
   const app = state.apps[id];
-  const ind = INDICATORS.find(i=>i.code===code);
-  const cur = app.weights[code]||ind.w;
-  const nw = Math.max(1,Math.min(5,cur+delta));
-  app.weights[code]=nw;
+  const ind = INDICATORS.find(i => i.code === code);
+  const cur = app.weights[code] || ind.w;
+  const nw = Math.max(1, Math.min(5, cur + delta));
+  app.weights[code] = nw;
   const el = document.getElementById(`wv-modal-${id}-${code}`);
-  if(el) { el.textContent=nw; el.classList.toggle('modified',nw!==ind.w); }
+  if (el) {
+    el.textContent = nw;
+    el.classList.toggle('modified', nw !== ind.w);
+  }
   const mainEl = document.getElementById(`wv-${id}-${code}`);
-  if(mainEl) { mainEl.textContent=nw; mainEl.classList.toggle('modified',nw!==ind.w); }
+  if (mainEl) {
+    mainEl.textContent = nw;
+    mainEl.classList.toggle('modified', nw !== ind.w);
+  }
   save();
   recalcApp(id);
 }
+
 function resetWeights() {
   if (!currentWeightsAppId) return;
   if (!confirm(t('ui.weightsModalResetConfirmation'))) return;
@@ -5279,7 +5325,10 @@ function resetWeights() {
   recalcApp(currentWeightsAppId);
   openWeightsModal(currentWeightsAppId);
 }
-document.getElementById('weightsModal').addEventListener('click', e => { if (e.target===e.currentTarget) closeWeightsModal(); });
+
+document.getElementById('weightsModal').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeWeightsModal();
+});
 
 // === REMARKS ===
 function saveRemark(id, code, value) {
@@ -5295,28 +5344,45 @@ function saveRemark(id, code, value) {
 
 // === SCORE CALCULATION ===
 function calcApp(app, mode) {
-  const isQuick = mode==='quick';
-  const activeInds = isQuick ? INDICATORS.filter(i=>QUICK_CODES.has(i.code)) : INDICATORS;
-  const res = { dims:{}, lvls:{}, raw:null, score10:null, filled:0, total:activeInds.length };
+  const isQuick = mode === 'quick';
+  const activeInds = isQuick ? INDICATORS.filter(i => QUICK_CODES.has(i.code)) : INDICATORS;
+  const res = {
+    dims: {},
+    lvls: {},
+    raw: null,
+    score10: null,
+    filled: 0,
+    total: activeInds.length
+  };
   for (const d of Object.values(LVL_DIMS).flat()) {
-    const inds = activeInds.filter(i=>i.dim===d);
-    if (inds.length===0) { res.dims[d]=null; continue; }
-    let sw=0,sws=0;
+    const inds = activeInds.filter(i => i.dim === d);
+    if (inds.length === 0) {
+      res.dims[d] = null;
+      continue;
+    }
+    let sw = 0,
+      sws = 0;
     for (const ind of inds) {
       const sc = app.scores[ind.code];
-      if (sc!==undefined) {
-        const w = app.weights[ind.code]||ind.w;
-        sw+=w; sws+=sc*w; res.filled++;
+      if (sc !== undefined) {
+        const w = app.weights[ind.code] || ind.w;
+        sw += w;
+        sws += sc * w;
+        res.filled++;
       }
     }
-    res.dims[d] = sw>0 ? sws/sw : null;
+    res.dims[d] = sw > 0 ? sws / sw : null;
   }
-  function lvlAvg(dl) { const v=dl.map(d=>res.dims[d]).filter(x=>x!==null); return v.length===dl.length?v.reduce((a,b)=>a+b,0)/v.length:null; }
+
+  function lvlAvg(dl) {
+    const v = dl.map(d => res.dims[d]).filter(x => x !== null);
+    return v.length === dl.length ? v.reduce((a, b) => a + b, 0) / v.length : null;
+  }
   res.lvls.risk = lvlAvg(LVL_DIMS[1]);
   res.lvls.mitigation = lvlAvg(LVL_DIMS[2]);
   res.lvls.importance = lvlAvg(LVL_DIMS[3]);
 
-  if (res.lvls.risk && res.lvls.mitigation && res.lvls.importance && res.lvls.risk*res.lvls.importance>0) {
+  if (res.lvls.risk && res.lvls.mitigation && res.lvls.importance && res.lvls.risk * res.lvls.importance > 0) {
     res.raw = res.lvls.mitigation / (res.lvls.risk * res.lvls.importance);
     res.score10 = normalize10(res.raw);
   }
@@ -5324,19 +5390,20 @@ function calcApp(app, mode) {
 }
 
 function normalize10(raw) {
-  if (!raw || raw<=0) return null;
-  const minL=Math.log(0.04), maxL=Math.log(5.0);
-  return Math.max(1, Math.min(10, (Math.log(raw)-minL)/(maxL-minL)*9+1));
+  if (!raw || raw <= 0) return null;
+  const minL = Math.log(0.04),
+    maxL = Math.log(5.0);
+  return Math.max(1, Math.min(10, (Math.log(raw) - minL) / (maxL - minL) * 9 + 1));
 }
 
 function scorePill(v) {
-  if (v===null) return '<span class="score-pill pill-empty">--</span>';
-  const cls = v>=7?'pill-good':v>=5?'pill-ok':v>=3?'pill-weak':'pill-bad';
+  if (v === null) return '<span class="score-pill pill-empty">--</span>';
+  const cls = v >= 7 ? 'pill-good' : v >= 5 ? 'pill-ok' : v >= 3 ? 'pill-weak' : 'pill-bad';
   return `<span class="score-pill ${cls}">${v.toFixed(1)}</span>`;
 }
 
 function dimPill(v) {
-  if (v===null) return '<span class="dim-badge empty">--</span>';
+  if (v === null) return '<span class="dim-badge empty">--</span>';
   return `<span class="dim-badge">${v.toFixed(1)}</span>`;
 }
 
@@ -5345,6 +5412,7 @@ function scrollTabs(px) {
   const bar = document.getElementById('tabBar');
   bar.scrollLeft += px;
 }
+
 function updateScrollBtns() {
   const bar = document.getElementById('tabBar');
   const left = document.getElementById('tabScrollLeft');
@@ -5356,13 +5424,24 @@ function updateScrollBtns() {
 // === APP MANAGEMENT ===
 function addApp(name) {
   const id = uid();
-  state.apps[id] = { name:name||'', appId:'', date:'', assessor:'', scores:{}, weights:{}, remarks:{} };
+  state.apps[id] = {
+    name: name || '',
+    appId: '',
+    date: '',
+    assessor: '',
+    scores: {},
+    weights: {},
+    remarks: {}
+  };
   state.order.push(id);
   save();
   rebuildTabs();
   showView(id);
   applyI18n();
-  setTimeout(()=>{const el=document.getElementById('name-'+id);if(el&&!name)el.focus();},100);
+  setTimeout(() => {
+    const el = document.getElementById('name-' + id);
+    if (el && !name) el.focus();
+  }, 100);
 }
 
 let pendingDeletes = [];
@@ -5371,14 +5450,17 @@ let undoToastEl = null;
 
 function dismissUndoToast() {
   if (undoToastTimer) clearTimeout(undoToastTimer);
-  if (undoToastEl) { undoToastEl.remove(); undoToastEl = null; }
+  if (undoToastEl) {
+    undoToastEl.remove();
+    undoToastEl = null;
+  }
 }
 
 function commitPendingDeletes() {
   dismissUndoToast();
   for (const pd of pendingDeletes) {
     delete state.apps[pd.id];
-    state.order = state.order.filter(x=>x!==pd.id);
+    state.order = state.order.filter(x => x !== pd.id);
   }
   pendingDeletes = [];
   save();
@@ -5409,7 +5491,11 @@ function showUndoToast(msg) {
 function removeApp(id) {
   // Commit any previous pending deletes first
   if (pendingDeletes.length > 0) commitPendingDeletes();
-  pendingDeletes = [{ id: id, app: JSON.parse(JSON.stringify(state.apps[id])), orderIdx: state.order.indexOf(id) }];
+  pendingDeletes = [{
+    id: id,
+    app: JSON.parse(JSON.stringify(state.apps[id])),
+    orderIdx: state.order.indexOf(id)
+  }];
   showUndoToast('Applicatie verwijderd');
   rebuildTabs();
   showView('overview');
@@ -5418,7 +5504,11 @@ function removeApp(id) {
 function bulkRemoveApps(ids) {
   if (ids.length === 0) return;
   if (pendingDeletes.length > 0) commitPendingDeletes();
-  pendingDeletes = ids.map(id => ({ id: id, app: JSON.parse(JSON.stringify(state.apps[id])), orderIdx: state.order.indexOf(id) }));
+  pendingDeletes = ids.map(id => ({
+    id: id,
+    app: JSON.parse(JSON.stringify(state.apps[id])),
+    orderIdx: state.order.indexOf(id)
+  }));
   showUndoToast(ids.length + ' applicaties verwijderd');
   rebuildTabs();
   renderOverview();
@@ -5428,7 +5518,7 @@ function duplicateApp(id) {
   const src = state.apps[id];
   const nid = uid();
   state.apps[nid] = JSON.parse(JSON.stringify(src));
-  state.apps[nid].name = (src.name|| `${t('ui.unnamed')} (${t('ui.assessedAppNameCopiedPostfix')})`);
+  state.apps[nid].name = (src.name || `${t('ui.unnamed')} (${t('ui.assessedAppNameCopiedPostfix')})`);
   state.order.push(nid);
   save();
   rebuildTabs();
@@ -5439,12 +5529,12 @@ function duplicateApp(id) {
 function rebuildTabs() {
   const bar = document.getElementById('tabBar');
   let h = `<button class="tab overview ${(state.currentView==='overview'?' active':'')}" onclick="showView('overview')">${t('ui.overviewBtn')}</button>`;
-  const pendingIds = new Set(pendingDeletes.map(p=>p.id));
+  const pendingIds = new Set(pendingDeletes.map(p => p.id));
   for (const id of state.order) {
     if (pendingIds.has(id)) continue;
     const app = state.apps[id];
     const name = app.name || t('ui.unnamed');
-    const active = state.currentView===id?' active':'';
+    const active = state.currentView === id ? ' active' : '';
     h += `<button class="tab${active}" onclick="showView('${id}')">${esc(name.substring(0,20))}${name.length>20?'...':''}<span class="close-tab" onclick="event.stopPropagation();removeApp('${id}')">&times;</span></button>`;
   }
   h += '<button class="add-tab" onclick="addApp()" data-i18n-attr="title:ui.headerTabsAddAppBtn" title="Applicatie toevoegen">+</button>';
@@ -5452,19 +5542,22 @@ function rebuildTabs() {
   // Update tab count
   const cnt = document.getElementById('tabCount');
   const visCount = state.order.length - pendingIds.size;
-  if (cnt) cnt.textContent = visCount > 0 ? visCount + (visCount!==1 ? ' ' + t('ui.headerAppPlural') : ' ' + t('ui.headerAppSingular')) : '';
+  if (cnt) cnt.textContent = visCount > 0 ? visCount + (visCount !== 1 ? ' ' + t('ui.headerAppPlural') : ' ' + t('ui.headerAppSingular')) : '';
   setTimeout(updateScrollBtns, 50);
 }
 
 function showView(id) {
   state.currentView = id;
-  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
-  if (id==='overview') {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  if (id === 'overview') {
     document.getElementById('view-overview').classList.add('active');
     renderOverview();
   } else {
-    let el = document.getElementById('view-'+id);
-    if (!el) { renderAppView(id); el = document.getElementById('view-'+id); }
+    let el = document.getElementById('view-' + id);
+    if (!el) {
+      renderAppView(id);
+      el = document.getElementById('view-' + id);
+    }
     if (el) el.classList.add('active');
     recalcApp(id);
   }
@@ -5474,11 +5567,11 @@ function showView(id) {
 
 function renderOverview() {
   const c = document.getElementById('overviewContent');
-  if (state.order.length===0) {
+  if (state.order.length === 0) {
     c.innerHTML = `<div style="text-align:center;padding:3rem;color:#bbb"><p style="font-size:1.2rem;margin-bottom:0.5rem">${t('ui.overviewNoApps')}</p><p style="font-size:0.85rem">${t('ui.overviewNoAppsHintHtml')}</p></div>`;
     return;
   }
-  const pendingIds = new Set(pendingDeletes.map(p=>p.id));
+  const pendingIds = new Set(pendingDeletes.map(p => p.id));
   const visibleOrder = state.order.filter(id => !pendingIds.has(id));
   let h = '';
   // Export reminder: show if 3+ apps and 7+ days since last export/dismiss
@@ -5508,8 +5601,8 @@ function renderOverview() {
     const app = state.apps[id];
     const mode = state.modes?.[id] || 'full';
     const res = calcApp(app, mode);
-    const pct = Math.round(res.filled/res.total*100);
-    const pcolor = pct===100?'var(--green)':pct>50?'var(--orange)':'#ccc';
+    const pct = Math.round(res.filled / res.total * 100);
+    const pcolor = pct === 100 ? 'var(--green)' : pct > 50 ? 'var(--orange)' : '#ccc';
     h += `<tr>`;
     h += `<td><input type="checkbox" class="row-check" value="${id}" onchange="updateBulkBar()"></td>`;
     h += `<td class="app-name" onclick="showView('${id}')">${esc(app.name)||t('ui.unnamed')}</td>`;
@@ -5544,18 +5637,25 @@ function renderOverview() {
   // Legend
   h += `<div class="q-legend">`;
   const plotted = [];
-  for (let idx=0; idx<visibleOrder.length; idx++) {
+  for (let idx = 0; idx < visibleOrder.length; idx++) {
     const aid = visibleOrder[idx];
     const a = state.apps[aid];
     const r = calcApp(a, state.modes?.[aid] || 'full');
     if (r.lvls.risk && r.lvls.mitigation && r.lvls.importance) {
-      plotted.push({id:aid, name:a.name||t('ui.unnamed'), num:idx+1, risk:r.lvls.risk, mitigation:r.lvls.mitigation, importance:r.lvls.importance});
+      plotted.push({
+        id: aid,
+        name: a.name || t('ui.unnamed'),
+        num: idx + 1,
+        risk: r.lvls.risk,
+        mitigation: r.lvls.mitigation,
+        importance: r.lvls.importance
+      });
     }
   }
   for (const p of plotted) {
     h += `<span><span class="q-legend-dot"></span>${p.num}. ${esc(p.name)}</span>`;
   }
-  if (plotted.length===0) h += `<span style="color:#bbb">${t('ui.overviewQuadrantEmptyHint')}</span>`;
+  if (plotted.length === 0) h += `<span style="color:#bbb">${t('ui.overviewQuadrantEmptyHint')}</span>`;
   h += `</div>`;
 
   h += `<div class="formula-box" style="margin-top:0.6rem">${t('ui.overviewQuadrantFormulaBoxLabelHtml')}</div>`;
@@ -5594,7 +5694,7 @@ function renderAppView(id) {
   const container = document.getElementById('appViews');
   const div = document.createElement('div');
   div.className = 'view';
-  div.id = 'view-'+id;
+  div.id = 'view-' + id;
 
   let h = '';
   h += `<div class="assess-header">`;
@@ -5619,39 +5719,39 @@ function renderAppView(id) {
   h += `<div class="score-card importance"><div class="sc-label"><span data-i18n="ui.assessedAppScoreCardImportanceLabel">Strategisch belang</span> <span class="tt" data-tip="Hoe belangrijk is de applicatie? Gemiddelde van dimensie F (Organisatorisch belang), G (Data-gevoeligheid) en H (Onderwijs impact). Lage score = weinig belang. Hoge score = kritiek. Dit niveau ligt grotendeels vast; een applicatie wordt niet minder belangrijk." data-i18n-attr="data-tip:ui.assessedAppScoreCardImportanceTip" style="cursor:help;font-size:0.55rem;color:#bbb;border-bottom:1px dotted #ccc">&#9432;</span></div><div class="sc-value" id="scI-${id}">--</div><div class="sc-sub" data-i18n="ui.assessedAppScoreCardImportanceSub">Hoog = kritieke applicatie</div></div>`;
   h += `</div>`;
 
-  for (const lvl of [1,2,3]) {
+  for (const lvl of [1, 2, 3]) {
     const dims = LVL_DIMS[lvl];
     h += `<div class="lvl-section">`;
     h += `<div class="lvl-bar ${LVL_CLS[lvl]}"><span><span data-i18n="ui.levelRowHeaderLevelPrefix">${t('ui.levelRowHeaderLevelPrefix')}</span> ${lvl}: <span data-i18n="ui.levelRowHeaderLevel${lvl}Name">${t('ui.levelRowHeaderLevel'+lvl+'Name')}</span></span><span class="lvl-hint" data-i18n="ui.levelRowHeaderLevel${lvl}Hint">${t('ui.levelRowHeaderLevel'+lvl+'Hint')}</span></div>`;
     h += `<div class="lvl-body" id="lvlBody-${id}-${lvl}">`;
     for (const dim of dims) {
-      const dinds = INDICATORS.filter(i=>i.dim===dim);
+      const dinds = INDICATORS.filter(i => i.dim === dim);
       h += `<div class="dim-row" id="dimRow-${id}-${dim}">`;
       h += `<div class="dim-title" style="flex-direction:column;align-items:flex-start"><div style="display:flex;justify-content:space-between;align-items:center;width:100%"><span onclick="toggleDimV('${id}','${dim}')" style="flex:1;cursor:pointer"><span data-i18n="ui.scoreRowDimensionPrefix">${t('ui.scoreRowDimensionPrefix')}</span> ${dim}: <span data-i18n="ui.scoreRowDim${dim}Name">${t('ui.scoreRowDim'+dim+'Name')}</span></span><div class="dim-actions"><button class="dim-toggle-all" onclick="event.stopPropagation();toggleAllRubs('${id}','${dim}')" title="Alle rubrieken tonen/verbergen" data-i18n-attr="title:ui.levelRowHeaderRubricsBtnTitle"><span data-i18n="ui.levelRowHeaderRubricsBtn">Rubrieken ▾</span></button></div>${dimPill(null)}</div><div style="font-size:0.7rem;color:#999;font-weight:400;margin-top:0.3rem;margin-left:0" data-i18n="ui.scoreRowDim${dim}Desc">${t('ui.scoreRowDim'+dim+'Desc')}</div></div>`;
       h += `<div class="dim-inds" id="dimInds-${id}-${dim}">`;
       h += `<div class="ind-colheader"><span></span><span data-i18n="ui.levelRowHeaderColIndicator">Indicator</span><span class="ch-wgt" data-i18n="ui.levelRowHeaderColWeight">Weging</span><span class="ch-score" data-i18n="ui.levelRowHeaderColScore">Score (1-5)</span></div>`;
       for (const ind of dinds) {
-        const dir = ind.lvl===2?'asc':'desc';
-        const hL = ind.lvl===2?t('ui.levelRowScaleBarLow'):t('ui.levelRowScaleBarGood');
-        const hR = ind.lvl===2?t('ui.levelRowScaleBarHigh'):t('ui.levelRowScaleBarBad');
-        const rubDir = ind.lvl===2?'rub-asc':'rub-desc';
+        const dir = ind.lvl === 2 ? 'asc' : 'desc';
+        const hL = ind.lvl === 2 ? t('ui.levelRowScaleBarLow') : t('ui.levelRowScaleBarGood');
+        const hR = ind.lvl === 2 ? t('ui.levelRowScaleBarHigh') : t('ui.levelRowScaleBarBad');
+        const rubDir = ind.lvl === 2 ? 'rub-asc' : 'rub-desc';
         const isQuick = QUICK_CODES.has(ind.code);
         h += `<div class="ind-row" data-code="${ind.code}" data-quick="${isQuick?1:0}" onclick="indRowClick(event,'${id}','${ind.code}')">`;
         h += `<span class="ind-code">${ind.code}</span>`;
         const indText = I18N[lang].indicators[ind.code];
-        h += `<div class="ind-info"><div class="ind-title">${indText.title}${ind.opt?' <span style="font-size:0.6rem;color:#bbb">(opt.)</span>':''}</div><div class="ind-q">${indText.q}</div></div>`;
-        const curW = app.weights[ind.code]||ind.w;
-        const wModified = app.weights[ind.code]!==undefined && app.weights[ind.code]!==ind.w;
+        h += `<div class="ind-info"><div class="ind-title">${indText.title}${ind.opt?' <span style = "font-size:0.6rem;color:#bbb">(opt.)</span>':''}</div><div class="ind-q">${indText.q}</div></div>`;
+        const curW = app.weights[ind.code] || ind.w;
+        const wModified = app.weights[ind.code] !== undefined && app.weights[ind.code] !== ind.w;
         h += `<span class="wgt-val${wModified?' modified':''}" id="wv-${id}-${ind.code}" style="text-align:center">${curW}</span>`;
         h += `<div class="ind-right"><div><div class="sbar">`;
-        for (let s=1;s<=5;s++) {
-          const act = app.scores[ind.code]===s?' active':'';
+        for (let s = 1; s <= 5; s++) {
+          const act = app.scores[ind.code] === s ? ' active' : '';
           h += `<button class="sbar-opt ${dir}-${s}${act}" id="sb-${id}-${ind.code}-${s}" onclick="setS('${id}','${ind.code}',${s})">${s}</button>`;
         }
         h += `</div><div class="sbar-hint"><span data-i18n="ui.levelRowScaleBarLow">${hL}</span> &#8592; &#8594; <span data-i18n="ui.levelRowScaleBarHigh">${hR}</span></div></div></div>`;
         h += `</div>`;
         h += `<div class="ind-detail" id="rub-${id}-${ind.code}"><div class="ind-detail-inner"><table class="rub-tbl ${rubDir}">`;
-        for (let s=1;s<=5;s++) h += `<tr class="rs${s}"><td>${s}</td><td>${addTooltips(indText.r[s-1])}</td></tr>`;
+        for (let s = 1; s <= 5; s++) h += `<tr class="rs${s}"><td>${s}</td><td>${addTooltips(indText.r[s-1])}</td></tr>`;
         h += `</table>`;
         if (indText.h) h += `<div class="hulp"><strong data-i18n="ui.scoreRowExplanation">Toelichting:</strong> ${addTooltips(indText.h)}</div>`;
         h += `<div class="ind-remark"><textarea id="rem-${id}-${ind.code}" placeholder="Opmerking of onderbouwing..." data-i18n-attr="placeholder:ui.scoreRowRemarkPlaceholder" oninput="saveRemark('${id}','${ind.code}',this.value)">${esc(app.remarks[ind.code]||'')}</textarea></div>`;
@@ -5664,9 +5764,13 @@ function renderAppView(id) {
   }
 
   div.innerHTML = h;
-  const existingView = document.getElementById('view-'+id);
+  const existingView = document.getElementById('view-' + id);
   const wasActive = existingView?.classList.contains('active');
-  if (existingView) { existingView.replaceWith(div); } else { container.appendChild(div); }
+  if (existingView) {
+    existingView.replaceWith(div);
+  } else {
+    container.appendChild(div);
+  }
   if (wasActive) div.classList.add('active');
   // Show mode picker for new apps (no scores, no saved mode)
   const hasScores = Object.keys(app.scores).length > 0;
@@ -5684,33 +5788,39 @@ function renderAppView(id) {
   }
 }
 
-function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function esc(s) {
+  return (s || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
 
-function updateMeta(id,field,val) {
+function updateMeta(id, field, val) {
   state.apps[id][field] = val;
-  if (field==='name') rebuildTabs();
+  if (field === 'name') rebuildTabs();
   save();
 }
 
-function setS(id,code,val) {
+function setS(id, code, val) {
   const app = state.apps[id];
-  if (app.scores[code]===val) delete app.scores[code]; else app.scores[code]=val;
-  for (let s=1;s<=5;s++) {
-    const el=document.getElementById(`sb-${id}-${code}-${s}`);
-    if(el) el.classList.toggle('active', app.scores[code]===s);
+  if (app.scores[code] === val) delete app.scores[code];
+  else app.scores[code] = val;
+  for (let s = 1; s <= 5; s++) {
+    const el = document.getElementById(`sb-${id}-${code}-${s}`);
+    if (el) el.classList.toggle('active', app.scores[code] === s);
   }
   save();
   recalcApp(id);
 }
 
-function chgW(id,code,delta) {
+function chgW(id, code, delta) {
   const app = state.apps[id];
-  const ind = INDICATORS.find(i=>i.code===code);
-  const cur = app.weights[code]||ind.w;
-  const nw = Math.max(1,Math.min(5,cur+delta));
-  app.weights[code]=nw;
+  const ind = INDICATORS.find(i => i.code === code);
+  const cur = app.weights[code] || ind.w;
+  const nw = Math.max(1, Math.min(5, cur + delta));
+  app.weights[code] = nw;
   const el = document.getElementById(`wv-${id}-${code}`);
-  if(el) { el.textContent=nw; el.classList.toggle('modified',nw!==ind.w); }
+  if (el) {
+    el.textContent = nw;
+    el.classList.toggle('modified', nw !== ind.w);
+  }
   save();
   recalcApp(id);
 }
@@ -5720,7 +5830,8 @@ function indRowClick(e, id, code) {
   if (e.target.closest('button') || e.target.closest('.sbar-opt') || e.target.closest('.wgt-btn')) return;
   toggleRub(id, code);
 }
-function toggleRub(id,code) {
+
+function toggleRub(id, code) {
   const detail = document.getElementById(`rub-${id}-${code}`);
   if (!detail) return;
   detail.classList.toggle('open');
@@ -5728,21 +5839,29 @@ function toggleRub(id,code) {
   const row = detail.previousElementSibling;
   if (row && row.classList.contains('ind-row')) row.classList.toggle('rub-open', detail.classList.contains('open'));
 }
-function toggleDimV(id,dim) { const el=document.getElementById(`dimInds-${id}-${dim}`); if(el) el.style.display=el.style.display==='none'?'':'none'; }
+
+function toggleDimV(id, dim) {
+  const el = document.getElementById(`dimInds-${id}-${dim}`);
+  if (el) el.style.display = el.style.display === 'none' ? '' : 'none';
+}
+
 function pickMode(id, mode) {
   const picker = document.getElementById(`modePicker-${id}`);
   if (picker) picker.remove();
   setMode(id, mode);
 }
 
-function toggleAllRubs(id,dim) {
+function toggleAllRubs(id, dim) {
   const container = document.getElementById(`dimInds-${id}-${dim}`);
   if (!container) return;
   const details = container.querySelectorAll('.ind-detail');
   const anyOpen = Array.from(details).some(d => d.classList.contains('open'));
   details.forEach(d => {
-    if (anyOpen) { d.classList.remove('open'); }
-    else { if (d.style.display !== 'none') d.classList.add('open'); }
+    if (anyOpen) {
+      d.classList.remove('open');
+    } else {
+      if (d.style.display !== 'none') d.classList.add('open');
+    }
     const row = d.previousElementSibling;
     if (row && row.classList.contains('ind-row')) row.classList.toggle('rub-open', d.classList.contains('open'));
   });
@@ -5750,12 +5869,12 @@ function toggleAllRubs(id,dim) {
 
 function setMode(id, mode) {
   const ctrl = document.getElementById(`segCtrl-${id}`);
-  if (ctrl) ctrl.querySelectorAll('.seg-btn').forEach(b => b.classList.toggle('active', b.dataset.mode===mode));
+  if (ctrl) ctrl.querySelectorAll('.seg-btn').forEach(b => b.classList.toggle('active', b.dataset.mode === mode));
   const view = document.getElementById(`view-${id}`);
   if (!view) return;
-  const isQuick = mode==='quick';
+  const isQuick = mode === 'quick';
   view.querySelectorAll('.ind-row').forEach(row => {
-    const hide = isQuick && row.dataset.quick==='0';
+    const hide = isQuick && row.dataset.quick === '0';
     row.style.display = hide ? 'none' : '';
     // Also hide/show the sibling ind-detail (rubric)
     const detail = row.nextElementSibling;
@@ -5770,9 +5889,9 @@ function setMode(id, mode) {
   if (hint && app) {
     const total = isQuick ? QUICK_CODES.size : INDICATORS.length;
     const filled = Object.keys(app.scores).filter(c => VALID_CODES.has(c) && (isQuick ? QUICK_CODES.has(c) : true)).length;
-    hint.innerHTML = isQuick
-      ? `<strong>${filled} <span data-i18n="ui.assessModeControlHintOf">van</span> ${total}</strong> <span data-i18n="ui.assessModeControlHintCoreIndicators">kernindicatoren (indicatieve score)</span>`
-      : `<strong>${filled} <span data-i18n="ui.assessModeControlHintOf">van</span> ${total}</strong> <span span data-i18n="ui.assessModeControlHintIndicators">indicatoren</span>`;
+    hint.innerHTML = isQuick ?
+      `<strong>${filled} <span data-i18n="ui.assessModeControlHintOf">van</span> ${total}</strong> <span data-i18n="ui.assessModeControlHintCoreIndicators">kernindicatoren (indicatieve score)</span>` :
+      `<strong>${filled} <span data-i18n="ui.assessModeControlHintOf">van</span> ${total}</strong> <span span data-i18n="ui.assessModeControlHintIndicators">indicatoren</span>`;
   }
   // Store mode preference
   if (!state.modes) state.modes = {};
@@ -5783,63 +5902,82 @@ function setMode(id, mode) {
 
 function recalcApp(id) {
   const app = state.apps[id];
-  if(!app) return;
+  if (!app) return;
   const mode = state.modes?.[id] || 'full';
   const res = calcApp(app, mode);
 
-  const fmt = v => v!==null?v.toFixed(2):'--';
+  const fmt = v => v !== null ? v.toFixed(2) : '--';
   const el10 = document.getElementById(`sc10-${id}`);
-  if(el10) {
-    el10.innerHTML = res.score10?res.score10.toFixed(1)+'<span class="sc-scale">/10</span>':'--';
-    el10.style.color = res.score10?(res.score10>=7?'var(--green)':res.score10>=5?'var(--orange)':res.score10>=3?'#E65100':'var(--red)'):'var(--sivon-blue)';
+  if (el10) {
+    el10.innerHTML = res.score10 ? res.score10.toFixed(1) + '<span class="sc-scale">/10</span>' : '--';
+    el10.style.color = res.score10 ? (res.score10 >= 7 ? 'var(--green)' : res.score10 >= 5 ? 'var(--orange)' : res.score10 >= 3 ? '#E65100' : 'var(--red)') : 'var(--sivon-blue)';
   }
-  const elR=document.getElementById(`scR-${id}`); if(elR) elR.innerHTML=res.lvls.risk!==null?fmt(res.lvls.risk)+'<span class="sc-scale">/5</span>':'--';
-  const elM=document.getElementById(`scM-${id}`); if(elM) elM.innerHTML=res.lvls.mitigation!==null?fmt(res.lvls.mitigation)+'<span class="sc-scale">/5</span>':'--';
-  const elI=document.getElementById(`scI-${id}`); if(elI) elI.innerHTML=res.lvls.importance!==null?fmt(res.lvls.importance)+'<span class="sc-scale">/5</span>':'--';
+  const elR = document.getElementById(`scR-${id}`);
+  if (elR) elR.innerHTML = res.lvls.risk !== null ? fmt(res.lvls.risk) + '<span class="sc-scale">/5</span>' : '--';
+  const elM = document.getElementById(`scM-${id}`);
+  if (elM) elM.innerHTML = res.lvls.mitigation !== null ? fmt(res.lvls.mitigation) + '<span class="sc-scale">/5</span>' : '--';
+  const elI = document.getElementById(`scI-${id}`);
+  if (elI) elI.innerHTML = res.lvls.importance !== null ? fmt(res.lvls.importance) + '<span class="sc-scale">/5</span>' : '--';
 
   for (const d of Object.values(LVL_DIMS).flat()) {
     const dimRow = document.getElementById(`dimRow-${id}-${d}`);
-    if(!dimRow) continue;
+    if (!dimRow) continue;
     const titleEl = dimRow.querySelector('.dim-title');
-    if(!titleEl) continue;
+    if (!titleEl) continue;
     const badge = titleEl.querySelector('.dim-badge');
-    if(badge) {
-      if(res.dims[d]!==null) { badge.textContent=res.dims[d].toFixed(1); badge.classList.remove('empty'); }
-      else { badge.textContent='--'; badge.classList.add('empty'); }
+    if (badge) {
+      if (res.dims[d] !== null) {
+        badge.textContent = res.dims[d].toFixed(1);
+        badge.classList.remove('empty');
+      } else {
+        badge.textContent = '--';
+        badge.classList.add('empty');
+      }
     }
   }
   // Refresh mode hint counter
   const hint = document.getElementById(`modeHint-${id}`);
   if (hint) {
-    const isQuick = mode==='quick';
+    const isQuick = mode === 'quick';
     const total = isQuick ? QUICK_CODES.size : INDICATORS.length;
     const filled = Object.keys(app.scores).filter(c => VALID_CODES.has(c) && (isQuick ? QUICK_CODES.has(c) : true)).length;
-    hint.innerHTML = isQuick
-      ? `<strong>${filled} <span data-i18n="ui.assessModeControlHintOf">van</span> ${total}</strong> <span data-i18n="ui.assessModeControlHintCoreIndicators">kernindicatoren (indicatieve score)</span>`
-      : `<strong>${filled} <span data-i18n="ui.assessModeControlHintOf">van</span> ${total}</strong> <span span data-i18n="ui.assessModeControlHintIndicators">indicatoren</span>`;
+    hint.innerHTML = isQuick ?
+      `<strong>${filled} <span data-i18n="ui.assessModeControlHintOf">van</span> ${total}</strong> <span data-i18n="ui.assessModeControlHintCoreIndicators">kernindicatoren (indicatieve score)</span>` :
+      `<strong>${filled} <span data-i18n="ui.assessModeControlHintOf">van</span> ${total}</strong> <span span data-i18n="ui.assessModeControlHintIndicators">indicatoren</span>`;
   }
 }
 
 // === IMPORT / EXPORT ===
 function exportAll() {
-  const data = { version:'PVAF-export-v1', exportDate:new Date().toISOString(), applications:{} };
+  const data = {
+    version: 'PVAF-export-v1',
+    exportDate: new Date().toISOString(),
+    applications: {}
+  };
   for (const id of state.order) {
     const app = state.apps[id];
     const appMode = state.modes?.[id] || 'full';
     const res = calcApp(app, appMode);
-    data.applications[app.name||t('ui.unnamed')] = {
-      appId:app.appId||'', modus:appMode, date:app.date, assessor:app.assessor,
-      scores:app.scores, weights:app.weights, remarks:app.remarks||{},
-      result: { score10:res.score10?+res.score10.toFixed(1):null, raw:res.raw?+res.raw.toFixed(4):null,
-        risk:res.lvls.risk?+res.lvls.risk.toFixed(2):null,
-        mitigation:res.lvls.mitigation?+res.lvls.mitigation.toFixed(2):null,
-        importance:res.lvls.importance?+res.lvls.importance.toFixed(2):null,
-        dimensions:Object.fromEntries(Object.entries(res.dims).map(([k,v])=>[k+'. '+t('ui.scoreRowDim'+k+'Name'),v?+v.toFixed(2):null]))
+    data.applications[app.name || t('ui.unnamed')] = {
+      appId: app.appId || '',
+      modus: appMode,
+      date: app.date,
+      assessor: app.assessor,
+      scores: app.scores,
+      weights: app.weights,
+      remarks: app.remarks || {},
+      result: {
+        score10: res.score10 ? +res.score10.toFixed(1) : null,
+        raw: res.raw ? +res.raw.toFixed(4) : null,
+        risk: res.lvls.risk ? +res.lvls.risk.toFixed(2) : null,
+        mitigation: res.lvls.mitigation ? +res.lvls.mitigation.toFixed(2) : null,
+        importance: res.lvls.importance ? +res.lvls.importance.toFixed(2) : null,
+        dimensions: Object.fromEntries(Object.entries(res.dims).map(([k, v]) => [k + '. ' + t('ui.scoreRowDim' + k + 'Name'), v ? +v.toFixed(2) : null]))
       }
     };
   }
 
-  downloadBlob(JSON.stringify(data,null,2), 'application/json', `PVAF_export_${new Date().toISOString().slice(0,10)}.json`);
+  downloadBlob(JSON.stringify(data, null, 2), 'application/json', `PVAF_export_${new Date().toISOString().slice(0,10)}.json`);
   markExportAction();
 }
 
@@ -5870,18 +6008,18 @@ function exportODF() {
   for (const id of state.order) {
     const app = state.apps[id];
     const res = calcApp(app, state.modes?.[id] || 'full');
-    const appName = app.name|| t('file.unnamed');
-    const appId = app.appId||'';
+    const appName = app.name || t('file.unnamed');
+    const appId = app.appId || '';
     for (const ind of INDICATORS) {
       const sc = app.scores[ind.code];
-      const w = app.weights[ind.code]||ind.w;
+      const w = app.weights[ind.code] || ind.w;
       csv += `"${appId}";"${appName}";"${ind.code}";"${I18N[lang].indicators[ind.code].title}";${w};${sc||''};${sc?sc*w:''};"${ind.dim}. ${t('file.scoreRowDim'+ind.dim+'Name')}";${res.dims[ind.dim]?res.dims[ind.dim].toFixed(2):''};`;
-      if (ind.code==='A1'||ind.code==='C1'||ind.code==='F1') {
-        const lvlKey = ind.lvl===1?'risk':ind.lvl===2?'mitigation':'importance';
-        csv += res.lvls[lvlKey]?res.lvls[lvlKey].toFixed(2):'';
+      if (ind.code === 'A1' || ind.code === 'C1' || ind.code === 'F1') {
+        const lvlKey = ind.lvl === 1 ? 'risk' : ind.lvl === 2 ? 'mitigation' : 'importance';
+        csv += res.lvls[lvlKey] ? res.lvls[lvlKey].toFixed(2) : '';
       }
       csv += ';';
-      if (ind.code==='A1') csv += res.score10?res.score10.toFixed(1):'';
+      if (ind.code === 'A1') csv += res.score10 ? res.score10.toFixed(1) : '';
       csv += '\n';
     }
   }
@@ -5890,9 +6028,11 @@ function exportODF() {
 
 function importData() {
   const input = document.createElement('input');
-  input.type='file'; input.accept='.json';
+  input.type = 'file';
+  input.accept = '.json';
   input.onchange = e => {
-    const file = e.target.files[0]; if(!file) return;
+    const file = e.target.files[0];
+    if (!file) return;
     const reader = new FileReader();
     reader.onload = ev => {
       try {
@@ -5900,14 +6040,30 @@ function importData() {
         if (data.version && data.applications) {
           for (const [name, app] of Object.entries(data.applications)) {
             const id = uid();
-            state.apps[id] = { name, appId:app.appId||'', date:app.date||'', assessor:app.assessor||'', scores:app.scores||{}, weights:app.weights||{}, remarks:app.remarks||{} };
+            state.apps[id] = {
+              name,
+              appId: app.appId || '',
+              date: app.date || '',
+              assessor: app.assessor || '',
+              scores: app.scores || {},
+              weights: app.weights || {},
+              remarks: app.remarks || {}
+            };
             state.order.push(id);
           }
         } else if (data.meta && data.indicators) {
           const id = uid();
           const scores = {};
-          for (const [code, d] of Object.entries(data.indicators)) scores[code]=d.score;
-          state.apps[id] = { name:data.meta.application||'', appId:'', datum:data.meta.date||'', assessor:data.meta.assessor||'', scores, weights:data.modified_weights?Object.fromEntries(Object.entries(data.modified_weights).map(([k,v])=>[k,v.adjusted])):{}, remarks:{} };
+          for (const [code, d] of Object.entries(data.indicators)) scores[code] = d.score;
+          state.apps[id] = {
+            name: data.meta.application || '',
+            appId: '',
+            datum: data.meta.date || '',
+            assessor: data.meta.assessor || '',
+            scores,
+            weights: data.modified_weights ? Object.fromEntries(Object.entries(data.modified_weights).map(([k, v]) => [k, v.adjusted])) : {},
+            remarks: {}
+          };
           state.order.push(id);
         }
         save();
@@ -5917,7 +6073,9 @@ function importData() {
         for (const id of state.order) renderAppView(id);
         showView('overview');
         renderOverview();
-      } catch(err) { alert(t('ui.overviewAlertInvalidFile')+err.message); }
+      } catch (err) {
+        alert(t('ui.overviewAlertInvalidFile') + err.message);
+      }
     };
     reader.readAsText(file);
   };
@@ -5926,15 +6084,20 @@ function importData() {
 
 function importCSVApps() {
   const input = document.createElement('input');
-  input.type='file'; input.accept='.csv,.txt';
+  input.type = 'file';
+  input.accept = '.csv,.txt';
   input.onchange = e => {
-    const file = e.target.files[0]; if(!file) return;
+    const file = e.target.files[0];
+    if (!file) return;
     const reader = new FileReader();
     reader.onload = ev => {
       try {
-        const text = ev.target.result.replace(/^\uFEFF/,'');
-        const lines = text.split(/\r?\n/).map(l=>l.trim()).filter(l=>l);
-        if (lines.length===0) { alert(t('ui.overviewAlertEmptyFile')); return; }
+        const text = ev.target.result.replace(/^\uFEFF/, '');
+        const lines = text.split(/\r?\n/).map(l => l.trim()).filter(l => l);
+        if (lines.length === 0) {
+          alert(t('ui.overviewAlertEmptyFile'));
+          return;
+        }
         // Detect header
         const firstLower = lines[0].toLowerCase();
         let startIdx = 0;
@@ -5942,13 +6105,16 @@ function importCSVApps() {
           startIdx = 1;
         }
         let added = 0;
-        for (let i=startIdx; i<lines.length; i++) {
+        for (let i = startIdx; i < lines.length; i++) {
           // Split on ; or , and take columns
           const sep = lines[i].includes(';') ? ';' : ',';
-          const cols = lines[i].split(sep).map(c=>c.replace(/^["']+|["']+$/g,'').trim());
+          const cols = lines[i].split(sep).map(c => c.replace(/^["']+|["']+$/g, '').trim());
           // For new format: ID, Name, Date, Assessor
           // For old format: Name, Date, Assessor
-          let appId = '', name = '', date = '', assessor = '';
+          let appId = '',
+            name = '',
+            date = '',
+            assessor = '';
           if (cols.length >= 4 && (cols[0].match(/^\w+-\d+/) || cols[0].match(/^[A-Z0-9-]+$/))) {
             // New format: ID, Name, Date, Assessor
             appId = cols[0];
@@ -5963,11 +6129,22 @@ function importCSVApps() {
           }
           if (!name) continue;
           const id = uid();
-          state.apps[id] = { name, appId:appId||'', date:date||'', assessor:assessor||'', scores:{}, weights:{}, remarks:{} };
+          state.apps[id] = {
+            name,
+            appId: appId || '',
+            date: date || '',
+            assessor: assessor || '',
+            scores: {},
+            weights: {},
+            remarks: {}
+          };
           state.order.push(id);
           added++;
         }
-        if (added===0) { alert(t('ui.overviewAlertNoApps')); return; }
+        if (added === 0) {
+          alert(t('ui.overviewAlertNoApps'));
+          return;
+        }
         save();
         rebuildTabs();
         document.getElementById('appViews').innerHTML = '';
@@ -5975,7 +6152,9 @@ function importCSVApps() {
         showView('overview');
         renderOverview();
         alert(`${added} applicatie${added!==1?'s':''} ${t('ui.overviewAlertImported')}`);
-      } catch(err) { alert(t('ui.overviewAlertImportErr')+err.message); }
+      } catch (err) {
+        alert(t('ui.overviewAlertImportErr') + err.message);
+      }
     };
     reader.readAsText(file);
   };
@@ -5990,7 +6169,7 @@ function downloadCSVTemplate() {
   csv += 'SOFT-002;Canvas LMS;;\n';
   csv += 'SOFT-003;SAP;;\n';
   csv += 'SOFT-004;OSIRIS;;\n';
-  downloadBlob(csv, 'text/csv;charset=utf-8', 'PVAF_import_template.csv');
+  downloadBlob(csv, 'text/csv;charset = utf-8', 'PVAF_import_template.csv');
 }
 
 function downloadBlob(content, type, filename) {
@@ -6003,19 +6182,23 @@ function downloadBlob(content, type, filename) {
 
 // === BULK DELETE HELPERS ===
 function toggleSelectAll(el) {
-  document.querySelectorAll('.row-check').forEach(cb => { cb.checked = el.checked; });
+  document.querySelectorAll('.row-check').forEach(cb => {
+    cb.checked = el.checked;
+  });
   updateBulkBar();
 }
+
 function updateBulkBar() {
   const checked = document.querySelectorAll('.row-check:checked');
   const bar = document.getElementById('bulkBar');
   const cnt = document.getElementById('bulkCount');
   if (bar) bar.style.display = checked.length > 0 ? 'flex' : 'none';
-  if (cnt) cnt.textContent =  `${checked.length} ${t('ui.overviewTableSelectedLabel')}`;
+  if (cnt) cnt.textContent = `${checked.length} ${t('ui.overviewTableSelectedLabel')}`;
   const sa = document.getElementById('selectAll');
   const all = document.querySelectorAll('.row-check');
   if (sa && all.length > 0) sa.checked = checked.length === all.length;
 }
+
 function bulkDeleteSelected() {
   const ids = Array.from(document.querySelectorAll('.row-check:checked')).map(cb => cb.value);
   if (ids.length === 0) return;
@@ -6025,12 +6208,14 @@ function bulkDeleteSelected() {
 function markExportAction() {
   localStorage.setItem('pvaf_lastExportAction', String(Date.now()));
 }
+
 function exportAllAndDismissReminder() {
   exportAll();
   markExportAction();
   const el = document.getElementById('exportReminder');
   if (el) el.remove();
 }
+
 function dismissExportReminder() {
   markExportAction();
   const el = document.getElementById('exportReminder');
@@ -6041,34 +6226,42 @@ function showChangelog() {
   if (document.querySelector('.wn-overlay')) return;
   const ov = document.createElement('div');
   ov.className = 'wn-overlay';
-  ov.onclick = function(e) { if (e.target === ov) closeChangelog(); };
+  ov.onclick = function(e) {
+    if (e.target === ov) closeChangelog();
+  };
   const changelog = t('changelog');
   const lastSeen = localStorage.getItem('pvaf_lastSeenVersion') || '0.0.0';
-  let html = '<div class="wn-modal"><button class="wn-close" onclick="closeChangelog()">&times;</button><h2 class="sivon">' + t('ui.changelogTitle') + '</h2>';
+  let html = '<div class = "wn-modal"><button class = "wn-close" onclick = "closeChangelog()">&times;</button><h2 class = "sivon">' + t('ui.changelogTitle') + '</h2>';
   for (const entry of changelog) {
     const isNew = entry.version > lastSeen;
-    html += '<div class="cl-version"><h3>v' + entry.version + (isNew ? '<span class="cl-new-badge">' + t('ui.changelogNewBadge') + '</span>' : '') + '</h3>';
-    html += '<div class="cl-date">' + entry.date + '</div><ul>';
+    html += '<div class = "cl-version"><h3>v' + entry.version + (isNew ? '<span class = "cl-new-badge">' + t('ui.changelogNewBadge') + '</span>' : '') + '</h3>';
+    html += '<div class = "cl-date">' + entry.date + '</div><ul>';
     for (const item of entry.items) html += '<li>' + item + '</li>';
     html += '</ul></div>';
   }
-  html += '<button class="wn-ok" onclick="closeChangelog()">' + t('ui.changelogCloseBtn') + '</button></div>';
+  html += '<button class = "wn-ok" onclick = "closeChangelog()">' + t('ui.changelogCloseBtn') + '</button></div>';
   ov.innerHTML = html;
   document.body.appendChild(ov);
 }
+
 function closeChangelog() {
   const ov = document.querySelector('.wn-overlay');
   if (ov) ov.remove();
   localStorage.setItem('pvaf_lastSeenVersion', CURRENT_VERSION);
   updateChangelogDot();
 }
+
 function updateChangelogDot() {
   const btn = document.getElementById('changelogBtn');
   if (!btn) return;
   const dot = btn.querySelector('.changelog-dot');
   const lastSeen = localStorage.getItem('pvaf_lastSeenVersion') || '0.0.0';
   if (CURRENT_VERSION > lastSeen) {
-    if (!dot) { const d = document.createElement('span'); d.className = 'changelog-dot'; btn.appendChild(d); }
+    if (!dot) {
+      const d = document.createElement('span');
+      d.className = 'changelog-dot';
+      btn.appendChild(d);
+    }
   } else {
     if (dot) dot.remove();
   }
@@ -6078,7 +6271,7 @@ function updateChangelogDot() {
 load();
 rebuildTabs();
 for (const id of state.order) renderAppView(id);
-if (state.currentView && state.currentView!=='overview' && state.apps[state.currentView]) {
+if (state.currentView && state.currentView !== 'overview' && state.apps[state.currentView]) {
   showView(state.currentView);
 } else {
   showView('overview');
