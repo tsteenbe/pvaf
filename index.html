@@ -316,13 +316,6 @@
   @keyframes slideUp { from { transform:translateX(-50%) translateY(20px); opacity:0; } to { transform:translateX(-50%) translateY(0); opacity:1; } }
 
   /* Changelog panel */
-  .wn-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:10000; display:flex; align-items:center; justify-content:center; animation:fadeIn 0.15s ease; }
-  .wn-modal { background:white; border-radius:12px; max-width:500px; width:90%; max-height:80vh; overflow-y:auto; padding:2rem; position:relative; }
-  .wn-close { position:absolute; top:0.8rem; right:1rem; background:none; border:none; font-size:1.3rem; cursor:pointer; color:#999; }
-  .wn-close:hover { color:#333; }
-  .wn-ok { background:var(--sivon-yellow); color:var(--sivon-black); border:none; padding:0.5rem 1.5rem; border-radius:6px; font-weight:600; cursor:pointer; font-family:inherit; font-size:0.85rem; }
-  .wn-ok:hover { background:#ffe04a; }
-
   .cl-version { margin-bottom:1.2rem; padding-bottom:1rem; border-bottom:1px solid #eee; }
   .cl-version:last-of-type { border-bottom:none; }
   .cl-version h3 { color:var(--sivon-gold); font-size:0.9rem; font-weight:700; margin-bottom:0.1rem; }
@@ -385,7 +378,7 @@
       </div>
     </div>
     <button class="hbtn" id="headerWeightsBtn" onclick="openWeightsModalCurrent()" style="display:none" data-i18n="ui.headerMenuWeightsBtn">Wegingen aanpassen</button>
-    <button class="hbtn" onclick="showChangelog()" id="changelogBtn" style="position:relative"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:13px;height:13px;vertical-align:-1.5px;margin-right:3px;fill:currentColor"><path d="M13 3a9 9 0 00-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42A8.954 8.954 0 0013 21a9 9 0 000-18zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg><span data-i18n="ui.headerMenuChangeLogBtn">Changelog</span></button>
+    <button class="hbtn" onclick="openChangelogModal()" id="changelogBtn" style="position:relative"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:13px;height:13px;vertical-align:-1.5px;margin-right:3px;fill:currentColor"><path d="M13 3a9 9 0 00-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42A8.954 8.954 0 0013 21a9 9 0 000-18zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg><span data-i18n="ui.headerMenuChangeLogBtn">Changelog</span></button>
     <button class="hbtn help-btn" onclick="openHelp()"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg><span data-i18n="ui.headerMenuHelpBtn">Handleiding</span></button>
   </div>
 </div>
@@ -417,6 +410,17 @@
 
   <!-- APP VIEWS (dynamically created) -->
   <div id="appViews"></div>
+</div>
+
+<!-- CHANGELOG MODAL -->
+<div class="modal-overlay" id="changelogModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 class="sivon" data-i18n="ui.changelogModalTitle">Changelog</h2>
+      <button class="modal-close" onclick="closeChangelogModal()">&times;</button>
+    </div>
+    <div class="modal-body" id="changelogModalBody"></div>
+  </div>
 </div>
 
 <!-- HELP MODAL -->
@@ -1114,7 +1118,7 @@ const I18N = {
       "assessModePickerQuickBtnSub": "kerneindiktatorer",
       "changelogCloseBtn": "Luk",
       "changelogNewBadge": "NY",
-      "changelogTitle": "Ændringslog",
+      "changelogModalTitle": "Ændringslog",
       "exportReminderDismissTitle": "Påmind mig senere",
       "exportReminderExportBtn": "Eksporter nu",
       "exportReminderText1": "Du har ",
@@ -1764,7 +1768,7 @@ const I18N = {
       "assessModePickerQuickBtnSub": "Kernindikatoren",
       "changelogCloseBtn": "Schließen",
       "changelogNewBadge": "NEU",
-      "changelogTitle": "Änderungsprotokoll",
+      "changelogModalTitle": "Änderungsprotokoll",
       "exportReminderDismissTitle": "Später erinnern",
       "exportReminderExportBtn": "Jetzt exportieren",
       "exportReminderText1": "Sie haben ",
@@ -2414,7 +2418,7 @@ const I18N = {
       "assessModePickerQuickBtnSub": "key indicators",
       "changelogCloseBtn": "Close",
       "changelogNewBadge": "NEW",
-      "changelogTitle": "Changelog",
+      "changelogModalTitle": "Changelog",
       "exportReminderDismissTitle": "Remind me later",
       "exportReminderExportBtn": "Export now",
       "exportReminderText1": "You have ",
@@ -3064,7 +3068,7 @@ const I18N = {
       "assessModePickerQuickBtnSub": "indicadores clave",
       "changelogCloseBtn": "Cerrar",
       "changelogNewBadge": "NUEVO",
-      "changelogTitle": "Registro de cambios",
+      "changelogModalTitle": "Registro de cambios",
       "exportReminderDismissTitle": "Recuérdamelo después",
       "exportReminderExportBtn": "Exportar ahora",
       "exportReminderText1": "Tienes ",
@@ -3714,7 +3718,7 @@ const I18N = {
       "assessModePickerQuickBtnSub": "indicateurs clés",
       "changelogCloseBtn": "Fermer",
       "changelogNewBadge": "NOUVEAU",
-      "changelogTitle": "Journal des modifications",
+      "changelogModalTitle": "Journal des modifications",
       "exportReminderDismissTitle": "Me rappeler plus tard",
       "exportReminderExportBtn": "Exporter maintenant",
       "exportReminderText1": "Vous avez ",
@@ -4364,7 +4368,7 @@ const I18N = {
       "assessModePickerQuickBtnSub": "indicatori chiave",
       "changelogCloseBtn": "Chiudi",
       "changelogNewBadge": "NUOVO",
-      "changelogTitle": "Registro modifiche",
+      "changelogModalTitle": "Registro modifiche",
       "exportReminderDismissTitle": "Ricordamelo dopo",
       "exportReminderExportBtn": "Esporta ora",
       "exportReminderText1": "Hai ",
@@ -5015,7 +5019,7 @@ const I18N = {
       "assessModePickerQuickBtnSub": "kernindicatoren",
       "changelogCloseBtn": "Sluiten",
       "changelogNewBadge": "NIEUW",
-      "changelogTitle": "Changelog",
+      "changelogModalTitle": "Changelog",
       "exportReminderDismissTitle": "Herinner me later",
       "exportReminderExportBtn": "Exporteer nu",
       "exportReminderText1": "Je hebt ",
@@ -5235,6 +5239,36 @@ document.addEventListener('click', e => {
   if (!e.target.closest('.dropdown')) closeDropdowns();
 });
 
+// === CHANGELOG MODAL ===
+function openChangelogModal() {
+  document.getElementById('changelogModalBody').innerHTML = t('help');
+  const modal = document.getElementById('changelogModal');
+  const body = document.getElementById('changelogModalBody');
+  const changelog = t('changelog');
+  const lastSeen = localStorage.getItem('pvaf_lastSeenVersion') || '0.0.0';
+  let h = '';
+
+  for (const entry of changelog) {
+    const isNew = entry.version > lastSeen;
+    h += '<div class = "cl-version"><h3>v' + entry.version + (isNew ? '<span class = "cl-new-badge">' + t('ui.changelogNewBadge') + '</span>' : '') + '</h3>';
+    h += '<div class = "cl-date">' + entry.date + '</div><ul>';
+    for (const item of entry.items) h += '<li>' + item + '</li>';
+    h += '</ul></div>';
+  }
+  body.innerHTML = h;
+  modal.classList.add('open');
+}
+
+function closeChangelogModal() {
+  document.getElementById('changelogModal').classList.remove('open');
+  localStorage.setItem('pvaf_lastSeenVersion', CURRENT_VERSION);
+  updateChangelogDot();
+}
+
+document.getElementById('changelogModal').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeChangelogModal();
+});
+
 // === HELP MODAL ===
 function openHelp() {
   document.getElementById('helpModalBody').innerHTML = t('help');
@@ -5244,6 +5278,7 @@ function openHelp() {
 function closeHelp() {
   document.getElementById('helpModal').classList.remove('open');
 }
+
 document.getElementById('helpModal').addEventListener('click', e => {
   if (e.target === e.currentTarget) closeHelp();
 });
@@ -6222,35 +6257,6 @@ function dismissExportReminder() {
   if (el) el.remove();
 }
 
-function showChangelog() {
-  if (document.querySelector('.wn-overlay')) return;
-  const ov = document.createElement('div');
-  ov.className = 'wn-overlay';
-  ov.onclick = function(e) {
-    if (e.target === ov) closeChangelog();
-  };
-  const changelog = t('changelog');
-  const lastSeen = localStorage.getItem('pvaf_lastSeenVersion') || '0.0.0';
-  let html = '<div class = "wn-modal"><button class = "wn-close" onclick = "closeChangelog()">&times;</button><h2 class = "sivon">' + t('ui.changelogTitle') + '</h2>';
-  for (const entry of changelog) {
-    const isNew = entry.version > lastSeen;
-    html += '<div class = "cl-version"><h3>v' + entry.version + (isNew ? '<span class = "cl-new-badge">' + t('ui.changelogNewBadge') + '</span>' : '') + '</h3>';
-    html += '<div class = "cl-date">' + entry.date + '</div><ul>';
-    for (const item of entry.items) html += '<li>' + item + '</li>';
-    html += '</ul></div>';
-  }
-  html += '<button class = "wn-ok" onclick = "closeChangelog()">' + t('ui.changelogCloseBtn') + '</button></div>';
-  ov.innerHTML = html;
-  document.body.appendChild(ov);
-}
-
-function closeChangelog() {
-  const ov = document.querySelector('.wn-overlay');
-  if (ov) ov.remove();
-  localStorage.setItem('pvaf_lastSeenVersion', CURRENT_VERSION);
-  updateChangelogDot();
-}
-
 function updateChangelogDot() {
   const btn = document.getElementById('changelogBtn');
   if (!btn) return;
@@ -6279,7 +6285,7 @@ if (state.currentView && state.currentView !== 'overview' && state.apps[state.cu
 if (localStorage.getItem('pvaf_lastSeenVersion') !== null) {
   updateChangelogDot();
   if (localStorage.getItem('pvaf_lastSeenVersion') !== CURRENT_VERSION) {
-    showChangelog();
+    openChangelogModal();
   }
 } else {
   localStorage.setItem('pvaf_lastSeenVersion', CURRENT_VERSION);
