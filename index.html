@@ -362,6 +362,7 @@
         <button class="dropdown-item" onclick="changeLanguage('de');closeDropdowns();">Deutsch</button>
         <button class="dropdown-item" onclick="changeLanguage('en');closeDropdowns();">English</button>
         <button class="dropdown-item" onclick="changeLanguage('fr');closeDropdowns();">Français</button>
+        <button class="dropdown-item" onclick="changeLanguage('it');closeDropdowns();">Italiano</button>
         <button class="dropdown-item" onclick="changeLanguage('nl');closeDropdowns();">Nederlands</button>
       </div>
     </div>
@@ -557,7 +558,7 @@ document.addEventListener('mouseout', e => {
 
 // === LOCALIZATION ===
 
-const LOCALES = ['da', 'de', 'en', 'fr', 'nl'];
+const LOCALES = ['da', 'de', 'en', 'fr', 'it', 'nl'];
 
 function detectBrowserLang() {
   for (const l of (navigator.languages || [navigator.language])) {
@@ -3167,6 +3168,656 @@ const I18N = {
       "weightsModalResetConfirmation": "Êtes-vous sûr de vouloir réinitialiser toutes les pondérations aux valeurs par défaut ?",
       "weightsModalTipHtml": "<strong>Que sont les pondérations ?</strong> Les pondérations déterminent l'influence de chaque indicateur au sein de sa dimension. Les pondérations par défaut sont calibrées pour le modèle PVAF. N'ajustez les pondérations qu'en concertation avec votre organisation ou secteur, sinon les résultats deviennent incomparables.",
       "weightsModalTitle": "Ajuster les pondérations"
+    }
+  },
+  "it": {
+    "changelog": [
+      {
+        "version": "0.8.2",
+        "date": "2026-06-01",
+        "items": [
+          "<strong>Eliminazione rapida:</strong> rimuovi applicazioni senza finestra di conferma, con 10 secondi per annullare.",
+          "<strong>Eliminazione multipla:</strong> seleziona più applicazioni nella panoramica ed eliminale tutte in una volta.",
+          "<strong>Promemoria esportazione:</strong> una notifica quando hai 3 o più applicazioni e non hai esportato da più di una settimana.",
+          "<strong>Registro modifiche:</strong> visualizza la cronologia delle versioni tramite il pulsante nella barra degli strumenti."
+        ]
+      },
+      {
+        "version": "0.8.1",
+        "date": "2026-03-15",
+        "items": [
+          "<strong>Modalità scansione rapida:</strong> valuta le applicazioni rapidamente con 9 indicatori chiave.",
+          "<strong>Quadrante di autonomia:</strong> panoramica visiva dell'esposizione al rischio e delle misure di attenuazione.",
+          "<strong>Pesi regolabili:</strong> regola i pesi degli indicatori per applicazione.",
+          "<strong>Esportazione JSON e CSV:</strong> esporta tutte le valutazioni in più formati.",
+          "<strong>Glossario:</strong> tooltip con spiegazioni per i termini tecnici nelle rubriche."
+        ]
+      },
+      {
+        "version": "0.8.0",
+        "date": "2026-02-01",
+        "items": [
+          "<strong>Prima versione pubblica:</strong> 22 indicatori, 8 dimensioni, 3 livelli.",
+          "<strong>Archiviazione locale:</strong> le valutazioni vengono salvate automaticamente nel browser."
+        ]
+      }
+    ],
+    "file": {
+      "columnApplication": "Applicazione",
+      "columnAssessedAppAssessors": "Valutatore/i",
+      "columnAssessedAppDate": "Data",
+      "columnAssessedAppId": "ID applicazione",
+      "columnAssessedAppName": "Nome applicazione",
+      "columnAssessor": "Valutatore",
+      "columnCode": "Codice",
+      "columnDimension": "Dimensione",
+      "columnDimScore": "Punteggio dimensione",
+      "columnImportance": "Importanza strategica",
+      "columnIndicator": "Indicatore",
+      "columnLvlScore": "Punteggio livello",
+      "columnMitigation": "Capacità di attenuazione",
+      "columnPvScore": "Punteggio valori pubblici (1-10)",
+      "columnRaw": "Punteggio grezzo",
+      "columnRisk": "Esposizione al rischio",
+      "columnScore": "Punteggio",
+      "columnWeighted": "Ponderato",
+      "columnWeights": "Pesi",
+      "optional": "opzionale",
+      "scoreRowDimAName": "Rischio geopolitico e di conformità giuridica",
+      "scoreRowDimBName": "Dipendenze dal fornitore e dalla catena di fornitura",
+      "scoreRowDimCName": "Resilienza tecnica",
+      "scoreRowDimDName": "Resilienza organizzativa",
+      "scoreRowDimEName": "Resilienza contrattuale",
+      "scoreRowDimFName": "Importanza organizzativa",
+      "scoreRowDimGName": "Sensibilità dei dati, gestione degli accessi e politica",
+      "scoreRowDimHName": "Impatto educativo",
+      "unnamed": "Senza nome"
+    },
+    "glossary": {
+      "adequacy decision": "Una decisione della Commissione europea che stabilisce che un paese al di fuori dell'UE/SEE offre un livello equivalente di protezione dei dati. Ciò consente il trasferimento di dati personali verso quel paese senza ulteriori garanzie.",
+      "Adequacy decision": "Una decisione della Commissione europea che stabilisce che un paese al di fuori dell'UE/SEE offre un livello equivalente di protezione dei dati. Ciò consente il trasferimento di dati personali verso quel paese senza ulteriori garanzie.",
+      "API": "Interfaccia di programmazione delle applicazioni: un modo standardizzato per i sistemi software di comunicare tra loro. Tramite un'API è possibile scambiare automaticamente dati con un servizio.",
+      "BYOK": "Bring Your Own Key (porta la tua chiave): un modello in cui il cliente gestisce e fornisce le proprie chiavi di cifratura al fornitore cloud, anziché il fornitore le generi e le gestisca.",
+      "Client-side encryption": "Cifratura che avviene sul dispositivo dell'utente prima che i dati vengano inviati al fornitore. Il fornitore non può accedere al contenuto perché solo il cliente detiene le chiavi.",
+      "CLOUD Act": "Clarifying Lawful Overseas Use of Data Act (USA, 2018): legge statunitense che conferisce al governo americano il diritto di richiedere dati alle aziende tecnologiche statunitensi, anche se tali dati sono archiviati al di fuori degli Stati Uniti.",
+      "deletion guarantee": "Una garanzia contrattuale che il fornitore eliminerà completamente tutti i tuoi dati dai propri sistemi dopo il trasferimento, inclusi backup e copie.",
+      "DPIA": "Valutazione d'impatto sulla protezione dei dati: un'analisi obbligatoria del rischio ai sensi del GDPR per le operazioni di trattamento che presentano un elevato rischio per la privacy.",
+      "dual-use": "Beni o tecnologie con applicazioni sia civili che militari. I dati di ricerca con caratteristiche a duplice uso possono essere soggetti a controlli all'esportazione e non possono essere condivisi liberamente.",
+      "escalation procedure": "Una procedura passo-passo concordata in anticipo se il fornitore non coopera all'uscita. Ad esempio: prima il responsabile del account, poi la direzione, poi le misure legali.",
+      "EU/EEA": "Unione europea / Spazio economico europeo: i 27 stati membri dell'UE più Islanda, Liechtenstein e Norvegia. Le stesse norme di protezione dei dati (GDPR) si applicano in tutta quest'area.",
+      "exit plan": "Un piano documentato che descrive come un'organizzazione può passare a un'altra applicazione o fornitore in modo controllato, senza perdita di dati o interruzione della continuità.",
+      "export control": "Normative che limitano l'esportazione di determinati beni, software o conoscenze all'estero, spesso per motivi di sicurezza. Rilevante per la ricerca sensibile.",
+      "extraterritorial": "Legislazione che si applica al di là del territorio di un paese. Ad esempio: il CLOUD Act statunitense rivendica la giurisdizione sui dati detenuti da aziende americane, indipendentemente da dove tali dati siano fisicamente archiviati.",
+      "FISA 702": "Foreign Intelligence Surveillance Act, Sezione 702 (USA): consente alla NSA di intercettare le comunicazioni di non-americani al di fuori degli Stati Uniti tramite aziende tecnologiche statunitensi, senza mandato di perquisizione.",
+      "fork": "Una copia indipendente del codice sorgente di un progetto software. Un fork consente di sviluppare il software in modo indipendente, senza dipendere dal fornitore o dalla comunità originale.",
+      "GDPR": "Regolamento generale sulla protezione dei dati: legge europea sulla privacy che disciplina il modo in cui le organizzazioni possono raccogliere, archiviare e trattare i dati personali.",
+      "KPIs": "Indicatori chiave di prestazione: metriche di performance misurabili con cui viene valutato un fornitore, come la percentuale di uptime, i tempi di risposta e i tempi di risoluzione degli incidenti.",
+      "open source": "Software il cui codice sorgente è liberamente disponibile per essere visualizzato, modificato e distribuito. Esempi: Linux, Firefox, LibreOffice.",
+      "open standards": "Specifiche tecniche liberamente disponibili e indipendenti dal fornitore. L'utilizzo di standard aperti previene il vendor lock-in. Esempi: PDF, HTML, ODF, SQL.",
+      "penalty clause": "Una disposizione contrattuale che impone conseguenze finanziarie se il fornitore non rispetta gli accordi di uscita, ad esempio una multa per ogni giorno di ritardo.",
+      "permissive license": "Una licenza open source con poche restrizioni (es. MIT, Apache 2.0). Consente di utilizzare, modificare e distribuire liberamente il software, anche in prodotti commerciali.",
+      "SCCs": "Clausole contrattuali standard: contratti tipo approvati dalla Commissione europea che le organizzazioni possono utilizzare come base giuridica per trasferire dati personali a paesi al di fuori dell'UE/SEE.",
+      "SLA": "Accordo sul livello di servizio: impegni contrattuali riguardanti il livello minimo di servizio, come la disponibilità (uptime), i tempi di risposta e le compensazioni per il mancato rispetto.",
+      "source-available": "Codice sorgente pubblicamente visualizzabile, ma la licenza non consente l'uso, la modifica o la distribuzione libera. Più restrittivo del vero open source.",
+      "trial migration": "Una migrazione di test in cui l'intero processo di transizione viene eseguito in un ambiente di test, per verificare che i dati e le funzionalità vengano trasferiti correttamente prima della migrazione effettiva.",
+      "vendor lock-in": "Una situazione in cui un'organizzazione dipende così tanto da un fornitore che passare a un'alternativa diventa sproporzionatamente costoso o complesso."
+    },
+    "help": `
+        <h3>Cos'è il PVAF?</h3>
+        <p>Il Quadro di valutazione dei valori pubblici (PVAF) aiuta le organizzazioni a valutare in che misura il loro parco applicativo è conforme ai <a href="https://www.kennisnet.nl/tools/waardenwijzer/">valori pubblici nell'istruzione</a>. Il quadro misura 30 indicatori su 8 dimensioni e 3 livelli di analisi.</p>
+        <h3>Come funziona?</h3>
+        <p>La valutazione segue quattro passi:</p>
+        <ul>
+            <li><strong>Aggiungi applicazione:</strong> clicca su "+ Aggiungi applicazione" o importa un elenco tramite CSV.</li>
+            <li><strong>Valuta gli indicatori:</strong> assegna a ogni indicatore un punteggio da 1 a 5. Clicca su un indicatore per le descrizioni del punteggio e le indicazioni.</li>
+            <li><strong>Visualizza i risultati:</strong> i punteggi vengono calcolati automaticamente. La panoramica mostra tutte le applicazioni fianco a fianco.</li>
+            <li><strong>Esporta:</strong> salva i risultati in formato JSON o CSV.</li>
+        </ul>
+        <h3>I tre livelli di analisi</h3>
+        <p><strong style="color:var(--sivon-red)">Livello 1: Esposizione al rischio</strong> (dimensioni A-B). Misura l'entità del rischio esterno. Un punteggio basso (1) significa poco rischio, un punteggio alto (5) significa rischio elevato.</p>
+        <p><strong style="color:var(--green)">Livello 2: Capacità di attenuazione</strong> (dimensioni C-E). Misura la capacità dell'organizzazione di gestire i rischi. Un punteggio basso (1) è debole, un punteggio alto (5) è forte.</p>
+        <p><strong style="color:#555">Livello 3: Importanza strategica</strong> (dimensioni F-H). Misura l'importanza dell'applicazione. Un punteggio basso (1) significa poca importanza, un punteggio alto (5) è critico.</p>
+        <div class="tip"><strong>Nota la direzione dei colori:</strong> Per i livelli 1 e 3, il punteggio 1 è verde (buono dal punto di vista dei valori pubblici); per il livello 2, il punteggio 5 è verde (forte attenuazione).</div>
+        <h3>Calcolo</h3>
+        <p>Il punteggio dei valori pubblici viene calcolato in quattro passi:</p>
+        <ul>
+            <li><strong>Passo 1 Punteggio dimensione:</strong> Per dimensione, la media ponderata dei punteggi degli indicatori. Il peso determina l'influenza di ogni indicatore.</li>
+            <li><strong>Passo 2 Punteggio livello:</strong> Per livello, la media dei punteggi delle dimensioni. Le dimensioni hanno peso uguale.</li>
+            <li><strong>Passo 3 Punteggio grezzo:</strong> <code>Attenuazione / (Rischio × Importanza)</code>. Intervallo: 0,04 (caso peggiore) a 5,0 (caso migliore).</li>
+            <li><strong>Passo 4 Normalizzazione:</strong> Il punteggio grezzo viene convertito in 1–10 tramite una scala logaritmica.</li>
+        </ul>
+        <div class="tip"><strong>Perché logaritmica?</strong> La formula divide l'attenuazione (max 5) per Rischio × Importanza (max 25). Di conseguenza, la maggior parte dei punteggi grezzi si colloca tra 0,1 e 0,5. Senza correzione, il 90% delle applicazioni otterrebbe un punteggio finale tra 1 e 3, troppo ristretto per un confronto significativo. La scala logaritmica distribuisce questi punteggi sull'intera gamma 1–10, rendendo le differenze visibili e comparabili.</div>
+        <p><strong>Regole pratiche:</strong> 7+ = buona posizione (verde), 5–7 = accettabile (arancione), 3–5 = preoccupante (arancione scuro), &lt;3 = critico (rosso).</p>
+        <h3>Cosa significa il punteggio?</h3>
+        <p>Il punteggio dei valori pubblici non indica in che misura un'applicazione si allinea ai valori pubblici, ma piuttosto <strong>quanto sono urgenti i rischi per i valori pubblici</strong>. Il punteggio combina tre elementi: il rischio, la gestibilità di quel rischio e l'importanza strategica dell'applicazione.</p>
+        <p>Un <strong>punteggio alto</strong> può significare due cose: i rischi sono ben attenuati (contratti solidi, alternative disponibili, competenze interne), oppure l'applicazione ha poca importanza strategica (e quindi il problema dei valori pubblici è meno urgente). Entrambe le situazioni sono positive dal punto di vista decisionale: non è necessaria un'azione immediata.</p>
+        <p>Un <strong>punteggio basso</strong> significa: c'è una combinazione di rischio elevato, debole attenuazione e/o elevata importanza strategica. Questo richiede un'azione: migrare, attenuare o accettare consapevolmente.</p>
+        <div class="tip"><strong>Miglioramento:</strong> L'importanza strategica (livello 3) è in gran parte fissa; un'applicazione non diventa meno importante. I miglioramenti risiedono nella <strong>riduzione dell'esposizione al rischio</strong> (livello 1, es. migrazione verso un fornitore europeo) e nell'<strong>aumento della capacità di attenuazione</strong> (livello 2, es. sviluppare alternative, rafforzare i contratti, costruire competenze). Utilizza separatamente i tre punteggi di livello per identificare dove si possono ottenere i maggiori guadagni.</div>
+        <h3>Il quadrante</h3>
+        <p>Il quadrante mostra le applicazioni su due assi: <strong>Rischio × Importanza</strong> (orizzontale) e <strong>Attenuazione</strong> (verticale). Due applicazioni con lo stesso punteggio 1–10 possono apparire in posizioni diverse nel quadrante, portando a diverse azioni raccomandate.</p>
+        <h3>Regolazione dei pesi</h3>
+        <p>Ogni indicatore ha un peso predefinito (2 o 3). Tramite la schermata "Regola pesi" puoi regolare i pesi (1–5). Il peso determina l'influenza di un indicatore <strong>all'interno della sua dimensione</strong>. Ad esempio: se imposti C1 (Alternativa disponibile) a peso 5 e C2 a peso 1, C1 conta cinque volte di più nel punteggio della dimensione per "Resilienza tecnica". I pesi regolati vengono mostrati in rosso. Fallo solo in consultazione con la tua organizzazione o settore per mantenere la comparabilità reciproca.</p>
+        <h3>Commenti per indicatore</h3>
+        <p>Per ogni indicatore puoi aggiungere un commento per motivare il tuo punteggio. Questo è opzionale ma consigliato: rende la tua valutazione trasparente e riproducibile. I commenti sono inclusi nell'esportazione e nell'importazione JSON.</p>
+        <h3>Scansione rapida</h3>
+        <p>Passa alla modalità "Scansione rapida" per mostrare solo i 9 indicatori chiave (1 per dimensione + A3 Hosting). Il calcolo funziona in modo identico ma si basa su meno punti dati. Il punteggio è <strong>indicativo</strong>; per una valutazione completa usa la valutazione integrale.</p>
+        <h3>Importazione ed esportazione</h3>
+        <p><strong>Importa JSON:</strong> carica valutazioni precedentemente esportate. Tutti i punteggi, i pesi e i metadati vengono preservati.</p>
+        <p><strong>Elenco applicazioni (CSV):</strong> importa un elenco di nomi di applicazioni per creare rapidamente più applicazioni. Scarica prima il modello CSV come esempio.</p>
+        <p><strong>Formati di esportazione:</strong></p>
+        <ul>
+            <li><strong>JSON:</strong> completo: tutti i dati, punteggi, pesi e risultati calcolati. Adatto alla reimportazione.</li>
+            <li><strong>CSV:</strong> riepilogo per applicazione con punteggi per dimensione e livello. Adatto per ulteriori analisi in Excel.</li>
+            <li><strong>CSV (dettagliato):</strong> tutti i punteggi individuali degli indicatori per applicazione. Separato da punto e virgola con BOM per la compatibilità con Excel.</li>
+        </ul>
+        <h3>Salvataggio dei dati</h3>
+        <p>Tutti i dati inseriti vengono salvati automaticamente nel browser (localStorage). Puoi chiudere il browser e continuare in seguito. Esporta regolarmente un backup JSON per sicurezza.</p>
+        <div class="tip"><strong>Più valutatori?</strong> Chiedi a ogni valutatore di completare la valutazione in modo indipendente ed esportare i risultati in JSON. Un coordinatore può importare i file e confrontare i punteggi nella panoramica.</div>`,
+    "indicators": {
+      "A1": {
+        "title": "Giurisdizione del fornitore",
+        "q": "Sotto quale giurisdizione ricade il fornitore?",
+        "r": [
+          "Giurisdizione UE/SEE. Nessuna rivendicazione extraterritoriale. Piena protezione UE.",
+          "UE/SEE con limitate rivendicazioni extraterritoriali. CLOUD Act non applicabile.",
+          "Decisione di adeguatezza in vigore, ma la legislazione extraterritoriale (CLOUD Act, FISA 702) dà ai governi stranieri potenziale accesso.",
+          "Nessuna decisione di adeguatezza ma garanzie contrattuali (SCC). La protezione giuridica è limitata.",
+          "Nessuna decisione di adeguatezza, nessuna garanzia. Accesso diretto da parte di governi stranieri."
+        ],
+        "h": "Dove è stabilito il fornitore? Esiste legislazione extraterritoriale? È in vigore una decisione di adeguatezza? Nota: il Quadro di privacy dei dati UE-USA (2023) è la terza decisione di adeguatezza per gli USA; le precedenti due sono state annullate dalla Corte di giustizia europea. La legislazione sottostante (CLOUD Act, FISA 702) non è cambiata. Valuta tu stesso se attribuire un punteggio di 3 o 4."
+      },
+      "A2": {
+        "title": "Sanzioni e rischio geopolitico",
+        "q": "Quanto è significativo il rischio geopolitico per la fornitura del servizio?",
+        "r": [
+          "Relazioni stabili con l'UE. Nessun rischio di sanzioni.",
+          "Rischio minimo. Nessuna tensione recente.",
+          "Qualche rischio dovuto a mutevoli relazioni commerciali.",
+          "Rischio elevato. Tensioni geopolitiche o conflitti commerciali. Nessun esempio ancora di conseguenze dirette per parti europee.",
+          "Rischio elevato. Sanzioni o restrizioni attive. Esempi di interruzione del servizio o blocco per parti europee."
+        ],
+        "h": "Sanzioni attuali o controversie commerciali? Servizi precedentemente limitati a parti europee? Considera anche le differenze ideologiche (norme e valori) tra il fornitore/governo e il contesto europeo."
+      },
+      "A3": {
+        "title": "Hosting e localizzazione dei dati",
+        "q": "Dove sono fisicamente ospitati i dati e l'applicazione e come viene garantito?",
+        "r": [
+          "Dati esclusivamente in UE/SEE. Stabilito contrattualmente.",
+          "Dati in UE/SEE. Backup o replica possibili in un paese con una decisione di adeguatezza.",
+          "Dati in UE/SEE, ma nessuna garanzia contrattuale sulla localizzazione. Può cambiare.",
+          "Dati parzialmente fuori dall'UE, con garanzie contrattuali (SCC o decisione di adeguatezza).",
+          "Dati fuori dall'UE, nessuna garanzia, o non è chiaro dove siano archiviati i dati."
+        ],
+        "h": "Dove sono fisicamente situati i server? La localizzazione dei dati e dell'applicazione è stabilita contrattualmente? I backup o le repliche possono finire fuori dall'UE? Nota: i dati e l'applicazione possono essere eseguiti in posizioni diverse (es. applicazione in Irlanda, database a Francoforte, console di gestione negli USA). Verifica se qualsiasi anello della catena coinvolge una giurisdizione non europea e prendi la giurisdizione peggiore come riferimento."
+      },
+      "A4": {
+        "title": "Conformità giuridica",
+        "q": "Qual è la situazione riguardo alla conformità con i requisiti legali, come l'accessibilità (WCAG), la sicurezza e la legislazione sulla privacy?",
+        "r": [
+          "Conformità pienamente dimostrata incluse procedure documentate; rapporto di audit esterno annuale disponibile pubblicamente; il fornitore dimostra attivamente leadership nella collaborazione (settoriale) per migliorare la conformità in tutta la catena di fornitura.",
+          "Conformità pienamente dimostrata incluse procedure documentate; rapporto di audit esterno annuale disponibile; il fornitore partecipa alla collaborazione (settoriale) per migliorare la conformità in tutta la catena.",
+          "Conformità documentata con i requisiti legali che indica i processi utilizzati. Rapporto di audit esterno annuale opzionalmente disponibile.",
+          "La documentazione specifica quali requisiti legali (es. WCAG, privacy, sicurezza) vengono testati e fornisce un'informazione limitata sui processi di conformità.",
+          "Nessuna o limitata documentazione sulla conformità giuridica disponibile."
+        ],
+        "h": "Verifica se il fornitore dimostra quali requisiti legali e standard vengono rispettati (es. livello WCAG, GDPR/privacy, standard di sicurezza delle informazioni come ISO 27001) e se sono documentati processi, test e responsabilità concreti. Chiedi prove (rapporti di audit, risultati di test, certificati), frequenza dei controlli e se gli audit sono disponibili pubblicamente o su richiesta. Nota anche l'ambito (tutti i servizi/componenti o solo i componenti principali), l'impatto sulla catena (fornitori/subappaltatori) e le misure correttive applicate in caso di non conformità."
+      },
+      "B1": {
+        "title": "Concentrazione del fornitore",
+        "q": "Quanti prodotti e servizi utilizzi dallo stesso fornitore?",
+        "r": [
+          "1 prodotto o servizio da questo fornitore.",
+          "2-3 prodotti/servizi da questo fornitore.",
+          "4-6 prodotti/servizi da questo fornitore.",
+          "7-15 prodotti/servizi da questo fornitore.",
+          "Intero ecosistema (>15 prodotti/servizi) da questo fornitore."
+        ],
+        "h": "Conta tutti i prodotti, servizi, licenze e piattaforme di questo fornitore, sia i servizi sotto contratto che il software acquistato. Considera anche le piattaforme sottostanti (es. Azure AD, SharePoint, Intune insieme a Office 365). Più prodotti da un unico fornitore, maggiore è il rischio di vendor lock-in."
+      },
+      "B2": {
+        "title": "Composizione software e visibilità della catena di fornitura",
+        "q": "È disponibile una distinta base del software (SBOM) per questo prodotto o servizio?",
+        "r": [
+          "SBOM completa con ogni versione: CycloneDX ≥1.6 e/o SPDX ≥2.2, tutte le dipendenze (incluse quelle closed-source) complete quanto ragionevolmente atteso dal cliente. Validata da una terza parte indipendente.",
+          "SBOM completa con ogni versione: CycloneDX ≥1.6 e/o SPDX ≥2.2, tutte le dipendenze (incluse quelle closed-source) complete quanto ragionevolmente atteso dal cliente.",
+          "SBOM con ogni versione: CycloneDX ≥1.6 e/o SPDX ≥2.2, almeno tutte le dipendenze dirette (incluse quelle closed-source).",
+          "Breve panoramica dei componenti disponibile nella documentazione o su richiesta (nessuna SBOM strutturata).",
+          "Nessuna SBOM disponibile."
+        ],
+        "h": "Quali componenti closed-source e open source vengono utilizzati? Una SBOM (Software Bill of Materials) è un elenco strutturato di tutti i componenti software e le dipendenze che fornisce informazioni sui rischi delle licenze, le vulnerabilità di sicurezza note (CVE) e i rischi della catena di fornitura. Gli standard comuni sono CycloneDX e SPDX."
+      },
+      "C1": {
+        "title": "Alternativa disponibile",
+        "q": "Esistono servizi comparabili come alternative?",
+        "r": [
+          "Nessuna alternativa. Prodotto unico senza concorrenti.",
+          "Esiste un'alternativa ma immatura o funzionalmente limitata.",
+          "Più alternative utilizzate da organizzazioni comparabili. Copre la maggior parte delle esigenze.",
+          "Alternative mature inclusa un'opzione europea.",
+          "Ampia gamma di alternative incluse opzioni europee e open source. Mercato competitivo."
+        ],
+        "h": "Quali alternative esistono? Utilizzate da altre università? Europee/open source? La disponibilità di opzioni open source può ridurre significativamente il rischio di vendor lock-in."
+      },
+      "C2": {
+        "title": "Complessità della migrazione",
+        "q": "Quanto tempo ci vuole per passare a un'alternativa?",
+        "r": [
+          "Più di 2 anni.",
+          "1-2 anni.",
+          "6-12 mesi.",
+          "3-6 mesi.",
+          "Meno di 3 mesi. Oppure: opzione di self-hosting immediatamente disponibile."
+        ],
+        "h": "Stima il tempo di esecuzione per una migrazione completa. Considera: volume dei dati, numero di integrazioni, componenti specifici del fornitore, disponibilità di strumenti di migrazione e aggiustamenti necessari ai flussi di lavoro. Oltre al tempo di esecuzione, considera i costi previsti (personale, licenze, riqualificazione). Una migrazione di test può aiutare a validare la fattibilità e la tempistica prima del passaggio effettivo."
+      },
+      "C3": {
+        "title": "Portabilità dei dati",
+        "q": "È possibile esportare i dati completamente e in un formato utilizzabile?",
+        "r": [
+          "Nessuna esportazione possibile. Dati accessibili solo tramite il sistema del fornitore.",
+          "Esportazione manuale limitata. Nessun metadato, formato inutilizzabile.",
+          "Esportazione in formati comuni (standard aperti), ragionevolmente completa. I metadati potrebbero mancare.",
+          "Esportazione completa in formati aperti con API. Inclusi i metadati.",
+          "Piena portabilità: formati aperti, metadati, cronologia, relazioni. Direttamente utilizzabile."
+        ],
+        "h": "È disponibile un'API di esportazione? I metadati possono essere inclusi? Se l'applicazione è disponibile anche in self-hosting, ciò può migliorare significativamente la portabilità."
+      },
+      "C4": {
+        "title": "Gestione della cifratura",
+        "q": "Controllo sulla cifratura? (opzionale)",
+        "r": [
+          "Nessuna informazione su se e come i dati sono cifrati.",
+          "Cifrato, il fornitore gestisce completamente le chiavi.",
+          "Cifrato. Il fornitore gestisce le chiavi, ma con una politica di gestione delle chiavi trasparente e documentata.",
+          "BYOK: porta e gestisci le tue chiavi di cifratura.",
+          "Cifratura lato client: dati cifrati prima della trasmissione usando le proprie chiavi."
+        ],
+        "h": "Si tratta del controllo delle chiavi di cifratura, non se la cifratura è necessaria. Chi gestisce le chiavi determina chi può accedere ai dati, anche in risposta a una richiesta di dati da un governo straniero o alla partenza del fornitore."
+      },
+      "C5": {
+        "title": "Trasparenza e apertura del software",
+        "q": "Il codice sorgente è disponibile e indipendentemente utilizzabile?",
+        "r": [
+          "Completamente chiuso. Nessun codice sorgente, nessuna informazione.",
+          "Chiuso con documentazione API pubblica. Informazioni limitate.",
+          "Parzialmente open source, nucleo chiuso. O source-available con licenza restrittiva.",
+          "Open source, comunità attiva, licenza permissiva. Possibilità di creare una copia indipendente (fork).",
+          "Completamente open source, più parti forniscono supporto. Passare a un'altra parte o far sviluppare un fork indipendentemente è realistico."
+        ],
+        "h": "Il codice sorgente dell'applicazione è disponibile? Se sì, con quale licenza? Esiste una comunità attiva che contribuisce all'applicazione? È possibile sviluppare indipendentemente un fork dell'applicazione?"
+      },
+      "C6": {
+        "title": "Trasparenza degli algoritmi e dell'IA",
+        "q": "Quanto è trasparente l'uso di algoritmi e IA?",
+        "r": [
+          "Completamente chiuso. Nessuna informazione sul funzionamento degli algoritmi e delle funzionalità IA.",
+          "Parzialmente chiuso: implementazione chiusa, con documentazione pubblica su algoritmi e IA. Informazioni limitate.",
+          "Parzialmente aperto: documentazione pubblica su algoritmi e IA ma gli algoritmi principali e i modelli IA sono principalmente chiusi; parti disponibili come open source o con licenza source-available.",
+          "Largamente aperto: utilizzo di algoritmi open source (o pesi aperti) e IA; la registrazione in un registro degli algoritmi per conformarsi alla legislazione e per la trasparenza pubblica è supportata.",
+          "Piena trasparenza: solo algoritmi con licenza open source e modelli IA; passare a un'altra parte mantenendo le funzionalità degli algoritmi e dell'IA è realistico."
+        ],
+        "h": "Il fornitore può fornire informazioni sul funzionamento degli algoritmi e dell'IA per prevenire discriminazioni o pregiudizi non intenzionali?"
+      },
+      "D1": {
+        "title": "Competenze interne e continuità delle conoscenze",
+        "q": "Quanta conoscenza interna abbiamo su questo sistema?",
+        "r": [
+          "Nessuna conoscenza interna. Completamente dipendenti dal fornitore.",
+          "Conoscenza detenuta da una o due persone, non documentata.",
+          "Conoscenza detenuta da più persone, documentazione di base disponibile.",
+          "Conoscenza ampiamente condivisa e documentata. Non dipendente dalle persone.",
+          "Conoscenza strutturalmente protetta. Documentazione completa, aggiornata periodicamente."
+        ],
+        "h": "Considera tutte le conoscenze pertinenti: funzionali (cosa fa il sistema), tecniche (configurazione, integrazioni), dati (quali dati contiene, come esportarli). Non solo la gestione tecnica. Cosa succede se l'esperto chiave se ne va?"
+      },
+      "D2": {
+        "title": "Piano di uscita in atto",
+        "q": "Esiste un piano concreto per quando dobbiamo cambiare fornitore?",
+        "r": [
+          "Nessun piano di uscita. Mai considerato.",
+          "Discusso ma niente di concreto. Nessun passo o tempistica.",
+          "Piano abbozzato, non testato. Non abbastanza dettagliato.",
+          "Dettagliato con passi, tempistica, rischi. Responsabilità assegnate.",
+          "Completo, testato tramite migrazione di test, aggiornato periodicamente. Incluso piano di comunicazione."
+        ],
+        "h": "Esiste un piano di uscita per questa applicazione? Quanto è dettagliato questo piano? Quando è stato aggiornato e testato l'ultima volta?"
+      },
+      "D3": {
+        "title": "Strategia di backup",
+        "q": "Copia indipendente dei dati al di fuori del fornitore?",
+        "r": [
+          "Nessun backup indipendente. Tutto solo presso il fornitore.",
+          "Il fornitore effettua backup, non verificabili. Nessuna copia propria.",
+          "Copia periodica, limitata, ripristino non testato.",
+          "Backup completo al di fuori del fornitore, verificato regolarmente.",
+          "Backup completo con procedura di ripristino collaudata. Testato regolarmente."
+        ],
+        "h": "È possibile un backup dei dati per questa applicazione al di fuori del fornitore? Quanto sono completi i backup? Quando è stato testato l'ultimo ripristino di un backup?"
+      },
+      "E1": {
+        "title": "Clausole di uscita e accordi di transizione",
+        "q": "Cosa è stato concordato contrattualmente riguardo al trasferimento dei dati alla cessazione?",
+        "r": [
+          "Nessun accordo sulla cessazione.",
+          "Disposizioni minime, senza scadenza o formato.",
+          "Clausole di uscita con periodo di transizione in atto.",
+          "Accordo di uscita completo: formati aperti, periodo di transizione, cooperazione attiva del fornitore.",
+          "Accordo di uscita completo con conseguenze applicabili per il mancato rispetto (penale contrattuale, procedura di escalation, garanzia di eliminazione)."
+        ],
+        "h": "Cosa è stato concordato contrattualmente riguardo alla cessazione? In quale formato vengono consegnati i dati al momento del trasferimento? È stato concordato un periodo di transizione in cui il fornitore coopera attivamente? Sono definiti KPI per le prestazioni del fornitore e quali impegni SLA si applicano, in modo da poter ritenere il fornitore responsabile se gli accordi non vengono rispettati?"
+      },
+      "E2": {
+        "title": "Flessibilità contrattuale",
+        "q": "Con quale preavviso puoi contrattualmente lasciare questo fornitore?",
+        "r": [
+          "Lungo termine (>3 anni), non rescindibile durante il termine.",
+          "Pluriennale, periodo di preavviso superiore a 12 mesi.",
+          "Contratto annuale, periodo di preavviso di 6-12 mesi.",
+          "Rescindibile in modo flessibile, periodo di preavviso di 3-6 mesi.",
+          "Rescindibile mensilmente o a consumo."
+        ],
+        "h": "Esamina il vincolo contrattuale: durata, periodo di preavviso e rinnovo automatico. Considera anche i termini di licenza che il fornitore può modificare unilateralmente (aumenti di prezzo, restrizioni d'uso, rimozione di funzionalità). Il tempo tecnico per una migrazione rientra in C2 (Complessità della migrazione)."
+      },
+      "E3": {
+        "title": "Acquisizione o fusione",
+        "q": "Cosa è stato concordato contrattualmente se il fornitore viene acquisito o si fonde?",
+        "r": [
+          "Niente concordato; il contratto rimane pienamente in vigore senza diritti per il cliente.",
+          "Concordato in modo minimo; solo una disposizione generale, nessuna garanzia specifica di uscita, dati o giurisdizione.",
+          "Accordi di base; notifica di acquisizione o fusione e diritto di rinegoziare o recedere con periodo di preavviso standard.",
+          "Ben concordato; diritto di recedere in caso di acquisizione o fusione con ragionevole periodo di preavviso, mantenimento della giurisdizione/localizzazione dei dati concordata.",
+          "Eccellentemente concordato; clausole esplicite di cambio di controllo con uscita senza costi, piena portabilità dei dati, supporto alla migrazione e garanzie finanziarie e operative, nonché mantenimento della giurisdizione e della localizzazione dei dati."
+        ],
+        "h": "Cerca clausole di cambio di controllo: obbligo di notifica, diritto di recedere o rinegoziare, supporto alla migrazione e conseguenze per la legge applicabile, la localizzazione dei dati e i sub-responsabili. Verifica anche se gli impegni SLA, i prezzi e l'accesso ai dati rimangono garantiti con un nuovo proprietario."
+      },
+      "F1": {
+        "title": "Impatto di un'interruzione",
+        "q": "Qual è l'impatto se questo sistema va offline?",
+        "r": [
+          "Nessun impatto percettibile in caso di interruzione.",
+          "Perturbazione minima. L'organizzazione continua.",
+          "Più processi perturbati ma non interrotti.",
+          "Processi chiave interrotti.",
+          "Arresto a livello organizzativo."
+        ],
+        "h": "Supponi che il sistema vada offline per 48 ore. Qual è l'impatto? Questo si applica a tutti i processi: istruzione, ricerca e operazioni. Considera: il numero di utenti interessati, la disponibilità di soluzioni alternative e quanto sono critici i processi interessati."
+      },
+      "F2": {
+        "title": "Dipendenze di integrazione",
+        "q": "Quanti sistemi dipendono da questo sistema?",
+        "r": [
+          "Autonomo, nessuna integrazione.",
+          "1-2 integrazioni.",
+          "3-5 integrazioni.",
+          "5-10 integrazioni.",
+          "Hub centrale (>10 integrazioni)."
+        ],
+        "h": "Quanti altri sistemi sono collegati a questo sistema? Se questo sistema va offline, quali altri sistemi vanno offline (parzialmente) a loro volta?"
+      },
+      "G1": {
+        "title": "Dati personali",
+        "q": "Quali dati personali vengono trattati?",
+        "r": [
+          "Nessun dato personale.",
+          "Dati di base: nome, email, qualifica. Numero limitato.",
+          "Dati di studio/lavoro, valutazioni, finanziari. Significativo.",
+          "Dati personali di categoria particolare o trattamento su larga scala.",
+          "Dati di categoria particolare su larga scala di gruppi vulnerabili."
+        ],
+        "h": "Quali dati? Categorie sensibili? Quante persone? È richiesta una DPIA?"
+      },
+      "G2": {
+        "title": "Dati educativi e sicurezza delle conoscenze",
+        "q": "Quanto sono sensibili i dati educativi e le conoscenze in questo sistema?",
+        "r": [
+          "Nessun dato educativo.",
+          "Solo dati pubblici/pubblicati.",
+          "Riservato, non ancora pubblicato. L'accesso prematuro da parte di terzi è indesiderato.",
+          "Sensibile o strategicamente prezioso. Sensibile dal punto di vista competitivo.",
+          "Sicurezza nazionale, controllo delle esportazioni, doppio uso. L'accesso straniero è grave."
+        ],
+        "h": "Dati educativi? Quanto sensibili? Embarghi? Accesso straniero problematico? Pensa in modo più ampio dei soli dataset: i metodi didattici e le conoscenze strategiche sono inclusi."
+      },
+      "G3": {
+        "title": "Proprietà intellettuale",
+        "q": "Quanto è prezioso il PI in questo sistema?",
+        "r": [
+          "Nessun PI di valore.",
+          "Limitato: materiale generalmente disponibile.",
+          "Prezioso: es. materiale didattico unico, metodi, algoritmi.",
+          "Significativo: es. scoperte brevettabili, dataset unici.",
+          "Critico: brevetti attivi o PI strategico. L'accesso da parte di terzi causa gravi danni."
+        ],
+        "h": "Quale proprietà intellettuale è in questo sistema? Pensa a materiale didattico unico, metodi di ricerca, algoritmi, dataset, brevetti. Qual è il danno se una terza parte ottiene accesso?"
+      },
+      "G4": {
+        "title": "Accesso ai dati",
+        "q": "Chi ha accesso ai tuoi dati?",
+        "r": [
+          "Accesso aperto; il fornitore può utilizzare, visualizzare o riutilizzare i dati senza restrizioni chiare.",
+          "Accesso ampio; il fornitore ha accesso per gestione, supporto o analisi, con limiti contrattuali limitati.",
+          "Accesso limitato; l'accesso è consentito solo per ruoli o compiti predefiniti, con registrazione e autorizzazione interna.",
+          "Accesso molto limitato; l'accesso è tecnicamente e contrattualmente limitato, solo con il tuo consenso esplicito o supporto strettamente necessario.",
+          "Nessun accesso o fornitura di dati; il fornitore non ha accesso ai dati archiviati e la fornitura a governi non-UE è contrattualmente impossibile senza il tuo consenso."
+        ],
+        "h": "Nota l'accesso tecnico e contrattuale ai dati, inclusi gestione, supporto, sub-responsabili e trasferimenti al di fuori dell'UE. Verifica registrazioni, autorizzazioni, accesso di emergenza e se l'accesso o la fornitura a terzi può essere esplicitamente limitato. Verifica la conformità con il Regolamento sulla governance dei dati (DGA)."
+      },
+      "G5": {
+        "title": "Politica dei dati e governance",
+        "q": "In che misura sono garantiti la politica dei dati, la limitazione delle finalità e la governance degli utenti?",
+        "r": [
+          "Insufficientemente concordato; la politica dei dati non è chiara e non c'è informazione su quali dati e metadati sono archiviati.",
+          "Minimamente concordato; ci sono alcune informazioni sulla politica dei dati, ma finalità, uso e modifica non sono chiaramente documentati.",
+          "Concordato di base; il fornitore comunica la politica dei dati, ma gli utenti hanno informazioni o opzioni di configurazione limitate.",
+          "Ben concordato; solo i dati e metadati necessari vengono archiviati, la finalità è documentata e gli utenti possono visualizzare e configurare parzialmente i propri dati.",
+          "Eccellentemente concordato; la politica dei dati e le modifiche sono pubbliche, solo i dati e metadati necessari vengono archiviati, finalità e funzione sono documentate, e gli utenti possono visualizzare e configurare completamente dati e metadati come desiderato."
+        ],
+        "h": "Verifica se la politica dei dati è pubblica e comprensibile, se la limitazione delle finalità dei dati e metadati è stabilita contrattualmente o tecnicamente, e se gli utenti possono visualizzare e gestire i propri dati e metadati."
+      },
+      "G6": {
+        "title": "Minimizzazione ed eliminazione dei dati",
+        "q": "Quali opzioni esistono per limitare la raccolta di dati o eliminare dati?",
+        "r": [
+          "Nessuna opzione; i dati possono essere gestiti o eliminati solo dal fornitore.",
+          "Opzioni limitate; i dati possono essere parzialmente limitati o eliminati, ma senza garanzie chiare.",
+          "Supporto per la minimizzazione e l'eliminazione dei dati in conformità con il GDPR, incluso il trattamento di backup e copie.",
+          "Forte supporto in conformità con il GDPR; la raccolta dei dati può essere limitata al necessario e l'eliminazione è contrattualmente garantita e verificabile.",
+          "Pieno supporto in conformità con il GDPR; la raccolta dei dati è strettamente minimizzata, l'eliminazione è completamente garantita contrattualmente e verificabile. Validato da una terza parte indipendente."
+        ],
+        "h": "La raccolta dei dati può essere limitata ai soli dati necessari per il funzionamento del prodotto o servizio? I dati degli utenti possono essere eliminati in conformità con il GDPR?"
+      },
+      "H1": {
+        "title": "Libertà accademica",
+        "q": "Il fornitore può esercitare influenza sulle attività educative?",
+        "r": [
+          "Nessuna relazione con l'istruzione.",
+          "Rischio teorico, nessun caso precedente noto.",
+          "Accesso ai materiali didattici. Rischio limitato di influenza indiretta.",
+          "Rischio reale. Paese dove i governi possono censurare l'istruzione.",
+          "Censura dimostrata o sequestro di dati da parte di questo fornitore o governo."
+        ],
+        "h": "Il fornitore o un governo straniero può ottenere informazioni sulle attività educative? Ci sono casi precedenti di censura o sequestro di dati presso questo fornitore?"
+      },
+      "H2": {
+        "title": "Collaborazione educativa",
+        "q": "Importanza per la collaborazione educativa (nazionale e internazionale)?",
+        "r": [
+          "Nessun ruolo. Puramente interno.",
+          "Ruolo marginale. Alternative dirette disponibili per i partner.",
+          "Di supporto. L'uso è desiderabile ma non necessario.",
+          "Piattaforma importante. Più partner la utilizzano.",
+          "Essenziale e insostituibile. Standard nel campo."
+        ],
+        "h": "Partner che usano lo stesso sistema? Standard nel campo? Conseguenze del cambio? Questo si applica sia agli accordi di collaborazione internazionali che nazionali."
+      },
+      "H3": {
+        "title": "Archiviazione a lungo termine",
+        "q": "Per quanto tempo i dati devono essere conservati e rimanere accessibili?",
+        "r": [
+          "Nessun requisito di archiviazione. Puramente operativo.",
+          "<5 anni. Durata di dipendenza limitata.",
+          "5-10 anni. La verifica e l'audit devono rimanere possibili.",
+          "10-25 anni. È richiesta la riproducibilità scientifica.",
+          "Permanente (>25 anni) o obbligo legale."
+        ],
+        "h": "Per quanto tempo conservare? Obbligo legale? Riproducibilità? Più lungo è il periodo di conservazione, maggiore è il rischio di dipendenza prolungata dal fornitore. Per il formato in cui i dati vengono archiviati, vedi C3 (Portabilità dei dati)."
+      },
+      "H4": {
+        "title": "Influenza e trasparenza degli utenti",
+        "q": "In che misura l'interfaccia utente è trasparente, priva di manipolazione e orientata all'autonomia degli utenti?",
+        "r": [
+          "Insufficientemente concordato; l'interfaccia è poco chiara, orienta fortemente il comportamento e non indica se risponde un essere umano o un bot.",
+          "Minimamente concordato; c'è qualche trasparenza, ma i dark pattern, gli elementi di gioco o le scelte persuasive non sono dimostrativamente esclusi.",
+          "Concordato di base; l'interfaccia a volte indica se è coinvolto un essere umano o un bot, ma trasparenza e autonomia non sono costantemente garantite.",
+          "Ben concordato; l'interfaccia indica sempre chiaramente se è coinvolto un essere umano o un bot ed è priva di dark pattern, elementi di gioco ed elementi additivi.",
+          "Eccellentemente concordato; l'interfaccia è sempre trasparente, priva di dark pattern, elementi di gioco, elementi persuasivi e additivi, con opzioni di opt-out. Validato da una terza parte indipendente."
+        ],
+        "h": "Valuta le diverse parti dell'interfaccia utente insieme agli utenti (potenziali). I dark pattern sono schemi di design fuorvianti o orientanti, gli elementi di gioco sono meccanismi di fortuna o ricompensa, gli elementi persuasivi sono sottili spinte comportamentali e gli elementi additivi stimolano un uso ripetuto o compulsivo."
+      }
+    },
+    "ui": {
+      "assessedAppAssessors": "Valutatore/i",
+      "assessedAppAssessorsPlaceholder": "Nomi…",
+      "assessedAppDate": "Data",
+      "assessedAppId": "ID applicazione",
+      "assessedAppIdPlaceholder": "Es. SOFT-1234…",
+      "assessedAppName": "Nome applicazione",
+      "assessedAppNameCopiedPostfix": "copia",
+      "assessedAppNamePlaceholder": "Es. Microsoft Teams…",
+      "assessedAppScoreCardImportanceLabel": "Importanza strategica",
+      "assessedAppScoreCardImportanceSub": "Alto = applicazione critica",
+      "assessedAppScoreCardImportanceTip": "Quanto è importante l'applicazione? Media delle dimensioni F, G e H. Punteggio basso = poca importanza. Punteggio alto = critico.",
+      "assessedAppScoreCardMitigationLabel": "Capacità di attenuazione",
+      "assessedAppScoreCardMitigitionSub": "Alto = forte attenuazione (bene)",
+      "assessedAppScoreCardMitigitionTip": "Quanto bene l'organizzazione può gestire i rischi? Media delle dimensioni C, D e E. Punteggio basso = debole. Punteggio alto = forte.",
+      "assessedAppScoreCardPvLabel": "Punteggio valori pubblici",
+      "assessedAppScoreCardPvSub": "Punteggio basso = problema urgente",
+      "assessedAppScoreCardPvTip": "Quanto è grande il problema dei valori pubblici? Un punteggio alto significa: ben attenuato e/o basso rischio. Un punteggio basso significa: problema urgente. Calcolato come Attenuazione / (Rischio × Importanza), normalizzato a 1-10.",
+      "assessedAppScoreCardRiskLabel": "Esposizione al rischio",
+      "assessedAppScoreCardRiskSub": "Basso = poco rischio (bene)",
+      "assessedAppScoreCardRiskTip": "Quanto è grande il rischio esterno? Media delle dimensioni A e B. Punteggio basso = poco rischio (bene). Punteggio alto = molto rischio.",
+      "assessModeControlFullBtn": "Completo",
+      "assessModeControlHintIndicators": "indicatori",
+      "assessModeControlHintKeyIndicators": "indicatori chiave (punteggio indicativo)",
+      "assessModeControlHintOf": "di",
+      "assessModeControlQuickBtn": "Scansione rapida",
+      "assessModePickerFullBtn": "Valutazione completa",
+      "assessModePickerFullBtnSub": "indicatori",
+      "assessModePickerLabel": "Come vuoi valutare?",
+      "assessModePickerQuickBtn": "Scansione rapida",
+      "assessModePickerQuickBtnSub": "indicatori chiave",
+      "changelogCloseBtn": "Chiudi",
+      "changelogNewBadge": "NUOVO",
+      "changelogTitle": "Registro modifiche",
+      "exportReminderDismissTitle": "Ricordamelo dopo",
+      "exportReminderExportBtn": "Esporta ora",
+      "exportReminderText1": "Hai ",
+      "exportReminderText2": " applicazioni",
+      "exportReminderText3": " salvate nel browser. Esporta regolarmente in JSON per evitare di perdere il tuo lavoro.",
+      "footerCopyrights": "Università di Utrecht & SIVON",
+      "footerCreditsHtml": "Basato su <a href='https://github.com/UtrechtUniversity/digital-autonomy-assessment-tool'>DAAF</a> di Tim van Neerbos",
+      "footerLicenseSummary": "Libero per uso da parte di organizzazioni educative, non profit e governative. Non per uso commerciale.",
+      "headerAppPlural": "applicazioni",
+      "headerAppSingular": "applicazione",
+      "headerMenuChangeLogBtn": "Registro modifiche",
+      "headerMenuDownloadTpl": "Scarica modello CSV",
+      "headerMenuDownloadTplSub": "File modello per importazione massiva",
+      "headerMenuExportBtn": "Esporta ▾",
+      "headerMenuExportCsvDet": "CSV (dettagliato)",
+      "headerMenuExportCsvDetSub": "Tutti i punteggi degli indicatori per applicazione",
+      "headerMenuExportCsvSum": "CSV (riepilogo)",
+      "headerMenuExportCsvSumSub": "Punteggi per dimensione e livello",
+      "headerMenuExportJson": "JSON (completo)",
+      "headerMenuExportJsonSub": "Tutti i dati, punteggi e pesi",
+      "headerMenuHelpBtn": "Guida utente",
+      "headerMenuImportBtn": "Importa ▾",
+      "headerMenuImportCsv": "Elenco applicazioni (CSV)",
+      "headerMenuImportCsvSub": "Massivo: più applicazioni contemporaneamente",
+      "headerMenuImportJson": "Importa JSON",
+      "headerMenuImportJsonSub": "Valutazioni precedentemente esportate",
+      "headerMenuResetWeightsBtn": "Ripristina predefiniti",
+      "headerMenuWeightsBtn": "Regola pesi",
+      "headerTabsAddAppBtn": "Aggiungi applicazione",
+      "headerTitle": "Quadro di valutazione dei valori pubblici",
+      "helpModalTitle": "Guida utente – Strumento di valutazione dei valori pubblici",
+      "levelRowHeaderColIndicator": "Indicatore",
+      "levelRowHeaderColScore": "Punteggio (1-5)",
+      "levelRowHeaderColWeight": "Peso",
+      "levelRowHeaderLevel1Hint": "1 = basso rischio (bene) ... 5 = alto rischio",
+      "levelRowHeaderLevel1Name": "Esposizione al rischio",
+      "levelRowHeaderLevel2Hint": "1 = debole attenuazione ... 5 = forte attenuazione (bene)",
+      "levelRowHeaderLevel2Name": "Capacità di attenuazione",
+      "levelRowHeaderLevel3Hint": "1 = bassa importanza ... 5 = alta importanza (urgente)",
+      "levelRowHeaderLevel3Name": "Importanza strategica",
+      "levelRowHeaderLevelPrefix": "Livello",
+      "levelRowHeaderRubricsBtn": "Rubriche ▾",
+      "levelRowHeaderRubricsBtnTitle": "Mostra/nascondi tutte le rubriche",
+      "levelRowScaleBarBad": "cattivo",
+      "levelRowScaleBarGood": "bene",
+      "levelRowScaleBarHigh": "alto",
+      "levelRowScaleBarLow": "basso",
+      "overviewAddAppBtn": "+ Aggiungi applicazione",
+      "overviewAlertEmptyFile": "File vuoto.",
+      "overviewAlertImportErr": "Errore di importazione: ",
+      "overviewAlertImported": "importato.",
+      "overviewAlertInvalidFile": "File non valido: ",
+      "overviewAlertNoApps": "Nessun nome di applicazione trovato.",
+      "overviewBtn": "Panoramica",
+      "overviewNoApps": "Nessuna applicazione ancora valutata",
+      "overviewNoAppsHintHtml": "Clicca su <strong>+ Aggiungi applicazione</strong> per iniziare, o importa un elenco di applicazioni tramite CSV.",
+      "overviewQuadrantAttention": "PUNTO DI ATTENZIONE",
+      "overviewQuadrantAttentionDescHtml": "Costruire attenuazione o,<br>accettare consapevolmente il rischio",
+      "overviewQuadrantCritical": "CRITICO",
+      "overviewQuadrantCriticalDescHtml": "Azione urgente richiesta:<br>migrare o attenuare",
+      "overviewQuadrantEmptyHint": "Completa almeno tutte le dimensioni per posizionare le applicazioni nel quadrante",
+      "overviewQuadrantFormulaBoxLabelHtml": "<strong>Calcolo:</strong> Per punteggio indicatore (1-5) x peso. Per dimensione, media ponderata. Per livello, media delle dimensioni. <code>Punteggio grezzo = Attenuazione / (Rischio x Importanza)</code>. Normalizzato a 1-10 tramite scala logaritmica.",
+      "overviewQuadrantHigh": "Alto",
+      "overviewQuadrantLow": "Basso",
+      "overviewQuadrantManageable": "GESTIBILE",
+      "overviewQuadrantManageableDescHtml": "Rischi accettati<br>con buona rete di sicurezza",
+      "overviewQuadrantMitigation": "Attenuazione",
+      "overviewQuadrantOptimal": "OTTIMALE",
+      "overviewQuadrantOptimalDescHtml": "Mantenere la situazione attuale,<br>monitorare periodicamente",
+      "overviewQuadrantTitle": "Quadrante dei valori pubblici",
+      "overviewQuadrantXLabel": "Esposizione al rischio × Importanza strategica",
+      "overviewQuadrantYLabel": "Attenuazione",
+      "overviewTableCopyBtn": "Copia",
+      "overviewTableDeleteSelectedBtn": "Elimina selezionati",
+      "overviewTableHeaderApp": "Applicazione",
+      "overviewTableHeaderId": "ID",
+      "overviewTableHeaderImportance": "Importanza",
+      "overviewTableHeaderMitigation": "Attenuazione",
+      "overviewTableHeaderProgress": "Progresso",
+      "overviewTableHeaderRawScore": "Punteggio grezzo",
+      "overviewTableHeaderRisk": "Rischio",
+      "overviewTableHeaderScore": "Punteggio (1-10)",
+      "overviewTableSelectedLabel": "selezionato",
+      "overviewTitle": "Panoramica delle valutazioni",
+      "scoreRowDimADesc": "Sotto quale legislazione ricade il fornitore e dove si trovano i dati? Rischi geopolitici e di giurisdizione.",
+      "scoreRowDimAName": "Rischio geopolitico e di conformità giuridica",
+      "scoreRowDimBDesc": "Quanti prodotti e servizi utilizzi dallo stesso fornitore?",
+      "scoreRowDimBName": "Dipendenze dal fornitore e dalla catena di fornitura",
+      "scoreRowDimCDesc": "Puoi tecnicamente cambiare? Esistono alternative, i dati sono esportabili, il software è aperto?",
+      "scoreRowDimCName": "Resilienza tecnica",
+      "scoreRowDimDDesc": "Hai le conoscenze, i piani e i backup per effettuare realmente un cambio?",
+      "scoreRowDimDName": "Resilienza organizzativa",
+      "scoreRowDimEDesc": "Cosa è stato concordato contrattualmente riguardo all'uscita, al trasferimento dei dati e alla flessibilità?",
+      "scoreRowDimEName": "Resilienza contrattuale",
+      "scoreRowDimFDesc": "Quanto è importante questa applicazione per l'organizzazione e quante cose dipendono da essa?",
+      "scoreRowDimFName": "Importanza organizzativa",
+      "scoreRowDimGDesc": "Quali dati e metadati sensibili tratta questo sistema, chi vi ha accesso e come è organizzato l'uso contrattualmente e tecnicamente?",
+      "scoreRowDimGName": "Sensibilità dei dati, gestione degli accessi e politica",
+      "scoreRowDimHDesc": "Questa applicazione influisce sulla libertà accademica, la collaborazione o l'archiviazione a lungo termine? C'è influenza degli utenti?",
+      "scoreRowDimHName": "Impatto educativo",
+      "scoreRowDimensionPrefix": "Dimensione",
+      "scoreRowExplanation": "Indicazioni:",
+      "scoreRowRemarkPlaceholder": "Commento o giustificazione…",
+      "unnamed": "Senza nome",
+      "weightsModalDimensionLabel": "Dimensione",
+      "weightsModalResetBtn": "Ripristina predefiniti",
+      "weightsModalResetConfirmation": "Sei sicuro di voler ripristinare tutti i pesi ai valori predefiniti?",
+      "weightsModalTipHtml": "<strong>Cosa sono i pesi?</strong> I pesi determinano quanta influenza ha ogni indicatore all'interno della sua dimensione. I pesi predefiniti sono calibrati per il modello PVAF. Regola i pesi solo in consultazione con la tua organizzazione o settore, altrimenti i risultati diventano incomparabili.",
+      "weightsModalTitle": "Regola pesi"
     }
   },
   "nl": {
