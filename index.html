@@ -1203,6 +1203,9 @@ const I18N = {
       "overviewTableHeaderScore": "Score (1-10)",
       "overviewTableSelectedLabel": "valgt",
       "overviewTitle": "Vurderingsoversigt",
+      "removedApp": "Applikation fjernet",
+      "removedAppsNumberDeleted": " applikationer fjernet",
+      "removedAppsUndoBtn": "Fortryd",
       "scoreRowDimADesc": "Under hvilken lovgivning hører leverandøren, og hvor er dataene? Geopolitiske og jurisdiktionsrisici.",
       "scoreRowDimAName": "Geopolitisk og juridisk overholdelses risiko",
       "scoreRowDimBDesc": "Hvor mange produkter og tjenester bruger du fra den samme leverandør?",
@@ -1853,6 +1856,9 @@ const I18N = {
       "overviewTableHeaderScore": "Wert (1-10)",
       "overviewTableSelectedLabel": "ausgewählt",
       "overviewTitle": "Bewertungsübersicht",
+      "removedApp": "Anwendung entfernt",
+      "removedAppsNumberDeleted": " Anwendungen entfernt",
+      "removedAppsUndoBtn": "Rückgängig machen",
       "scoreRowDimADesc": "Unter welcher Gesetzgebung fällt der Lieferant und wo befinden sich die Daten? Geopolitische und Gerichtsbarkeitsrisiken.",
       "scoreRowDimAName": "Geopolitisches und rechtliches Compliance-Risiko",
       "scoreRowDimBDesc": "Wie viele Produkte und Dienstleistungen nutzen Sie von demselben Lieferanten?",
@@ -2503,6 +2509,9 @@ const I18N = {
       "overviewTableHeaderScore": "Score (1-10)",
       "overviewTableSelectedLabel": "selected",
       "overviewTitle": "Assessment Overview",
+      "removedApp": "Application removed",
+      "removedAppsNumberDeleted": " applications deleted",
+      "removedAppsUndoBtn": "Undo",
       "scoreRowDimADesc": "Under what legislation does the supplier fall and where is the data? Geopolitical and jurisdiction risks.",
       "scoreRowDimAName": "Geopolitical and legal compliance risk",
       "scoreRowDimBDesc": "How many products and services do you use from the same supplier?",
@@ -3153,6 +3162,9 @@ const I18N = {
       "overviewTableHeaderScore": "Puntuación (1-10)",
       "overviewTableSelectedLabel": "seleccionado",
       "overviewTitle": "Vista general de evaluaciones",
+      "removedApp": "Aplicación eliminada",
+      "removedAppsNumberDeleted": " aplicaciones eliminadas",
+      "removedAppsUndoBtn": "Deshacer",
       "scoreRowDimADesc": "¿Bajo qué legislación se encuentra el proveedor y dónde están los datos? Riesgos geopolíticos y de jurisdicción.",
       "scoreRowDimAName": "Riesgo geopolítico y de cumplimiento jurídico",
       "scoreRowDimBDesc": "¿Cuántos productos y servicios usas del mismo proveedor?",
@@ -3803,6 +3815,9 @@ const I18N = {
       "overviewTableHeaderScore": "Score (1-10)",
       "overviewTableSelectedLabel": "sélectionné",
       "overviewTitle": "Vue d'ensemble des évaluations",
+      "removedApp": "Application supprimée",
+      "removedAppsNumberDeleted": " applications supprimées",
+      "removedAppsUndoBtn": "Annuler",
       "scoreRowDimADesc": "Sous quelle législation le fournisseur relève-t-il et où se trouvent les données ? Risques géopolitiques et de juridiction.",
       "scoreRowDimAName": "Risque géopolitique et de conformité juridique",
       "scoreRowDimBDesc": "Combien de produits et services utilisez-vous du même fournisseur ?",
@@ -4453,6 +4468,9 @@ const I18N = {
       "overviewTableHeaderScore": "Punteggio (1-10)",
       "overviewTableSelectedLabel": "selezionato",
       "overviewTitle": "Panoramica delle valutazioni",
+      "removedApp": "Applicazione rimossa",
+      "removedAppsNumberDeleted": " applicazioni eliminate",
+      "removedAppsUndoBtn": "Annulla",
       "scoreRowDimADesc": "Sotto quale legislazione ricade il fornitore e dove si trovano i dati? Rischi geopolitici e di giurisdizione.",
       "scoreRowDimAName": "Rischio geopolitico e di conformità giuridica",
       "scoreRowDimBDesc": "Quanti prodotti e servizi utilizzi dallo stesso fornitore?",
@@ -5103,6 +5121,9 @@ const I18N = {
       "overviewTableHeaderScore": "Score (1-10)",
       "overviewTableSelectedLabel": "geselecteerd",
       "overviewTitle": "Assessment overzicht",
+      "removedApp": "Applicatie verwijderd",
+      "removedAppsNumberDeleted": " applicaties verwijderd",
+      "removedAppsUndoBtn": "Ongedaan maken",
       "scoreRowDimADesc": "Onder welke wetgeving valt de leverancier en waar staat de data? Geopolitieke en jurisdictierisico's.",
       "scoreRowDimAName": "Geopolitiek en wettelijke conformiteit risico",
       "scoreRowDimBDesc": "Hoeveel producten en diensten neem je af bij dezelfde leverancier?",
@@ -5518,7 +5539,7 @@ function showUndoToast(msg) {
   dismissUndoToast();
   undoToastEl = document.createElement('div');
   undoToastEl.className = 'undo-toast';
-  undoToastEl.innerHTML = '<span>' + msg + '</span><button class="hbtn primary" onclick="undoPendingDeletes()">Ongedaan maken</button>';
+  undoToastEl.innerHTML = `<span>${msg}</span><button class="hbtn primary" onclick="undoPendingDeletes()">${t('ui.removedAppsUndoBtn')}</button>`;
   document.body.appendChild(undoToastEl);
   undoToastTimer = setTimeout(commitPendingDeletes, 10000);
 }
@@ -5531,7 +5552,7 @@ function removeApp(id) {
     app: JSON.parse(JSON.stringify(state.apps[id])),
     orderIdx: state.order.indexOf(id)
   }];
-  showUndoToast('Applicatie verwijderd');
+  showUndoToast(t('ui.removedApp'));
   rebuildTabs();
   showView('overview');
 }
@@ -5544,7 +5565,7 @@ function bulkRemoveApps(ids) {
     app: JSON.parse(JSON.stringify(state.apps[id])),
     orderIdx: state.order.indexOf(id)
   }));
-  showUndoToast(ids.length + ' applicaties verwijderd');
+  showUndoToast(ids.length + t('ui.removedAppsNumberDeleted'));
   rebuildTabs();
   renderOverview();
 }
