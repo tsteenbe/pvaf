@@ -275,7 +275,7 @@
   .modal-body p { font-size:0.85rem; color:#555; margin-bottom:0.6rem; line-height:1.6; }
   .modal-body a { color:var(--sivon-gold); text-decoration:none; }
   .modal-body a:hover { text-decoration:underline; }
-  .modal-body ul { font-size:0.85rem; color:#555; margin:0.3rem 0 0.6rem 1.2rem; line-height:1.6; }
+  .modal-body ul, .modal-body ol { font-size:0.85rem; color:#555; margin:0.3rem 0 0.6rem 1.2rem; line-height:1.6; }
   .modal-body .tip { background: #f4f9ff; padding:0.6rem 0.8rem; font-size:0.8rem; color:var(--sivon-blue); margin:0.6rem 0; }
   .modal-body .tip strong { color:var(--sivon-blue); }
   .modal-body code { background:#e8ebf1; padding:0.1rem 0.3rem; border-radius:3px; font-size:0.8rem; }
@@ -445,6 +445,20 @@
       <div class="tip" data-i18n-html="ui.weightsModalTipHtml"><strong>What are weights?</strong> Weights determine how much influence each indicator has within its dimension. Default weights are calibrated for the PVAF Model. Only adjust weights in consultation with your organisation or sector, otherwise results become incomparable.</div>
       <div id="weightsContent"></div>
       <button class="hbtn primary" onclick="resetWeights()" style="margin-top:1rem;width:100%;text-align:center" data-i18n="ui.weightsModalResetBtn">Reset to default</button>
+    </div>
+  </div>
+</div>
+
+<!-- WELCOME MODAL -->
+<div class="modal-overlay" id="welcomeModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 class="sivon" data-i18n="ui.welcomeModalTitle">Welcome</h2>
+      <button class="modal-close" onclick="closeWelcomeModal()">&times;</button>
+    </div>
+    <div class="modal-body" id="welcomeModalBody">
+      <div id="welcomeModalContent"></div>
+      <button class="hbtn primary" onclick="closeWelcomeModal();addApp()" style="margin-top:1rem;width:100%;text-align:center" data-i18n="ui.welcomeModalBtn">Let's get started..</button>
     </div>
   </div>
 </div>
@@ -1231,8 +1245,22 @@ const I18N = {
       "weightsModalResetBtn": "Nulstil til standard",
       "weightsModalResetConfirmation": "Er du sikker på, at du vil nulstille alle vægte til standardværdierne?",
       "weightsModalTipHtml": "<strong>Hvad er vægte?</strong> Vægte bestemmer, hvor meget indflydelse hver indikator har inden for sin dimension. Standardvægte er kalibreret til PVAF-modellen. Juster kun vægte i samråd med din organisation eller sektor, ellers bliver resultaterne usammenlignelige.",
-      "weightsModalTitle": "Juster vægte"
-    }
+      "weightsModalTitle": "Juster vægte",
+      "welcomeModalBtn": "Lad os komme i gang...",
+      "welcomeModalTitle": "Velkommen"
+    },
+    "welcome": `
+      <p>Velkommen til PVAF, et værktøj der hjælper organisationer med at vurdere i hvilken grad deres applikationslandskab lever op til <a href="https://www.kennisnet.nl/tools/waardenwijzer/">de offentlige værdier i uddannelse</a> (autonomi, retfærdighed og menneskelighed).</p>
+      <h3>Sådan kommer du i gang</h3>
+      <ol>
+        <li><strong>Tilføj en applikation:</strong> klik på <strong>+ Tilføj applikation</strong>, eller importer en liste med navne via CSV.</li>
+        <li><strong>Vælg en tilstand:</strong> <em>Hurtig scanning</em> (9 indikatorer, vejledende) eller <em>Fuld vurdering</em> (30 indikatorer).</li>
+        <li><strong>Bedøm hver indikator:</strong> vælg 1–5 og tilføj eventuelt en kommentar. Klik på en indikator for at læse scoringsrubrikken.</li>
+        <li><strong>Gennemgå og eksporter:</strong> resultater vises i oversigtstabellen og kvadranten. Eksporter dine resultater som JSON eller CSV, når du er færdig.</li>
+      </ol>
+      <p>For alle detaljer om scoringsmetodologien, vægte og mere, åbn <strong>Brugervejledningen</strong> i menuen øverst til højre.</p>
+      <p>Alle data du indtaster, gemmes udelukkende i din webbrowser. Dette værktøj sender ingen data til eksterne servere.</p>
+      <div class="tip"><strong>Language:</strong> This tool is available in multiple languages. Use the <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:11px;height:11px;vertical-align:-1px;fill:none;stroke:currentColor;stroke-width:2"><path d="M12,23 C18.0751322,23 23,18.0751322 23,12 C23,5.92486775 18.0751322,1 12,1 C5.92486775,1 1,5.92486775 1,12 C1,18.0751322 5.92486775,23 12,23 Z M12,23 C15,23 16,18 16,12 C16,6 15,1 12,1 C9,1 8,6 8,12 C8,18 9,23 12,23 Z M2,16 L22,16 M2,8 L22,8"/></svg> globe icon (top right) to switch languages.</div>`
   },
   "de": {
     "changelog": [
@@ -1885,8 +1913,22 @@ const I18N = {
       "weightsModalResetBtn": "Auf Standard zurücksetzen",
       "weightsModalResetConfirmation": "Sind Sie sicher, dass Sie alle Gewichtungen auf die Standardwerte zurücksetzen möchten?",
       "weightsModalTipHtml": "<strong>Was sind Gewichtungen?</strong> Gewichtungen bestimmen, wie viel Einfluss jeder Indikator innerhalb seiner Dimension hat. Standardgewichtungen sind für das PVAF-Modell kalibriert. Passen Sie Gewichtungen nur in Absprache mit Ihrer Organisation oder Branche an, sonst werden die Ergebnisse unvergleichbar.",
-      "weightsModalTitle": "Gewichtungen anpassen"
-    }
+      "weightsModalTitle": "Gewichtungen anpassen",
+      "welcomeModalBtn": "Jetzt loslegen...",
+      "welcomeModalTitle": "Willkommen"
+    },
+    "welcome": `
+      <p>Willkommen bei PVAF, einem Werkzeug, das Organisationen dabei hilft zu bewerten, inwieweit ihre Anwendungslandschaft den <a href="https://www.kennisnet.nl/tools/waardenwijzer/">öffentlichen Werten im Bildungswesen</a> (Autonomie, Gerechtigkeit und Menschlichkeit) entspricht.</p>
+      <h3>Erste Schritte</h3>
+        <ol>
+          <li><strong>Anwendung hinzufügen:</strong> klicken Sie auf <strong>+ Anwendung hinzufügen</strong>, oder importieren Sie eine Namensliste per CSV.</li>
+          <li><strong>Modus wählen:</strong> <em>Schnellscan</em> (9 Indikatoren, indikativ) oder <em>Vollständige Bewertung</em> (30 Indikatoren).</li>
+          <li><strong>Jeden Indikator bewerten:</strong> wählen Sie 1–5 und fügen Sie optional einen Kommentar hinzu. Klicken Sie auf einen Indikator, um die Bewertungsrubrik zu lesen.</li>
+          <li><strong>Überprüfen und exportieren:</strong> Ergebnisse erscheinen in der Übersichtstabelle und im Quadranten. Exportieren Sie Ihre Ergebnisse als JSON oder CSV, wenn Sie fertig sind.</li>
+        </ol>
+      <p>Für vollständige Details zur Bewertungsmethodik, Gewichtungen und mehr, öffnen Sie das <strong>Benutzerhandbuch</strong> im Menü oben rechts.</p>
+      <p>Alle Daten, die Sie eingeben, werden ausschließlich in Ihrem Webbrowser gespeichert. Dieses Werkzeug sendet keine Daten an externe Server.</p>
+      <div class="tip"><strong>Language:</strong> This tool is available in multiple languages. Use the <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:11px;height:11px;vertical-align:-1px;fill:none;stroke:currentColor;stroke-width:2"><path d="M12,23 C18.0751322,23 23,18.0751322 23,12 C23,5.92486775 18.0751322,1 12,1 C5.92486775,1 1,5.92486775 1,12 C1,18.0751322 5.92486775,23 12,23 Z M12,23 C15,23 16,18 16,12 C16,6 15,1 12,1 C9,1 8,6 8,12 C8,18 9,23 12,23 Z M2,16 L22,16 M2,8 L22,8"/></svg> globe icon (top right) to switch languages.</div>`
   },
   "en": {
     "changelog": [
@@ -2539,8 +2581,22 @@ const I18N = {
       "weightsModalResetBtn": "Reset to defaults",
       "weightsModalResetConfirmation": "Are you sure you want to reset all weights to the default values?",
       "weightsModalTipHtml": "<strong>What are weights?</strong> Weights determine how much influence each indicator has within its dimension. Default weights are calibrated for the PVAF model. Only adjust weights in consultation with your organisation or sector, otherwise results become incomparable.",
-      "weightsModalTitle": "Adjust Weights"
-    }
+      "weightsModalTitle": "Adjust Weights",
+      "welcomeModalBtn": "Let's get started...",
+      "welcomeModalTitle": "Welcome"
+    },
+    "welcome": `
+      <p>Welcome to PVAF, a tool that helps organisations assess to what extent their application landscape meets the <a href="https://www.kennisnet.nl/tools/waardenwijzer/">public values in education</a> (autonomy, justice, and humanity).</p>
+      <h3>How to get started</h3>
+        <ol>
+          <li><strong>Add an application:</strong> click <strong>+ Add Application</strong>, or import a list of names via CSV.</li>
+          <li><strong>Choose a mode:</strong> <em>Quick scan</em> (9 indicators, indicative) or <em>Full assessment</em> (30 indicators).</li>
+          <li><strong>Score each indicator:</strong> select 1–5 and optionally add a comment. Click an indicator to read the scoring rubric.</li>
+          <li><strong>Review and export:</strong> results appear in the overview table and quadrant. Export your results as JSON or CSV when done.</li>
+        </ol>
+      <p>For full details on the scoring methodology, weights and more, open the <strong>User Guide</strong> in the top right menu.</p>
+      <p>All data you enter is stored exclusively in your web browser. This tool does not send any data to external servers.</p>
+      <div class="tip"><strong>Language:</strong> This tool is available in multiple languages. Use the <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:11px;height:11px;vertical-align:-1px;fill:none;stroke:currentColor;stroke-width:2"><path d="M12,23 C18.0751322,23 23,18.0751322 23,12 C23,5.92486775 18.0751322,1 12,1 C5.92486775,1 1,5.92486775 1,12 C1,18.0751322 5.92486775,23 12,23 Z M12,23 C15,23 16,18 16,12 C16,6 15,1 12,1 C9,1 8,6 8,12 C8,18 9,23 12,23 Z M2,16 L22,16 M2,8 L22,8"/></svg> globe icon (top right) to switch languages.</div>`
   },
   "es": {
     "changelog": [
@@ -3193,8 +3249,22 @@ const I18N = {
       "weightsModalResetBtn": "Restablecer predeterminados",
       "weightsModalResetConfirmation": "¿Estás seguro de que quieres restablecer todos los pesos a los valores predeterminados?",
       "weightsModalTipHtml": "<strong>¿Qué son los pesos?</strong> Los pesos determinan cuánta influencia tiene cada indicador dentro de su dimensión. Los pesos predeterminados están calibrados para el modelo PVAF. Solo ajusta los pesos en consulta con tu organización o sector, de lo contrario los resultados no serán comparables.",
-      "weightsModalTitle": "Ajustar pesos"
-    }
+      "weightsModalTitle": "Ajustar pesos",
+      "welcomeModalBtn": "¡Empecemos...",
+      "welcomeModalTitle": "Bienvenido"
+    },
+    "welcome": `
+      <p>Bienvenido a PVAF, una herramienta que ayuda a las organizaciones a evaluar en qué medida su panorama de aplicaciones cumple con los <a href="https://www.kennisnet.nl/tools/waardenwijzer/">valores públicos en educación</a> (autonomía, justicia y humanidad).</p>
+      <h3>Cómo empezar</h3>
+        <ol>
+          <li><strong>Añadir una aplicación:</strong> haz clic en <strong>+ Añadir aplicación</strong>, o importa una lista de nombres mediante CSV.</li>
+          <li><strong>Elige un modo:</strong> <em>Análisis rápido</em> (9 indicadores, indicativo) o <em>Evaluación completa</em> (30 indicadores).</li>
+          <li><strong>Puntúa cada indicador:</strong> selecciona 1–5 y añade opcionalmente un comentario. Haz clic en un indicador para leer la rúbrica de puntuación.</li>
+          <li><strong>Revisa y exporta:</strong> los resultados aparecen en la tabla de resumen y el cuadrante. Exporta tus resultados como JSON o CSV cuando hayas terminado.</li>
+        </ol>
+      <p>Para obtener todos los detalles sobre la metodología de puntuación, los pesos y más, abre el <strong>Manual de usuario</strong> en el menú superior derecho.</p>
+      <p>Todos los datos que introduces se almacenan exclusivamente en tu navegador web. Esta herramienta no envía ningún dato a servidores externos.</p>
+      <div class="tip"><strong>Language:</strong> This tool is available in multiple languages. Use the <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:11px;height:11px;vertical-align:-1px;fill:none;stroke:currentColor;stroke-width:2"><path d="M12,23 C18.0751322,23 23,18.0751322 23,12 C23,5.92486775 18.0751322,1 12,1 C5.92486775,1 1,5.92486775 1,12 C1,18.0751322 5.92486775,23 12,23 Z M12,23 C15,23 16,18 16,12 C16,6 15,1 12,1 C9,1 8,6 8,12 C8,18 9,23 12,23 Z M2,16 L22,16 M2,8 L22,8"/></svg> globe icon (top right) to switch languages.</div>`
   },
   "fr": {
     "changelog": [
@@ -3847,8 +3917,22 @@ const I18N = {
       "weightsModalResetBtn": "Réinitialiser par défaut",
       "weightsModalResetConfirmation": "Êtes-vous sûr de vouloir réinitialiser toutes les pondérations aux valeurs par défaut ?",
       "weightsModalTipHtml": "<strong>Que sont les pondérations ?</strong> Les pondérations déterminent l'influence de chaque indicateur au sein de sa dimension. Les pondérations par défaut sont calibrées pour le modèle PVAF. N'ajustez les pondérations qu'en concertation avec votre organisation ou secteur, sinon les résultats deviennent incomparables.",
-      "weightsModalTitle": "Ajuster les pondérations"
-    }
+      "weightsModalTitle": "Ajuster les pondérations",
+      "welcomeModalBtn": "C'est parti...",
+      "welcomeModalTitle": "Bienvenue"
+    },
+    "welcome": `
+      <p>Bienvenue dans PVAF, un outil qui aide les organisations à évaluer dans quelle mesure leur parc applicatif répond aux <a href="https://www.kennisnet.nl/tools/waardenwijzer/">valeurs publiques dans l'éducation</a> (autonomie, justice et humanité).</p>
+      <h3>Comment démarrer</h3>
+      <ol>
+        <li><strong>Ajouter une application :</strong> cliquez sur <strong>+ Ajouter une application</strong>, ou importez une liste de noms via CSV.</li>
+        <li><strong>Choisir un mode :</strong> <em>Analyse rapide</em> (9 indicateurs, indicative) ou <em>Évaluation complète</em> (30 indicateurs).</li>
+        <li><strong>Évaluer chaque indicateur :</strong> sélectionnez 1–5 et ajoutez éventuellement un commentaire. Cliquez sur un indicateur pour lire la grille d'évaluation.</li>
+        <li><strong>Examiner et exporter :</strong> les résultats apparaissent dans le tableau de synthèse et le quadrant. Exportez vos résultats en JSON ou CSV une fois terminé.</li>
+      </ol>
+      <p>Pour tous les détails sur la méthodologie de notation, les pondérations et plus encore, ouvrez le <strong>Guide utilisateur</strong> dans le menu en haut à droite.</p>
+      <p>Toutes les données que vous saisissez sont stockées exclusivement dans votre navigateur web. Cet outil n'envoie aucune donnée à des serveurs externes.</p>
+      <div class="tip"><strong>Language:</strong> This tool is available in multiple languages. Use the <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:11px;height:11px;vertical-align:-1px;fill:none;stroke:currentColor;stroke-width:2"><path d="M12,23 C18.0751322,23 23,18.0751322 23,12 C23,5.92486775 18.0751322,1 12,1 C5.92486775,1 1,5.92486775 1,12 C1,18.0751322 5.92486775,23 12,23 Z M12,23 C15,23 16,18 16,12 C16,6 15,1 12,1 C9,1 8,6 8,12 C8,18 9,23 12,23 Z M2,16 L22,16 M2,8 L22,8"/></svg> globe icon (top right) to switch languages.</div>`
   },
   "it": {
     "changelog": [
@@ -4501,8 +4585,22 @@ const I18N = {
       "weightsModalResetBtn": "Ripristina predefiniti",
       "weightsModalResetConfirmation": "Sei sicuro di voler ripristinare tutti i pesi ai valori predefiniti?",
       "weightsModalTipHtml": "<strong>Cosa sono i pesi?</strong> I pesi determinano quanta influenza ha ogni indicatore all'interno della sua dimensione. I pesi predefiniti sono calibrati per il modello PVAF. Regola i pesi solo in consultazione con la tua organizzazione o settore, altrimenti i risultati diventano incomparabili.",
-      "weightsModalTitle": "Regola pesi"
-    }
+      "weightsModalTitle": "Regola pesi",
+      "welcomeModalBtn": "Iniziamo...",
+      "welcomeModalTitle": "Benvenuto"
+    },
+    "welcome": `
+      <p>Benvenuto in PVAF, uno strumento che aiuta le organizzazioni a valutare in che misura il loro panorama applicativo soddisfa i <a href="https://www.kennisnet.nl/tools/waardenwijzer/">valori pubblici nell'istruzione</a> (autonomia, giustizia e umanità).</p>
+      <h3>Come iniziare</h3>
+      <ol>
+        <li><strong>Aggiungi un'applicazione:</strong> clicca su <strong>+ Aggiungi applicazione</strong>, o importa un elenco di nomi tramite CSV.</li>
+        <li><strong>Scegli una modalità:</strong> <em>Scansione rapida</em> (9 indicatori, indicativa) o <em>Valutazione completa</em> (30 indicatori).</li>
+        <li><strong>Valuta ogni indicatore:</strong> seleziona 1–5 e aggiungi facoltativamente un commento. Clicca su un indicatore per leggere la rubrica di valutazione.</li>
+        <li><strong>Rivedi ed esporta:</strong> i risultati appaiono nella tabella di riepilogo e nel quadrante. Esporta i tuoi risultati come JSON o CSV quando hai finito.</li>
+      </ol>
+      <p>Per tutti i dettagli sulla metodologia di punteggio, i pesi e altro, apri la <strong>Guida utente</strong> nel menu in alto a destra.</p>
+      <p>Tutti i dati che inserisci vengono archiviati esclusivamente nel tuo browser web. Questo strumento non invia alcun dato a server esterni.</p>
+      <div class="tip"><strong>Language:</strong> This tool is available in multiple languages. Use the <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:11px;height:11px;vertical-align:-1px;fill:none;stroke:currentColor;stroke-width:2"><path d="M12,23 C18.0751322,23 23,18.0751322 23,12 C23,5.92486775 18.0751322,1 12,1 C5.92486775,1 1,5.92486775 1,12 C1,18.0751322 5.92486775,23 12,23 Z M12,23 C15,23 16,18 16,12 C16,6 15,1 12,1 C9,1 8,6 8,12 C8,18 9,23 12,23 Z M2,16 L22,16 M2,8 L22,8"/></svg> globe icon (top right) to switch languages.</div>`
   },
   "nl": {
     "changelog": [
@@ -5155,8 +5253,23 @@ const I18N = {
       "weightsModalResetBtn": "Reset naar standaard",
       "weightsModalResetConfirmation": "Weet je zeker dat je alle wegingen wilt resetten naar standaard?",
       "weightsModalTipHtml": "<strong>Wat zijn wegingen?</strong> De wegingen bepalen hoeveel invloed elke indicator heeft binnen zijn dimensie. Standaardwegingen zijn afgestemd op het PVAF-model. Pas wegingen alleen aan in overleg met je organisatie of sector, anders worden resultaten onderling niet vergelijkbaar.",
-      "weightsModalTitle": "Wegingen aanpassen"
-    }
+      "weightsModalTitle": "Wegingen aanpassen",
+      "welcomeModalBtn": "Aan de slag...",
+      "welcomeModalTitle": "Welkom"
+    },
+    "welcome": `
+      <p>Welkom bij PVAF, een tool die organisaties helpt met het beoordelen in hoeverre hun applicatielandschap voldoet aan de <a href="https://www.kennisnet.nl/tools/waardenwijzer/">publieke waarden in het onderwijs</a> (autonomie,
+      rechtvaardigheid, en menselijkheid).</p>
+      <h3>Aan de slag</h3>
+      <ol>
+        <li><strong>Applicatie toevoegen:</strong> klik op <strong>+ Applicatie toevoegen</strong>, of importeer een lijst met namen via CSV.</li>
+        <li><strong>Kies een modus:</strong> <em>Quick scan</em> (9 indicatoren, indicatief) of <em>Volledig assessment</em> (30 indicatoren).</li>
+        <li><strong>Beoordeel elke indicator:</strong> selecteer 1–5 en voeg optioneel een opmerking toe. Klik op een indicator om de scorerubrieken te lezen.</li>
+        <li><strong>Bekijk en exporteer:</strong> resultaten verschijnen in de overzichtstabel en het kwadrant. Exporteer je resultaten als JSON of CSV als je klaar bent.</li>
+      </ol>
+      <p>Voor alle details over de scoremethodologie, wegingen en meer, open de <strong>Handleiding</strong> in het menu rechtsboven.</p>
+      <p>Alle gegevens die je invult, worden uitsluitend in je webbrowser opgeslagen. Deze tool stuurt geen gegevens naar externe servers.</p>
+      <div class="tip"><strong>Language:</strong> This tool is available in multiple languages. Use the <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:11px;height:11px;vertical-align:-1px;fill:none;stroke:currentColor;stroke-width:2"><path d="M12,23 C18.0751322,23 23,18.0751322 23,12 C23,5.92486775 18.0751322,1 12,1 C5.92486775,1 1,5.92486775 1,12 C1,18.0751322 5.92486775,23 12,23 Z M12,23 C15,23 16,18 16,12 C16,6 15,1 12,1 C9,1 8,6 8,12 C8,18 9,23 12,23 Z M2,16 L22,16 M2,8 L22,8"/></svg> globe icon (top right) to switch languages.</div>`
   }
 };
 
@@ -5391,6 +5504,20 @@ function resetWeights() {
 
 document.getElementById('weightsModal').addEventListener('click', e => {
   if (e.target === e.currentTarget) closeWeightsModal();
+});
+
+// === WELCOME MODAL ===
+function openWelcomeModal() {
+  document.getElementById('welcomeModalContent').innerHTML = t('welcome');
+  document.getElementById('welcomeModal').classList.add('open');
+}
+
+function closeWelcomeModal() {
+  document.getElementById('welcomeModal').classList.remove('open');
+}
+
+document.getElementById('welcomeModal').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeWelcomeModal();
 });
 
 // === REMARKS ===
@@ -6086,7 +6213,7 @@ function exportODF() {
       csv += '\n';
     }
   }
-  downloadBlob(csv, 'text/csv;charset=utf-8', `PVAF_ODF_${new Date().toISOString().slice(0,10)}.csv`);
+  downloadBlob(csv, 'text/csv;charset=utf-8', `PVAF_export_${new Date().toISOString().slice(0,10)}.csv`);
 }
 
 function importData() {
@@ -6304,6 +6431,7 @@ function updateChangelogDot() {
 // === INIT ===
 load();
 rebuildTabs();
+
 for (const id of state.order) renderAppView(id);
 if (state.currentView && state.currentView !== 'overview' && state.apps[state.currentView]) {
   showView(state.currentView);
@@ -6317,6 +6445,7 @@ if (localStorage.getItem('pvaf_lastSeenVersion') !== null) {
   }
 } else {
   localStorage.setItem('pvaf_lastSeenVersion', CURRENT_VERSION);
+  openWelcomeModal();
 }
 setLang(lang);
 lang !== 'en' && applyI18n();
