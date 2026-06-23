@@ -379,7 +379,7 @@
     </div>
     <button class="hbtn" id="headerWeightsBtn" onclick="openWeightsModalCurrent()" style="display:none" data-i18n="ui.headerMenuWeightsBtn">Wegingen aanpassen</button>
     <button class="hbtn" onclick="openChangelogModal()" id="changelogBtn" style="position:relative"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:13px;height:13px;vertical-align:-1.5px;margin-right:3px;fill:currentColor"><path d="M13 3a9 9 0 00-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42A8.954 8.954 0 0013 21a9 9 0 000-18zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg><span data-i18n="ui.headerMenuChangeLogBtn">Changelog</span></button>
-    <button class="hbtn help-btn" onclick="openHelp()"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg><span data-i18n="ui.headerMenuHelpBtn">Handleiding</span></button>
+    <button class="hbtn help-btn" onclick="openHelpModal()"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg><span data-i18n="ui.headerMenuHelpBtn">Handleiding</span></button>
   </div>
 </div>
 
@@ -428,7 +428,7 @@
   <div class="modal">
     <div class="modal-header">
       <h2 class="sivon" data-i18n="ui.helpModalTitle">Handleiding Publieke Waarden Assessment Tool</h2>
-      <button class="modal-close" onclick="closeHelp()">&times;</button>
+      <button class="modal-close" onclick="closeHelpModal()">&times;</button>
     </div>
     <div class="modal-body" id="helpModalBody"></div>
   </div>
@@ -5270,17 +5270,17 @@ document.getElementById('changelogModal').addEventListener('click', e => {
 });
 
 // === HELP MODAL ===
-function openHelp() {
+function openHelpModal() {
   document.getElementById('helpModalBody').innerHTML = t('help');
   document.getElementById('helpModal').classList.add('open');
 }
 
-function closeHelp() {
+function closeHelpModal() {
   document.getElementById('helpModal').classList.remove('open');
 }
 
 document.getElementById('helpModal').addEventListener('click', e => {
-  if (e.target === e.currentTarget) closeHelp();
+  if (e.target === e.currentTarget) closeHelpModal();
 });
 
 // === WEIGHTS MODAL ===
