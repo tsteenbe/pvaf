@@ -344,7 +344,7 @@
   <div class="header-left">
       <div class="header-logo">
         <a href="https://sivon.nl/"><img src="https://sivon.nl/wp-content/themes/haicu26_sivon/images/logo-SIVON.png" alt="SIVON Logo"></a>
-        <h1 data-i18n="ui.headerTitle">Publieke Waarden Assessment Framework</h1>
+        <h1 data-i18n="ui.headerTitle">Public Values Assessment Framework</h1>
       </div>
   </div>
   <div class="header-right">
@@ -361,33 +361,33 @@
       </div>
     </div>
     <div class="dropdown">
-      <button class="hbtn" onclick="toggleDropdown('importMenu')" data-i18n="ui.headerMenuImportBtn">Importeer &#9662;</button>
+      <button class="hbtn" onclick="toggleDropdown('importMenu')" data-i18n="ui.headerMenuImportBtn">Import ▾</button>
       <div class="dropdown-menu" id="importMenu">
-        <button class="dropdown-item" onclick="importData();closeDropdowns()"><span data-i18n="ui.headerMenuImportJson">JSON importeren</span><small data-i18n="ui.headerMenuImportJsonSub">Eerder geexporteerde assessments</small></button>
-        <button class="dropdown-item" onclick="importCSVApps();closeDropdowns()"><span data-i18n="ui.headerMenuImportCsv">Applicatielijst (CSV)</span><small data-i18n="ui.headerMenuImportCsvSub">Bulk: meerdere applicaties in een keer</small></button>
-        <button class="dropdown-item" onclick="downloadCSVTemplate();closeDropdowns()"><span data-i18n="ui.headerMenuDownloadTpl">Download CSV-template</span><small data-i18n="ui.headerMenuDownloadTplSub">Templatebestand voor bulk-import</small></button>
+        <button class="dropdown-item" onclick="importData();closeDropdowns()"><span data-i18n="ui.headerMenuImportJson">Import JSON</span><small data-i18n="ui.headerMenuImportJsonSub">Previously exported assessments</small></button>
+        <button class="dropdown-item" onclick="importCSVApps();closeDropdowns()"><span data-i18n="ui.headerMenuImportCsv">Application list (CSV)</span><small data-i18n="ui.headerMenuImportCsvSub">Bulk: multiple applications at once</small></button>
+        <button class="dropdown-item" onclick="downloadCSVTemplate();closeDropdowns()"><span data-i18n="ui.headerMenuDownloadTpl">Download CSV template</span><small data-i18n="ui.headerMenuDownloadTplSub">Template file for bulk import</small></button>
       </div>
     </div>
     <div class="dropdown">
-      <button class="hbtn" onclick="toggleDropdown('exportMenu')" data-i18n="ui.headerMenuExportBtn">Exporteer &#9662;</button>
+      <button class="hbtn" onclick="toggleDropdown('exportMenu')" data-i18n="ui.headerMenuExportBtn">Export ▾</button>
       <div class="dropdown-menu" id="exportMenu">
-        <button class="dropdown-item" onclick="exportAll();closeDropdowns()"><span data-i18n="ui.headerMenuExportJson">JSON (volledig)</span><small data-i18n="ui.headerMenuExportJsonSub">Alle data, scores en wegingen</small></button>
+        <button class="dropdown-item" onclick="exportAll();closeDropdowns()"><span data-i18n="ui.headerMenuExportJson">JSON (complete)</span><small data-i18n="ui.headerMenuExportJsonSub">All data, scores and weights</small></button>
         <div class="dropdown-sep"></div>
-        <button class="dropdown-item" onclick="exportCSV();closeDropdowns()"><span data-i18n="ui.headerMenuExportCsvSum">CSV (samenvatting)</span><small data-i18n="ui.headerMenuExportCsvSumSub">Scores per dimensie en niveau</small></button>
-        <button class="dropdown-item" onclick="exportODF();closeDropdowns()"><span data-i18n="ui.headerMenuExportCsvDet">CSV (gedetailleerd)</span><small data-i18n="ui.headerMenuExportCsvDetSub">Alle indicatorscores per applicatie</small></button>
+        <button class="dropdown-item" onclick="exportCSV();closeDropdowns()"><span data-i18n="ui.headerMenuExportCsvSum">CSV (summary)</span><small data-i18n="ui.headerMenuExportCsvSumSub">Scores per dimension and level</small></button>
+        <button class="dropdown-item" onclick="exportODF();closeDropdowns()"><span data-i18n="ui.headerMenuExportCsvDet">CSV (detailed)</span><small data-i18n="ui.headerMenuExportCsvDetSub">All indicator scores per application</small></button>
       </div>
     </div>
-    <button class="hbtn" id="headerWeightsBtn" onclick="openWeightsModalCurrent()" style="display:none" data-i18n="ui.headerMenuWeightsBtn">Wegingen aanpassen</button>
+    <button class="hbtn" id="headerWeightsBtn" onclick="openWeightsModalCurrent()" style="display:none" data-i18n="ui.headerMenuWeightsBtn">Adjust Weights</button>
     <button class="hbtn" onclick="openChangelogModal()" id="changelogBtn" style="position:relative"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:13px;height:13px;vertical-align:-1.5px;margin-right:3px;fill:currentColor"><path d="M13 3a9 9 0 00-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42A8.954 8.954 0 0013 21a9 9 0 000-18zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg><span data-i18n="ui.headerMenuChangeLogBtn">Changelog</span></button>
-    <button class="hbtn help-btn" onclick="openHelpModal()"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg><span data-i18n="ui.headerMenuHelpBtn">Handleiding</span></button>
+    <button class="hbtn help-btn" onclick="openHelpModal()"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg><span data-i18n="ui.headerMenuHelpBtn">User Guide</span></button>
   </div>
 </div>
 
 <div class="tab-wrapper">
   <button class="tab-scroll-btn hidden" id="tabScrollLeft" onclick="scrollTabs(-200)">&lsaquo;</button>
   <div class="tab-bar" id="tabBar" onscroll="updateScrollBtns()">
-    <button class="tab overview active" onclick="showView('overview')" data-i18n="ui.overviewBtn">Overzicht</button>
-    <button class="add-tab" onclick="addApp()" data-i18n-attr="title:ui.headerTabsAddAppBtn" title="Applicatie toevoegen">+</button>
+    <button class="tab overview active" onclick="showView('overview')" data-i18n="ui.overviewBtn">Overview</button>
+    <button class="add-tab" onclick="addApp()" data-i18n-attr="title:ui.headerTabsAddAppBtn" title="Add Application">+</button>
   </div>
   <span class="tab-count" id="tabCount"></span>
   <button class="tab-scroll-btn hidden" id="tabScrollRight" onclick="scrollTabs(200)">&rsaquo;</button>
@@ -397,13 +397,13 @@
   <!-- OVERVIEW VIEW -->
   <div class="view active" id="view-overview">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.8rem">
-      <h2 class="sivon" style="font-size:1.1rem;color:var(--sivon-blue)" data-i18n="ui.overviewTitle">Assessment overzicht</h2>
-      <button class="hbtn primary" onclick="addApp()" style="font-size:0.8rem" data-i18n="ui.overviewAddAppBtn">+ Applicatie toevoegen</button>
+      <h2 class="sivon" style="font-size:1.1rem;color:var(--sivon-blue)" data-i18n="ui.overviewTitle">Assessment Overview</h2>
+      <button class="hbtn primary" onclick="addApp()" style="font-size:0.8rem" data-i18n="ui.overviewAddAppBtn">+ Add Application</button>
     </div>
     <div id="overviewContent">
       <div style="text-align:center;padding:3rem;color:#bbb">
-        <p style="font-size:1.2rem;margin-bottom:0.5rem" data-i18n="ui.overviewNoApps">Nog geen applicaties beoordeeld</p>
-        <p style="font-size:0.85rem" data-i18n-html="ui.overviewNoAppsHintHtml">Klik op <strong>+ Applicatie toevoegen</strong> om te beginnen, of importeer een applicatielijst via CSV.</p>
+        <p style="font-size:1.2rem;margin-bottom:0.5rem" data-i18n="ui.overviewNoApps">No applications assessed yet</p>
+        <p style="font-size:0.85rem" data-i18n-html="ui.overviewNoAppsHintHtml">Click <strong>+ Add Application</strong> to get started, or import an application list via CSV.</p>
       </div>
     </div>
   </div>
@@ -427,7 +427,7 @@
 <div class="modal-overlay" id="helpModal">
   <div class="modal">
     <div class="modal-header">
-      <h2 class="sivon" data-i18n="ui.helpModalTitle">Handleiding Publieke Waarden Assessment Tool</h2>
+      <h2 class="sivon" data-i18n="ui.helpModalTitle">User Guide – Public Values Assessment Tool</h2>
       <button class="modal-close" onclick="closeHelpModal()">&times;</button>
     </div>
     <div class="modal-body" id="helpModalBody"></div>
@@ -438,13 +438,13 @@
 <div class="modal-overlay" id="weightsModal">
   <div class="modal">
     <div class="modal-header">
-      <h2 class="sivon" data-i18n="ui.weightsModalTitle">Wegingen aanpassen</h2>
+      <h2 class="sivon" data-i18n="ui.weightsModalTitle">Adjust Weights</h2>
       <button class="modal-close" onclick="closeWeightsModal()">&times;</button>
     </div>
     <div class="modal-body">
-      <div class="tip" data-i18n-html="ui.weightsModalTipHtml"><strong>Wat zijn wegingen?</strong> De wegingen bepalen hoeveel invloed elke indicator heeft binnen zijn dimensie. Standaardwegingen zijn afgestemd op het PVAF-model. Pas wegingen alleen aan in overleg met je organisatie of sector, anders worden resultaten onderling niet vergelijkbaar.</div>
+      <div class="tip" data-i18n-html="ui.weightsModalTipHtml"><strong>What are weights?</strong> Weights determine how much influence each indicator has within its dimension. Default weights are calibrated for the PVAF Model. Only adjust weights in consultation with your organisation or sector, otherwise results become incomparable.</div>
       <div id="weightsContent"></div>
-      <button class="hbtn primary" onclick="resetWeights()" style="margin-top:1rem;width:100%;text-align:center" data-i18n="ui.weightsModalResetBtn">Reset naar standaard</button>
+      <button class="hbtn primary" onclick="resetWeights()" style="margin-top:1rem;width:100%;text-align:center" data-i18n="ui.weightsModalResetBtn">Reset to default</button>
     </div>
   </div>
 </div>
@@ -452,8 +452,8 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-left">
-      <strong>PVAF v0.8.2</strong> | &copy; 2026 <span data-i18n="ui.footerCopyrights">Universiteit Utrecht & SIVON</span> | <span data-i18n-html="ui.footerCreditsHtml">Gebaseerd op <a href="https://github.com/UtrechtUniversity/digital-autonomy-assessment-tool">DAAF</a> door Tim van Neerbos</span><br>
-      <span data-i18n="ui.footerLicenseSummary">Vrij te gebruiken door onderwijs-, non-profit- en overheidsorganisaties. Niet voor commercieel gebruik.</span><br>
+      <strong>PVAF v0.8.2</strong> | &copy; 2026 <span data-i18n="ui.footerCopyrights">University of Utrecht & SIVON</span> | <span data-i18n-html="ui.footerCreditsHtml">Based on <a href="https://github.com/UtrechtUniversity/digital-autonomy-assessment-tool">DAAF</a> by Tim van Neerbos</span><br>
+      <span data-i18n="ui.footerLicenseSummary">Free to use by educational, non-profit and government organizations. Not for commercial use.</span><br>
     </div>
     <div class="footer-right">
       <a class="cc-badge" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">
@@ -1127,8 +1127,8 @@ const I18N = {
       "footerCopyrights": "Universitetet i Utrecht & SIVON",
       "footerCreditsHtml": "Baseret på <a href='https://github.com/UtrechtUniversity/digital-autonomy-assessment-tool'>DAAF</a> af Tim van Neerbos",
       "footerLicenseSummary": "Gratis at bruge for uddannelses-, nonprofit- og statslige organisationer. Ikke til kommerciel brug.",
-      "headerAppPlural": "applikationer",
-      "headerAppSingular": "applikation",
+      "headerAppCounterMultipleApps": "applikationer",
+      "headerAppCounterSingleApp": "applikation",
       "headerMenuChangeLogBtn": "Ændringslog",
       "headerMenuDownloadTpl": "Download CSV-skabelon",
       "headerMenuDownloadTplSub": "Skabelonfil til masseimport",
@@ -1169,7 +1169,8 @@ const I18N = {
       "overviewAddAppBtn": "+ Tilføj applikation",
       "overviewAlertEmptyFile": "Tom fil.",
       "overviewAlertImportErr": "Fejl ved import: ",
-      "overviewAlertImported": "importeret.",
+      "overviewAlertMultipleAppsImported": "applikationer importeret.",
+      "overviewAlertSingleAppImported": "applikation importeret.",
       "overviewAlertInvalidFile": "Ugyldig fil: ",
       "overviewAlertNoApps": "Ingen applikationsnavne fundet.",
       "overviewBtn": "Oversigt",
@@ -1780,8 +1781,8 @@ const I18N = {
       "footerCopyrights": "Universität Utrecht & SIVON",
       "footerCreditsHtml": "Basierend auf <a href='https://github.com/UtrechtUniversity/digital-autonomy-assessment-tool'>DAAF</a> von Tim van Neerbos",
       "footerLicenseSummary": "Kostenlos nutzbar für Bildungs-, Non-Profit- und Regierungsorganisationen. Nicht für kommerzielle Nutzung.",
-      "headerAppPlural": "Anwendungen",
-      "headerAppSingular": "Anwendung",
+      "headerAppCounterMultipleApps": "Anwendungen",
+      "headerAppCounterSingleApp": "Anwendung",
       "headerMenuChangeLogBtn": "Änderungsprotokoll",
       "headerMenuDownloadTpl": "CSV-Vorlage herunterladen",
       "headerMenuDownloadTplSub": "Vorlagendatei für Massenimport",
@@ -1822,7 +1823,8 @@ const I18N = {
       "overviewAddAppBtn": "+ Anwendung hinzufügen",
       "overviewAlertEmptyFile": "Leere Datei.",
       "overviewAlertImportErr": "Fehler beim Importieren: ",
-      "overviewAlertImported": "importiert.",
+      "overviewAlertMultipleAppsImported": "Anwendungen importiert.",
+      "overviewAlertSingleAppImported": "Anwendung importiert.",
       "overviewAlertInvalidFile": "Ungültige Datei: ",
       "overviewAlertNoApps": "Keine Anwendungsnamen gefunden.",
       "overviewBtn": "Übersicht",
@@ -2433,8 +2435,8 @@ const I18N = {
       "footerCopyrights": "University of Utrecht & SIVON",
       "footerCreditsHtml": "Based on <a href='https://github.com/UtrechtUniversity/digital-autonomy-assessment-tool'>DAAF</a> by Tim van Neerbos",
       "footerLicenseSummary": "Free to use by educational, non-profit and government organizations. Not for commercial use.",
-      "headerAppPlural": "applications",
-      "headerAppSingular": "application",
+      "headerAppCounterMultipleApps": "applications",
+      "headerAppCounterSingleApp": "application",
       "headerMenuChangeLogBtn": "Changelog",
       "headerMenuDownloadTpl": "Download CSV template",
       "headerMenuDownloadTplSub": "Template file for bulk import",
@@ -2475,7 +2477,8 @@ const I18N = {
       "overviewAddAppBtn": "+ Add Application",
       "overviewAlertEmptyFile": "Empty file.",
       "overviewAlertImportErr": "Error importing: ",
-      "overviewAlertImported": "imported.",
+      "overviewAlertMultipleAppsImported": "applications imported.",
+      "overviewAlertSingleAppImported": "application imported.",
       "overviewAlertInvalidFile": "Invalid file: ",
       "overviewAlertNoApps": "No application names found.",
       "overviewBtn": "Overview",
@@ -3086,8 +3089,8 @@ const I18N = {
       "footerCopyrights": "Universidad de Utrecht & SIVON",
       "footerCreditsHtml": "Basado en <a href='https://github.com/UtrechtUniversity/digital-autonomy-assessment-tool'>DAAF</a> por Tim van Neerbos",
       "footerLicenseSummary": "Libre de uso para organizaciones educativas, sin ánimo de lucro y gubernamentales. No para uso comercial.",
-      "headerAppPlural": "aplicaciones",
-      "headerAppSingular": "aplicación",
+      "headerAppCounterMultipleApps": "aplicaciones",
+      "headerAppCounterSingleApp": "aplicación",
       "headerMenuChangeLogBtn": "Registro de cambios",
       "headerMenuDownloadTpl": "Descargar plantilla CSV",
       "headerMenuDownloadTplSub": "Archivo de plantilla para importación masiva",
@@ -3128,7 +3131,8 @@ const I18N = {
       "overviewAddAppBtn": "+ Añadir aplicación",
       "overviewAlertEmptyFile": "Archivo vacío.",
       "overviewAlertImportErr": "Error al importar: ",
-      "overviewAlertImported": "importado.",
+      "overviewAlertMultipleAppsImported": "aplicaciones importadas.",
+      "overviewAlertSingleAppImported": "aplicación importada.",
       "overviewAlertInvalidFile": "Archivo no válido: ",
       "overviewAlertNoApps": "No se encontraron nombres de aplicaciones.",
       "overviewBtn": "Vista general",
@@ -3739,8 +3743,8 @@ const I18N = {
       "footerCopyrights": "Université d'Utrecht & SIVON",
       "footerCreditsHtml": "Basé sur <a href='https://github.com/UtrechtUniversity/digital-autonomy-assessment-tool'>DAAF</a> par Tim van Neerbos",
       "footerLicenseSummary": "Libre d'utilisation pour les organisations éducatives, à but non lucratif et gouvernementales. Pas pour un usage commercial.",
-      "headerAppPlural": "applications",
-      "headerAppSingular": "application",
+      "headerAppCounterMultipleApps": "applications",
+      "headerAppCounterSingleApp": "application",
       "headerMenuChangeLogBtn": "Journal des modifications",
       "headerMenuDownloadTpl": "Télécharger le modèle CSV",
       "headerMenuDownloadTplSub": "Fichier modèle pour l'import en masse",
@@ -3781,7 +3785,8 @@ const I18N = {
       "overviewAddAppBtn": "+ Ajouter une application",
       "overviewAlertEmptyFile": "Fichier vide.",
       "overviewAlertImportErr": "Erreur d'importation : ",
-      "overviewAlertImported": "importé.",
+      "overviewAlertMultipleAppsImported": "applications importées.",
+      "overviewAlertSingleAppImported": "application importée.",
       "overviewAlertInvalidFile": "Fichier invalide : ",
       "overviewAlertNoApps": "Aucun nom d'application trouvé.",
       "overviewBtn": "Vue d'ensemble",
@@ -4392,8 +4397,8 @@ const I18N = {
       "footerCopyrights": "Università di Utrecht & SIVON",
       "footerCreditsHtml": "Basato su <a href='https://github.com/UtrechtUniversity/digital-autonomy-assessment-tool'>DAAF</a> di Tim van Neerbos",
       "footerLicenseSummary": "Libero per uso da parte di organizzazioni educative, non profit e governative. Non per uso commerciale.",
-      "headerAppPlural": "applicazioni",
-      "headerAppSingular": "applicazione",
+      "headerAppCounterMultipleApps": "applicazioni",
+      "headerAppCounterSingleApp": "applicazione",
       "headerMenuChangeLogBtn": "Registro modifiche",
       "headerMenuDownloadTpl": "Scarica modello CSV",
       "headerMenuDownloadTplSub": "File modello per importazione massiva",
@@ -4434,7 +4439,8 @@ const I18N = {
       "overviewAddAppBtn": "+ Aggiungi applicazione",
       "overviewAlertEmptyFile": "File vuoto.",
       "overviewAlertImportErr": "Errore di importazione: ",
-      "overviewAlertImported": "importato.",
+      "overviewAlertMultipleAppsImported": "applicazioni importate.",
+      "overviewAlertSingleAppImported": "applicazione importata.",
       "overviewAlertInvalidFile": "File non valido: ",
       "overviewAlertNoApps": "Nessun nome di applicazione trovato.",
       "overviewBtn": "Panoramica",
@@ -5046,8 +5052,8 @@ const I18N = {
       "footerCopyrights": "Universiteit Utrecht & SIVON",
       "footerCreditsHtml": "Gebaseerd op <a href='https://github.com/UtrechtUniversity/digital-autonomy-assessment-tool'>DAAF</a> door Tim van Neerbos",
       "footerLicenseSummary": "Vrij te gebruiken door onderwijs-, non-profit- en overheidsorganisaties. Niet voor commercieel gebruik.",
-      "headerAppPlural": "applicaties",
-      "headerAppSingular": "applicatie",
+      "headerAppCounterMultipleApps": "applicaties",
+      "headerAppCounterSingleApp": "applicatie",
       "headerMenuChangeLogBtn": "Changelog",
       "headerMenuDownloadTpl": "Download CSV-template",
       "headerMenuDownloadTplSub": "Templatebestand voor bulk-import",
@@ -5087,7 +5093,8 @@ const I18N = {
       "overviewAddAppBtn": "+ Applicatie toevoegen",
       "overviewAlertEmptyFile": "Leeg bestand.",
       "overviewAlertImportErr": "Fout bij importeren: ",
-      "overviewAlertImported": "geïmporteerd.",
+      "overviewAlertMultipleAppsImported": "applicaties geïmporteerd.",
+      "overviewAlertSingleAppImported": "applicatie geïmporteerd.",
       "overviewAlertInvalidFile": "Ongeldig bestand: ",
       "overviewAlertNoApps": "Geen applicatienamen gevonden.",
       "overviewBtn": "Overzicht",
@@ -5593,12 +5600,12 @@ function rebuildTabs() {
     const active = state.currentView === id ? ' active' : '';
     h += `<button class="tab${active}" onclick="showView('${id}')">${esc(name.substring(0,20))}${name.length>20?'...':''}<span class="close-tab" onclick="event.stopPropagation();removeApp('${id}')">&times;</span></button>`;
   }
-  h += '<button class="add-tab" onclick="addApp()" data-i18n-attr="title:ui.headerTabsAddAppBtn" title="Applicatie toevoegen">+</button>';
+  h += '<button class="add-tab" onclick="addApp()" data-i18n-attr="title:ui.headerTabsAddAppBtn" title="Add Application">+</button>';
   bar.innerHTML = h;
   // Update tab count
   const cnt = document.getElementById('tabCount');
   const visCount = state.order.length - pendingIds.size;
-  if (cnt) cnt.textContent = visCount > 0 ? visCount + (visCount !== 1 ? ' ' + t('ui.headerAppPlural') : ' ' + t('ui.headerAppSingular')) : '';
+  if (cnt) cnt.textContent = visCount > 0 ? visCount + (visCount !== 1 ? ' ' + t('ui.headerAppCounterMultipleApps') : ' ' + t('ui.headerAppCounterSingleApp')) : '';
   setTimeout(updateScrollBtns, 50);
 }
 
@@ -5755,24 +5762,24 @@ function renderAppView(id) {
   let h = '';
   h += `<div class="assess-header">`;
   h += `<div class="assess-meta">`;
-  h += `<div class="meta-field"><label data-i18n="ui.assessedAppId">Applicatie-ID</label><input id="appId-${id}" value="${esc(app.appId||'')}" placeholder="Bijv. SOFT-1234..." data-i18n-attr="placeholder:ui.assessedAppIdPlaceholder" onchange="updateMeta('${id}','appId',this.value)"></div>`;
-  h += `<div class="meta-field" style="flex:2"><label data-i18n="ui.assessedAppName">Applicatienaam</label><input id="name-${id}" value="${esc(app.name)}" placeholder="Bijv. Microsoft Teams..." data-i18n-attr="placeholder:ui.assessedAppNamePlaceholder" onchange="updateMeta('${id}','name',this.value)"></div>`;
-  h += `<div class="meta-field"><label data-i18n="ui.assessedAppDate">Datum</label><input type="date" value="${app.date}" onchange="updateMeta('${id}','date',this.value)"></div>`;
-  h += `<div class="meta-field"><label data-i18n="ui.assessedAppAssessors">Beoordelaar(s)</label><input value="${esc(app.assessor)}" placeholder="Namen..." data-i18n-attr="placeholder:ui.assessedAppAssessorsPlaceholder" onchange="updateMeta('${id}','assessor',this.value)"></div>`;
+  h += `<div class="meta-field"><label data-i18n="ui.assessedAppId">Application ID</label><input id="appId-${id}" value="${esc(app.appId||'')}" placeholder="E.g. SOFT-1234…" data-i18n-attr="placeholder:ui.assessedAppIdPlaceholder" onchange="updateMeta('${id}','appId',this.value)"></div>`;
+  h += `<div class="meta-field" style="flex:2"><label data-i18n="ui.assessedAppName">Application Name</label><input id="name-${id}" value="${esc(app.name)}" placeholder="E.g. Microsoft Teams…" data-i18n-attr="placeholder:ui.assessedAppNamePlaceholder" onchange="updateMeta('${id}','name',this.value)"></div>`;
+  h += `<div class="meta-field"><label data-i18n="ui.assessedAppDate">Date</label><input type="date" value="${app.date}" onchange="updateMeta('${id}','date',this.value)"></div>`;
+  h += `<div class="meta-field"><label data-i18n="ui.assessedAppAssessors">Assessor(s)</label><input value="${esc(app.assessor)}" placeholder="Names…" data-i18n-attr="placeholder:ui.assessedAppAssessorsPlaceholder" onchange="updateMeta('${id}','assessor',this.value)"></div>`;
   h += `</div>`;
   h += `<div class="assess-controls">`;
   h += `<div class="seg-control" id="segCtrl-${id}">`;
-  h += `<button class="seg-btn active" data-mode="full" onclick="setMode('${id}','full')"><span data-i18n="ui.assessModeControlFullBtn">Volledig</span> (${INDICATORS.length})</button>`;
+  h += `<button class="seg-btn active" data-mode="full" onclick="setMode('${id}','full')"><span data-i18n="ui.assessModeControlFullBtn">Full</span> (${INDICATORS.length})</button>`;
   h += `<button class="seg-btn" data-mode="quick" onclick="setMode('${id}','quick')"><span data-i18n="ui.assessModeControlQuickBtn">Quick scan</span> (9)</button>`;
   h += `</div>`;
   h += `<span class="assess-mode-hint" id="modeHint-${id}"></span>`;
   h += `</div></div>`;
 
   h += `<div class="score-row">`;
-  h += `<div class="score-card main-score"><div class="sc-label"><span data-i18n="ui.assessedAppScoreCardPvLabel">Publieke Waarden Score</span> <span class="tt" data-tip="Hoe groot is het publieke waarde probleem? Een hoge score betekent: goed gemitigeerd en/of laag risico. Een lage score betekent: urgent probleem. Berekend als Mitigatie / (Risico x Belang), genormaliseerd naar 1-10. Zie Handleiding voor details." data-i18n-attr="data-tip:ui.assessedAppScoreCardPvTip" style="cursor:help;font-size:0.55rem;color:#bbb;border-bottom:1px dotted #ccc">&#9432;</span></div><div class="sc-value" id="sc10-${id}">--</div><div class="sc-sub" data-i18n="ui.assessedAppScoreCardPvSub">Lage score = urgent probleem</div></div>`;
-  h += `<div class="score-card risk"><div class="sc-label"><span data-i18n="ui.assessedAppScoreCardRiskLabel">Risico-exposure</span> <span class="tt" data-tip="Hoe groot is het externe risico? Gemiddelde van dimensie A (Geopolitiek risico) en B (Leveranciersafhankelijkheid). Lage score = weinig risico (goed). Hoge score = veel risico. Dit niveau kun je verbeteren, bijv. door te migreren naar een EU-provider." data-i18n-attr="data-tip:ui.assessedAppScoreCardRiskTip" style="cursor:help;font-size:0.55rem;color:#bbb;border-bottom:1px dotted #ccc">&#9432;</span></div><div class="sc-value" id="scR-${id}">--</div><div class="sc-sub" data-i18n="ui.assessedAppScoreCardRiskSub">Laag = weinig risico (goed)</div></div>`;
-  h += `<div class="score-card mitigation"><div class="sc-label"><span data-i18n="ui.assessedAppScoreCardMitigationLabel">Mitigatie-capaciteit</span> <span class="tt" data-tip="Hoe goed kan de organisatie risico's beheersen? Gemiddelde van dimensie C (Technische weerbaarheid), D (Organisatorische weerbaarheid) en E (Contractuele weerbaarheid). Lage score = zwak. Hoge score = sterk. Dit niveau kun je verbeteren, bijv. door alternatieven te ontwikkelen, contracten te versterken of kennis op te bouwen." data-i18n-attr="data-tip:ui.assessedAppScoreCardMitigitionTip" style="cursor:help;font-size:0.55rem;color:#bbb;border-bottom:1px dotted #ccc">&#9432;</span></div><div class="sc-value" id="scM-${id}">--</div><div class="sc-sub" data-i18n="ui.assessedAppScoreCardMitigitionSub">Hoog = sterke mitigatie (goed)</div></div>`;
-  h += `<div class="score-card importance"><div class="sc-label"><span data-i18n="ui.assessedAppScoreCardImportanceLabel">Strategisch belang</span> <span class="tt" data-tip="Hoe belangrijk is de applicatie? Gemiddelde van dimensie F (Organisatorisch belang), G (Data-gevoeligheid) en H (Onderwijs impact). Lage score = weinig belang. Hoge score = kritiek. Dit niveau ligt grotendeels vast; een applicatie wordt niet minder belangrijk." data-i18n-attr="data-tip:ui.assessedAppScoreCardImportanceTip" style="cursor:help;font-size:0.55rem;color:#bbb;border-bottom:1px dotted #ccc">&#9432;</span></div><div class="sc-value" id="scI-${id}">--</div><div class="sc-sub" data-i18n="ui.assessedAppScoreCardImportanceSub">Hoog = kritieke applicatie</div></div>`;
+  h += `<div class="score-card main-score"><div class="sc-label"><span data-i18n="ui.assessedAppScoreCardPvLabel">Public Values Score</span> <span class="tt" data-tip="How large is the public values problem? A high score means: well mitigated and/or low risk. A low score means: urgent problem. Calculated as Mitigation / (Risk × Importance), normalised to 1-10." data-i18n-attr="data-tip:ui.assessedAppScoreCardPvTip" style="cursor:help;font-size:0.55rem;color:#bbb;border-bottom:1px dotted #ccc">&#9432;</span></div><div class="sc-value" id="sc10-${id}">--</div><div class="sc-sub" data-i18n="ui.assessedAppScoreCardPvSub">Low score = urgent problem</div></div>`;
+  h += `<div class="score-card risk"><div class="sc-label"><span data-i18n="ui.assessedAppScoreCardRiskLabel">Risk exposure</span> <span class="tt" data-tip="How large is the external risk? Average of dimension A and B. Low score = little risk (good). High score = much risk." data-i18n-attr="data-tip:ui.assessedAppScoreCardRiskTip" style="cursor:help;font-size:0.55rem;color:#bbb;border-bottom:1px dotted #ccc">&#9432;</span></div><div class="sc-value" id="scR-${id}">--</div><div class="sc-sub" data-i18n="ui.assessedAppScoreCardRiskSub">Low = little risk (good)</div></div>`;
+  h += `<div class="score-card mitigation"><div class="sc-label"><span data-i18n="ui.assessedAppScoreCardMitigationLabel">Mitigation capacity</span> <span class="tt" data-tip="How well can the organisation manage risks? Average of dimension C, D and E. Low score = weak. High score = strong." data-i18n-attr="data-tip:ui.assessedAppScoreCardMitigitionTip" style="cursor:help;font-size:0.55rem;color:#bbb;border-bottom:1px dotted #ccc">&#9432;</span></div><div class="sc-value" id="scM-${id}">--</div><div class="sc-sub" data-i18n="ui.assessedAppScoreCardMitigitionSub">High = strong mitigation (good)</div></div>`;
+  h += `<div class="score-card importance"><div class="sc-label"><span data-i18n="ui.assessedAppScoreCardImportanceLabel">Strategic importance</span> <span class="tt" data-tip="How important is the application? Average of dimension F, G and H. Low score = little importance. High score = critical." data-i18n-attr="data-tip:ui.assessedAppScoreCardImportanceTip" style="cursor:help;font-size:0.55rem;color:#bbb;border-bottom:1px dotted #ccc">&#9432;</span></div><div class="sc-value" id="scI-${id}">--</div><div class="sc-sub" data-i18n="ui.assessedAppScoreCardImportanceSub">High = critical application</div></div>`;
   h += `</div>`;
 
   for (const lvl of [1, 2, 3]) {
@@ -5783,9 +5790,9 @@ function renderAppView(id) {
     for (const dim of dims) {
       const dinds = INDICATORS.filter(i => i.dim === dim);
       h += `<div class="dim-row" id="dimRow-${id}-${dim}">`;
-      h += `<div class="dim-title" style="flex-direction:column;align-items:flex-start"><div style="display:flex;justify-content:space-between;align-items:center;width:100%"><span onclick="toggleDimV('${id}','${dim}')" style="flex:1;cursor:pointer"><span data-i18n="ui.scoreRowDimensionPrefix">${t('ui.scoreRowDimensionPrefix')}</span> ${dim}: <span data-i18n="ui.scoreRowDim${dim}Name">${t('ui.scoreRowDim'+dim+'Name')}</span></span><div class="dim-actions"><button class="dim-toggle-all" onclick="event.stopPropagation();toggleAllRubs('${id}','${dim}')" title="Alle rubrieken tonen/verbergen" data-i18n-attr="title:ui.levelRowHeaderRubricsBtnTitle"><span data-i18n="ui.levelRowHeaderRubricsBtn">Rubrieken ▾</span></button></div>${dimPill(null)}</div><div style="font-size:0.7rem;color:#999;font-weight:400;margin-top:0.3rem;margin-left:0" data-i18n="ui.scoreRowDim${dim}Desc">${t('ui.scoreRowDim'+dim+'Desc')}</div></div>`;
+      h += `<div class="dim-title" style="flex-direction:column;align-items:flex-start"><div style="display:flex;justify-content:space-between;align-items:center;width:100%"><span onclick="toggleDimV('${id}','${dim}')" style="flex:1;cursor:pointer"><span data-i18n="ui.scoreRowDimensionPrefix">${t('ui.scoreRowDimensionPrefix')}</span> ${dim}: <span data-i18n="ui.scoreRowDim${dim}Name">${t('ui.scoreRowDim'+dim+'Name')}</span></span><div class="dim-actions"><button class="dim-toggle-all" onclick="event.stopPropagation();toggleAllRubs('${id}','${dim}')" title="Show/hide all rubrics" data-i18n-attr="title:ui.levelRowHeaderRubricsBtnTitle"><span data-i18n="ui.levelRowHeaderRubricsBtn">Rubrics ▾</span></button></div>${dimPill(null)}</div><div style="font-size:0.7rem;color:#999;font-weight:400;margin-top:0.3rem;margin-left:0" data-i18n="ui.scoreRowDim${dim}Desc">${t('ui.scoreRowDim'+dim+'Desc')}</div></div>`;
       h += `<div class="dim-inds" id="dimInds-${id}-${dim}">`;
-      h += `<div class="ind-colheader"><span></span><span data-i18n="ui.levelRowHeaderColIndicator">Indicator</span><span class="ch-wgt" data-i18n="ui.levelRowHeaderColWeight">Weging</span><span class="ch-score" data-i18n="ui.levelRowHeaderColScore">Score (1-5)</span></div>`;
+      h += `<div class="ind-colheader"><span></span><span data-i18n="ui.levelRowHeaderColIndicator">Indicator</span><span class="ch-wgt" data-i18n="ui.levelRowHeaderColWeight">Weight</span><span class="ch-score" data-i18n="ui.levelRowHeaderColScore">Score (1-5)</span></div>`;
       for (const ind of dinds) {
         const dir = ind.lvl === 2 ? 'asc' : 'desc';
         const hL = ind.lvl === 2 ? t('ui.levelRowScaleBarLow') : t('ui.levelRowScaleBarGood');
@@ -5809,8 +5816,8 @@ function renderAppView(id) {
         h += `<div class="ind-detail" id="rub-${id}-${ind.code}"><div class="ind-detail-inner"><table class="rub-tbl ${rubDir}">`;
         for (let s = 1; s <= 5; s++) h += `<tr class="rs${s}"><td>${s}</td><td>${addTooltips(indText.r[s-1])}</td></tr>`;
         h += `</table>`;
-        if (indText.h) h += `<div class="hulp"><strong data-i18n="ui.scoreRowExplanation">Toelichting:</strong> ${addTooltips(indText.h)}</div>`;
-        h += `<div class="ind-remark"><textarea id="rem-${id}-${ind.code}" placeholder="Opmerking of onderbouwing..." data-i18n-attr="placeholder:ui.scoreRowRemarkPlaceholder" oninput="saveRemark('${id}','${ind.code}',this.value)">${esc(app.remarks[ind.code]||'')}</textarea></div>`;
+        if (indText.h) h += `<div class="hulp"><strong data-i18n="ui.scoreRowExplanation">Guidance:</strong> ${addTooltips(indText.h)}</div>`;
+        h += `<div class="ind-remark"><textarea id="rem-${id}-${ind.code}" placeholder="Comment or justification…" data-i18n-attr="placeholder:ui.scoreRowRemarkPlaceholder" oninput="saveRemark('${id}','${ind.code}',this.value)">${esc(app.remarks[ind.code]||'')}</textarea></div>`;
         h += `</div></div>`;
         h += `<div class="ind-remark" id="rem-sibling-${id}-${ind.code}" style="display:none"></div>`;
       }
@@ -5835,7 +5842,7 @@ function renderAppView(id) {
     const picker = document.createElement('div');
     picker.id = `modePicker-${id}`;
     picker.className = 'mode-picker';
-    picker.innerHTML = `<span class="mode-picker-label" data-i18n="ui.assessModePickerLabel">Hoe wil je beoordelen?</span><div class="mode-picker-opts"><button class="mode-opt" onclick="pickMode('${id}','quick')"><span class="mode-icon">\u26A1</span><span class="mode-text"><strong data-i18n="ui.assessModePickerQuickBtn">Quick scan</strong><span>9 <span data-i18n="ui.assessModePickerQuickBtnSub">kernindicatoren</span></span></span></button><button class="mode-opt" onclick="pickMode('${id}','full')"><span class="mode-icon">\uD83D\uDCCB</span><span class="mode-text"><strong data-i18n="ui.assessModePickerFullBtn">Volledig assessment</strong><span>${INDICATORS.length} <span data-i18n="ui.assessModePickerFullBtnSub">indicatoren</span></span></span></button></div>`;
+    picker.innerHTML = `<span class="mode-picker-label" data-i18n="ui.assessModePickerLabel">How do you want to assess?</span><div class="mode-picker-opts"><button class="mode-opt" onclick="pickMode('${id}','quick')"><span class="mode-icon">\u26A1</span><span class="mode-text"><strong data-i18n="ui.assessModePickerQuickBtn">Quick scan</strong><span>9 <span data-i18n="ui.assessModePickerQuickBtnSub">key indicators</span></span></span></button><button class="mode-opt" onclick="pickMode('${id}','full')"><span class="mode-icon">\uD83D\uDCCB</span><span class="mode-text"><strong data-i18n="ui.assessModePickerFullBtn">Full assessment</strong><span>${INDICATORS.length} <span data-i18n="ui.assessModePickerFullBtnSub">indicators</span></span></span></button></div>`;
     div.prepend(picker);
   } else {
     const savedMode = hasSavedMode || 'full';
@@ -5946,8 +5953,8 @@ function setMode(id, mode) {
     const total = isQuick ? QUICK_CODES.size : INDICATORS.length;
     const filled = Object.keys(app.scores).filter(c => VALID_CODES.has(c) && (isQuick ? QUICK_CODES.has(c) : true)).length;
     hint.innerHTML = isQuick ?
-      `<strong>${filled} <span data-i18n="ui.assessModeControlHintOf">van</span> ${total}</strong> <span data-i18n="ui.assessModeControlHintCoreIndicators">kernindicatoren (indicatieve score)</span>` :
-      `<strong>${filled} <span data-i18n="ui.assessModeControlHintOf">van</span> ${total}</strong> <span span data-i18n="ui.assessModeControlHintIndicators">indicatoren</span>`;
+      `<strong>${filled} <span data-i18n="ui.assessModeControlHintOf">of</span> ${total}</strong> <span data-i18n="ui.assessModeControlHintCoreIndicators">core indicators (indicative score)</span>` :
+      `<strong>${filled} <span data-i18n="ui.assessModeControlHintOf">of</span> ${total}</strong> <span span data-i18n="ui.assessModeControlHintIndicators">indicators</span>`;
   }
   // Store mode preference
   if (!state.modes) state.modes = {};
@@ -5998,8 +6005,8 @@ function recalcApp(id) {
     const total = isQuick ? QUICK_CODES.size : INDICATORS.length;
     const filled = Object.keys(app.scores).filter(c => VALID_CODES.has(c) && (isQuick ? QUICK_CODES.has(c) : true)).length;
     hint.innerHTML = isQuick ?
-      `<strong>${filled} <span data-i18n="ui.assessModeControlHintOf">van</span> ${total}</strong> <span data-i18n="ui.assessModeControlHintCoreIndicators">kernindicatoren (indicatieve score)</span>` :
-      `<strong>${filled} <span data-i18n="ui.assessModeControlHintOf">van</span> ${total}</strong> <span span data-i18n="ui.assessModeControlHintIndicators">indicatoren</span>`;
+      `<strong>${filled} <span data-i18n="ui.assessModeControlHintOf">of</span> ${total}</strong> <span data-i18n="ui.assessModeControlHintCoreIndicators">core indicators (indicative score)</span>` :
+      `<strong>${filled} <span data-i18n="ui.assessModeControlHintOf">of</span> ${total}</strong> <span span data-i18n="ui.assessModeControlHintIndicators">indicators</span>`;
   }
 }
 
@@ -6207,7 +6214,7 @@ function importCSVApps() {
         for (const id of state.order) renderAppView(id);
         showView('overview');
         renderOverview();
-        alert(`${added} applicatie${added!==1?'s':''} ${t('ui.overviewAlertImported')}`);
+        alert(`${added} ${added!==1?t('ui.overviewAlertMultipleAppsImported'):t('ui.overviewAlertSingleAppImported')}`);
       } catch (err) {
         alert(t('ui.overviewAlertImportErr') + err.message);
       }
@@ -6312,7 +6319,7 @@ if (localStorage.getItem('pvaf_lastSeenVersion') !== null) {
   localStorage.setItem('pvaf_lastSeenVersion', CURRENT_VERSION);
 }
 setLang(lang);
-applyI18n();
+lang !== 'en' && applyI18n();
 </script>
 </body>
 </html>
