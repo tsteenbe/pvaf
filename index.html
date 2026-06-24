@@ -4610,7 +4610,7 @@ const I18N = {
         "items": [
           "<strong>Snel verwijderen:</strong> applicaties verwijderen zonder bevestigingsdialoog, met 10 seconden om het ongedaan te maken.",
           "<strong>Bulk verwijderen:</strong> selecteer meerdere applicaties in het overzicht en verwijder ze in een keer.",
-          "<strong>Export-herinnering:</strong> een melding als je 3 of meer applicaties hebt en langer dan een week niet hebt geëxporteerd.",
+          "<strong>Exportherinnering:</strong> een melding als je 3 of meer applicaties hebt en langer dan een week niet hebt geëxporteerd.",
           "<strong>Changelog:</strong> versiehistorie bekijken via de knop in de werkbalk."
         ]
       },
@@ -4618,8 +4618,8 @@ const I18N = {
         "version": "0.8.1",
         "date": "2026-03-15",
         "items": [
-          "<strong>Quick scan modus:</strong> beoordeel applicaties snel met 9 kernindicatoren.",
-          "<strong>Autonomie-kwadrant:</strong> visueel overzicht van risico-exposure vs. mitigatie.",
+          "<strong>Quickscanmodus:</strong> beoordeel applicaties snel met 9 kernindicatoren.",
+          "<strong>Autonomiekwadrant:</strong> visueel overzicht van risico-exposure vs. mitigatie.",
           "<strong>Wegingen aanpasbaar:</strong> pas indicatorwegingen aan per applicatie.",
           "<strong>JSON en CSV export:</strong> exporteer alle assessments in meerdere formaten.",
           "<strong>Woordenlijst:</strong> tooltips met uitleg bij vakjargon in rubrieken."
@@ -4784,7 +4784,7 @@ const I18N = {
       },
       "A4": {
         "title": "Wettelijke conformiteit",
-        "q": "Hoe zit het met naleving met de wettelijke eisen, zoals toegankelijkheidseisen (WCAG), beveiliging en privacywetgeving?",
+        "q": "Hoe zit het met naleving van de wettelijke eisen, zoals toegankelijkheidseisen (WCAG), beveiliging en privacywetgeving?",
         "r": [
           "Volledig aangetoonde conformiteit inclusief procedures gedocumenteerd; jaarlijks extern auditrapport publiek beschikbaar; leverancier toont actief leiderschap in (sector)samenwerking om conformiteit in de toeleveringsketen te verbeteren.",
           "Volledig aangetoonde conformiteit inclusief procedures gedocumenteerd; jaarlijks extern auditrapport beschikbaar; leverancier participeert in (sector)samenwerking om conformiteit in de keten te verbeteren.",
@@ -4808,7 +4808,7 @@ const I18N = {
       },
       "B2": {
         "title": "Inzicht software opbouw en toeleveringsketen",
-        "q": "Is er een software bill of materials (SBOM) beschikbaar voor dit product of dienst?",
+        "q": "Is er een software bill of materials (SBOM) beschikbaar voor dit product of deze dienst?",
         "r": [
           "Volledige SBOM bij elke release: CycloneDX ≥1.6 en/of SPDX ≥2.2, alle afhankelijkheden (inclusief closed‑source) zo volledig als de klant redelijkerwijs mag verwachten. Gevalideerd door een onafhankelijke derde partij.",
           "Volledige SBOM bij elke release: CycloneDX ≥1.6 en/of SPDX ≥2.2, alle afhankelijkheden (inclusief closed‑source) zo volledig als de klant redelijkerwijs mag verwachten.",
@@ -4843,7 +4843,7 @@ const I18N = {
         "h": "Schat de doorlooptijd van een volledige migratie. Houd rekening met: datavolume, aantal koppelingen, leveranciersspecifieke onderdelen, beschikbaarheid van migratietools, en benodigde aanpassingen aan werkprocessen. Neem naast doorlooptijd ook de verwachte kosten mee in je afweging (inhuur, licenties, omscholing)."
       },
       "C3": {
-        "title": "Data-portabiliteit",
+        "title": "Dataportabiliteit",
         "q": "Kunnen we data volledig en bruikbaar exporteren?",
         "r": [
           "Geen export mogelijk. Data alleen via leverancierssysteem.",
@@ -4903,10 +4903,10 @@ const I18N = {
         "h": "Denk aan alle relevante kennis: functioneel (wat doet het systeem), technisch (configuratie, koppelingen), data (welke data zit erin, hoe exporteer je die). Niet alleen technisch beheer. Wat gebeurt er als de belangrijkste expert vertrekt?"
       },
       "D2": {
-        "title": "Exit-plan aanwezig",
+        "title": "Exitplan aanwezig",
         "q": "Is er een concreet plan voor als we moeten overstappen?",
         "r": [
-          "Geen exit-plan. Nooit over nagedacht.",
+          "Geen exitplan. Nooit over nagedacht.",
           "Besproken maar niets concreet. Geen stappen of tijdlijn.",
           "Globaal plan, niet getest. Niet gedetailleerd genoeg.",
           "Gedetailleerd met stappen, tijdlijn, risico's. Verantwoordelijkheden belegd.",
@@ -4927,7 +4927,7 @@ const I18N = {
         "h": "Is er een databack-up voor deze applicatie buiten de leverancier mogelijk? Hoe volledig zijn de back-ups? Wanneer is het terugzetten van een back-up voor het laatst getest?"
       },
       "E1": {
-        "title": "Exit-clausules en transitieregeling",
+        "title": "Exitclausules en transitieregeling",
         "q": "Wat is contractueel geregeld over data-overdracht bij beëindiging?",
         "r": [
           "Geen afspraken over beëindiging.",
@@ -5047,7 +5047,7 @@ const I18N = {
         "h": "Controleer of het databeleid openbaar en begrijpelijk is, of doelbinding van data en metadata contractueel of technisch is vastgelegd, en of gebruikers eigen data en metadata kunnen inzien en beheren."
       },
       "G6": {
-        "title": "Data-minimalizatie en verwijdering",
+        "title": "Dataminimalizatie en verwijdering",
         "q": "Wat zijn de mogelijkheden om datacollectie te beperken of data te verwijderen?",
         "r": [
           "Geen opties; data kan alleen door de leverancier worden beheerd of verwijderd.",
@@ -5060,7 +5060,7 @@ const I18N = {
       },
       "H1": {
         "title": "Onderwijsvrijheid",
-        "q": "Kan de leverancier invloed uitoefenen op de onderwijs activiteiten?",
+        "q": "Kan de leverancier invloed uitoefenen op de onderwijsactiviteiten?",
         "r": [
           "Geen relatie met onderwijs.",
           "Theoretisch risico, geen eerdere gevallen bekend.",
@@ -5165,7 +5165,7 @@ const I18N = {
       "headerMenuHelpBtn": "Handleiding",
       "headerMenuImportBtn": "Importeer ▾",
       "headerMenuImportCsv": "Applicatielijst (CSV)",
-      "headerMenuImportCsvSub": "Bulk: meerdere applicaties in een keer",
+      "headerMenuImportCsvSub": "Bulk: meerdere applicaties in één keer",
       "headerMenuImportJson": "JSON importeren",
       "headerMenuImportJsonSub": "Eerder geëxporteerde assessments",
       "headerMenuWeightsBtn": "Wegingen aanpassen",
@@ -5244,7 +5244,7 @@ const I18N = {
       "scoreRowDimGDesc": "Welke gevoelige data en metadata verwerkt dit systeem, wie heeft toegang en hoe is gebruik contractueel en technisch geregeld?",
       "scoreRowDimGName": "Data-gevoeligheid, toegangsbeheer en beleid",
       "scoreRowDimHDesc": "Raakt deze applicatie aan onderwijsvrijheid, samenwerking of langetermijnarchivering? Is er sprake van gebruikersbeïnvloeding?",
-      "scoreRowDimHName": "Onderwijs impact",
+      "scoreRowDimHName": "Onderwijsimpact",
       "scoreRowDimensionPrefix": "Dimensie",
       "scoreRowExplanation": "Toelichting:",
       "scoreRowRemarkPlaceholder": "Opmerking of onderbouwing…",
