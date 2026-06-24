@@ -17,12 +17,12 @@
 <link href="https://fonts.bunny.net/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --sivon-light-blue: #A8CED9;
-    --sivon-red: #C33259;
-    --sivon-blue: #34444D;
-    --sivon-gold: #CDB55B;
+    --sivon-blue: #A8CED9;
+    --sivon-cherry: #C43259;
+    --sivon-grey-blue: #34444D;
+    --sivon-gold: #CBB356;
     --sivon-white: #FFFFFF;
-    --sivon-pink: #D77D95;
+    --sivon-cherry-light: #D77D95;
     --sivon-cream: #F7F3E8;
     --sivon-warm: #F2F0ED;
     --green: #0B7B5E;
@@ -33,63 +33,63 @@
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family:'Open Sans',sans-serif, Arial,system-ui; background:#eef3f6; color:#333; line-height:1.5; font-size:14px; display: flex; flex-direction: column; min-height: 100vh; }
-  h1,h2,h3,.sivon { font-family:'Open Sans',sans-serif,serif; color:var(--sivon-blue);}
+  h1,h2,h3,.sivon { font-family:'Open Sans',sans-serif,serif; color:var(--sivon-grey-blue);}
 
   /* === LAYOUT === */
-  .app-top { height:6px; background:var(--sivon-blue); }
+  .app-top { height:6px; background:var(--sivon-grey-blue); }
   .app-header { background:var(--sivon-white); padding:1rem 2rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.5rem; }
   .app-header h1 { color:white; font-size:1.1rem; font-weight:700; }
-  .app-header h1 { color:var(--sivon-blue); }
+  .app-header h1 { color:var(--sivon-grey-blue); }
   .app-header .header-left img { width: 90px; height: auto; }
   .header-logo { display: flex; align-items: center; gap: 1rem; }
   .header-logo a img { flex-shrink: 0; }
   .header-logo h1 { padding-bottom: 10px; }
   .header-right { display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; }
-  .hbtn { background:rgba(255,255,255,0.1); color:var(--sivon-blue); border:none; padding:0.4rem 0.8rem; font-size:0.75rem; cursor:pointer; font-family:inherit; font-weight:500; transition:all 0.15s; }
-  .hbtn:hover { background:rgba(255,255,255,0.2); color:var(--sivon-light-blue); }
-  .hbtn.primary { background:var(--sivon-white); color:var(--sivon-blue); border: 2px solid var(--sivon-light-blue); font-weight:600; }
-  .hbtn.primary:hover { background:var(--sivon-light-blue); color:var(--sivon-white); }
-  .hbtn.help-btn { background:var(--sivon-white); color:var(--sivon-blue); font-weight:600; }
-  .hbtn.help-btn:hover { background:var(--sivon-white); color:var(--sivon-light-blue); }
-  .hbtn.help-btn svg { width:13px; height:13px; vertical-align:-1.5px; margin-right:3px; fill:var(--sivon-blue); }
-  .hbtn.help-btn:hover svg { fill:var(--sivon-light-blue); }
-  .hbtn.language-btn { background:var(--sivon-white); color:var(--sivon-blue); font-weight:600; }
-  .hbtn.language-btn:hover { background:var(--sivon-white); color:var(--sivon-light-blue); }
-  .hbtn.language-btn svg { width:10px; height:13px; vertical-align:-1.5px; margin-right:3px; fill:var(--sivon-blue); }
-  .hbtn.language-btn:hover svg { fill:var(--sivon-light-blue); }
+  .hbtn { background:rgba(255,255,255,0.1); color:var(--sivon-grey-blue); border:none; padding:0.4rem 0.8rem; font-size:0.75rem; cursor:pointer; font-family:inherit; font-weight:500; transition:all 0.15s; }
+  .hbtn:hover { background:rgba(255,255,255,0.2); color:var(--sivon-blue); }
+  .hbtn.primary { background:var(--sivon-white); color:var(--sivon-grey-blue); border: 2px solid var(--sivon-blue); font-weight:600; }
+  .hbtn.primary:hover { background:var(--sivon-blue); color:var(--sivon-white); }
+  .hbtn.help-btn { background:var(--sivon-white); color:var(--sivon-grey-blue); font-weight:600; }
+  .hbtn.help-btn:hover { background:var(--sivon-white); color:var(--sivon-blue); }
+  .hbtn.help-btn svg { width:13px; height:13px; vertical-align:-1.5px; margin-right:3px; fill:var(--sivon-grey-blue); }
+  .hbtn.help-btn:hover svg { fill:var(--sivon-blue); }
+  .hbtn.language-btn { background:var(--sivon-white); color:var(--sivon-grey-blue); font-weight:600; }
+  .hbtn.language-btn:hover { background:var(--sivon-white); color:var(--sivon-blue); }
+  .hbtn.language-btn svg { width:10px; height:13px; vertical-align:-1.5px; margin-right:3px; fill:var(--sivon-grey-blue); }
+  .hbtn.language-btn:hover svg { fill:var(--sivon-blue); }
 
   .container { max-width:1200px; margin:0 auto; padding:1rem 1.5rem 3rem; flex: 1; }
 
   /* === TABS === */
-  .tab-wrapper { background:var(--sivon-white); display:flex; align-items:center; position:relative; border-bottom:1px solid; border-bottom-color:var(--sivon-light-blue); }
-  .tab-scroll-btn { background:none; border:none; color:var(--sivon-blue); font-size:1.1rem; cursor:pointer; padding:0.4rem 0.5rem; flex-shrink:0; opacity:0.7; transition:opacity 0.15s; z-index:2; }
-  .tab-scroll-btn:hover { background:var(--sivon-light-blue);  color:var(--sivon-white); }
+  .tab-wrapper { background:var(--sivon-white); display:flex; align-items:center; position:relative; border-bottom:1px solid; border-bottom-color:var(--sivon-blue); }
+  .tab-scroll-btn { background:none; border:none; color:var(--sivon-grey-blue); font-size:1.1rem; cursor:pointer; padding:0.4rem 0.5rem; flex-shrink:0; opacity:0.7; transition:opacity 0.15s; z-index:2; }
+  .tab-scroll-btn:hover { background:var(--sivon-blue);  color:var(--sivon-white); }
   .tab-scroll-btn.hidden { visibility:hidden; pointer-events:none; }
   .tab-bar { display:flex; align-items:center; gap:2px; overflow-x:auto; flex:1; padding:0 0.3rem; scrollbar-width:none; -ms-overflow-style:none; scroll-behavior:smooth; }
   .tab-bar::-webkit-scrollbar { display:none; }
-  .tab { padding:0.55rem 0.9rem; color:var(--sivon-blue); font-size:0.76rem; font-weight:500; cursor:pointer; border:none; background:transparent; font-family:inherit; white-space:nowrap; transition:all 0.15s; border-bottom:2px solid transparent; position:relative; flex-shrink:0; }
-  .tab:hover { background:var(--sivon-light-blue); color:var(--sivon-white); }
-  .tab.active { color:white; background:var(--sivon-blue); font-weight:600; }
-  .tab.active:hover { background:var(--sivon-light-blue); color:var(--sivon-white); }
-  .tab.overview { color:var(--sivon-blue); font-weight:600; }
-  .tab.overview:hover { background:var(--sivon-light-blue); color:var(--sivon-white); }
-  .tab.overview.active { background:var(--sivon-blue);  color:var(--sivon-white); }
+  .tab { padding:0.55rem 0.9rem; color:var(--sivon-grey-blue); font-size:0.76rem; font-weight:500; cursor:pointer; border:none; background:transparent; font-family:inherit; white-space:nowrap; transition:all 0.15s; border-bottom:2px solid transparent; position:relative; flex-shrink:0; }
+  .tab:hover { background:var(--sivon-blue); color:var(--sivon-white); }
+  .tab.active { color:white; background:var(--sivon-grey-blue); font-weight:600; }
+  .tab.active:hover { background:var(--sivon-blue); color:var(--sivon-white); }
+  .tab.overview { color:var(--sivon-grey-blue); font-weight:600; }
+  .tab.overview:hover { background:var(--sivon-blue); color:var(--sivon-white); }
+  .tab.overview.active { background:var(--sivon-grey-blue);  color:var(--sivon-white); }
   .tab .close-tab { display:none; margin-left:0.4rem; font-size:0.65rem; opacity:0.5; }
   .tab:hover .close-tab { display:inline; }
   .tab .close-tab:hover { opacity:1; }
-  .tab-count { color: var(--sivon-blue); font-size:0.68rem; padding:0.3rem 0.5rem; flex-shrink:0; }
-  .add-tab { color:var(--sivon-blue); font-size:1.1rem; cursor:pointer; padding:0.3rem 0.5rem; background:transparent; border:none; font-weight:700; flex-shrink:0; }
-  .add-tab:hover { color:var(--sivon-light-blue); }
+  .tab-count { color: var(--sivon-grey-blue); font-size:0.68rem; padding:0.3rem 0.5rem; flex-shrink:0; }
+  .add-tab { color:var(--sivon-grey-blue); font-size:1.1rem; cursor:pointer; padding:0.3rem 0.5rem; background:transparent; border:none; font-weight:700; flex-shrink:0; }
+  .add-tab:hover { color:var(--sivon-blue); }
 
   /* === OVERVIEW === */
   .overview-grid { width:100%; border-collapse:separate; border-spacing:0; }
-  .overview-grid th { background:var(--sivon-blue); color:white; padding:0.6rem 0.8rem; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.04em; font-weight:600; text-align:left; position:sticky; top:0; }
+  .overview-grid th { background:var(--sivon-grey-blue); color:white; padding:0.6rem 0.8rem; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.04em; font-weight:600; text-align:left; position:sticky; top:0; }
   .overview-grid th:first-child { border-radius:var(--radius) 0 0 0; }
   .overview-grid th:last-child { border-radius:0 var(--radius) 0 0; }
   .overview-grid td { padding:0.5rem 0.8rem; font-size:0.8rem; border-bottom:1px solid #eee; background:white; }
   .overview-grid tr:hover td { background:#fefcf5; }
-  .overview-grid .app-name { font-weight:600; color:var(--sivon-blue); cursor:pointer; }
-  .overview-grid .app-name:hover { text-decoration:underline; color:var(--sivon-red); }
+  .overview-grid .app-name { font-weight:600; color:var(--sivon-grey-blue); cursor:pointer; }
+  .overview-grid .app-name:hover { text-decoration:underline; color:var(--sivon-cherry); }
   .score-pill { display:inline-block; padding:0.15rem 0.55rem; border-radius:10px; font-size:0.72rem; font-weight:700; min-width:2.2rem; text-align:center; }
   .pill-good { background:#D6EFE6; color:#0B7B5E; }
   .pill-ok { background:#fff8e1; color:#F57F17; }
@@ -104,32 +104,32 @@
   .assess-meta { display:flex; gap:1rem; flex-wrap:wrap; flex:1; }
   .meta-field { min-width:150px; }
   .meta-field label { font-size:0.65rem; text-transform:uppercase; letter-spacing:0.05em; color:#999; font-weight:600; display:block; margin-bottom:0.2rem; }
-  .meta-field input { border:none; border-bottom:2px solid #e0ddd5; background:transparent; font-size:0.9rem; color:var(--sivon-blue); padding:0.25rem 0; outline:none; width:100%; font-weight:600; font-family:inherit; }
-  .meta-field input:focus { border-bottom-color:var(--sivon-blue); }
+  .meta-field input { border:none; border-bottom:2px solid #e0ddd5; background:transparent; font-size:0.9rem; color:var(--sivon-grey-blue); padding:0.25rem 0; outline:none; width:100%; font-weight:600; font-family:inherit; }
+  .meta-field input:focus { border-bottom-color:var(--sivon-grey-blue); }
   .mode-picker { margin-bottom:1rem; width:100%; box-sizing:border-box; }
-  .mode-picker-label { font-size:0.82rem; color:var(--sivon-blue); font-weight:600; margin-bottom:0.6rem; text-align:center; }
+  .mode-picker-label { font-size:0.82rem; color:var(--sivon-grey-blue); font-weight:600; margin-bottom:0.6rem; text-align:center; }
   .mode-picker-opts { display:flex; gap:0.5rem; }
-  .mode-opt { flex:1; display:flex; align-items:center; justify-content:center; gap:0.5rem; padding:0.7rem 0.8rem; border:1.5px solid var(--sivon-light-blue); background:white; cursor:pointer; font-family:inherit; font-size:0.8rem; transition:all 0.15s; }
-  .mode-opt:hover { border-color:var(--sivon-light-blue); background:var(--sivon-light-blue); color:var(--sivon-white); }
+  .mode-opt { flex:1; display:flex; align-items:center; justify-content:center; gap:0.5rem; padding:0.7rem 0.8rem; border:1.5px solid var(--sivon-blue); background:white; cursor:pointer; font-family:inherit; font-size:0.8rem; transition:all 0.15s; }
+  .mode-opt:hover { border-color:var(--sivon-blue); background:var(--sivon-blue); color:var(--sivon-white); }
   .mode-opt .mode-icon { font-size:1rem; line-height:1; }
-  .mode-opt .mode-text strong { font-size:0.8rem; color:var(--sivon-blue); display:block; }
+  .mode-opt .mode-text strong { font-size:0.8rem; color:var(--sivon-grey-blue); display:block; }
   .mode-opt .mode-text span { font-size:0.68rem; color:#999; }
   .mode-opt:hover .mode-text strong { color:var(--sivon-white); }
   .mode-opt:hover .mode-text span { color:var(--sivon-white); }
   .assess-controls { display:flex; flex-direction:column; align-items:flex-end; gap:0.2rem; }
   .seg-control { display:inline-flex; overflow:hidden; }
-  .seg-btn { padding:0.35rem 0; cursor:pointer; border:1.5px solid var(--sivon-light-blue); background:white; color:#999; font-family:inherit; font-size:0.72rem; font-weight:500; transition:background 0.15s, color 0.15s; white-space:nowrap; width:110px; text-align:center; }
-  .seg-btn.active { background:var(--sivon-blue); color:var(--sivon-white); font-weight:700; border:1.5px solid var(--sivon-blue); }
-  .seg-btn:hover:not(.active) { background:var(--sivon-light-blue); color:var(--sivon-white); }
+  .seg-btn { padding:0.35rem 0; cursor:pointer; border:1.5px solid var(--sivon-blue); background:white; color:#999; font-family:inherit; font-size:0.72rem; font-weight:500; transition:background 0.15s, color 0.15s; white-space:nowrap; width:110px; text-align:center; }
+  .seg-btn.active { background:var(--sivon-grey-blue); color:var(--sivon-white); font-weight:700; border:1.5px solid var(--sivon-grey-blue); }
+  .seg-btn:hover:not(.active) { background:var(--sivon-blue); color:var(--sivon-white); }
   .assess-mode-hint { font-size:0.65rem; color:#aaa; text-align:right; }
-  .assess-mode-hint strong { color:var(--sivon-blue); font-weight:700; }
+  .assess-mode-hint strong { color:var(--sivon-grey-blue); font-weight:700; }
 
   /* Score hero compact */
   .score-row { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:0.8rem; margin-bottom:1rem; }
   .score-card { background:white; border-radius:var(--radius); padding:1rem; box-shadow:var(--shadow); text-align:center; }
-  .score-card.main-score { border:2px solid var(--sivon-blue); }
+  .score-card.main-score { border:2px solid var(--sivon-grey-blue); }
   .score-card .sc-label { font-size:0.6rem; text-transform:uppercase; letter-spacing:0.06em; font-weight:700; color:#999; }
-  .score-card .sc-value { font-size:2rem; font-weight:800; color:var(--sivon-blue); line-height:1.1; margin:0.3rem 0 0.1rem; font-family:'Open Sans',sans-serif; }
+  .score-card .sc-value { font-size:2rem; font-weight:800; color:var(--sivon-grey-blue); line-height:1.1; margin:0.3rem 0 0.1rem; font-family:'Open Sans',sans-serif; }
   .score-card .sc-scale { font-size:0.9rem; font-weight:400; opacity:0.45; }
   .score-card .sc-sub { font-size:0.65rem; color:#bbb; }
   .score-card.risk .sc-label { color:#C00A35; }
@@ -149,9 +149,9 @@
   .lvl-body { background:white; border-radius:0 0 var(--radius) var(--radius); box-shadow:var(--shadow); overflow:hidden; }
   .dim-row { border-bottom:1px solid #f0ece4; }
   .dim-row:last-child { border-bottom:none; }
-  .dim-title { padding:0.45rem 1rem; background:var(--sivon-cream); font-size:0.78rem; font-weight:600; color:var(--sivon-blue); display:flex; justify-content:space-between; align-items:center; cursor:pointer; }
+  .dim-title { padding:0.45rem 1rem; background:var(--sivon-cream); font-size:0.78rem; font-weight:600; color:var(--sivon-grey-blue); display:flex; justify-content:space-between; align-items:center; cursor:pointer; }
   .dim-title:hover { background:#f2e6b4; }
-  .dim-badge { background:var(--sivon-blue); color:white; padding:0.1rem 0.5rem; border-radius:10px; font-size:0.68rem; font-weight:700; min-width:2.5rem; text-align:center; }
+  .dim-badge { background:var(--sivon-grey-blue); color:white; padding:0.1rem 0.5rem; border-radius:10px; font-size:0.68rem; font-weight:700; min-width:2.5rem; text-align:center; }
   .dim-badge.empty { background:#ccc; }
 
   /* Indicator column header */
@@ -164,15 +164,15 @@
   .ind-row { display:grid; grid-template-columns:44px 1fr 50px 180px; align-items:center; padding:0.5rem 1rem; gap:0.6rem; border-bottom:1px solid #f8f6f0; cursor:pointer; }
   .ind-row:last-child { border-bottom:none; }
   .ind-row:hover { background:#fefcf8; }
-  .ind-code { font-weight:700; color:var(--sivon-blue); font-size:0.75rem; background:var(--sivon-cream); padding:0.1rem 0.3rem; border-radius:3px; text-align:center; }
+  .ind-code { font-weight:700; color:var(--sivon-grey-blue); font-size:0.75rem; background:var(--sivon-cream); padding:0.1rem 0.3rem; border-radius:3px; text-align:center; }
   .ind-info { min-width:0; }
-  .ind-title { font-size:0.8rem; font-weight:600; color:var(--sivon-blue); }
-  .ind-row:hover .ind-title { color:var(--sivon-red); }
-  .ind-row.rub-open .ind-title { color:var(--sivon-red); }
+  .ind-title { font-size:0.8rem; font-weight:600; color:var(--sivon-grey-blue); }
+  .ind-row:hover .ind-title { color:var(--sivon-cherry); }
+  .ind-row.rub-open .ind-title { color:var(--sivon-cherry); }
   .ind-q { font-size:0.7rem; color:#aaa; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
   .dim-actions { display:inline-flex; gap:0.4rem; margin-left:auto; margin-right:0.5rem; }
   .dim-toggle-all { font-size:0.6rem; color:#999; cursor:pointer; border:none; background:none; font-family:inherit; padding:0.1rem 0.3rem; border-radius:3px; }
-  .dim-toggle-all:hover { background:rgba(0,0,0,0.05); color:var(--sivon-blue); }
+  .dim-toggle-all:hover { background:rgba(0,0,0,0.05); color:var(--sivon-grey-blue); }
   .ind-right { display:flex; align-items:center; justify-content:center; }
 
   /* Weight */
@@ -180,9 +180,9 @@
   .wgt-label { font-size:0.5rem; text-transform:uppercase; letter-spacing:0.04em; color:#bbb; font-weight:600; }
   .wgt { display:flex; align-items:center; gap:2px; }
   .wgt-btn { width:18px; height:18px; border:1px solid #ddd; border-radius:3px; background:white; cursor:pointer; font-size:0.6rem; color:#aaa; display:flex; align-items:center; justify-content:center; font-family:inherit; }
-  .wgt-btn:hover { border-color:var(--sivon-red); color:var(--sivon-blue); }
+  .wgt-btn:hover { border-color:var(--sivon-cherry); color:var(--sivon-grey-blue); }
   .wgt-val { font-size:0.75rem; font-weight:700; color:#555; min-width:0.8rem; text-align:center; }
-  .wgt-val.modified { color:var(--sivon-red); background:#FFF0F0; padding:0.1rem 0.25rem; border-radius:3px; border:1px solid #E8A0A0; }
+  .wgt-val.modified { color:var(--sivon-cherry); background:#FFF0F0; padding:0.1rem 0.25rem; border-radius:3px; border:1px solid #E8A0A0; }
 
   /* Score bar */
   .sbar { display:flex; border-radius:5px; overflow:hidden; border:1.5px solid #e8e4da; }
@@ -209,24 +209,24 @@
   /* Remarks field */
   .ind-remark { margin:0.4rem 0 0; padding:0; }
   .ind-remark textarea { width:100%; border:1.5px solid #e0ddd5; border-radius:5px; padding:0.4rem 0.6rem; font-size:0.72rem; font-family:inherit; resize:vertical; min-height:2rem; max-height:6rem; color:#555; background:#faf8f2; }
-  .ind-remark textarea:focus { border-color:var(--sivon-blue); outline:none; background:white; }
+  .ind-remark textarea:focus { border-color:var(--sivon-grey-blue); outline:none; background:white; }
   .ind-remark textarea::placeholder { color:#ccc; }
 
   /* Tooltips for jargon -- positioned via JS to avoid clipping */
   .tt { border-bottom:1px dotted #C00A35; color:inherit; cursor:help; font-weight:600; }
-  .tt-popup { position:fixed; background:var(--sivon-blue); color:white; padding:0.5rem 0.7rem; border-radius:5px; font-size:0.72rem; font-weight:400; line-height:1.45; max-width:320px; z-index:9999; box-shadow:0 4px 16px rgba(0,0,0,0.3); pointer-events:none; text-align:left; opacity:0; transition:opacity 0.12s; }
+  .tt-popup { position:fixed; background:var(--sivon-grey-blue); color:white; padding:0.5rem 0.7rem; border-radius:5px; font-size:0.72rem; font-weight:400; line-height:1.45; max-width:320px; z-index:9999; box-shadow:0 4px 16px rgba(0,0,0,0.3); pointer-events:none; text-align:left; opacity:0; transition:opacity 0.12s; }
   .tt-popup.visible { opacity:1; }
   @media(max-width:600px) { .tt-popup { max-width:240px; font-size:0.65rem; } }
 
   /* Info panel */
   .info-panel { background:white; border-radius:var(--radius); padding:1rem 1.2rem; margin-top:1rem; box-shadow:var(--shadow); }
-  .info-panel h3 { font-size:0.85rem; color:var(--sivon-blue); margin-bottom:0.6rem; }
-  .formula-box { margin-top:0.6rem; padding:0.6rem; background:var(--sivon-white); border:1px solid var(--sivon-light-blue); border-radius:5px; font-size:0.72rem; var(--sivon-blue); }
-  .formula-box code { background:#e8ebf1; padding:0.1rem 0.3rem; border-radius:2px; font-size:0.75rem; color:var(--sivon-blue); font-weight:600; }
+  .info-panel h3 { font-size:0.85rem; color:var(--sivon-grey-blue); margin-bottom:0.6rem; }
+  .formula-box { margin-top:0.6rem; padding:0.6rem; background:var(--sivon-white); border:1px solid var(--sivon-blue); border-radius:5px; font-size:0.72rem; var(--sivon-grey-blue); }
+  .formula-box code { background:#e8ebf1; padding:0.1rem 0.3rem; border-radius:2px; font-size:0.75rem; color:var(--sivon-grey-blue); font-weight:600; }
 
   /* Quadrant */
   .quadrant-wrap { margin-top:1rem; background:white; border-radius:var(--radius); box-shadow:var(--shadow); padding:1.2rem; }
-  .quadrant-wrap h3 { font-size:0.85rem; color:var(--sivon-blue); margin-bottom:0.8rem; }
+  .quadrant-wrap h3 { font-size:0.85rem; color:var(--sivon-grey-blue); margin-bottom:0.8rem; }
   .quadrant-outer { display:flex; gap:0; align-items:stretch; }
   .q-ylabel { writing-mode:vertical-lr; transform:rotate(180deg); font-size:0.75rem; font-weight:700; color:#888; text-align:center; padding-right:0.5rem; display:flex; align-items:center; justify-content:center; }
   .q-side { display:flex; align-items:stretch; }
@@ -250,12 +250,12 @@
   .q-xticks { flex:1; display:flex; justify-content:space-between; font-size:0.62rem; color:#aaa; font-weight:600; padding:0.2rem 0; }
   /* App dots plotted on quadrant */
   .q-dots-layer { position:absolute; top:0; left:0; right:0; bottom:0; pointer-events:none; }
-  .q-dot { position:absolute; width:28px; height:28px; border-radius:50%; background:var(--sivon-blue); border:2.5px solid var(--sivon-blue); display:flex; align-items:center; justify-content:center; font-size:0.55rem; font-weight:800; color:var(--sivon-blue); pointer-events:auto; cursor:pointer; transform:translate(-50%,-50%); box-shadow:0 2px 6px rgba(0,0,0,0.2); transition:transform 0.15s, box-shadow 0.15s; z-index:5; }
+  .q-dot { position:absolute; width:28px; height:28px; border-radius:50%; background:var(--sivon-grey-blue); border:2.5px solid var(--sivon-grey-blue); display:flex; align-items:center; justify-content:center; font-size:0.55rem; font-weight:800; color:var(--sivon-grey-blue); pointer-events:auto; cursor:pointer; transform:translate(-50%,-50%); box-shadow:0 2px 6px rgba(0,0,0,0.2); transition:transform 0.15s, box-shadow 0.15s; z-index:5; }
   .q-dot:hover { transform:translate(-50%,-50%) scale(1.25); box-shadow:0 3px 10px rgba(0,0,0,0.3); z-index:10; }
-  .q-dot-tip { display:none; position:absolute; bottom:calc(100% + 6px); left:50%; transform:translateX(-50%); background:var(--sivon-blue); color:white; padding:0.25rem 0.5rem; border-radius:4px; font-size:0.68rem; font-weight:600; white-space:nowrap; pointer-events:none; }
+  .q-dot-tip { display:none; position:absolute; bottom:calc(100% + 6px); left:50%; transform:translateX(-50%); background:var(--sivon-grey-blue); color:white; padding:0.25rem 0.5rem; border-radius:4px; font-size:0.68rem; font-weight:600; white-space:nowrap; pointer-events:none; }
   .q-dot:hover .q-dot-tip { display:block; }
   .q-legend { margin-top:0.5rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; font-size:0.68rem; color:#888; }
-  .q-legend-dot { width:12px; height:12px; border-radius:50%; background:var(--sivon-blue); border:2px solid var(--sivon-blue); display:inline-block; vertical-align:middle; margin-right:3px; }
+  .q-legend-dot { width:12px; height:12px; border-radius:50%; background:var(--sivon-grey-blue); border:2px solid var(--sivon-grey-blue); display:inline-block; vertical-align:middle; margin-right:3px; }
 
   /* Hidden view */
   .view { display:none; }
@@ -266,9 +266,9 @@
   .modal-overlay.open { display:flex; }
   .modal { background:white; border-radius:var(--radius); max-width:800px; width:100%; max-height:90vh; overflow-y:auto; box-shadow:0 8px 30px rgba(0,0,0,0.25); }
   .modal-header { padding:1rem 1.5rem; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; background:white; z-index:1; border-radius:var(--radius) var(--radius) 0 0; }
-  .modal-header h2 { font-size:1.3rem; color:var(--sivon-blue); }
+  .modal-header h2 { font-size:1.3rem; color:var(--sivon-grey-blue); }
   .modal-close { background:none; border:none; font-size:1.3rem; cursor:pointer; color:#999; padding:0.2rem 0.5rem; }
-  .modal-close:hover { color:var(--sivon-red); }
+  .modal-close:hover { color:var(--sivon-cherry); }
   .modal-body { padding:1.5rem; }
   .modal-body h3 { font-size:0.95rem; color:var(--sivon-gold); margin:1.2rem 0 0.5rem; }
   .modal-body h3:first-child { margin-top:0; }
@@ -276,20 +276,20 @@
   .modal-body a { color:var(--sivon-gold); text-decoration:none; }
   .modal-body a:hover { text-decoration:underline; }
   .modal-body ul, .modal-body ol { font-size:0.85rem; color:#555; margin:0.3rem 0 0.6rem 1.2rem; line-height:1.6; }
-  .modal-body .tip { background: #f4f9ff; padding:0.6rem 0.8rem; font-size:0.8rem; color:var(--sivon-blue); margin:0.6rem 0; }
-  .modal-body .tip strong { color:var(--sivon-blue); }
+  .modal-body .tip { background: #f4f9ff; padding:0.6rem 0.8rem; font-size:0.8rem; color:var(--sivon-grey-blue); margin:0.6rem 0; }
+  .modal-body .tip strong { color:var(--sivon-grey-blue); }
   .modal-body code { background:#e8ebf1; padding:0.1rem 0.3rem; border-radius:3px; font-size:0.8rem; }
 
   /* === DROPDOWN MENU === */
   .dropdown { position:relative; display:inline-block; }
   .dropdown-menu { display:none; position:absolute; left:0; top:100%; background:white; z-index:200; min-width:240px; overflow:hidden; margin-top:4px; }
   .dropdown-menu.open { display:block; }
-  .dropdown-item { display:block; width:100%; padding:0.5rem 1rem; border:none; background:var(--sivon-red); cursor:pointer; font-family:inherit; font-size:0.78rem; color:var(--sivon-white); text-align:left; transition:background 0.1s; }
-  .dropdown-item:hover { background:var(--sivon-pink); }
+  .dropdown-item { display:block; width:100%; padding:0.5rem 1rem; border:none; background:var(--sivon-cherry); cursor:pointer; font-family:inherit; font-size:0.78rem; color:var(--sivon-white); text-align:left; transition:background 0.1s; }
+  .dropdown-item:hover { background:var(--sivon-cherry-light); }
   .dropdown-item small { display:block; color: var(--sivon-white); font-size:0.68rem; margin-top:1px; }
 
   /* === FOOTER === */
-  footer { border-top:3px solid var(--sivon-blue); margin-top:2rem; padding:1.5rem 2rem; background:var(--sivon-blue); color:rgba(255,255,255,0.7); }
+  footer { border-top:3px solid var(--sivon-grey-blue); margin-top:2rem; padding:1.5rem 2rem; background:var(--sivon-grey-blue); color:rgba(255,255,255,0.7); }
   .footer-inner { max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
   .footer-left { font-size:0.72rem; line-height:1.5; }
   .footer-left strong { color:white; }
@@ -312,7 +312,7 @@
   @media print { .tab-wrapper,.header-right,.wgt-btn,.add-tab,.assess-controls,footer,.tab-scroll-btn { display:none; } body { background:white; } }
 
   /* Undo toast */
-  .undo-toast { position:fixed; bottom:1.5rem; left:50%; transform:translateX(-50%); background:#eef3f6; color: var(--sivon-blue); padding:0.7rem 1.2rem; border-radius:var(--radius); font-size:0.85rem; display:flex; align-items:center; gap:1rem; z-index:9999; box-shadow:0 4px 12px rgba(0,0,0,0.3); animation:slideUp 0.2s ease; }
+  .undo-toast { position:fixed; bottom:1.5rem; left:50%; transform:translateX(-50%); background:#eef3f6; color: var(--sivon-grey-blue); padding:0.7rem 1.2rem; border-radius:var(--radius); font-size:0.85rem; display:flex; align-items:center; gap:1rem; z-index:9999; box-shadow:0 4px 12px rgba(0,0,0,0.3); animation:slideUp 0.2s ease; }
   @keyframes slideUp { from { transform:translateX(-50%) translateY(20px); opacity:0; } to { transform:translateX(-50%) translateY(0); opacity:1; } }
 
   /* Changelog panel */
@@ -322,7 +322,7 @@
   .cl-version .cl-date { font-size:0.7rem; color:#999; margin-bottom:0.4rem; }
   .cl-version ul { margin:0.3rem 0 0 1.2rem; font-size:0.82rem; line-height:1.6; }
   .cl-version li { margin-bottom:0.3rem; }
-  .cl-new-badge { display:inline-block; background:var(--sivon-light-blue); color:var(--sivon-white); font-size:0.6rem; font-weight:700; padding:0.1rem 0.4rem; border-radius:3px; margin-left:0.4rem; vertical-align:middle; }
+  .cl-new-badge { display:inline-block; background:var(--sivon-blue); color:var(--sivon-white); font-size:0.6rem; font-weight:700; padding:0.1rem 0.4rem; border-radius:3px; margin-left:0.4rem; vertical-align:middle; }
   .changelog-dot { position:absolute; top:5px; right:5px; width:7px; height:7px; background:var(--sivon-gold); border-radius:50%; }
   .export-reminder { background:#fff8e1; border:1px solid #ffe082; border-radius:var(--radius); padding:0.6rem 1rem; margin-bottom:0.8rem; display:flex; align-items:center; justify-content:space-between; gap:0.8rem; font-size:0.82rem; color:#5d4037; }
   .export-reminder button.er-export { background:var(--sivon-gold); color:var(--sivon-black); border:none; padding:0.3rem 0.8rem; border-radius:5px; font-weight:600; cursor:pointer; font-family:inherit; font-size:0.78rem; white-space:nowrap; }
@@ -397,7 +397,7 @@
   <!-- OVERVIEW VIEW -->
   <div class="view active" id="view-overview">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.8rem">
-      <h2 class="sivon" style="font-size:1.1rem;color:var(--sivon-blue)" data-i18n="ui.overviewTitle">Assessment Overview</h2>
+      <h2 class="sivon" style="font-size:1.1rem;color:var(--sivon-grey-blue)" data-i18n="ui.overviewTitle">Assessment Overview</h2>
       <button class="hbtn primary" onclick="addApp()" style="font-size:0.8rem" data-i18n="ui.overviewAddAppBtn">+ Add Application</button>
     </div>
     <div id="overviewContent">
@@ -693,7 +693,7 @@ const I18N = {
             <li><strong>Eksporter:</strong> gem resultater som JSON eller CSV.</li>
         </ul>
         <h3>De tre analyseniveauer</h3>
-        <p><strong style="color:var(--sivon-red)">Niveau 1: Risikoeksponering</strong> (dimensioner A-B). Måler hvor stor den eksterne risiko er. En lav score (1) betyder lille risiko, en høj score (5) betyder høj risiko.</p>
+        <p><strong style="color:var(--sivon-cherry)">Niveau 1: Risikoeksponering</strong> (dimensioner A-B). Måler hvor stor den eksterne risiko er. En lav score (1) betyder lille risiko, en høj score (5) betyder høj risiko.</p>
         <p><strong style="color:var(--green)">Niveau 2: Afbødningskapacitet</strong> (dimensioner C-E). Måler hvor godt organisationen kan håndtere risici. En lav score (1) er svag, en høj score (5) er stærk.</p>
         <p><strong style="color:#555">Niveau 3: Strategisk vigtighed</strong> (dimensioner F-H). Måler hvor vigtig applikationen er. En lav score (1) betyder lille vigtighed, en høj score (5) er kritisk.</p>
         <div class="tip"><strong>Bemærk farveretningen:</strong> For niveau 1 og 3 er score 1 grøn (godt set fra et offentlige værdier-perspektiv); for niveau 2 er score 5 grøn (stærk afbødning).</div>
@@ -1366,7 +1366,7 @@ const I18N = {
             <li><strong>Exportieren:</strong> Ergebnisse als JSON oder CSV speichern.</li>
         </ul>
         <h3>Die drei Analyseebenen</h3>
-        <p><strong style="color:var(--sivon-red)">Ebene 1: Risikoexposition</strong> (Dimensionen A-B). Misst, wie groß das externe Risiko ist. Ein niedriger Wert (1) bedeutet geringes Risiko, ein hoher Wert (5) bedeutet hohes Risiko.</p>
+        <p><strong style="color:var(--sivon-cherry)">Ebene 1: Risikoexposition</strong> (Dimensionen A-B). Misst, wie groß das externe Risiko ist. Ein niedriger Wert (1) bedeutet geringes Risiko, ein hoher Wert (5) bedeutet hohes Risiko.</p>
         <p><strong style="color:var(--green)">Ebene 2: Minderungskapazität</strong> (Dimensionen C-E). Misst, wie gut die Organisation Risiken managen kann. Ein niedriger Wert (1) ist schwach, ein hoher Wert (5) ist stark.</p>
         <p><strong style="color:#555">Ebene 3: Strategische Bedeutung</strong> (Dimensionen F-H). Misst, wie wichtig die Anwendung ist. Ein niedriger Wert (1) bedeutet geringe Bedeutung, ein hoher Wert (5) ist kritisch.</p>
         <div class="tip"><strong>Beachten Sie die Farbrichtung:</strong> Für Ebene 1 und 3 ist Wert 1 grün (gut aus Public-Values-Perspektive); für Ebene 2 ist Wert 5 grün (starke Minderung).</div>
@@ -2034,7 +2034,7 @@ const I18N = {
             <li><strong>Export:</strong> save results as JSON or CSV.</li>
         </ul>
         <h3>The three analysis levels</h3>
-        <p><strong style="color:var(--sivon-red)">Level 1: Risk exposure</strong> (dimensions A-B). Measures how large the external risk is. A low score (1) means little risk, a high score (5) means high risk.</p>
+        <p><strong style="color:var(--sivon-cherry)">Level 1: Risk exposure</strong> (dimensions A-B). Measures how large the external risk is. A low score (1) means little risk, a high score (5) means high risk.</p>
         <p><strong style="color:var(--green)">Level 2: Mitigation capacity</strong> (dimensions C-E). Measures how well the organisation can manage risks. A low score (1) is weak, a high score (5) is strong.</p>
         <p><strong style="color:#555">Level 3: Strategic importance</strong> (dimensions F-H). Measures how important the application is. A low score (1) means little importance, a high score (5) is critical.</p>
         <div class="tip"><strong>Note the colour direction:</strong> For levels 1 and 3, score 1 is green (good from a public values perspective); for level 2, score 5 is green (strong mitigation).</div>
@@ -2702,7 +2702,7 @@ const I18N = {
             <li><strong>Exportar:</strong> guarda los resultados en JSON o CSV.</li>
         </ul>
         <h3>Los tres niveles de análisis</h3>
-        <p><strong style="color:var(--sivon-red)">Nivel 1: Exposición al riesgo</strong> (dimensiones A-B). Mide cuán grande es el riesgo externo. Una puntuación baja (1) significa poco riesgo, una puntuación alta (5) significa riesgo elevado.</p>
+        <p><strong style="color:var(--sivon-cherry)">Nivel 1: Exposición al riesgo</strong> (dimensiones A-B). Mide cuán grande es el riesgo externo. Una puntuación baja (1) significa poco riesgo, una puntuación alta (5) significa riesgo elevado.</p>
         <p><strong style="color:var(--green)">Nivel 2: Capacidad de mitigación</strong> (dimensiones C-E). Mide cuán bien la organización puede gestionar los riesgos. Una puntuación baja (1) es débil, una puntuación alta (5) es fuerte.</p>
         <p><strong style="color:#555">Nivel 3: Importancia estratégica</strong> (dimensiones F-H). Mide la importancia de la aplicación. Una puntuación baja (1) significa poca importancia, una puntuación alta (5) es crítica.</p>
         <div class="tip"><strong>Observa la dirección del color:</strong> Para los niveles 1 y 3, la puntuación 1 es verde (buena desde la perspectiva de los valores públicos); para el nivel 2, la puntuación 5 es verde (fuerte mitigación).</div>
@@ -3370,7 +3370,7 @@ const I18N = {
             <li><strong>Exporter :</strong> sauvegardez les résultats en JSON ou CSV.</li>
         </ul>
         <h3>Les trois niveaux d'analyse</h3>
-        <p><strong style="color:var(--sivon-red)">Niveau 1 : Exposition aux risques</strong> (dimensions A-B). Mesure l'importance du risque externe. Un faible score (1) signifie peu de risque, un score élevé (5) signifie un risque élevé.</p>
+        <p><strong style="color:var(--sivon-cherry)">Niveau 1 : Exposition aux risques</strong> (dimensions A-B). Mesure l'importance du risque externe. Un faible score (1) signifie peu de risque, un score élevé (5) signifie un risque élevé.</p>
         <p><strong style="color:var(--green)">Niveau 2 : Capacité d'atténuation</strong> (dimensions C-E). Mesure la capacité de l'organisation à gérer les risques. Un faible score (1) est faible, un score élevé (5) est fort.</p>
         <p><strong style="color:#555">Niveau 3 : Importance stratégique</strong> (dimensions F-H). Mesure l'importance de l'application. Un faible score (1) signifie peu d'importance, un score élevé (5) est critique.</p>
         <div class="tip"><strong>Notez la direction des couleurs :</strong> Pour les niveaux 1 et 3, le score 1 est vert (bon du point de vue des valeurs publiques) ; pour le niveau 2, le score 5 est vert (forte atténuation).</div>
@@ -4038,7 +4038,7 @@ const I18N = {
             <li><strong>Esporta:</strong> salva i risultati in formato JSON o CSV.</li>
         </ul>
         <h3>I tre livelli di analisi</h3>
-        <p><strong style = "color:var(--sivon-red)">Livello 1: Esposizione al rischio</strong> (dimensioni A-B). Misura l'entità del rischio esterno. Un punteggio basso (1) significa poco rischio, un punteggio alto (5) significa rischio elevato.</p>
+        <p><strong style = "color:var(--sivon-cherry)">Livello 1: Esposizione al rischio</strong> (dimensioni A-B). Misura l'entità del rischio esterno. Un punteggio basso (1) significa poco rischio, un punteggio alto (5) significa rischio elevato.</p>
         <p><strong style="color:var(--green)">Livello 2: Capacità di attenuazione</strong> (dimensioni C-E). Misura la capacità dell'organizzazione di gestire i rischi. Un punteggio basso (1) è debole, un punteggio alto (5) è forte.</p>
         <p><strong style = "color:#555">Livello 3: Importanza strategica</strong> (dimensioni F-H). Misura l'importanza dell'applicazione. Un punteggio basso (1) significa poca importanza, un punteggio alto (5) è critico.</p>
         <div class = "tip"><strong>Nota la direzione dei colori:</strong> Per i livelli 1 e 3, il punteggio 1 è verde (buono dal punto di vista dei valori pubblici); per il livello 2, il punteggio 5 è verde (forte attenuazione).</div>
@@ -4706,7 +4706,7 @@ const I18N = {
           <li><strong>Exporteren:</strong> sla resultaten op als JSON of CSV.</li>
         </ul>
         <h3>De drie analyseniveaus</h3>
-        <p><strong style="color:var(--sivon-red)">Niveau 1: Risico-exposure</strong> (dimensies A-B). Meet hoe groot het externe risico is. Een lage score (1) betekent weinig risico, een hoge score (5) veel risico.</p>
+        <p><strong style="color:var(--sivon-cherry)">Niveau 1: Risico-exposure</strong> (dimensies A-B). Meet hoe groot het externe risico is. Een lage score (1) betekent weinig risico, een hoge score (5) veel risico.</p>
         <p><strong style="color:var(--green)">Niveau 2: Mitigatie-capaciteit</strong> (dimensies C-E). Meet hoe goed de organisatie risico's kan beheersen. Een lage score (1) is zwak, een hoge score (5) is sterk.</p>
         <p><strong style="color:#555">Niveau 3: Strategisch belang</strong> (dimensies F-H). Meet hoe belangrijk de applicatie is. Een lage score (1) is weinig belang, een hoge score (5) is kritiek.</p>
         <div class="tip"><strong>Let op de kleurrichting:</strong> Bij niveau 1 en 3 is score 1 groen (goed vanuit publieke waarden perspectief), bij niveau 2 is score 5 groen (sterke mitigatie).</div>
@@ -5448,7 +5448,7 @@ function openWeightsModal(id) {
     const dims = LVL_DIMS[lvl];
     for (const dim of dims) {
       const dinds = INDICATORS.filter(i => i.dim === dim);
-      h += `<div style="margin-bottom:1.2rem"><h3 style="font-size:0.9rem;color:var(--sivon-blue);margin-bottom:0.5rem">${t('ui.scoreRowDimensionPrefix')} ${dim}: ${t('ui.scoreRowDim'+dim+'Name')}</h3>`;
+      h += `<div style="margin-bottom:1.2rem"><h3 style="font-size:0.9rem;color:var(--sivon-grey-blue);margin-bottom:0.5rem">${t('ui.scoreRowDimensionPrefix')} ${dim}: ${t('ui.scoreRowDim'+dim+'Name')}</h3>`;
       for (const ind of dinds) {
         const curW = app.weights[ind.code] !== undefined ? app.weights[ind.code] : ind.w;
         const isModified = app.weights[ind.code] !== undefined && app.weights[ind.code] !== ind.w;
@@ -5799,7 +5799,7 @@ function renderOverview() {
     h += `<td style="font-size:0.75rem;color:#999">${esc(app.appId||'--')}</td>`;
     h += `<td>${pct}%<span class="progress-bar"><span class="progress-fill" style="width:${pct}%;background:${pcolor}"></span></span></td>`;
     h += `<td>${scorePill(res.score10)}</td>`;
-    h += `<td style="font-size:0.75rem;color:var(--sivon-red)">${res.lvls.risk?res.lvls.risk.toFixed(2):'--'}</td>`;
+    h += `<td style="font-size:0.75rem;color:var(--sivon-cherry)">${res.lvls.risk?res.lvls.risk.toFixed(2):'--'}</td>`;
     h += `<td style="font-size:0.75rem;color:var(--green)">${res.lvls.mitigation?res.lvls.mitigation.toFixed(2):'--'}</td>`;
     h += `<td style="font-size:0.75rem;color:var(--orange)">${res.lvls.importance?res.lvls.importance.toFixed(2):'--'}</td>`;
     h += `<td style="font-size:0.72rem;color:#aaa">${res.raw?res.raw.toFixed(3):'--'}</td>`;
@@ -6100,7 +6100,7 @@ function recalcApp(id) {
   const el10 = document.getElementById(`sc10-${id}`);
   if (el10) {
     el10.innerHTML = res.score10 ? res.score10.toFixed(1) + '<span class="sc-scale">/10</span>' : '--';
-    el10.style.color = res.score10 ? (res.score10 >= 7 ? 'var(--green)' : res.score10 >= 5 ? 'var(--orange)' : res.score10 >= 3 ? '#E65100' : 'var(--red)') : 'var(--sivon-blue)';
+    el10.style.color = res.score10 ? (res.score10 >= 7 ? 'var(--green)' : res.score10 >= 5 ? 'var(--orange)' : res.score10 >= 3 ? '#E65100' : 'var(--red)') : 'var(--sivon-grey-blue)';
   }
   const elR = document.getElementById(`scR-${id}`);
   if (elR) elR.innerHTML = res.lvls.risk !== null ? fmt(res.lvls.risk) + '<span class="sc-scale">/5</span>' : '--';
