@@ -795,8 +795,11 @@
   .st-prog { display:inline-flex; align-items:center; gap:0.4rem; color:var(--text-3); font-size:0.76rem; white-space:nowrap; }
   .st-prog .prog { width:70px; }
   .st-score { font-weight:800; font-size:1.05rem; }
-  .st-nav { margin-left:auto; display:flex; gap:0.35rem; }
-  @media (max-width:1000px) { .st-nav .lvl-name { display:none; } .st-name { max-width:180px; } }
+  .st-nav { margin-left:auto; display:grid; grid-template-columns:repeat(5, 1fr); gap:0.35rem; }
+  .st-nav .lvl-chip { justify-content:center; }
+  .st-nav .lvl-chip b { flex-shrink:0; }
+  .st-nav .lvl-name { display:none; }
+  @media (max-width:1000px) { .st-name { max-width:180px; } }
   @media (max-width:640px) { .app-sticky { gap:0.5rem; width:calc(100% - 16px); } .st-prog .prog, .st-kw { display:none; } .st-name { max-width:110px; } }
 
   /* Indicators: chosen score, weight only when it differs, keyboard focus, own texts and remarks */
@@ -1568,9 +1571,9 @@ const I18N = {
             <li><strong>Samlet overblik:</strong> koordinatorens oversigt viser det samlede billede, som du kan præsentere filtreret pr. enhed eller leverandør eller udskrive som rapport.</li>
         </ol>
         <h3>Vægte</h3>
-        <p>Hvert spørgsmål har en standardvægt (2 eller 3). Vægten bestemmer, hvor meget indflydelse et spørgsmål har <strong>inden for sin dimension og spørgsmålstype</strong>. For eksempel: hvis du sætter spørgsmål 15 til vægt 5 og spørgsmål 16 til vægt 1, tæller spørgsmål 15 fem gange så meget i afbødningsscoren for Autonomi. Der er to niveauer. Din <strong>organisations vægte</strong> indstiller du i din egen profil (knappen "Profil", fanen Vægte); de gælder for alle applikationer med den profil. Pr. applikation kan du stadig afvige med knappen "Vægte" i vurderingen. I vurderingen vises vægten kun, hvor den afviger fra PVS-modellen. Juster kun vægte i samråd inden for din organisation eller sektor, så scorerne forbliver sammenlignelige.</p>
+        <p>Hvert spørgsmål har en standardvægt (2 eller 3). Vægten bestemmer, hvor meget indflydelse et spørgsmål har <strong>inden for sin dimension og spørgsmålstype</strong>. For eksempel: hvis du sætter spørgsmål 15 til vægt 5 og spørgsmål 16 til vægt 1, tæller spørgsmål 15 fem gange så meget i afbødningsscoren for Autonomi. Der er to niveauer. Din <strong>organisations vægte</strong> indstiller du i din egen profil (knappen "Profil", fanen Vægte); de gælder for alle applikationer med den profil. Pr. applikation kan du stadig afvige med knappen "Vægte" i vurderingen. I vurderingen vises vægten kun, hvor den afviger fra SIVON-modellen. Juster kun vægte i samråd inden for din organisation eller sektor, så scorerne forbliver sammenlignelige.</p>
         <h3>Profiler</h3>
-        <p>En <strong>profil</strong> fastlægger, hvordan din organisation bruger PVS: <strong>vægtene</strong> og om nødvendigt <strong>egne tekster</strong> til spørgsmål (titel, spørgsmål, rubrikker og vejledning). Standardprofilen er PVS-modellen, som den er, og er låst, så scorerne forbliver sammenlignelige. Numrene, spørgsmålstyperne, skalaen og beregningen er de samme for alle.</p>
+        <p>En <strong>profil</strong> fastlægger, hvordan din organisation bruger PVS: <strong>vægtene</strong> og om nødvendigt <strong>egne tekster</strong> til spørgsmål (titel, spørgsmål, rubrikker og vejledning). Standardprofilen er SIVON-modellen, som den er, og er låst, så scorerne forbliver sammenlignelige. Numrene, spørgsmålstyperne, skalaen og beregningen er de samme for alle.</p>
         <ul>
             <li><strong>Opret din egen profil:</strong> via knappen "Profil". Din første egen profil bliver profilen for nye vurderinger, og værktøjet spørger, om eksisterende applikationer også må bruge den. Øverst i hver vurdering ser og skifter du profilen.</li>
             <li><strong>Egne tekster:</strong> på fanen Tekster eller med blyanten ved et spørgsmål i en vurdering. Et tomt felt bruger standardteksten.</li>
@@ -2232,7 +2235,7 @@ const I18N = {
       "mergeWith": "Læg sammen med",
       "mixText": "Scorerne er derfor ikke fuldt sammenlignelige.",
       "mixTitle": "Bemærk: din oversigt indeholder forskellige profiler.",
-      "modelIs": "PVS-model {w}",
+      "modelIs": "SIVON-model {w}",
       "movedToTrash": "{n} applikation(er) flyttet til papirkurven",
       "nApps": "{n} applikation(er)",
       "nDeviating": "{n} afvigende",
@@ -2311,9 +2314,9 @@ const I18N = {
       "pfLeverTopApps": "Størst gevinst for",
       "pfOthers": "Andre profiler ({n})",
       "pfPartTexts": "Egne tekster til spørgsmål (valgfrit)",
-      "pfPartWModel": "Vægte fra PVS-modellen",
+      "pfPartWModel": "Vægte fra SIVON-modellen",
       "pfSharedToast": "Profilfilen er downloadet. Send den til dine kolleger: de vælger Importer og bruger den derefter som aktiv profil.",
-      "pfStdLocked": "Standardprofilen er låst: teksterne og vægtene fra PVS-modellen. Så forbliver scorerne sammenlignelige. Vil du tilpasse noget til din organisation? Opret din egen profil.",
+      "pfStdLocked": "Standardprofilen er låst: teksterne og vægtene fra SIVON-modellen. Så forbliver scorerne sammenlignelige. Vil du tilpasse noget til din organisation? Opret din egen profil.",
       "pfT": "Egne tekster: {n}",
       "pfTextsIntro": "Tilpas spørgsmålenes tekster til din organisation, for eksempel for at bruge jeres egne begreber. Et tomt felt bruger standardteksten. Numrene, spørgsmålstyperne, skalaen og beregningen er de samme for alle.",
       "pfUse": "Brug til nye vurderinger",
@@ -2328,7 +2331,7 @@ const I18N = {
       "profile": "Profil",
       "profileSaved": "Profilen \"{name}\" gemt.",
       "profilesBtn": "Profil",
-      "profilesIntroHtml": "En <strong>profil</strong> fastlægger, hvordan din organisation bruger PVS: spørgsmålenes <strong>vægte</strong> og om nødvendigt <strong>egne tekster</strong> til spørgsmål. Standardprofilen er PVS-modellen, som den er; den er låst, så scorerne forbliver sammenlignelige.",
+      "profilesIntroHtml": "En <strong>profil</strong> fastlægger, hvordan din organisation bruger PVS: spørgsmålenes <strong>vægte</strong> og om nødvendigt <strong>egne tekster</strong> til spørgsmål. Standardprofilen er SIVON-modellen, som den er; den er låst, så scorerne forbliver sammenlignelige.",
       "profilesShareHtml": "<strong>Vurderer I sammen?</strong> En profil gemmes i din egen browser. Del den via <em>Del</em> med alle involverede. En profil medtages også automatisk i hver JSON-eksport. Kolleger vælger <em>Importer</em> (eller <em>Importer profil</em> nedenfor); den delte profil bliver så straks deres aktive profil.",
       "profilesTitle": "Profil",
       "profileVersionChanged": "Vurderet med version {v}; profilen er nu version {cur}.",
@@ -2419,16 +2422,16 @@ const I18N = {
       "weightsModalDimensionLabel": "Dimension",
       "weightsModalResetBtn": "Nulstil til standard",
       "weightsModalResetConfirmation": "Er du sikker på, at du vil nulstille alle vægte til standardværdierne?",
-      "weightsModalTipHtml": "<strong>Hvad er vægte?</strong> Vægte bestemmer, hvor meget indflydelse hvert spørgsmål har inden for sin dimension. Standardvægte er afledt af PVS-modellen. Juster kun vægte i samråd med din organisation eller sektor, ellers bliver resultaterne usammenlignelige.",
+      "weightsModalTipHtml": "<strong>Hvad er vægte?</strong> Vægte bestemmer, hvor meget indflydelse hvert spørgsmål har inden for sin dimension. Standardvægte er afledt af SIVON-modellen. Juster kun vægte i samråd med din organisation eller sektor, ellers bliver resultaterne usammenlignelige.",
       "welcomeModalBtn": "Lad os komme i gang",
       "welcomeModalTitle": "Velkommen",
-      "wgtTip": "Vægtning {w} (PVS-model: {m})",
-      "whBackToModel": "Tilbage til PVS-modellen",
-      "whChanged": "{n} {n|spørgsmål afviger|spørgsmål afviger} fra PVS-modellen",
+      "wgtTip": "Vægtning {w} (SIVON-model: {m})",
+      "whBackToModel": "Tilbage til SIVON-modellen",
+      "whChanged": "{n} {n|spørgsmål afviger|spørgsmål afviger} fra SIVON-modellen",
       "whIntroHtml": "Hvert spørgsmål tæller inden for sin dimension med en vægt fra 1 til 5. Vægtene her gælder for <strong>alle applikationer med denne profil</strong> og dermed for hele din organisation. Pr. applikation kan du stadig afvige med knappen Vægte i vurderingen.",
       "whOwnSub": "Disse applikationer har deres egne vægte oven på standardvægtene ovenfor.",
       "whOwnTitle": "Applikationer med egen afvigelse",
-      "wModel": "PVS-model"
+      "wModel": "SIVON-model"
     },
     "welcome": `
       <p>Velkommen til Scanning af offentlige værdier (PVS), et værktøj der hjælper organisationer med at vurdere i hvilken grad deres applikationslandskab lever op til <a href="https://www.kennisnet.nl/tools/waardenwijzer/">de offentlige værdier i uddannelse</a> (autonomi, retfærdighed og menneskelighed).</p>
@@ -2597,9 +2600,9 @@ const I18N = {
             <li><strong>Gesamtbild:</strong> Die Übersicht der koordinierenden Person zeigt das vollständige Bild, das Sie gefiltert nach Einheit oder Anbieter präsentieren oder als Bericht drucken können.</li>
         </ol>
         <h3>Gewichtungen</h3>
-        <p>Jede Frage hat eine Standardgewichtung (2 oder 3). Die Gewichtung bestimmt, wie viel Einfluss eine Frage <strong>innerhalb ihrer Dimension und ihres Fragetyps</strong> hat. Beispiel: Wenn Sie Frage 15 auf Gewichtung 5 und Frage 16 auf Gewichtung 1 setzen, zählt Frage 15 fünfmal so stark im Minderungswert von Autonomie. Es gibt zwei Ebenen. Die <strong>Gewichtung Ihrer Organisation</strong> legen Sie in Ihrem eigenen Profil fest (Schaltfläche „Profil“, Reiter Gewichtung); sie gilt für alle Anwendungen mit diesem Profil. Pro Anwendung können Sie mit der Schaltfläche „Gewichtung“ in der Bewertung noch davon abweichen. In der Bewertung wird die Gewichtung nur dort angezeigt, wo sie vom PVS-Modell abweicht. Passen Sie Gewichtungen nur in Absprache innerhalb Ihrer Organisation oder Branche an, damit Scores vergleichbar bleiben.</p>
+        <p>Jede Frage hat eine Standardgewichtung (2 oder 3). Die Gewichtung bestimmt, wie viel Einfluss eine Frage <strong>innerhalb ihrer Dimension und ihres Fragetyps</strong> hat. Beispiel: Wenn Sie Frage 15 auf Gewichtung 5 und Frage 16 auf Gewichtung 1 setzen, zählt Frage 15 fünfmal so stark im Minderungswert von Autonomie. Es gibt zwei Ebenen. Die <strong>Gewichtung Ihrer Organisation</strong> legen Sie in Ihrem eigenen Profil fest (Schaltfläche „Profil“, Reiter Gewichtung); sie gilt für alle Anwendungen mit diesem Profil. Pro Anwendung können Sie mit der Schaltfläche „Gewichtung“ in der Bewertung noch davon abweichen. In der Bewertung wird die Gewichtung nur dort angezeigt, wo sie vom SIVON-Modell abweicht. Passen Sie Gewichtungen nur in Absprache innerhalb Ihrer Organisation oder Branche an, damit Scores vergleichbar bleiben.</p>
         <h3>Profile</h3>
-        <p>Ein <strong>Profil</strong> legt fest, wie Ihre Organisation den PVS verwendet: die <strong>Gewichtung</strong> und bei Bedarf <strong>eigene Texte</strong> für Fragen (Titel, Frage, Rubriken und Hinweis). Das Standardprofil ist das PVS-Modell, wie es ist, und ist festgelegt, damit Scores vergleichbar bleiben. Die Nummern, die Fragetypen, die Skala und die Berechnung sind für alle gleich.</p>
+        <p>Ein <strong>Profil</strong> legt fest, wie Ihre Organisation den PVS verwendet: die <strong>Gewichtung</strong> und bei Bedarf <strong>eigene Texte</strong> für Fragen (Titel, Frage, Rubriken und Hinweis). Das Standardprofil ist das SIVON-Modell, wie es ist, und ist festgelegt, damit Scores vergleichbar bleiben. Die Nummern, die Fragetypen, die Skala und die Berechnung sind für alle gleich.</p>
         <ul>
             <li><strong>Eigenes Profil erstellen:</strong> über die Schaltfläche „Profil“. Ihr erstes eigenes Profil wird das Profil für neue Bewertungen, und das Tool fragt, ob bestehende Anwendungen es ebenfalls verwenden dürfen. Oben in jeder Bewertung sehen und wechseln Sie das Profil.</li>
             <li><strong>Eigene Texte:</strong> im Reiter Texte oder mit dem Stift neben einer Frage in einer Bewertung. Ein leeres Feld verwendet den Standardtext.</li>
@@ -3261,7 +3264,7 @@ const I18N = {
       "mergeWith": "Zusammenführen mit",
       "mixText": "Die Scores sind daher nicht vollständig vergleichbar.",
       "mixTitle": "Hinweis: Ihre Übersicht enthält unterschiedliche Profile.",
-      "modelIs": "PVS-Modell {w}",
+      "modelIs": "SIVON-Modell {w}",
       "movedToTrash": "{n} Anwendung(en) in den Papierkorb verschoben",
       "nApps": "{n} Anwendung(en)",
       "nDeviating": "{n} abweichend",
@@ -3340,9 +3343,9 @@ const I18N = {
       "pfLeverTopApps": "Größter Gewinn bei",
       "pfOthers": "Andere Profile ({n})",
       "pfPartTexts": "Eigene Texte für Fragen (optional)",
-      "pfPartWModel": "Gewichtung des PVS-Modells",
+      "pfPartWModel": "Gewichtung des SIVON-Modells",
       "pfSharedToast": "Profildatei heruntergeladen. Senden Sie sie an Ihre Kolleginnen und Kollegen: Sie wählen Importieren und verwenden sie danach als aktives Profil.",
-      "pfStdLocked": "Das Standardprofil ist festgelegt: die Texte und die Gewichtung des PVS-Modells. So bleiben Scores vergleichbar. Möchten Sie etwas für Ihre Organisation anpassen? Erstellen Sie ein eigenes Profil.",
+      "pfStdLocked": "Das Standardprofil ist festgelegt: die Texte und die Gewichtung des SIVON-Modells. So bleiben Scores vergleichbar. Möchten Sie etwas für Ihre Organisation anpassen? Erstellen Sie ein eigenes Profil.",
       "pfT": "Eigene Texte: {n}",
       "pfTextsIntro": "Passen Sie die Texte der Fragen an Ihre Organisation an, zum Beispiel um Ihre eigenen Begriffe zu verwenden. Ein leeres Feld verwendet den Standardtext. Die Nummern, die Fragetypen, die Skala und die Berechnung bleiben für alle gleich.",
       "pfUse": "Für neue Bewertungen verwenden",
@@ -3357,7 +3360,7 @@ const I18N = {
       "profile": "Profil",
       "profileSaved": "Profil \"{name}\" gespeichert.",
       "profilesBtn": "Profil",
-      "profilesIntroHtml": "Ein <strong>Profil</strong> legt fest, wie Ihre Organisation den PVS verwendet: die <strong>Gewichtung</strong> der Fragen und bei Bedarf <strong>eigene Texte</strong> für Fragen. Das Standardprofil ist das PVS-Modell, wie es ist; es ist festgelegt, damit Scores vergleichbar bleiben.",
+      "profilesIntroHtml": "Ein <strong>Profil</strong> legt fest, wie Ihre Organisation den PVS verwendet: die <strong>Gewichtung</strong> der Fragen und bei Bedarf <strong>eigene Texte</strong> für Fragen. Das Standardprofil ist das SIVON-Modell, wie es ist; es ist festgelegt, damit Scores vergleichbar bleiben.",
       "profilesShareHtml": "<strong>Gemeinsam bewerten?</strong> Ein Profil wird in Ihrem eigenen Browser gespeichert. Teilen Sie es über <em>Teilen</em> mit allen Beteiligten. Ein Profil ist außerdem automatisch in jedem JSON-Export enthalten. Kolleginnen und Kollegen wählen <em>Importieren</em> (oder unten <em>Profil importieren</em>); das geteilte Profil wird dann sofort ihr aktives Profil.",
       "profilesTitle": "Profil",
       "profileVersionChanged": "Bewertet mit Version {v}; das Profil ist jetzt Version {cur}.",
@@ -3448,16 +3451,16 @@ const I18N = {
       "weightsModalDimensionLabel": "Dimension",
       "weightsModalResetBtn": "Auf Standard zurücksetzen",
       "weightsModalResetConfirmation": "Sind Sie sicher, dass Sie alle Gewichtungen auf die Standardwerte zurücksetzen möchten?",
-      "weightsModalTipHtml": "<strong>Was sind Gewichtungen?</strong> Gewichtungen bestimmen, wie viel Einfluss jede Frage innerhalb ihrer Dimension hat. Standardgewichtungen sind aus dem PVS-Modell abgeleitet. Passen Sie Gewichtungen nur in Absprache mit Ihrer Organisation oder Branche an, sonst werden die Ergebnisse unvergleichbar.",
+      "weightsModalTipHtml": "<strong>Was sind Gewichtungen?</strong> Gewichtungen bestimmen, wie viel Einfluss jede Frage innerhalb ihrer Dimension hat. Standardgewichtungen sind aus dem SIVON-Modell abgeleitet. Passen Sie Gewichtungen nur in Absprache mit Ihrer Organisation oder Branche an, sonst werden die Ergebnisse unvergleichbar.",
       "welcomeModalBtn": "Jetzt loslegen",
       "welcomeModalTitle": "Willkommen",
-      "wgtTip": "Gewichtung {w} (PVS-Modell: {m})",
-      "whBackToModel": "Zurück zum PVS-Modell",
-      "whChanged": "{n} {n|Frage weicht|Fragen weichen} vom PVS-Modell ab",
+      "wgtTip": "Gewichtung {w} (SIVON-Modell: {m})",
+      "whBackToModel": "Zurück zum SIVON-Modell",
+      "whChanged": "{n} {n|Frage weicht|Fragen weichen} vom SIVON-Modell ab",
       "whIntroHtml": "Jede Frage zählt innerhalb ihrer Dimension mit einer Gewichtung von 1 bis 5. Die Gewichtung hier gilt für <strong>alle Anwendungen mit diesem Profil</strong> und damit für Ihre gesamte Organisation. Pro Anwendung können Sie mit der Schaltfläche Gewichtung in der Bewertung noch abweichen.",
       "whOwnSub": "Diese Anwendungen haben eine eigene Gewichtung zusätzlich zur obigen Standardgewichtung.",
       "whOwnTitle": "Anwendungen mit eigener Abweichung",
-      "wModel": "PVS-Modell"
+      "wModel": "SIVON-Modell"
     },
     "welcome": `
       <p>Willkommen beim Scan öffentlicher Werte (PVS), einem Werkzeug, das Organisationen dabei hilft zu bewerten, inwieweit ihre Anwendungslandschaft den <a href="https://www.kennisnet.nl/tools/waardenwijzer/">öffentlichen Werten im Bildungswesen</a> (Autonomie, Gerechtigkeit und Menschlichkeit) entspricht.</p>
@@ -3626,9 +3629,9 @@ const I18N = {
             <li><strong>Complete overview:</strong> the coordinator's overview shows the complete picture, which you can present filtered per unit or supplier, or print as a report.</li>
         </ol>
         <h3>Weights</h3>
-        <p>Each question has a default weight (2 or 3). The weight determines how much influence a question has <strong>within its dimension and question type</strong>. For example: if you set question 15 to weight 5 and question 16 to weight 1, question 15 counts five times as heavily in the mitigation score of Autonomy. There are two levels. Your <strong>organisation's weights</strong> are set in your own profile ("Profile" button, Weights tab) and apply to all applications with that profile. Per application you can still deviate with the "Weights" button in the assessment. In the assessment the weight is only shown where it differs from the PVS model. Only adjust weights in consultation within your organisation or sector, so scores stay comparable.</p>
+        <p>Each question has a default weight (2 or 3). The weight determines how much influence a question has <strong>within its dimension and question type</strong>. For example: if you set question 15 to weight 5 and question 16 to weight 1, question 15 counts five times as heavily in the mitigation score of Autonomy. There are two levels. Your <strong>organisation's weights</strong> are set in your own profile ("Profile" button, Weights tab) and apply to all applications with that profile. Per application you can still deviate with the "Weights" button in the assessment. In the assessment the weight is only shown where it differs from the SIVON model. Only adjust weights in consultation within your organisation or sector, so scores stay comparable.</p>
         <h3>Profiles</h3>
-        <p>A <strong>profile</strong> sets how your organisation uses the PVS: the <strong>weights</strong> and, if needed, <strong>own texts</strong> for questions (title, question, rubrics and guidance). The default profile is the PVS model as it is and is fixed, so scores stay comparable. The numbers, question types, the scale and the calculation are the same for everyone.</p>
+        <p>A <strong>profile</strong> sets how your organisation uses the PVS: the <strong>weights</strong> and, if needed, <strong>own texts</strong> for questions (title, question, rubrics and guidance). The default profile is the SIVON model as it is and is fixed, so scores stay comparable. The numbers, question types, the scale and the calculation are the same for everyone.</p>
         <ul>
             <li><strong>Creating your own profile:</strong> via the "Profile" button. Your first own profile becomes the profile for new assessments, and the tool asks whether existing applications may use it too. At the top of each assessment you see and switch the profile.</li>
             <li><strong>Own texts:</strong> in the Texts tab, or with the pencil next to a question in an assessment. An empty field uses the default text.</li>
@@ -4146,7 +4149,7 @@ const I18N = {
       "demoRemoveConfirm": "Remove the {n} sample applications? Also if you have edited them. Your own applications stay, as do units and suppliers you use yourself.",
       "demoRemoved": "{n} sample applications removed.",
       "demoSub": "Fictitious school board to explore the tool",
-      "demoUnits": ["School board office", "Primary school De Linde", "Primary school Het Anker", "Secondary school Het Baken", "IT Services", "IT Service"],
+      "demoUnits": ["School board office", "Primary school De Linde", "Primary school Het Anker", "IT Services", "IT Service"],
       "demoVendors": ["Vendor Alfa", "Vendor Beta", "Vendor Gamma", "Vendor Kappa", "Vendor Omega", "Cooperative Delta", "Vendor Sigma", "Self-hosted", "Vendor Alfa Ltd"],
       "dimensions": "Dimensions",
       "doImport": "Import",
@@ -4293,7 +4296,7 @@ const I18N = {
       "mergeWith": "Merge with",
       "mixText": "Scores are therefore not fully comparable.",
       "mixTitle": "Note: your overview contains different profiles.",
-      "modelIs": "PVS model {w}",
+      "modelIs": "SIVON model {w}",
       "movedToTrash": "{n} application(s) moved to the trash",
       "nApps": "{n} application(s)",
       "nDeviating": "{n} deviating",
@@ -4372,9 +4375,9 @@ const I18N = {
       "pfLeverTopApps": "Most to gain at",
       "pfOthers": "Other profiles ({n})",
       "pfPartTexts": "Own texts for questions (optional)",
-      "pfPartWModel": "Weights of the PVS model",
+      "pfPartWModel": "Weights of the SIVON model",
       "pfSharedToast": "Profile file downloaded. Send it to your colleagues: they choose Import and then use it as their active profile.",
-      "pfStdLocked": "The default profile is fixed: the texts and weights of the PVS model. This keeps scores comparable. Want to adapt something for your organisation? Create your own profile.",
+      "pfStdLocked": "The default profile is fixed: the texts and weights of the SIVON model. This keeps scores comparable. Want to adapt something for your organisation? Create your own profile.",
       "pfT": "Own texts: {n}",
       "pfTextsIntro": "Adapt the texts of questions to your organisation, for example to use your own terms. An empty field uses the default text. The numbers, question types, the scale and the calculation stay the same for everyone.",
       "pfUse": "Use for new assessments",
@@ -4389,7 +4392,7 @@ const I18N = {
       "profile": "Profile",
       "profileSaved": "Profile \"{name}\" saved.",
       "profilesBtn": "Profile",
-      "profilesIntroHtml": "A <strong>profile</strong> sets how your organisation uses the PVS: the <strong>weights</strong> of the questions and, if needed, <strong>own texts</strong> for questions. The default profile is the PVS model as it is; it is fixed, so scores stay comparable.",
+      "profilesIntroHtml": "A <strong>profile</strong> sets how your organisation uses the PVS: the <strong>weights</strong> of the questions and, if needed, <strong>own texts</strong> for questions. The default profile is the SIVON model as it is; it is fixed, so scores stay comparable.",
       "profilesShareHtml": "<strong>Assessing together?</strong> A profile is stored in your own browser. Share it via <em>Share</em> with everyone involved. A profile is also included automatically in every JSON export. Colleagues choose <em>Import</em> (or <em>Import profile</em> below); the shared profile then immediately becomes their active profile.",
       "profilesTitle": "Profile",
       "profileVersionChanged": "Assessed with version {v}; the profile is now version {cur}.",
@@ -4480,16 +4483,16 @@ const I18N = {
       "weightsModalDimensionLabel": "Dimension",
       "weightsModalResetBtn": "Reset to defaults",
       "weightsModalResetConfirmation": "Are you sure you want to reset all weights to the default values?",
-      "weightsModalTipHtml": "<strong>What are weights?</strong> Weights determine how much influence each question has within its dimension. Default weights are derived from the PVS model. Only adjust weights in consultation with your organisation or sector, otherwise results become incomparable.",
+      "weightsModalTipHtml": "<strong>What are weights?</strong> Weights determine how much influence each question has within its dimension. Default weights are derived from the SIVON model. Only adjust weights in consultation with your organisation or sector, otherwise results become incomparable.",
       "welcomeModalBtn": "Let's get started",
       "welcomeModalTitle": "Welcome",
-      "wgtTip": "Weight {w} (PVS model: {m})",
-      "whBackToModel": "Back to PVS model",
-      "whChanged": "{n} {n|question differs|questions differ} from the PVS model",
+      "wgtTip": "Weight {w} (SIVON model: {m})",
+      "whBackToModel": "Back to SIVON model",
+      "whChanged": "{n} {n|question differs|questions differ} from the SIVON model",
       "whIntroHtml": "Each question counts within its dimension with a weight from 1 to 5. The weights here apply to <strong>all applications with this profile</strong>, and therefore to your whole organisation. Per application you can still deviate with the Weights button in the assessment.",
       "whOwnSub": "These applications have their own weights on top of the default weights above.",
       "whOwnTitle": "Applications with their own deviation",
-      "wModel": "PVS model"
+      "wModel": "SIVON model"
     },
     "welcome": `
       <p>Welcome to the Public Values Scan (PVS), a tool that helps organisations assess to what extent their application landscape meets the <a href="https://www.kennisnet.nl/tools/waardenwijzer/">public values in education</a> (autonomy, justice, and humanity).</p>
@@ -4658,9 +4661,9 @@ const I18N = {
             <li><strong>Visión completa:</strong> la vista general del coordinador muestra la imagen completa, que puedes presentar filtrada por unidad o proveedor, o imprimir como informe.</li>
         </ol>
         <h3>Pesos</h3>
-        <p>Cada pregunta tiene un peso predeterminado (2 o 3). El peso determina cuánta influencia tiene una pregunta <strong>dentro de su dimensión y su tipo de pregunta</strong>. Por ejemplo: si estableces la pregunta 15 en peso 5 y la pregunta 16 en peso 1, la pregunta 15 cuenta cinco veces más en la puntuación de mitigación de Autonomía. Hay dos niveles. Los <strong>pesos de tu organización</strong> se definen en tu propio perfil (botón "Perfil", pestaña Pesos) y se aplican a todas las aplicaciones con ese perfil. Por aplicación aún puedes desviarte con el botón "Pesos" de la evaluación. En la evaluación, el peso solo se muestra donde difiere del modelo PVS. Ajusta los pesos solo en consulta dentro de tu organización o sector, para que las puntuaciones sigan siendo comparables.</p>
+        <p>Cada pregunta tiene un peso predeterminado (2 o 3). El peso determina cuánta influencia tiene una pregunta <strong>dentro de su dimensión y su tipo de pregunta</strong>. Por ejemplo: si estableces la pregunta 15 en peso 5 y la pregunta 16 en peso 1, la pregunta 15 cuenta cinco veces más en la puntuación de mitigación de Autonomía. Hay dos niveles. Los <strong>pesos de tu organización</strong> se definen en tu propio perfil (botón "Perfil", pestaña Pesos) y se aplican a todas las aplicaciones con ese perfil. Por aplicación aún puedes desviarte con el botón "Pesos" de la evaluación. En la evaluación, el peso solo se muestra donde difiere del modelo SIVON. Ajusta los pesos solo en consulta dentro de tu organización o sector, para que las puntuaciones sigan siendo comparables.</p>
         <h3>Perfiles</h3>
-        <p>Un <strong>perfil</strong> define cómo usa tu organización el PVS: los <strong>pesos</strong> y, si hace falta, <strong>textos propios</strong> para las preguntas (título, pregunta, rúbricas y orientación). El perfil predeterminado es el modelo PVS tal cual y es fijo, para que las puntuaciones sigan siendo comparables. Los números, los tipos de pregunta, la escala y el cálculo son iguales para todos.</p>
+        <p>Un <strong>perfil</strong> define cómo usa tu organización el PVS: los <strong>pesos</strong> y, si hace falta, <strong>textos propios</strong> para las preguntas (título, pregunta, rúbricas y orientación). El perfil predeterminado es el modelo SIVON tal cual y es fijo, para que las puntuaciones sigan siendo comparables. Los números, los tipos de pregunta, la escala y el cálculo son iguales para todos.</p>
         <ul>
             <li><strong>Crear un perfil propio:</strong> con el botón "Perfil". Tu primer perfil propio pasa a ser el perfil para nuevas evaluaciones, y la herramienta pregunta si las aplicaciones existentes también pueden usarlo. En la parte superior de cada evaluación ves y cambias el perfil.</li>
             <li><strong>Textos propios:</strong> en la pestaña Textos, o con el lápiz junto a una pregunta en una evaluación. Un campo vacío usa el texto predeterminado.</li>
@@ -5322,7 +5325,7 @@ const I18N = {
       "mergeWith": "Fusionar con",
       "mixText": "Por tanto, las puntuaciones no son del todo comparables.",
       "mixTitle": "Atención: tu vista general contiene distintos perfiles.",
-      "modelIs": "modelo PVS {w}",
+      "modelIs": "modelo SIVON {w}",
       "movedToTrash": "{n} aplicación(es) movida(s) a la papelera",
       "nApps": "{n} aplicación(es)",
       "nDeviating": "{n} distintos",
@@ -5401,9 +5404,9 @@ const I18N = {
       "pfLeverTopApps": "Mayor ganancia en",
       "pfOthers": "Otros perfiles ({n})",
       "pfPartTexts": "Textos propios para preguntas (opcional)",
-      "pfPartWModel": "Pesos del modelo PVS",
+      "pfPartWModel": "Pesos del modelo SIVON",
       "pfSharedToast": "Archivo de perfil descargado. Envíalo a tus colegas: eligen Importar y luego lo usan como perfil activo.",
-      "pfStdLocked": "El perfil predeterminado es fijo: los textos y los pesos del modelo PVS. Así las puntuaciones siguen siendo comparables. ¿Quieres adaptar algo para tu organización? Crea un perfil propio.",
+      "pfStdLocked": "El perfil predeterminado es fijo: los textos y los pesos del modelo SIVON. Así las puntuaciones siguen siendo comparables. ¿Quieres adaptar algo para tu organización? Crea un perfil propio.",
       "pfT": "Textos propios: {n}",
       "pfTextsIntro": "Adapta los textos de las preguntas a tu organización, por ejemplo para usar tus propios términos. Un campo vacío usa el texto predeterminado. Los números, los tipos de pregunta, la escala y el cálculo son iguales para todos.",
       "pfUse": "Usar para nuevas evaluaciones",
@@ -5418,7 +5421,7 @@ const I18N = {
       "profile": "Perfil",
       "profileSaved": "Perfil \"{name}\" guardado.",
       "profilesBtn": "Perfil",
-      "profilesIntroHtml": "Un <strong>perfil</strong> define cómo usa tu organización el PVS: los <strong>pesos</strong> de las preguntas y, si hace falta, <strong>textos propios</strong> para las preguntas. El perfil predeterminado es el modelo PVS tal cual; es fijo, para que las puntuaciones sigan siendo comparables.",
+      "profilesIntroHtml": "Un <strong>perfil</strong> define cómo usa tu organización el PVS: los <strong>pesos</strong> de las preguntas y, si hace falta, <strong>textos propios</strong> para las preguntas. El perfil predeterminado es el modelo SIVON tal cual; es fijo, para que las puntuaciones sigan siendo comparables.",
       "profilesShareHtml": "<strong>¿Evalúas en equipo?</strong> Un perfil se guarda en tu propio navegador. Compártelo mediante <em>Compartir</em> con todas las personas implicadas. Además, el perfil se incluye automáticamente en cada exportación JSON. Tus colegas eligen <em>Importar</em> (o <em>Importar perfil</em> abajo); el perfil compartido pasa a ser su perfil activo de inmediato.",
       "profilesTitle": "Perfil",
       "profileVersionChanged": "Evaluada con la versión {v}; el perfil está ahora en la versión {cur}.",
@@ -5509,16 +5512,16 @@ const I18N = {
       "weightsModalDimensionLabel": "Dimensión",
       "weightsModalResetBtn": "Restablecer predeterminados",
       "weightsModalResetConfirmation": "¿Estás seguro de que quieres restablecer todos los pesos a los valores predeterminados?",
-      "weightsModalTipHtml": "<strong>¿Qué son los pesos?</strong> Los pesos determinan cuánta influencia tiene cada pregunta dentro de su dimensión. Los pesos predeterminados se derivan del modelo PVS. Solo ajusta los pesos en consulta con tu organización o sector, de lo contrario los resultados no serán comparables.",
+      "weightsModalTipHtml": "<strong>¿Qué son los pesos?</strong> Los pesos determinan cuánta influencia tiene cada pregunta dentro de su dimensión. Los pesos predeterminados se derivan del modelo SIVON. Solo ajusta los pesos en consulta con tu organización o sector, de lo contrario los resultados no serán comparables.",
       "welcomeModalBtn": "¡Empecemos!",
       "welcomeModalTitle": "Bienvenido",
-      "wgtTip": "Ponderación {w} (modelo PVS: {m})",
-      "whBackToModel": "Volver al modelo PVS",
-      "whChanged": "{n} {n|pregunta difiere|preguntas difieren} del modelo PVS",
+      "wgtTip": "Ponderación {w} (modelo SIVON: {m})",
+      "whBackToModel": "Volver al modelo SIVON",
+      "whChanged": "{n} {n|pregunta difiere|preguntas difieren} del modelo SIVON",
       "whIntroHtml": "Cada pregunta cuenta dentro de su dimensión con un peso de 1 a 5. Los pesos de aquí se aplican a <strong>todas las aplicaciones con este perfil</strong> y, por tanto, a toda tu organización. Por aplicación aún puedes desviarte con el botón Pesos de la evaluación.",
       "whOwnSub": "Estas aplicaciones tienen pesos propios además de los pesos predeterminados de arriba.",
       "whOwnTitle": "Aplicaciones con desviación propia",
-      "wModel": "Modelo PVS"
+      "wModel": "Modelo SIVON"
     },
     "welcome": `
       <p>Bienvenido al Análisis de valores públicos (PVS), una herramienta que ayuda a las organizaciones a evaluar en qué medida su panorama de aplicaciones cumple con los <a href="https://www.kennisnet.nl/tools/waardenwijzer/">valores públicos en educación</a> (autonomía, justicia y humanidad).</p>
@@ -5687,9 +5690,9 @@ const I18N = {
             <li><strong>Vue complète :</strong> la vue d'ensemble du coordinateur montre le tableau complet, que vous pouvez présenter filtré par unité ou par fournisseur, ou imprimer sous forme de rapport.</li>
         </ol>
         <h3>Pondérations</h3>
-        <p>Chaque question a une pondération par défaut (2 ou 3). La pondération détermine l'influence d'une question <strong>au sein de sa dimension et de son type de question</strong>. Par exemple : si vous fixez la question 15 à une pondération de 5 et la question 16 à une pondération de 1, la question 15 compte cinq fois plus dans le score d'atténuation d'Autonomie. Il y a deux niveaux. Les <strong>pondérations de votre organisation</strong> se définissent dans votre propre profil (bouton « Profil », onglet Pondérations) et s'appliquent à toutes les applications ayant ce profil. Par application, vous pouvez encore vous en écarter avec le bouton « Pondérations » de l'évaluation. Dans l'évaluation, la pondération n'est affichée que là où elle diffère du modèle PVS. N'ajustez les pondérations qu'en concertation au sein de votre organisation ou secteur, afin que les scores restent comparables.</p>
+        <p>Chaque question a une pondération par défaut (2 ou 3). La pondération détermine l'influence d'une question <strong>au sein de sa dimension et de son type de question</strong>. Par exemple : si vous fixez la question 15 à une pondération de 5 et la question 16 à une pondération de 1, la question 15 compte cinq fois plus dans le score d'atténuation d'Autonomie. Il y a deux niveaux. Les <strong>pondérations de votre organisation</strong> se définissent dans votre propre profil (bouton « Profil », onglet Pondérations) et s'appliquent à toutes les applications ayant ce profil. Par application, vous pouvez encore vous en écarter avec le bouton « Pondérations » de l'évaluation. Dans l'évaluation, la pondération n'est affichée que là où elle diffère du modèle SIVON. N'ajustez les pondérations qu'en concertation au sein de votre organisation ou secteur, afin que les scores restent comparables.</p>
         <h3>Profils</h3>
-        <p>Un <strong>profil</strong> définit la manière dont votre organisation utilise le PVS : les <strong>pondérations</strong> et, si nécessaire, des <strong>textes propres</strong> pour les questions (titre, question, rubriques et orientation). Le profil par défaut est le modèle PVS tel quel et il est figé, afin que les scores restent comparables. Les numéros, les types de question, l'échelle et le calcul sont identiques pour tous.</p>
+        <p>Un <strong>profil</strong> définit la manière dont votre organisation utilise le PVS : les <strong>pondérations</strong> et, si nécessaire, des <strong>textes propres</strong> pour les questions (titre, question, rubriques et orientation). Le profil par défaut est le modèle SIVON tel quel et il est figé, afin que les scores restent comparables. Les numéros, les types de question, l'échelle et le calcul sont identiques pour tous.</p>
         <ul>
             <li><strong>Créer votre propre profil :</strong> via le bouton « Profil ». Votre premier profil propre devient le profil des nouvelles évaluations, et l'outil demande si les applications existantes peuvent également l'utiliser. En haut de chaque évaluation, vous voyez et changez le profil.</li>
             <li><strong>Textes propres :</strong> dans l'onglet Textes, ou avec le crayon à côté d'une question dans une évaluation. Un champ vide utilise le texte par défaut.</li>
@@ -6351,7 +6354,7 @@ const I18N = {
       "mergeWith": "Fusionner avec",
       "mixText": "Les scores ne sont donc pas entièrement comparables.",
       "mixTitle": "Attention : votre vue d'ensemble contient différents profils.",
-      "modelIs": "modèle PVS {w}",
+      "modelIs": "modèle SIVON {w}",
       "movedToTrash": "{n} application(s) mise(s) à la corbeille",
       "nApps": "{n} application(s)",
       "nDeviating": "{n} divergente(s)",
@@ -6430,9 +6433,9 @@ const I18N = {
       "pfLeverTopApps": "Plus fort gain pour",
       "pfOthers": "Autres profils ({n})",
       "pfPartTexts": "Textes propres pour les questions (facultatif)",
-      "pfPartWModel": "Pondérations du modèle PVS",
+      "pfPartWModel": "Pondérations du modèle SIVON",
       "pfSharedToast": "Fichier de profil téléchargé. Envoyez-le à vos collègues : ils choisissent Importer et l’utilisent ensuite comme profil actif.",
-      "pfStdLocked": "Le profil par défaut est figé : les textes et les pondérations du modèle PVS. Les scores restent ainsi comparables. Vous souhaitez adapter quelque chose pour votre organisation ? Créez votre propre profil.",
+      "pfStdLocked": "Le profil par défaut est figé : les textes et les pondérations du modèle SIVON. Les scores restent ainsi comparables. Vous souhaitez adapter quelque chose pour votre organisation ? Créez votre propre profil.",
       "pfT": "Textes propres : {n}",
       "pfTextsIntro": "Adaptez les textes des questions à votre organisation, par exemple pour utiliser vos propres termes. Un champ vide utilise le texte par défaut. Les numéros, les types de question, l'échelle et le calcul restent identiques pour tous.",
       "pfUse": "Utiliser pour les nouvelles évaluations",
@@ -6447,7 +6450,7 @@ const I18N = {
       "profile": "Profil",
       "profileSaved": "Profil « {name} » enregistré.",
       "profilesBtn": "Profil",
-      "profilesIntroHtml": "Un <strong>profil</strong> définit la manière dont votre organisation utilise le PVS : les <strong>pondérations</strong> des questions et, si nécessaire, des <strong>textes propres</strong> pour les questions. Le profil par défaut est le modèle PVS tel quel ; il est figé, afin que les scores restent comparables.",
+      "profilesIntroHtml": "Un <strong>profil</strong> définit la manière dont votre organisation utilise le PVS : les <strong>pondérations</strong> des questions et, si nécessaire, des <strong>textes propres</strong> pour les questions. Le profil par défaut est le modèle SIVON tel quel ; il est figé, afin que les scores restent comparables.",
       "profilesShareHtml": "<strong>Vous évaluez ensemble ?</strong> Un profil est stocké dans votre propre navigateur. Partagez-le via <em>Partager</em> avec toutes les personnes concernées. Un profil est aussi inclus automatiquement dans chaque export JSON. Vos collègues choisissent <em>Importer</em> (ou <em>Importer un profil</em> ci-dessous) ; le profil partagé devient alors immédiatement leur profil actif.",
       "profilesTitle": "Profil",
       "profileVersionChanged": "Évaluée avec la version {v} ; le profil est maintenant en version {cur}.",
@@ -6538,16 +6541,16 @@ const I18N = {
       "weightsModalDimensionLabel": "Dimension",
       "weightsModalResetBtn": "Réinitialiser par défaut",
       "weightsModalResetConfirmation": "Êtes-vous sûr de vouloir réinitialiser toutes les pondérations aux valeurs par défaut ?",
-      "weightsModalTipHtml": "<strong>Que sont les pondérations ?</strong> Les pondérations déterminent l'influence de chaque question au sein de sa dimension. Les pondérations par défaut sont dérivées du modèle PVS. N'ajustez les pondérations qu'en concertation avec votre organisation ou secteur, sinon les résultats deviennent incomparables.",
+      "weightsModalTipHtml": "<strong>Que sont les pondérations ?</strong> Les pondérations déterminent l'influence de chaque question au sein de sa dimension. Les pondérations par défaut sont dérivées du modèle SIVON. N'ajustez les pondérations qu'en concertation avec votre organisation ou secteur, sinon les résultats deviennent incomparables.",
       "welcomeModalBtn": "C'est parti",
       "welcomeModalTitle": "Bienvenue",
-      "wgtTip": "Pondération {w} (modèle PVS : {m})",
-      "whBackToModel": "Revenir au modèle PVS",
-      "whChanged": "{n} {n|question diffère|questions diffèrent} du modèle PVS",
+      "wgtTip": "Pondération {w} (modèle SIVON : {m})",
+      "whBackToModel": "Revenir au modèle SIVON",
+      "whChanged": "{n} {n|question diffère|questions diffèrent} du modèle SIVON",
       "whIntroHtml": "Chaque question compte au sein de sa dimension avec une pondération de 1 à 5. Les pondérations définies ici s'appliquent à <strong>toutes les applications ayant ce profil</strong>, et donc à toute votre organisation. Par application, vous pouvez encore vous en écarter avec le bouton Pondérations de l'évaluation.",
       "whOwnSub": "Ces applications ont leurs propres pondérations en plus des pondérations par défaut ci-dessus.",
       "whOwnTitle": "Applications avec leurs propres écarts",
-      "wModel": "Modèle PVS"
+      "wModel": "Modèle SIVON"
     },
     "welcome": `
       <p>Bienvenue dans le Scan des valeurs publiques (PVS), un outil qui aide les organisations à évaluer dans quelle mesure leur parc applicatif répond aux <a href="https://www.kennisnet.nl/tools/waardenwijzer/">valeurs publiques dans l'éducation</a> (autonomie, justice et humanité).</p>
@@ -6716,9 +6719,9 @@ const I18N = {
             <li><strong>Quadro completo:</strong> la panoramica del coordinatore mostra il quadro completo, che puoi presentare filtrato per unità o fornitore, oppure stampare come rapporto.</li>
         </ol>
         <h3>Pesi</h3>
-        <p>Ogni domanda ha un peso predefinito (2 o 3). Il peso determina l'influenza di una domanda <strong>all'interno della sua dimensione e del suo tipo di domanda</strong>. Ad esempio: se imposti la domanda 15 a peso 5 e la domanda 16 a peso 1, la domanda 15 conta cinque volte di più nel punteggio di attenuazione di Autonomia. Ci sono due livelli. I <strong>pesi della tua organizzazione</strong> si impostano nel tuo profilo (pulsante "Profilo", scheda Pesi) e valgono per tutte le applicazioni con quel profilo. Per singola applicazione puoi comunque discostarti con il pulsante "Pesi" nella valutazione. Nella valutazione il peso viene mostrato solo dove differisce dal modello PVS. Regola i pesi solo in consultazione all'interno della tua organizzazione o del tuo settore, così i punteggi restano confrontabili.</p>
+        <p>Ogni domanda ha un peso predefinito (2 o 3). Il peso determina l'influenza di una domanda <strong>all'interno della sua dimensione e del suo tipo di domanda</strong>. Ad esempio: se imposti la domanda 15 a peso 5 e la domanda 16 a peso 1, la domanda 15 conta cinque volte di più nel punteggio di attenuazione di Autonomia. Ci sono due livelli. I <strong>pesi della tua organizzazione</strong> si impostano nel tuo profilo (pulsante "Profilo", scheda Pesi) e valgono per tutte le applicazioni con quel profilo. Per singola applicazione puoi comunque discostarti con il pulsante "Pesi" nella valutazione. Nella valutazione il peso viene mostrato solo dove differisce dal modello SIVON. Regola i pesi solo in consultazione all'interno della tua organizzazione o del tuo settore, così i punteggi restano confrontabili.</p>
         <h3>Profili</h3>
-        <p>Un <strong>profilo</strong> stabilisce come la tua organizzazione usa la PVS: i <strong>pesi</strong> e, se necessario, <strong>testi propri</strong> per le domande (titolo, domanda, rubriche e indicazioni). Il profilo predefinito è il modello PVS così com'è ed è fisso, così i punteggi restano confrontabili. I numeri, i tipi di domanda, la scala e il calcolo sono uguali per tutti.</p>
+        <p>Un <strong>profilo</strong> stabilisce come la tua organizzazione usa la PVS: i <strong>pesi</strong> e, se necessario, <strong>testi propri</strong> per le domande (titolo, domanda, rubriche e indicazioni). Il profilo predefinito è il modello SIVON così com'è ed è fisso, così i punteggi restano confrontabili. I numeri, i tipi di domanda, la scala e il calcolo sono uguali per tutti.</p>
         <ul>
             <li><strong>Creare un profilo proprio:</strong> tramite il pulsante "Profilo". Il tuo primo profilo proprio diventa il profilo per le nuove valutazioni, e lo strumento chiede se anche le applicazioni esistenti possono usarlo. In cima a ogni valutazione vedi e cambi il profilo.</li>
             <li><strong>Testi propri:</strong> nella scheda Testi, oppure con la matita accanto a una domanda in una valutazione. Un campo vuoto usa il testo predefinito.</li>
@@ -7380,7 +7383,7 @@ const I18N = {
       "mergeWith": "Unisci con",
       "mixText": "I punteggi quindi non sono del tutto confrontabili.",
       "mixTitle": "Attenzione: la tua panoramica contiene profili diversi.",
-      "modelIs": "modello PVS {w}",
+      "modelIs": "modello SIVON {w}",
       "movedToTrash": "{n} applicazione/i spostata/e nel cestino",
       "nApps": "{n} applicazione/i",
       "nDeviating": "{n} diversi",
@@ -7459,9 +7462,9 @@ const I18N = {
       "pfLeverTopApps": "Maggior guadagno per",
       "pfOthers": "Altri profili ({n})",
       "pfPartTexts": "Testi propri per le domande (facoltativo)",
-      "pfPartWModel": "Pesi del modello PVS",
+      "pfPartWModel": "Pesi del modello SIVON",
       "pfSharedToast": "File del profilo scaricato. Invialo ai colleghi: scelgono Importa e poi lo usano come profilo attivo.",
-      "pfStdLocked": "Il profilo predefinito è fisso: i testi e i pesi del modello PVS. Così i punteggi restano confrontabili. Vuoi adattare qualcosa per la tua organizzazione? Crea un profilo proprio.",
+      "pfStdLocked": "Il profilo predefinito è fisso: i testi e i pesi del modello SIVON. Così i punteggi restano confrontabili. Vuoi adattare qualcosa per la tua organizzazione? Crea un profilo proprio.",
       "pfT": "Testi propri: {n}",
       "pfTextsIntro": "Adatta i testi delle domande alla tua organizzazione, ad esempio per usare i tuoi termini. Un campo vuoto usa il testo predefinito. I numeri, i tipi di domanda, la scala e il calcolo restano uguali per tutti.",
       "pfUse": "Usa per le nuove valutazioni",
@@ -7476,7 +7479,7 @@ const I18N = {
       "profile": "Profilo",
       "profileSaved": "Profilo \"{name}\" salvato.",
       "profilesBtn": "Profilo",
-      "profilesIntroHtml": "Un <strong>profilo</strong> stabilisce come la tua organizzazione usa la PVS: i <strong>pesi</strong> delle domande e, se necessario, <strong>testi propri</strong> per le domande. Il profilo predefinito è il modello PVS così com'è; è fisso, così i punteggi restano confrontabili.",
+      "profilesIntroHtml": "Un <strong>profilo</strong> stabilisce come la tua organizzazione usa la PVS: i <strong>pesi</strong> delle domande e, se necessario, <strong>testi propri</strong> per le domande. Il profilo predefinito è il modello SIVON così com'è; è fisso, così i punteggi restano confrontabili.",
       "profilesShareHtml": "<strong>Valutate insieme?</strong> Un profilo è salvato nel tuo browser. Condividilo tramite <em>Condividi</em> con tutte le persone coinvolte. Un profilo è inoltre incluso automaticamente in ogni esportazione JSON. I colleghi scelgono <em>Importa</em> (o <em>Importa profilo</em> qui sotto); il profilo condiviso diventa subito il loro profilo attivo.",
       "profilesTitle": "Profilo",
       "profileVersionChanged": "Valutata con la versione {v}; il profilo è ora alla versione {cur}.",
@@ -7567,16 +7570,16 @@ const I18N = {
       "weightsModalDimensionLabel": "Dimensione",
       "weightsModalResetBtn": "Ripristina predefiniti",
       "weightsModalResetConfirmation": "Sei sicuro di voler ripristinare tutti i pesi ai valori predefiniti?",
-      "weightsModalTipHtml": "<strong>Cosa sono i pesi?</strong> I pesi determinano quanta influenza ha ogni domanda all'interno della sua dimensione. I pesi predefiniti sono derivati dal modello PVS. Regola i pesi solo in consultazione con la tua organizzazione o settore, altrimenti i risultati diventano incomparabili.",
+      "weightsModalTipHtml": "<strong>Cosa sono i pesi?</strong> I pesi determinano quanta influenza ha ogni domanda all'interno della sua dimensione. I pesi predefiniti sono derivati dal modello SIVON. Regola i pesi solo in consultazione con la tua organizzazione o settore, altrimenti i risultati diventano incomparabili.",
       "welcomeModalBtn": "Iniziamo",
       "welcomeModalTitle": "Benvenuto",
-      "wgtTip": "Ponderazione {w} (modello PVS: {m})",
-      "whBackToModel": "Torna al modello PVS",
-      "whChanged": "{n} {n|domanda diversa|domande diverse} dal modello PVS",
+      "wgtTip": "Ponderazione {w} (modello SIVON: {m})",
+      "whBackToModel": "Torna al modello SIVON",
+      "whChanged": "{n} {n|domanda diversa|domande diverse} dal modello SIVON",
       "whIntroHtml": "Ogni domanda conta all'interno della sua dimensione con un peso da 1 a 5. I pesi impostati qui valgono per <strong>tutte le applicazioni con questo profilo</strong>, e quindi per tutta la tua organizzazione. Per singola applicazione puoi comunque discostarti con il pulsante Pesi nella valutazione.",
       "whOwnSub": "Queste applicazioni hanno pesi propri in aggiunta ai pesi predefiniti sopra.",
       "whOwnTitle": "Applicazioni con scostamento proprio",
-      "wModel": "Modello PVS"
+      "wModel": "Modello SIVON"
     },
     "welcome": `
       <p>Benvenuto nella Scansione dei valori pubblici (PVS), uno strumento che aiuta le organizzazioni a valutare in che misura il loro panorama applicativo soddisfa i <a href="https://www.kennisnet.nl/tools/waardenwijzer/">valori pubblici nell'istruzione</a> (autonomia, giustizia e umanità).</p>
@@ -7745,9 +7748,9 @@ const I18N = {
             <li><strong>Totaaloverzicht:</strong> het overzicht van de coördinator laat het complete beeld zien, dat je gefilterd per onderdeel of leverancier kunt presenteren of als rapport kunt afdrukken.</li>
         </ol>
         <h3>Wegingen</h3>
-        <p>Elke vraag heeft een standaardweging (2 of 3). De weging bepaalt hoeveel invloed een vraag heeft <strong>binnen zijn dimensie en vraagtype</strong>. Zet je bijvoorbeeld vraag 15 op weging 5 en vraag 16 op weging 1, dan telt vraag 15 vijf keer zo zwaar mee in de mitigatiescore van Autonomie. Er zijn twee niveaus. De <strong>weging van je organisatie</strong> stel je in je eigen profiel in (knop "Profiel", tabblad Weging); die geldt voor alle applicaties met dat profiel. Per applicatie kun je daar nog van afwijken met de knop "Weging" in het assessment. In het assessment staat de weging alleen bij vragen waar die afwijkt van het PVS-model. Pas wegingen alleen aan in overleg binnen je organisatie of sector, zodat scores vergelijkbaar blijven.</p>
+        <p>Elke vraag heeft een standaardweging (2 of 3). De weging bepaalt hoeveel invloed een vraag heeft <strong>binnen zijn dimensie en vraagtype</strong>. Zet je bijvoorbeeld vraag 15 op weging 5 en vraag 16 op weging 1, dan telt vraag 15 vijf keer zo zwaar mee in de mitigatiescore van Autonomie. Er zijn twee niveaus. De <strong>weging van je organisatie</strong> stel je in je eigen profiel in (knop "Profiel", tabblad Weging); die geldt voor alle applicaties met dat profiel. Per applicatie kun je daar nog van afwijken met de knop "Weging" in het assessment. In het assessment staat de weging alleen bij vragen waar die afwijkt van het SIVON-model. Pas wegingen alleen aan in overleg binnen je organisatie of sector, zodat scores vergelijkbaar blijven.</p>
         <h3>Profielen</h3>
-        <p>Een <strong>profiel</strong> legt vast hoe jouw organisatie de PVS gebruikt: de <strong>weging</strong> en zo nodig <strong>eigen teksten</strong> voor vragen (titel, vraag, rubrieken en toelichting). Het standaardprofiel is het PVS-model zoals het is en ligt vast, zodat scores vergelijkbaar blijven. De nummers, vraagtypes, de schaal en de berekening zijn voor iedereen gelijk.</p>
+        <p>Een <strong>profiel</strong> legt vast hoe jouw organisatie de PVS gebruikt: de <strong>weging</strong> en zo nodig <strong>eigen teksten</strong> voor vragen (titel, vraag, rubrieken en toelichting). Het standaardprofiel is het SIVON-model zoals het is en ligt vast, zodat scores vergelijkbaar blijven. De nummers, vraagtypes, de schaal en de berekening zijn voor iedereen gelijk.</p>
         <ul>
             <li><strong>Eigen profiel maken:</strong> via de knop "Profiel". Je eerste eigen profiel wordt het profiel voor nieuwe assessments, en de tool vraagt of bestaande applicaties het ook mogen gebruiken. Bovenaan elk assessment zie en wissel je het profiel.</li>
             <li><strong>Eigen teksten:</strong> in het tabblad Teksten, of met het pennetje bij een vraag in een assessment. Een leeg veld gebruikt de standaardtekst.</li>
@@ -8266,7 +8269,7 @@ const I18N = {
       "demoRemoveConfirm": "De {n} voorbeeldapplicaties verwijderen? Ook als je ze hebt aangepast. Je eigen applicaties blijven staan, net als onderdelen en leveranciers die je zelf gebruikt.",
       "demoRemoved": "{n} voorbeeldapplicaties verwijderd.",
       "demoSub": "Fictief schoolbestuur om de tool te verkennen",
-      "demoUnits": ["Bestuursbureau", "Basisschool De Linde", "Basisschool Het Anker", "College Het Baken", "ICT-diensten", "ICT-dienst"],
+      "demoUnits": ["Bestuursbureau", "Basisschool De Linde", "Basisschool Het Anker", "ICT-diensten", "ICT-dienst"],
       "demoVendors": ["Leverancier Alfa", "Leverancier Beta", "Leverancier Gamma", "Leverancier Kappa", "Leverancier Omega", "Coöperatie Delta", "Leverancier Sigma", "Zelf gehost", "Leverancier Alfa B.V."],
       "dimensions": "Dimensies",
       "doImport": "Importeren",
@@ -8412,7 +8415,7 @@ const I18N = {
       "mergeWith": "Samenvoegen met",
       "mixText": "Scores zijn daardoor niet volledig vergelijkbaar.",
       "mixTitle": "Let op: je overzicht bevat verschillende profielen.",
-      "modelIs": "PVS-model {w}",
+      "modelIs": "SIVON-model {w}",
       "movedToTrash": "{n} applicatie(s) naar de prullenbak verplaatst",
       "nApps": "{n} applicatie(s)",
       "nDeviating": "{n} afwijkend",
@@ -8491,9 +8494,9 @@ const I18N = {
       "pfLeverTopApps": "Meeste winst bij",
       "pfOthers": "Andere profielen ({n})",
       "pfPartTexts": "Eigen teksten voor vragen (optioneel)",
-      "pfPartWModel": "Weging van het PVS-model",
+      "pfPartWModel": "Weging van het SIVON-model",
       "pfSharedToast": "Profielbestand gedownload. Stuur het naar je collega's: zij kiezen Importeren en gebruiken het daarna als actief profiel.",
-      "pfStdLocked": "Het standaardprofiel ligt vast: de teksten en de weging van het PVS-model. Zo blijven scores vergelijkbaar. Wil je iets aanpassen voor jouw organisatie? Maak een eigen profiel.",
+      "pfStdLocked": "Het standaardprofiel ligt vast: de teksten en de weging van het SIVON-model. Zo blijven scores vergelijkbaar. Wil je iets aanpassen voor jouw organisatie? Maak een eigen profiel.",
       "pfT": "Eigen teksten: {n}",
       "pfTextsIntro": "Pas de teksten van vragen aan op jouw organisatie, bijvoorbeeld om je eigen termen te gebruiken. Een leeg veld gebruikt de standaardtekst. De nummers, vraagtypes, de schaal en de berekening blijven voor iedereen gelijk.",
       "pfUse": "Gebruik voor nieuwe assessments",
@@ -8508,7 +8511,7 @@ const I18N = {
       "profile": "Profiel",
       "profileSaved": "Profiel \"{name}\" opgeslagen.",
       "profilesBtn": "Profiel",
-      "profilesIntroHtml": "Een <strong>profiel</strong> legt vast hoe jouw organisatie de PVS gebruikt: de <strong>weging</strong> van de vragen en zo nodig <strong>eigen teksten</strong> voor vragen. Het standaardprofiel is het PVS-model zoals het is; het ligt vast, zodat scores vergelijkbaar blijven.",
+      "profilesIntroHtml": "Een <strong>profiel</strong> legt vast hoe jouw organisatie de PVS gebruikt: de <strong>weging</strong> van de vragen en zo nodig <strong>eigen teksten</strong> voor vragen. Het standaardprofiel is het SIVON-model zoals het is; het ligt vast, zodat scores vergelijkbaar blijven.",
       "profilesShareHtml": "<strong>Samen invullen?</strong> Een profiel staat in je eigen browser. Deel het via <em>Delen</em> met iedereen die meedoet. Een profiel gaat ook automatisch mee in elke JSON-export. Collega's kiezen <em>Importeren</em> (of <em>Profiel importeren</em> hieronder); het gedeelde profiel wordt dan meteen hun actieve profiel.",
       "profilesTitle": "Profiel",
       "profileVersionChanged": "Beoordeeld met versie {v}; het profiel is nu versie {cur}.",
@@ -8599,16 +8602,16 @@ const I18N = {
       "weightsModalDimensionLabel": "Dimensie",
       "weightsModalResetBtn": "Reset naar standaard",
       "weightsModalResetConfirmation": "Weet je zeker dat je alle wegingen wilt resetten naar standaard?",
-      "weightsModalTipHtml": "<strong>Wat zijn wegingen?</strong> De wegingen bepalen hoeveel invloed elke vraag heeft binnen zijn dimensie. Standaardwegingen zijn afgeleid van het PVS-model. Pas wegingen alleen aan in overleg met je organisatie of sector, anders worden resultaten onderling niet vergelijkbaar.",
+      "weightsModalTipHtml": "<strong>Wat zijn wegingen?</strong> De wegingen bepalen hoeveel invloed elke vraag heeft binnen zijn dimensie. Standaardwegingen zijn afgeleid van het SIVON-model. Pas wegingen alleen aan in overleg met je organisatie of sector, anders worden resultaten onderling niet vergelijkbaar.",
       "welcomeModalBtn": "Aan de slag",
       "welcomeModalTitle": "Welkom",
-      "wgtTip": "Weging {w} (PVS-model: {m})",
-      "whBackToModel": "Terug naar PVS-model",
-      "whChanged": "{n} {n|vraag wijkt|vragen wijken} af van het PVS-model",
+      "wgtTip": "Weging {w} (SIVON-model: {m})",
+      "whBackToModel": "Terug naar SIVON-model",
+      "whChanged": "{n} {n|vraag wijkt|vragen wijken} af van het SIVON-model",
       "whIntroHtml": "Elke vraag telt binnen zijn dimensie mee met een weging van 1 tot 5. De weging hier geldt voor <strong>alle applicaties met dit profiel</strong>, en dus voor je hele organisatie. Per applicatie kun je nog afwijken met de knop Weging in het assessment.",
       "whOwnSub": "Deze applicaties hebben een eigen weging bovenop de standaardweging hierboven.",
       "whOwnTitle": "Applicaties die zelf afwijken",
-      "wModel": "PVS-model"
+      "wModel": "SIVON-model"
     },
     "welcome": `
       <p>Welkom bij de Publieke Waarden Scan (PVS), een tool die organisaties helpt met het beoordelen in hoeverre hun applicatielandschap voldoet aan de <a href="https://www.kennisnet.nl/tools/waardenwijzer/">publieke waarden in het onderwijs</a> (autonomie,
@@ -8814,7 +8817,7 @@ function activeInds(mode) {
 
 // === PROFILES ===
 // A profile holds the weights of an organisation and optionally its own texts for indicators.
-// Without a profile (STD) the tool uses the texts and weights of the PVS model.
+// Without a profile (STD) the tool uses the texts and weights of the SIVON model.
 const STD = 'std';
 
 function profById(id) {
@@ -8850,7 +8853,7 @@ function hasOwnText(code, p) {
   return !!o && [o.title, o.q, o.h, ...(o.r || [])].some(nz);
 }
 
-// Weights: own weight of the application > weight of the profile > weight of the PVS model
+// Weights: own weight of the application > weight of the profile > weight of the SIVON model
 function profW(p, code) {
   const w = p?.weights?.[code];
   return (Number.isInteger(w) && w >= 1 && w <= 5) ? w : null;
@@ -11274,7 +11277,7 @@ function recalcApp(id) {
     });
     // A new application shows one line instead of empty score cards
     view.classList.toggle('no-scores', filled === 0);
-    // Show the weight only where it differs from the PVS model
+    // Show the weight only where it differs from the SIVON model
     for (const ind of INDICATORS) {
       const w = document.getElementById(`wv-${id}-${ind.code}`);
       if (w) w.classList.toggle('at-model', effW(app, ind, p) === ind.w);
@@ -12798,15 +12801,15 @@ function loadDemo() {
   const units = t('ui.demoUnits');
   const vendors = t('ui.demoVendors');
   const rows = [
-    [0, 'APP-001', 'A', 4, 7, {A:3,B:4,C:4,D:3,E:4}, 'full'],
-    [1, 'APP-002', 'A', 4, 5, {A:1,B:3,C:4,D:4,E:3}, 'full'],
-    [2, 'APP-003', 'B', 5, 0, {A:1,B:2,C:3,D:3,E:2}, 'full'],
+    [0, 'APP-001', 'A', 3, 7, {A:3,B:4,C:4,D:3,E:4}, 'full'],
+    [1, 'APP-002', 'A', 3, 5, {A:1,B:3,C:4,D:4,E:3}, 'full'],
+    [2, 'APP-003', 'B', 4, 0, {A:1,B:2,C:3,D:3,E:2}, 'full'],
     [3, 'APP-010', 'B', 0, 0, {A:1,B:2,C:3,D:2,E:2}, 'full'],
     [4, 'APP-020', 'C', 0, 1, {A:1,B:3,C:3,D:3,E:3}, 'full'],
     [5, 'APP-021', 'C', 1, 1, {A:2,B:3,C:3,D:3,E:3}, 'full'],
-    [6, 'APP-030', 'A', 3, 2, {A:2,B:4,C:4,D:4,E:4}, 'full'],
-    [7, 'APP-031', 'C', 3, 4, {A:2,B:2,C:2,D:3,E:2}, 'quick'],
-    [8, 'APP-032', 'B', 3, 6, {A:3,B:3,C:4,D:3,E:3}, 'full'],
+    [6, 'APP-030', 'A', 2, 2, {A:2,B:4,C:4,D:4,E:4}, 'full'],
+    [7, 'APP-031', 'C', 1, 4, {A:2,B:2,C:2,D:3,E:2}, 'quick'],
+    [8, 'APP-032', 'B', 2, 6, {A:3,B:3,C:4,D:3,E:3}, 'full'],
     [9, 'APP-040', 'A', 2, 8, {A:4,B:2,C:3,D:2,E:2}, 'quick'],
     [10, 'APP-050', 'B', 0, 3, {A:3,B:4,C:4,D:4,E:4}, 'full'],
     [11, 'APP-051', 'C', 0, 3, {A:2,B:3,C:3,D:3,E:3}, 'full']
