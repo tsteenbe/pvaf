@@ -4138,7 +4138,7 @@ const I18N = {
       "deleteItem": "Delete \"{a}\"?",
       "deleteItemUsed": "Delete \"{a}\"? This field will be cleared for {n} application(s).",
       "demoAlready": "The sample data is already loaded. You can remove it again via Import.",
-      "demoApps": ["Office suite (cloud)", "Email and calendar (cloud)", "Pupil tracking system", "Pupil administration", "Learning environment", "Digital assessment platform", "Timetabling", "Parent portal", "Website CMS (open source)", "Video calling", "Financial administration", "Login service (SSO)"],
+      "demoApps": ["Landing portal", "Identity management system", "Authentication system (SSO)", "Collaboration software", "Pupil administration system (LAS)", "Pupil tracking system (LVS)", "Electronic learning environment (ELO)", "Assessment system", "Timetabling and planning system", "Educational application", "Financial system", "HR system"],
       "demoAssessor": "Assessor {x}",
       "demoLoad": "Load sample data",
       "demoLoaded": "Sample data for a fictitious school board loaded.",
@@ -8258,7 +8258,7 @@ const I18N = {
       "deleteItem": "\"{a}\" verwijderen?",
       "deleteItemUsed": "\"{a}\" verwijderen? Bij {n} applicatie(s) wordt dit veld leeggemaakt.",
       "demoAlready": "De voorbeelddata is al geladen. Via Importeer kun je hem ook weer verwijderen.",
-      "demoApps": ["Kantoorsuite (cloud)", "E-mail en agenda (cloud)", "Leerlingvolgsysteem", "Leerlingadministratie", "Elektronische leeromgeving", "Digitaal toetsplatform", "Roosterpakket", "Ouderportaal", "Website-CMS (open source)", "Videobellen", "Financiële administratie", "Inlogdienst (SSO)"],
+      "demoApps": ["Landingsportaal", "Identiteitsbeheersysteem", "Authenticatiesysteem (SSO)", "Collaboratiesoftware", "Leerlingadministratiesysteem (LAS)", "Leerlingvolgsysteem (LVS)", "Elektronische leeromgeving (ELO)", "Toetssysteem", "Rooster- en plansysteem", "Educatieve applicatie", "Financieel systeem", "Personeelssysteem"],
       "demoAssessor": "Beoordelaar {x}",
       "demoLoad": "Voorbeelddata laden",
       "demoLoaded": "Voorbeelddata van een fictief schoolbestuur geladen.",
@@ -12798,18 +12798,18 @@ function loadDemo() {
   const units = t('ui.demoUnits');
   const vendors = t('ui.demoVendors');
   const rows = [
-    [0, 'APP-001', 'A', 0, 0, {A:1,B:2,C:3,D:2,E:2}, 'full'],
-    [1, 'APP-002', 'B', 0, 0, {A:2,B:2,C:3,D:3,E:2}, 'full'],
-    [2, 'APP-010', 'A', 1, 1, {A:1,B:3,C:3,D:3,E:3}, 'full'],
-    [3, 'APP-011', 'C', 1, 2, {A:1,B:2,C:3,D:2,E:3}, 'full'],
-    [4, 'APP-020', 'A', 2, 3, {A:2,B:4,C:4,D:4,E:4}, 'full'],
-    [5, 'APP-021', 'C', 2, 4, {A:2,B:2,C:2,D:3,E:2}, 'quick'],
-    [6, 'APP-030', 'B', 3, 5, {A:3,B:3,C:4,D:3,E:3}, 'full'],
-    [7, 'APP-031', 'B', 3, 6, {A:3,B:4,C:3,D:4,E:4}, 'full'],
-    [8, 'APP-040', 'C', 4, 7, {A:4,B:5,C:4,D:4,E:5}, 'full'],
-    [9, 'APP-041', 'A', 0, 8, {A:3,B:2,C:2,D:3,E:2}, 'quick'],
-    [10, 'APP-050', 'C', 4, 2, {A:2,B:3,C:3,D:2,E:3}, 'full'],
-    [11, 'APP-051', 'B', 5, 1, {A:1,B:4,C:4,D:4,E:4}, 'full']
+    [0, 'APP-001', 'A', 4, 7, {A:3,B:4,C:4,D:3,E:4}, 'full'],
+    [1, 'APP-002', 'A', 4, 5, {A:1,B:3,C:4,D:4,E:3}, 'full'],
+    [2, 'APP-003', 'B', 5, 0, {A:1,B:2,C:3,D:3,E:2}, 'full'],
+    [3, 'APP-010', 'B', 0, 0, {A:1,B:2,C:3,D:2,E:2}, 'full'],
+    [4, 'APP-020', 'C', 0, 1, {A:1,B:3,C:3,D:3,E:3}, 'full'],
+    [5, 'APP-021', 'C', 1, 1, {A:2,B:3,C:3,D:3,E:3}, 'full'],
+    [6, 'APP-030', 'A', 3, 2, {A:2,B:4,C:4,D:4,E:4}, 'full'],
+    [7, 'APP-031', 'C', 3, 4, {A:2,B:2,C:2,D:3,E:2}, 'quick'],
+    [8, 'APP-032', 'B', 3, 6, {A:3,B:3,C:4,D:3,E:3}, 'full'],
+    [9, 'APP-040', 'A', 2, 8, {A:4,B:2,C:3,D:2,E:2}, 'quick'],
+    [10, 'APP-050', 'B', 0, 3, {A:3,B:4,C:4,D:4,E:4}, 'full'],
+    [11, 'APP-051', 'C', 0, 3, {A:2,B:3,C:3,D:3,E:3}, 'full']
   ];
   const added = {org: [], vendor: []};
   const reg = (kind, v) => {
