@@ -19,11 +19,17 @@ This tool implements the framework as an interactive, browser-based assessment. 
 - Fully client-side: runs entirely in the browser, no server required
 - Data is stored locally in the browser (localStorage)
 - Quick scan (9 indicators) and full assessment (30 indicators)
-- Assess and compare multiple applications side by side
+- Overview dashboard with key figures, filters, a bubble quadrant, lowest scores, data quality and overviews per supplier and organisational unit
+- Possible improvements per application and "where is the most to gain?" across applications
+- Report for management (print or save as PDF)
+- Organisational unit and supplier per application, with shared pick lists that can be renamed and merged
+- Organisation profiles with weights and own indicator texts, shareable as a file
+- Assessing together: import several JSON files at once with a preview that recognises newer versions and duplicates
 - Import/export via JSON and CSV
-- Guided scoring with rubrics per indicator
-- Adjustable indicator weights per application
-- Quick delete with undo and bulk delete
+- Guided scoring with rubrics per indicator, keyboard scoring and a radar chart per application
+- Adjustable indicator weights per profile and per application
+- Trash with restore, and bulk editing in the overview table
+- Sample data of a fictitious school board to explore the tool
 - Export reminder to prevent data loss
 - Changelog viewer for version history
 - Multi-language interface: Danish, Dutch, English, French, German, Italian and Spanish
@@ -65,6 +71,8 @@ Score = Mitigation / (Risk exposure x Strategic importance)
 ```
 
 The result is normalised to a 1-10 scale using a logarithmic function, where 1 indicates low conformance with public values (urgent) and 10 indicates high conformance (optimal).
+
+The quadrant places each application on risk exposure x strategic importance (1-25, boundary 9) against mitigation capacity (1-5, boundary 3).
 
 ## Technical details
 
