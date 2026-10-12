@@ -1,33 +1,33 @@
-# Public Values Assessment Tool
+# Public Values Scan
 
-A browser-based assessment tool that implements the Public Values Assessment Framework (PVAF). Helps organisations evaluate the conformance of their application landscape with the [public values of Dutch education][waarden-wijzer]. Developed at [SIVON][sivon] as part of its [Open Source Program Office][sivon-ospo].
+A browser-based tool for the Public Values Scan (PVS; Dutch: Publieke Waarden Scan). Helps school boards assess the extent to which their applications align with the [public values of Dutch education][waarden-wijzer]. Developed at [SIVON][sivon] as part of its [Open Source Program Office][sivon-ospo].
 
 ⚠️ **Warning: Prototype** - This project is a proof of concept under active development. Breaking changes and git force rebases will occur. Not recommended for production use.
 
 ## About
 
-The Public Values Assessment Framework (PVAF) is a structured approach to assessing applications across three levels:
+The questionnaire is based on SIVON's *Publieke Waarden Scan* (v0.9). It contains 34 questions across 5 dimensions. Each question has one of three question types:
 
-1. **Risk exposure**: how significant are the dependencies and associated risks?
-2. **Mitigation capacity**: what measures are in place to manage those risks?
-3. **Strategic importance**: how critical is the application to the organisation?
+1. **Strategic importance**: how much is at stake for the school?
+2. **Risk**: what is put under pressure?
+3. **Mitigation**: how well is the risk controlled?
 
-This tool implements the framework as an interactive, browser-based assessment. Based on 30 indicators across 8 dimensions, it calculates a public values score (1-10) per application. Results are presented in a summary table and a public values quadrant that provides immediate insight into which applications require attention.
+For every question, score 1 is the least favourable and score 5 the most favourable situation. Based on the answers, the tool calculates a public values score (1-10) per application. Results are presented in a summary table and a public values quadrant that provides immediate insight into which applications require attention.
 
 ## Features
 
 - Fully client-side: runs entirely in the browser, no server required
 - Data is stored locally in the browser (localStorage)
-- Quick scan (9 indicators) and full assessment (30 indicators)
+- Quick scan (12 questions) and full assessment (34 questions)
 - Overview dashboard with key figures, filters, a bubble quadrant, lowest scores, data quality and overviews per supplier and organisational unit
 - Possible improvements per application and "where is the most to gain?" across applications
 - Report for management (print or save as PDF)
 - Organisational unit and supplier per application, with shared pick lists that can be renamed and merged
-- Organisation profiles with weights and own indicator texts, shareable as a file
+- Organisation profiles with weights and own question texts, shareable as a file
 - Assessing together: import several JSON files at once with a preview that recognises newer versions and duplicates
 - Import/export via JSON and CSV
-- Guided scoring with rubrics per indicator, keyboard scoring and a radar chart per application
-- Adjustable indicator weights per profile and per application
+- Guided scoring with rubrics per question, keyboard scoring and a radar chart per application
+- Adjustable question weights per profile and per application
 - Trash with restore, and bulk editing in the overview table
 - Sample data of a fictitious school board to explore the tool
 - Export reminder to prevent data loss
@@ -42,7 +42,7 @@ Open `index.html` in a browser of your choice.
 
 1. Click "Add Application" and enter a name
 2. Choose Quick scan or Full assessment
-3. Score each indicator using the provided rubrics
+3. Answer each question using the provided rubrics
 4. View the results in the overview table and public values quadrant
 
 ### Data privacy
@@ -51,20 +51,17 @@ All data stays in your browser. Nothing is sent to a server. You can export asse
 
 ## Dimensions
 
-| Code | Dimension | Level |
-|------|-----------|-------|
-| A | Geopolitical and regulatory risk | Risk exposure |
-| B | Vendor and supplychain dependency | Risk exposure |
-| C | Technical resilience | Mitigation capacity |
-| D | Organisational resilience | Mitigation capacity |
-| E | Contractual resilience | Mitigation capacity |
-| F | Organisational importance | Strategic importance |
-| G | Data sensitivity | Strategic importance |
-| H | Educational impact | Strategic importance |
+| Code | Dimension | Question types |
+|------|-----------|----------------|
+| A | Use and strategic importance | Strategic importance |
+| B | Autonomy | Risk, Mitigation |
+| C | Humanity | Risk |
+| D | Justice | Risk, Mitigation |
+| E | School control and resilience | Mitigation |
 
 ## Scoring methodology
 
-The public values score is calculated using the formula:
+Answer scores are converted by question type: strategic importance and risk as `6 - answer`, mitigation as the answer itself. For each of the three axes, the weighted average is taken per dimension, followed by the average across dimensions. The public values score is then calculated using the formula:
 
 ```
 Score = Mitigation / (Risk exposure x Strategic importance)
@@ -72,7 +69,7 @@ Score = Mitigation / (Risk exposure x Strategic importance)
 
 The result is normalised to a 1-10 scale using a logarithmic function, where 1 indicates low conformance with public values (urgent) and 10 indicates high conformance (optimal).
 
-The quadrant places each application on risk exposure x strategic importance (1-25, boundary 9) against mitigation capacity (1-5, boundary 3).
+The quadrant places each application on risk pressure (risk exposure x strategic importance, 1-25, boundary 9) against mitigation strength (1-5, boundary 3).
 
 ## Technical details
 
