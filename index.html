@@ -1890,9 +1890,9 @@ const I18N = {
       },
       "25": {
         "title": "Digital tilgængelighed",
-        "q": "Kan applikationen bruges selvstændigt af elever og medarbejdere med en funktionsnedsættelse?",
+        "q": "Kan applikationen bruges selvstændigt af de tilsigtede brugere med en funktionsnedsættelse?",
         "r": [
-          "Tilgængeligheden er aldrig blevet undersøgt, og der findes ingen erklæring eller dokumentation. Skolen kan ikke fastslå, om brugere med en funktionsnedsættelse kan bruge den.",
+          "Flere kernefunktioner kan ikke bruges af de tilsigtede brugere med en funktionsnedsættelse, heller ikke med almindelige hjælpemidler. Der findes intet brugbart alternativ.",
           "Undersøgelser eller praktisk erfaring viser, at kernefunktioner ikke virker med almindelige hjælpemidler som skærmlæser eller betjening udelukkende med tastatur. Der er ingen forbedringsplan.",
           "Applikationen er testet mod WCAG 2.2 AA og overholder den i store træk. Der er kendte mangler, der hindrer nogle brugere, med en forbedringsplan, hvis gennemførelse ikke er sikker.",
           "Applikationen overholder påviseligt WCAG 2.2 AA med en nylig audit, en offentlig tilgængelighedserklæring og synlig opfølgning på mangler.",
@@ -1905,7 +1905,7 @@ const I18N = {
         "q": "Fungerer applikationen også godt på enkle enheder, mindre skærme og langsommere forbindelser?",
         "r": [
           "Applikationen kræver nyt eller dyrt udstyr og en hurtig forbindelse. Den kan kun i ringe grad eller slet ikke bruges på de enheder, som skolen har, eller som eleverne har derhjemme.",
-          "Leverandøren offentliggør ingen minimumskrav, og skolen kan ikke på forhånd fastslå, om den vil fungere. I praksis viser vigtige funktioner sig at være langsomme eller ubrugelige på almindelige skoleenheder eller langsommere forbindelser.",
+          "Leverandøren angiver ingen minimumskrav, så skolen ved ikke på forhånd, om applikationen fungerer godt. I praksis fungerer vigtige funktioner langsomt eller slet ikke på almindeligt anvendte skoleenheder eller ved en langsom internetforbindelse.",
           "Minimumskravene er kendte, og applikationen fungerer for de fleste brugere. Der er mærkbare begrænsninger på ældre udstyr, små skærme eller ved lav båndbredde, og skolen må selv finde løsninger.",
           "Applikationen fungerer på almindelige og enkle enheder og på mindre skærme. Med en begrænset forbindelse forbliver den anvendelig, for eksempel via en lettere visning eller ved at udskyde tunge komponenter. Minimumskravene er klare på forhånd.",
           "Som niveau 4, og leverandøren tester påviseligt på en bred vifte af enheder, browsere og forbindelser, også ældre modeller. Hvor det er funktionelt nødvendigt, er det muligt at arbejde offline eller med lav båndbredde, og leverandøren tager hensyn til dette i den videre udvikling."
@@ -1917,7 +1917,7 @@ const I18N = {
         "q": "Hvor dokumenterbart og opdateret er applikationens sikkerhed?",
         "r": [
           "Sikkerheden har kendte alvorlige mangler, eller der har været hændelser uden dokumenterbar opfølgning.",
-          "Sikkerheden er ukendt. Leverandøren nævner højst generelle foranstaltninger uden verificerbar dokumentation, og skolen kan ikke fastslå, hvad der faktisk er på plads.",
+          "Leverandøren har påviseligt kun truffet en del af de nødvendige sikkerhedsforanstaltninger. Vigtige mangler består fortsat.",
           "Almindelige foranstaltninger er på plads og delvist dokumenteret, for eksempel med en egenerklæring eller en forældet audit. Der er aftaler om indberetning af hændelser til skolen, men strukturel test og opfølgning på sårbarheder mangler.",
           "Sikkerheden opfylder påviseligt en anerkendt standard med et gældende certifikat eller en rapport, der dækker selve applikationen. Leverandøren følger aktivt op på sårbarheder i egen applikation og i anvendte eksterne komponenter.",
           "Som niveau 4, og leverandøren får periodisk udført uafhængige test og deler resultaterne og opfølgningen med skolen. Skolen ved, hvilke kritiske komponenter og underdatabehandlere der indgår i kæden, og informeres i god tid om risici, der berører den."
@@ -1940,10 +1940,10 @@ const I18N = {
         "title": "Forklarlige og anfægtelige automatiserede resultater",
         "q": "Hvor forståelige, kontrollerbare og korrigerbare er automatiserede anbefalinger, vurderinger eller beslutninger?",
         "r": [
-          "Det er uklart, hvor automatiserede resultater anvendes, og hvordan de opstår. Det er ikke muligt at kontrollere, korrigere eller anfægte dem.",
+          "Automatiserede resultater anvendes påviseligt, men er ikke sporbare. Det er ikke muligt at kontrollere, korrigere eller anfægte dem.",
           "Leverandøren oplyser, hvor automatiserede eller AI-drevne resultater anvendes, men giver kun lidt brugbar forklaring på, hvordan de fungerer. En fagperson kan ikke tilsidesætte et resultat.",
           "Brug og formål er beskrevet i generelle vendinger, og en fagperson kan ignorere et resultat fra sag til sag. Der er ingen fast procedure for forklaring, korrektion eller indsigelse, og ingen kontrollerer for urimelige virkninger.",
-          "Vigtige resultater er sporbare, og en autoriseret fagperson kan kontrollere, tilsidesætte og korrigere dem. Det er synligt for elever og forældre, at et resultat er fremkommet automatisk, og der er en klar vej for spørgsmål, korrektion eller fornyet vurdering.",
+          "Vigtige resultater er sporbare, og en autoriseret fagperson kan kontrollere, tilsidesætte og korrigere dem. Det er synligt for de berørte, at et resultat er fremkommet automatisk, og der er en klar vej for spørgsmål, korrektion eller fornyet vurdering.",
           "Som niveau 4, og virkemåden er påviseligt forklarlig og testbar. Leverandøren kontrollerer periodisk for urimelige eller diskriminerende virkninger og deler resultaterne, og skolen har fastlagt, hvilke resultater altid vurderes af et menneske."
         ],
         "h": "Det drejer sig om resultater med konsekvenser: en niveauplacering, et risikosignal, en anbefaling om videre uddannelse eller en automatiseret bedømmelse. Kontroller, om en lærer kan tilsidesætte et sådant resultat, og om det forbliver synligt, og om elever og forældre ved, at der ligger en algoritme bag."
@@ -1964,7 +1964,7 @@ const I18N = {
         "title": "Kontinuitet ved svigt hos kritiske leverandører",
         "q": "Hvor godt er applikationens kontinuitet sikret, hvis en kritisk leverandør, underleverandør eller infrastrukturpart svigter eller ophører?",
         "r": [
-          "Kritiske afhængigheder er ikke gennemsigtige, og der kendes ingen konkrete foranstaltninger ved nedbrud eller bortfald af en leverandør eller infrastrukturpart.",
+          "Der er ikke truffet konkrete foranstaltninger ved nedbrud eller bortfald af en kritisk leverandør eller infrastrukturpart.",
           "De vigtigste afhængigheder er delvist kendte, men der er kun generelle tilsagn om kontinuitet. Konkrete foranstaltninger for genopretning, failover eller erstatning mangler eller er ikke udarbejdet.",
           "De vigtigste kritiske parter og afhængigheder er kendte, og der er aftaler om genopretning, erstatning eller failover. Det er ikke påvist, at disse foranstaltninger virker rettidigt og tilstrækkeligt ved en alvorlig forstyrrelse.",
           "Kritiske afhængigheder er dokumenteret, og der er konkrete foranstaltninger for genopretning, failover eller erstatning. Disse foranstaltninger er testet, og der er taget højde for relevante scenarier som konkurs, sanktioner eller eksportrestriktioner.",
@@ -2919,9 +2919,9 @@ const I18N = {
       },
       "25": {
         "title": "Digitale Barrierefreiheit",
-        "q": "Kann die Anwendung von Lernenden und Mitarbeitenden mit Behinderung selbstständig genutzt werden?",
+        "q": "Kann die Anwendung von den vorgesehenen Nutzenden mit Behinderung selbstständig genutzt werden?",
         "r": [
-          "Die Barrierefreiheit wurde nie untersucht, und es gibt keine Erklärung oder Begründung. Die Schule kann nicht feststellen, ob Nutzende mit Behinderung damit zurechtkommen.",
+          "Mehrere Kernfunktionen sind für die vorgesehenen Nutzenden mit Behinderung nicht nutzbar, auch nicht mit gängigen Hilfsmitteln. Es gibt keine brauchbare Alternative.",
           "Untersuchungen oder Praxiserfahrungen zeigen, dass Kernfunktionen mit gängigen Hilfsmitteln wie einem Screenreader oder reiner Tastaturbedienung nicht funktionieren. Es gibt keinen Verbesserungsplan.",
           "Die Anwendung wurde anhand von WCAG 2.2 AA geprüft und erfüllt die Anforderungen im Wesentlichen. Es gibt bekannte Mängel, die einige Nutzende behindern, mit einem Verbesserungsplan, dessen Umsetzung nicht gesichert ist.",
           "Die Anwendung erfüllt nachweislich WCAG 2.2 AA, mit einer aktuellen Prüfung, einer öffentlichen Erklärung zur Barrierefreiheit und sichtbarer Nachverfolgung von Mängeln.",
@@ -2934,7 +2934,7 @@ const I18N = {
         "q": "Funktioniert die Anwendung auch auf einfachen Geräten, kleineren Bildschirmen und bei langsameren Verbindungen gut?",
         "r": [
           "Die Anwendung erfordert aktuelle oder teure Geräte und eine schnelle Verbindung. Auf den Geräten, die die Schule hat oder die Lernende zu Hause haben, ist sie kaum oder gar nicht nutzbar.",
-          "Der Anbieter veröffentlicht keine Mindestanforderungen, und die Schule kann vorab nicht feststellen, ob die Anwendung funktioniert. In der Praxis erweisen sich wichtige Funktionen auf gängigen Schulgeräten oder bei langsameren Verbindungen als langsam oder unbrauchbar.",
+          "Der Anbieter gibt keine Mindestanforderungen an, sodass die Schule vorab nicht weiß, ob die Anwendung gut funktioniert. In der Praxis funktionieren wichtige Funktionen auf verbreiteten Schulgeräten oder bei einer langsamen Internetverbindung langsam oder gar nicht.",
           "Die Mindestanforderungen sind bekannt, und die Anwendung funktioniert für die meisten Nutzenden. Es gibt spürbare Einschränkungen auf älteren Geräten, kleinen Bildschirmen oder bei geringer Bandbreite, und die Schule muss selbst Umwege finden.",
           "Die Anwendung funktioniert auf gängigen und einfachen Geräten sowie auf kleineren Bildschirmen. Bei eingeschränkter Verbindung bleibt sie nutzbar, etwa durch eine leichtere Darstellung oder das verzögerte Laden aufwendiger Bestandteile. Die Mindestanforderungen sind vorab klar.",
           "Wie Stufe 4; zudem testet der Anbieter nachweislich auf unterschiedlichen Geräten, Browsern und Verbindungen, auch auf älteren Modellen. Wo funktional erforderlich, kann offline oder mit geringer Bandbreite gearbeitet werden, und der Anbieter berücksichtigt dies bei der Weiterentwicklung."
@@ -2946,7 +2946,7 @@ const I18N = {
         "q": "Wie nachweisbar und aktuell ist die Sicherheit der Anwendung geregelt?",
         "r": [
           "Die Sicherheit weist bekannte schwerwiegende Mängel auf, oder es gab Vorfälle ohne nachweisbare Nachverfolgung.",
-          "Die Sicherheit ist unbekannt. Der Anbieter nennt höchstens allgemeine Maßnahmen ohne überprüfbare Belege, und die Schule kann nicht feststellen, was tatsächlich geregelt ist.",
+          "Der Anbieter hat nachweislich nur einen Teil der notwendigen Sicherheitsmaßnahmen getroffen. Wichtige Mängel bestehen weiterhin.",
           "Gängige Maßnahmen sind vorhanden und teilweise belegt, etwa durch eine Eigenerklärung oder eine veraltete Prüfung. Es gibt Vereinbarungen zur Meldung von Vorfällen an die Schule, aber eine regelmäßige Prüfung und Behebung von Schwachstellen fehlt.",
           "Die Sicherheit erfüllt nachweislich eine anerkannte Norm, mit einem aktuellen Zertifikat oder Bericht, der die Anwendung selbst abdeckt. Der Anbieter verfolgt Schwachstellen in der eigenen Anwendung und in eingesetzten externen Komponenten aktiv nach.",
           "Wie Stufe 4; zudem lässt der Anbieter regelmäßig unabhängige Tests durchführen und teilt die Ergebnisse und die Nachverfolgung mit der Schule. Die Schule weiß, welche kritischen Komponenten und Unterauftragsverarbeiter Teil der Kette sind, und wird rechtzeitig über Risiken informiert, die sie betreffen."
@@ -2969,10 +2969,10 @@ const I18N = {
         "title": "Erklärbare und anfechtbare automatisierte Ergebnisse",
         "q": "Wie verständlich, überprüfbar und korrigierbar sind automatisierte Empfehlungen, Bewertungen oder Entscheidungen?",
         "r": [
-          "Es ist unklar, wo automatisierte Ergebnisse verwendet werden und wie sie zustande kommen. Überprüfen, Korrigieren oder Anfechten ist nicht möglich.",
+          "Automatisierte Ergebnisse werden nachweislich verwendet, sind aber nicht nachvollziehbar. Überprüfen, Korrigieren oder Anfechten ist nicht möglich.",
           "Der Anbieter nennt, wo automatisierte oder KI-gestützte Ergebnisse verwendet werden, erläutert ihre Funktionsweise aber kaum verwertbar. Eine Fachkraft kann ein Ergebnis nicht übersteuern.",
           "Einsatz und Zweck sind allgemein beschrieben, und eine Fachkraft kann ein Ergebnis im Einzelfall ignorieren. Es gibt kein festes Verfahren für Erläuterung, Korrektur oder Widerspruch, und niemand prüft auf unfaire Auswirkungen.",
-          "Wichtige Ergebnisse sind nachvollziehbar, und eine befugte Fachkraft kann sie überprüfen, übersteuern und korrigieren. Für Lernende und Eltern ist sichtbar, dass ein Ergebnis automatisiert zustande kommt, und es gibt einen klaren Weg für Fragen, Korrektur oder erneute Beurteilung.",
+          "Wichtige Ergebnisse sind nachvollziehbar, und eine befugte Fachkraft kann sie überprüfen, übersteuern und korrigieren. Für die Betroffenen ist sichtbar, dass ein Ergebnis automatisiert zustande kommt, und es gibt einen klaren Weg für Fragen, Korrektur oder erneute Beurteilung.",
           "Wie Stufe 4; zudem ist die Funktionsweise nachweislich erklärbar und überprüfbar. Der Anbieter prüft regelmäßig auf unfaire oder diskriminierende Auswirkungen und teilt die Ergebnisse, und die Schule hat festgelegt, welche Ergebnisse immer von einem Menschen beurteilt werden."
         ],
         "h": "Es geht um Ergebnisse mit Folgen: eine Niveaueinstufung, ein Risikosignal, eine Übergangsempfehlung oder eine automatisierte Bewertung. Prüfen Sie, ob eine Lehrkraft ein solches Ergebnis übersteuern kann und ob dies sichtbar bleibt, und ob Lernende und Eltern wissen, dass ein Algorithmus dahintersteht."
@@ -2993,7 +2993,7 @@ const I18N = {
         "title": "Kontinuität bei Ausfall kritischer Dienstleister",
         "q": "Wie gut ist die Kontinuität der Anwendung abgesichert, wenn ein kritischer Dienstleister, Unterauftragnehmer oder Infrastrukturanbieter ausfällt oder seinen Betrieb einstellt?",
         "r": [
-          "Kritische Abhängigkeiten sind nicht nachvollziehbar, und es sind keine konkreten Maßnahmen für einen Ausfall oder den Wegfall eines Dienstleisters oder Infrastrukturanbieters bekannt.",
+          "Es wurden keine konkreten Maßnahmen für einen Ausfall oder den Wegfall eines kritischen Dienstleisters oder Infrastrukturanbieters getroffen.",
           "Die wichtigsten Abhängigkeiten sind teilweise bekannt, es gibt aber nur allgemeine Zusagen zur Kontinuität. Konkrete Maßnahmen für Wiederherstellung, Ausweichbetrieb oder Ersatz fehlen oder sind nicht ausgearbeitet.",
           "Die wichtigsten kritischen Parteien und Abhängigkeiten sind bekannt, und es gibt Vereinbarungen über Wiederherstellung, Ersatz oder Ausweichbetrieb. Es ist nicht nachgewiesen, dass diese Maßnahmen bei einer schweren Störung rechtzeitig und ausreichend wirken.",
           "Kritische Abhängigkeiten sind dokumentiert, und es gibt konkrete Maßnahmen für Wiederherstellung, Ausweichbetrieb oder Ersatz. Diese Maßnahmen wurden getestet, und relevante Szenarien wie Insolvenz, Sanktionen oder Exportbeschränkungen wurden berücksichtigt.",
@@ -3948,9 +3948,9 @@ const I18N = {
       },
       "25": {
         "title": "Digital accessibility",
-        "q": "Can the application be used independently by students and staff with a disability?",
+        "q": "Can the application be used independently by the intended users with a disability?",
         "r": [
-          "Accessibility has never been examined and there is no statement or substantiation. The school cannot establish whether users with a disability can use it.",
+          "Several core functions cannot be used by the intended users with a disability, not even with common assistive technologies. There is no usable alternative.",
           "Research or practical experience shows that core functions do not work with common assistive technologies such as a screen reader or keyboard-only operation. There is no improvement plan.",
           "The application has been tested against WCAG 2.2 AA and broadly complies. There are known shortcomings that hinder some users, with an improvement plan whose implementation is not certain.",
           "The application demonstrably complies with WCAG 2.2 AA, with a recent audit, a public accessibility statement and visible follow-up of shortcomings.",
@@ -3963,7 +3963,7 @@ const I18N = {
         "q": "Does the application also work well on basic devices, smaller screens and slower connections?",
         "r": [
           "The application requires recent or expensive equipment and a fast connection. It is hardly or not at all usable on the devices the school has or students have at home.",
-          "The supplier does not publish minimum requirements and the school cannot determine in advance whether it will work. In practice, important functions turn out to be slow or unusable on common school devices or slower connections.",
+          "The supplier does not state minimum requirements, so the school does not know in advance whether the application will work well. In practice, important functions are slow or do not work on commonly used school devices or with a slow internet connection.",
           "The minimum requirements are known and the application works for most users. There are noticeable limitations on older equipment, small screens or at low bandwidth, and the school has to work around them itself.",
           "The application works on common and basic devices and on smaller screens. With a limited connection it remains usable, for example through a lighter display or by deferring heavy components. The minimum requirements are clear in advance.",
           "As level 4, and the supplier demonstrably tests on a wide range of devices, browsers and connections, including older models. Where functionally necessary, it is possible to work offline or with low bandwidth and the supplier takes this into account in further development."
@@ -3975,7 +3975,7 @@ const I18N = {
         "q": "How demonstrably and up to date is the security of the application arranged?",
         "r": [
           "The security has known serious shortcomings, or there have been incidents without demonstrable follow-up.",
-          "The security is unknown. The supplier at most mentions general measures without verifiable evidence, and the school cannot establish what has actually been arranged.",
+          "The supplier has demonstrably taken only some of the necessary security measures. Important shortcomings remain.",
           "Common measures are in place and partly substantiated, for example with a self-declaration or an outdated audit. There are agreements on reporting incidents to the school, but structural testing and follow-up of vulnerabilities are missing.",
           "The security demonstrably meets a recognised standard, with a current certificate or report covering the application itself. The supplier actively follows up on vulnerabilities in its own application and in external components used.",
           "As level 4, and the supplier has independent tests carried out periodically and shares the results and follow-up with the school. The school knows which critical components and subprocessors are in the chain and is informed in good time about risks that affect it."
@@ -3998,10 +3998,10 @@ const I18N = {
         "title": "Explainable and contestable automated outcomes",
         "q": "How understandable, verifiable and correctable are automated recommendations, assessments or decisions?",
         "r": [
-          "It is unclear where automated outcomes are used and how they come about. Checking, correcting or contesting them is not possible.",
+          "Automated outcomes are demonstrably used, but are not traceable. Checking, correcting or contesting them is not possible.",
           "The supplier states where automated or AI-driven outcomes are used, but gives little useful explanation of how they work. A professional cannot override an outcome.",
           "Use and purpose are described in general terms and a professional can ignore an outcome on a case-by-case basis. There is no fixed procedure for explanation, correction or objection, and nobody checks for unfair effects.",
-          "Important outcomes are traceable and an authorised professional can check, override and correct them. It is visible to students and parents that an outcome was produced automatically, and there is a clear route for questions, correction or reassessment.",
+          "Important outcomes are traceable and an authorised professional can check, override and correct them. It is visible to those concerned that an outcome was produced automatically, and there is a clear route for questions, correction or reassessment.",
           "As level 4, and the workings are demonstrably explainable and testable. The supplier periodically checks for unfair or discriminatory effects and shares the results, and the school has laid down which outcomes are always assessed by a human."
         ],
         "h": "This concerns outcomes with consequences: a level placement, a risk signal, a progression recommendation or an automated assessment. Check whether a teacher can override such an outcome and whether that remains visible, and whether students and parents know that there is an algorithm behind it."
@@ -4022,7 +4022,7 @@ const I18N = {
         "title": "Continuity in case of failure of critical suppliers",
         "q": "How well is the continuity of the application safeguarded if a critical supplier, subcontractor or infrastructure party fails or stops?",
         "r": [
-          "Critical dependencies are not transparent and no concrete measures are known for an outage or the loss of a supplier or infrastructure party.",
+          "No concrete measures have been taken for an outage or the loss of a critical supplier or infrastructure party.",
           "The main dependencies are partly known, but there are only general commitments about continuity. Concrete measures for recovery, failover or replacement are missing or have not been worked out.",
           "The main critical parties and dependencies are known and there are agreements on recovery, replacement or failover. It has not been demonstrated that these measures work in time and sufficiently in the event of a serious disruption.",
           "Critical dependencies are documented and there are concrete measures for recovery, failover or replacement. These measures have been tested and relevant scenarios, such as bankruptcy, sanctions or export restrictions, have been taken into account.",
@@ -4980,9 +4980,9 @@ const I18N = {
       },
       "25": {
         "title": "Accesibilidad digital",
-        "q": "¿Pueden los alumnos y el personal con discapacidad utilizar la aplicación de forma autónoma?",
+        "q": "¿Pueden los usuarios previstos con discapacidad utilizar la aplicación de forma autónoma?",
         "r": [
-          "Nunca se ha analizado la accesibilidad y no hay declaración ni justificación. El centro no puede determinar si los usuarios con discapacidad pueden utilizarla.",
+          "Varias funciones esenciales no pueden ser utilizadas por los usuarios previstos con discapacidad, ni siquiera con productos de apoyo habituales. No hay ninguna alternativa útil.",
           "Los análisis o la experiencia práctica muestran que las funciones esenciales no funcionan con productos de apoyo habituales, como un lector de pantalla o el manejo solo con teclado. No hay un plan de mejora.",
           "La aplicación se ha evaluado conforme a WCAG 2.2 AA y cumple a grandes rasgos. Hay deficiencias conocidas que dificultan el uso a algunos usuarios, con un plan de mejora cuya ejecución no está asegurada.",
           "La aplicación cumple de forma demostrable con WCAG 2.2 AA, con una auditoría reciente, una declaración de accesibilidad pública y un seguimiento visible de las deficiencias.",
@@ -4995,7 +4995,7 @@ const I18N = {
         "q": "¿Funciona bien la aplicación también en dispositivos sencillos, pantallas más pequeñas y conexiones más lentas?",
         "r": [
           "La aplicación requiere equipos recientes o caros y una conexión rápida. En los dispositivos de los que disponen el centro o los alumnos en casa apenas puede utilizarse, o no puede en absoluto.",
-          "El proveedor no publica requisitos mínimos y el centro no puede determinar de antemano si funcionará. En la práctica, funciones importantes resultan lentas o inutilizables en los dispositivos escolares habituales o con conexiones más lentas.",
+          "El proveedor no indica requisitos mínimos, por lo que el centro no sabe de antemano si la aplicación funcionará bien. En la práctica, funciones importantes van lentas o no funcionan en dispositivos escolares de uso habitual o con una conexión a internet lenta.",
           "Los requisitos mínimos son conocidos y la aplicación funciona para la mayoría de los usuarios. Hay limitaciones apreciables en equipos más antiguos, en pantallas pequeñas o con poco ancho de banda, y el centro tiene que buscar soluciones por su cuenta.",
           "La aplicación funciona en dispositivos habituales y sencillos y en pantallas más pequeñas. Con una conexión limitada sigue siendo utilizable, por ejemplo gracias a una visualización más ligera o a la carga diferida de los elementos pesados. Los requisitos mínimos están claros de antemano.",
           "Como en el nivel 4 y, además, el proveedor realiza pruebas demostrables con una amplia variedad de dispositivos, navegadores y conexiones, incluidos modelos más antiguos. Cuando es funcionalmente necesario, se puede trabajar sin conexión o con poco ancho de banda, y el proveedor lo tiene en cuenta en el desarrollo posterior."
@@ -5007,7 +5007,7 @@ const I18N = {
         "q": "¿En qué medida la seguridad de la aplicación está garantizada de forma demostrable y actualizada?",
         "r": [
           "La seguridad presenta deficiencias graves conocidas, o ha habido incidentes sin un seguimiento demostrable.",
-          "La seguridad es desconocida. Como mucho, el proveedor menciona medidas generales sin pruebas verificables, y el centro no puede determinar qué está realmente garantizado.",
+          "El proveedor solo ha adoptado de forma demostrable una parte de las medidas de seguridad necesarias. Persisten deficiencias importantes.",
           "Existen medidas habituales y en parte justificadas, por ejemplo con una declaración propia o una auditoría desactualizada. Hay acuerdos sobre la notificación de incidentes al centro, pero faltan pruebas sistemáticas y seguimiento de las vulnerabilidades.",
           "La seguridad cumple de forma demostrable una norma reconocida, con un certificado o informe actualizado que abarca la propia aplicación. El proveedor da seguimiento activo a las vulnerabilidades de su propia aplicación y de los componentes externos que utiliza.",
           "Como en el nivel 4 y, además, el proveedor encarga periódicamente pruebas independientes y comparte los resultados y su seguimiento con el centro. El centro sabe qué componentes críticos y subencargados del tratamiento forman parte de la cadena y es informado a tiempo de los riesgos que le afectan."
@@ -5030,10 +5030,10 @@ const I18N = {
         "title": "Resultados automatizados explicables e impugnables",
         "q": "¿En qué medida son comprensibles, verificables y corregibles las recomendaciones, evaluaciones o decisiones automatizadas?",
         "r": [
-          "No está claro dónde se utilizan resultados automatizados ni cómo se generan. No es posible verificarlos, corregirlos ni impugnarlos.",
+          "Se utilizan de forma demostrable resultados automatizados, pero no son trazables. No es posible verificarlos, corregirlos ni impugnarlos.",
           "El proveedor indica dónde se utilizan resultados automatizados o basados en IA, pero ofrece poca explicación útil sobre su funcionamiento. Un profesional no puede anular un resultado.",
           "El uso y la finalidad se describen a grandes rasgos y un profesional puede ignorar un resultado caso por caso. No hay un procedimiento establecido para la explicación, la corrección o la reclamación, y nadie comprueba si hay efectos injustos.",
-          "Los resultados importantes son trazables y un profesional autorizado puede verificarlos, anularlos y corregirlos. Los alumnos y las familias pueden ver que un resultado se ha generado automáticamente, y existe una vía clara para preguntas, rectificación o revisión.",
+          "Los resultados importantes son trazables y un profesional autorizado puede verificarlos, anularlos y corregirlos. Las personas afectadas pueden ver que un resultado se ha generado automáticamente, y existe una vía clara para preguntas, rectificación o revisión.",
           "Como en el nivel 4 y, además, el funcionamiento es explicable y verificable de forma demostrable. El proveedor comprueba periódicamente si hay efectos injustos o discriminatorios y comparte los resultados, y el centro ha establecido qué resultados son siempre evaluados por una persona."
         ],
         "h": "Se trata de resultados con consecuencias: una asignación de nivel, una señal de riesgo, una recomendación de continuidad de estudios o una evaluación automatizada. Comprueba si un docente puede anular ese resultado y si eso queda reflejado, y si el alumno y la familia saben que detrás hay un algoritmo."
@@ -5054,7 +5054,7 @@ const I18N = {
         "title": "Continuidad ante el fallo de proveedores críticos",
         "q": "¿En qué medida está garantizada la continuidad de la aplicación si un proveedor crítico, un subcontratista o un proveedor de infraestructura falla o cesa su actividad?",
         "r": [
-          "Las dependencias críticas no son visibles y no se conocen medidas concretas para una interrupción o la desaparición de un proveedor o de un proveedor de infraestructura.",
+          "No se han adoptado medidas concretas para una interrupción o la desaparición de un proveedor crítico o de un proveedor de infraestructura crítico.",
           "Las principales dependencias se conocen en parte, pero solo hay compromisos generales sobre la continuidad. Faltan medidas concretas de recuperación, contingencia o sustitución, o no están desarrolladas.",
           "Se conocen las principales partes y dependencias críticas y hay acuerdos sobre recuperación, sustitución o contingencia. No se ha demostrado que estas medidas funcionen a tiempo y de forma suficiente ante una interrupción grave.",
           "Las dependencias críticas están documentadas y hay medidas concretas de recuperación, contingencia o sustitución. Estas medidas se han probado y se han tenido en cuenta escenarios relevantes, como la quiebra, las sanciones o las restricciones a la exportación.",
@@ -6009,9 +6009,9 @@ const I18N = {
       },
       "25": {
         "title": "Accessibilité numérique",
-        "q": "L'application peut-elle être utilisée de manière autonome par des élèves et des membres du personnel en situation de handicap ?",
+        "q": "L'application peut-elle être utilisée de manière autonome par les utilisateurs visés en situation de handicap ?",
         "r": [
-          "L'accessibilité n'a jamais été examinée et il n'existe ni déclaration ni justification. L'établissement ne peut pas établir si les utilisateurs en situation de handicap peuvent utiliser l'application.",
+          "Plusieurs fonctions essentielles ne sont pas utilisables par les utilisateurs visés en situation de handicap, même avec des technologies d'assistance courantes. Il n'existe aucune alternative utilisable.",
           "Des études ou l'expérience pratique montrent que des fonctions essentielles ne fonctionnent pas avec des technologies d'assistance courantes, comme un lecteur d'écran ou une utilisation au clavier seul. Il n'existe pas de plan d'amélioration.",
           "L'application a été évaluée au regard des WCAG 2.2 AA et y est conforme dans les grandes lignes. Il existe des lacunes connues qui gênent certains utilisateurs, avec un plan d'amélioration dont la mise en œuvre n'est pas assurée.",
           "L'application est conforme de manière démontrable aux WCAG 2.2 AA, avec un audit récent, une déclaration d'accessibilité publique et un suivi visible des lacunes.",
@@ -6024,7 +6024,7 @@ const I18N = {
         "q": "L'application fonctionne-t-elle aussi correctement sur des appareils simples, des écrans plus petits et des connexions plus lentes ?",
         "r": [
           "L'application nécessite des équipements récents ou coûteux et une connexion rapide. Elle n'est pas ou guère utilisable sur les appareils dont disposent l'établissement ou les élèves à la maison.",
-          "Le fournisseur ne publie pas d'exigences minimales et l'établissement ne peut pas déterminer à l'avance si l'application fonctionnera. Dans la pratique, des fonctions importantes s'avèrent lentes ou inutilisables sur des appareils scolaires courants ou avec des connexions plus lentes.",
+          "Le fournisseur n'indique pas d'exigences minimales, de sorte que l'établissement ne sait pas à l'avance si l'application fonctionnera bien. Dans la pratique, des fonctions importantes sont lentes ou ne fonctionnent pas sur des appareils scolaires couramment utilisés ou avec une connexion internet lente.",
           "Les exigences minimales sont connues et l'application fonctionne pour la plupart des utilisateurs. Il existe des limitations notables sur les équipements plus anciens, les petits écrans ou à faible débit, et l'établissement doit les contourner lui-même.",
           "L'application fonctionne sur des appareils courants et simples ainsi que sur des écrans plus petits. Avec une connexion limitée, elle reste utilisable, par exemple grâce à un affichage allégé ou au chargement différé des éléments lourds. Les exigences minimales sont claires à l'avance.",
           "Comme au niveau 4, et le fournisseur teste de manière démontrable sur un large éventail d'appareils, de navigateurs et de connexions, y compris des modèles plus anciens. Lorsque c'est fonctionnellement nécessaire, il est possible de travailler hors ligne ou à faible débit, et le fournisseur en tient compte dans les évolutions du produit."
@@ -6036,7 +6036,7 @@ const I18N = {
         "q": "Dans quelle mesure la sécurité de l'application est-elle démontrable et à jour ?",
         "r": [
           "La sécurité présente des lacunes graves connues, ou des incidents se sont produits sans suivi démontrable.",
-          "Le niveau de sécurité est inconnu. Le fournisseur mentionne tout au plus des mesures générales sans preuve vérifiable, et l'établissement ne peut pas établir ce qui est réellement en place.",
+          "Le fournisseur n'a pris, de manière avérée, qu'une partie des mesures de sécurité nécessaires. D'importantes lacunes subsistent.",
           "Des mesures courantes sont en place et en partie étayées, par exemple par une auto-déclaration ou un audit obsolète. Il existe des accords sur le signalement des incidents à l'établissement, mais les tests structurels et le suivi des vulnérabilités font défaut.",
           "La sécurité répond de manière démontrable à une norme reconnue, avec un certificat ou un rapport en cours de validité couvrant l'application elle-même. Le fournisseur assure un suivi actif des vulnérabilités de sa propre application et des composants externes utilisés.",
           "Comme au niveau 4, et le fournisseur fait réaliser périodiquement des tests indépendants et en partage les résultats et le suivi avec l'établissement. L'établissement sait quels composants critiques et sous-traitants ultérieurs font partie de la chaîne et est informé à temps des risques qui le concernent."
@@ -6059,10 +6059,10 @@ const I18N = {
         "title": "Résultats automatisés explicables et contestables",
         "q": "Dans quelle mesure les recommandations, évaluations ou décisions automatisées sont-elles compréhensibles, vérifiables et corrigeables ?",
         "r": [
-          "On ne sait pas où des résultats automatisés sont utilisés ni comment ils sont produits. Il n'est pas possible de les vérifier, de les corriger ou de les contester.",
+          "Des résultats automatisés sont utilisés de manière avérée, mais ne sont pas traçables. Il n'est pas possible de les vérifier, de les corriger ou de les contester.",
           "Le fournisseur indique où des résultats automatisés ou fondés sur l'IA sont utilisés, mais donne peu d'explications utiles sur leur fonctionnement. Un professionnel ne peut pas passer outre un résultat.",
           "L'utilisation et la finalité sont décrites de manière générale et un professionnel peut ignorer un résultat au cas par cas. Il n'existe pas de procédure établie pour l'explication, la correction ou la contestation, et personne ne vérifie l'existence d'effets inéquitables.",
-          "Les résultats importants sont traçables et un professionnel habilité peut les vérifier, passer outre et les corriger. Les élèves et les parents peuvent voir qu'un résultat a été produit automatiquement, et il existe une voie claire pour les questions, la correction ou une nouvelle évaluation.",
+          "Les résultats importants sont traçables et un professionnel habilité peut les vérifier, passer outre et les corriger. Les personnes concernées peuvent voir qu'un résultat a été produit automatiquement, et il existe une voie claire pour les questions, la correction ou une nouvelle évaluation.",
           "Comme au niveau 4, et le fonctionnement est démontrablement explicable et vérifiable. Le fournisseur contrôle périodiquement l'absence d'effets inéquitables ou discriminatoires et en partage les résultats, et l'établissement a défini quels résultats sont toujours évalués par un humain."
         ],
         "h": "Il s'agit de résultats ayant des conséquences : un classement par niveau, un signal de risque, une recommandation d'orientation ou une évaluation automatisée. Vérifiez si un enseignant peut passer outre un tel résultat et si cela reste visible, et si les élèves et les parents savent qu'un algorithme est à l'œuvre."
@@ -6083,7 +6083,7 @@ const I18N = {
         "title": "Continuité en cas de défaillance de fournisseurs critiques",
         "q": "Dans quelle mesure la continuité de l'application est-elle garantie si un fournisseur critique, un sous-traitant ou un prestataire d'infrastructure fait défaut ou cesse son activité ?",
         "r": [
-          "Les dépendances critiques ne sont pas transparentes et aucune mesure concrète n'est connue en cas de panne ou de disparition d'un fournisseur ou d'un prestataire d'infrastructure.",
+          "Aucune mesure concrète n'a été prise en cas de panne ou de disparition d'un fournisseur ou d'un prestataire d'infrastructure critique.",
           "Les principales dépendances sont en partie connues, mais il n'existe que des engagements généraux en matière de continuité. Les mesures concrètes de restauration, de basculement ou de remplacement font défaut ou n'ont pas été élaborées.",
           "Les principales parties et dépendances critiques sont connues et il existe des accords sur la restauration, le remplacement ou le basculement. Il n'a pas été démontré que ces mesures fonctionnent à temps et de manière suffisante en cas de perturbation grave.",
           "Les dépendances critiques sont documentées et il existe des mesures concrètes de restauration, de basculement ou de remplacement. Ces mesures ont été testées et des scénarios pertinents, comme une faillite, des sanctions ou des restrictions à l'exportation, ont été pris en compte.",
@@ -7038,9 +7038,9 @@ const I18N = {
       },
       "25": {
         "title": "Accessibilità digitale",
-        "q": "L'applicazione può essere utilizzata in autonomia da studenti e personale con disabilità?",
+        "q": "L'applicazione può essere utilizzata in autonomia dagli utenti previsti con disabilità?",
         "r": [
-          "L'accessibilità non è mai stata esaminata e non esiste alcuna dichiarazione o documentazione a supporto. La scuola non può stabilire se gli utenti con disabilità possano utilizzarla.",
+          "Diverse funzioni principali non sono utilizzabili dagli utenti previsti con disabilità, nemmeno con tecnologie assistive comuni. Non esiste un'alternativa utilizzabile.",
           "Ricerche o esperienze pratiche mostrano che le funzioni principali non funzionano con tecnologie assistive comuni come un lettore di schermo o l'uso esclusivo della tastiera. Non esiste un piano di miglioramento.",
           "L'applicazione è stata verificata rispetto alle WCAG 2.2 AA ed è in linea di massima conforme. Esistono carenze note che ostacolano alcuni utenti, con un piano di miglioramento la cui attuazione non è certa.",
           "L'applicazione è dimostrabilmente conforme alle WCAG 2.2 AA, con un audit recente, una dichiarazione di accessibilità pubblica e un seguito visibile alle carenze.",
@@ -7053,7 +7053,7 @@ const I18N = {
         "q": "L'applicazione funziona bene anche su dispositivi di base, schermi più piccoli e connessioni più lente?",
         "r": [
           "L'applicazione richiede apparecchiature recenti o costose e una connessione veloce. È difficilmente o per nulla utilizzabile sui dispositivi di cui dispone la scuola o che gli studenti hanno a casa.",
-          "Il fornitore non pubblica requisiti minimi e la scuola non può stabilire in anticipo se funzionerà. Nella pratica, funzioni importanti risultano lente o inutilizzabili sui comuni dispositivi scolastici o con connessioni più lente.",
+          "Il fornitore non indica requisiti minimi, per cui la scuola non sa in anticipo se l'applicazione funzionerà bene. Nella pratica, funzioni importanti sono lente o non funzionano sui dispositivi scolastici di uso comune o con una connessione internet lenta.",
           "I requisiti minimi sono noti e l'applicazione funziona per la maggior parte degli utenti. Esistono limitazioni evidenti su apparecchiature più vecchie, schermi piccoli o con banda ridotta, e la scuola deve aggirarle da sola.",
           "L'applicazione funziona su dispositivi comuni e di base e su schermi più piccoli. Con una connessione limitata resta utilizzabile, ad esempio grazie a una visualizzazione più leggera o al caricamento differito dei componenti pesanti. I requisiti minimi sono chiari in anticipo.",
           "Come il livello 4, e il fornitore esegue in modo dimostrabile test su un'ampia gamma di dispositivi, browser e connessioni, compresi modelli più vecchi. Ove funzionalmente necessario, è possibile lavorare offline o con banda ridotta e il fornitore ne tiene conto nello sviluppo successivo."
@@ -7065,7 +7065,7 @@ const I18N = {
         "q": "Quanto è dimostrabile e aggiornata la sicurezza dell'applicazione?",
         "r": [
           "La sicurezza presenta gravi carenze note, oppure si sono verificati incidenti senza un seguito dimostrabile.",
-          "La sicurezza è sconosciuta. Il fornitore cita al massimo misure generiche senza prove verificabili, e la scuola non può stabilire che cosa sia stato effettivamente predisposto.",
+          "Il fornitore ha adottato in modo dimostrabile solo una parte delle misure di sicurezza necessarie. Permangono carenze importanti.",
           "Sono presenti misure comuni, in parte documentate, ad esempio con un'autodichiarazione o un audit non aggiornato. Esistono accordi sulla segnalazione degli incidenti alla scuola, ma mancano test strutturali e la gestione sistematica delle vulnerabilità.",
           "La sicurezza soddisfa in modo dimostrabile uno standard riconosciuto, con un certificato o un rapporto aggiornato che copre l'applicazione stessa. Il fornitore gestisce attivamente le vulnerabilità della propria applicazione e dei componenti esterni utilizzati.",
           "Come il livello 4, e il fornitore fa eseguire periodicamente test indipendenti e condivide con la scuola i risultati e le azioni conseguenti. La scuola sa quali componenti critici e sub-responsabili del trattamento fanno parte della catena e viene informata tempestivamente dei rischi che la riguardano."
@@ -7088,10 +7088,10 @@ const I18N = {
         "title": "Esiti automatizzati spiegabili e contestabili",
         "q": "Quanto sono comprensibili, verificabili e correggibili le raccomandazioni, valutazioni o decisioni automatizzate?",
         "r": [
-          "Non è chiaro dove vengano utilizzati esiti automatizzati e come vengano prodotti. Verificarli, correggerli o contestarli non è possibile.",
+          "Esiti automatizzati vengono utilizzati in modo dimostrabile, ma non sono tracciabili. Verificarli, correggerli o contestarli non è possibile.",
           "Il fornitore indica dove vengono utilizzati esiti automatizzati o basati sull'IA, ma fornisce poche spiegazioni utili sul loro funzionamento. Un professionista non può modificare un esito.",
           "Uso e finalità sono descritti in termini generali e un professionista può ignorare un esito caso per caso. Non esiste una procedura fissa per spiegazione, correzione od opposizione, e nessuno verifica la presenza di effetti iniqui.",
-          "Gli esiti importanti sono tracciabili e un professionista autorizzato può verificarli, modificarli e correggerli. Per studenti e genitori è visibile che un esito è stato prodotto automaticamente, ed esiste un percorso chiaro per domande, correzioni o riesame.",
+          "Gli esiti importanti sono tracciabili e un professionista autorizzato può verificarli, modificarli e correggerli. Per le persone interessate è visibile che un esito è stato prodotto automaticamente, ed esiste un percorso chiaro per domande, correzioni o riesame.",
           "Come il livello 4, e il funzionamento è dimostrabilmente spiegabile e verificabile. Il fornitore verifica periodicamente la presenza di effetti iniqui o discriminatori e ne condivide i risultati, e la scuola ha stabilito quali esiti vengono sempre valutati da una persona."
         ],
         "h": "Si tratta di esiti con conseguenze: l'assegnazione a un livello, un segnale di rischio, un consiglio di orientamento o una valutazione automatizzata. Verifica se un docente può modificare un tale esito e se ciò resta visibile, e se studenti e genitori sanno che dietro c'è un algoritmo."
@@ -7112,7 +7112,7 @@ const I18N = {
         "title": "Continuità in caso di venir meno di fornitori critici",
         "q": "Quanto è garantita la continuità dell'applicazione se un fornitore critico, un subappaltatore o un fornitore di infrastruttura viene meno o cessa l'attività?",
         "r": [
-          "Le dipendenze critiche non sono trasparenti e non sono note misure concrete per un'interruzione o per il venir meno di un fornitore o di un fornitore di infrastruttura.",
+          "Non sono state adottate misure concrete per un'interruzione o per il venir meno di un fornitore critico o di un fornitore di infrastruttura critico.",
           "Le principali dipendenze sono in parte note, ma esistono solo impegni generici sulla continuità. Mancano o non sono state elaborate misure concrete di ripristino, failover o sostituzione.",
           "Le principali parti e dipendenze critiche sono note ed esistono accordi su ripristino, sostituzione o failover. Non è stato dimostrato che queste misure funzionino tempestivamente e in misura sufficiente in caso di grave interruzione.",
           "Le dipendenze critiche sono documentate ed esistono misure concrete di ripristino, failover o sostituzione. Queste misure sono state testate e si è tenuto conto di scenari rilevanti, come fallimento, sanzioni o restrizioni all'esportazione.",
@@ -8067,9 +8067,9 @@ const I18N = {
       },
       "25": {
         "title": "Digitale toegankelijkheid",
-        "q": "Kan de applicatie zelfstandig worden gebruikt door leerlingen en medewerkers met een beperking?",
+        "q": "Kan de applicatie zelfstandig worden gebruikt door de beoogde gebruikers met een beperking?",
         "r": [
-          "Toegankelijkheid is nooit onderzocht en er is geen verklaring of onderbouwing. De school kan niet vaststellen of gebruikers met een beperking ermee overweg kunnen.",
+          "Meerdere kernfuncties zijn voor beoogde gebruikers met een beperking niet bruikbaar, ook niet met gangbare hulpmiddelen. Er is geen bruikbaar alternatief.",
           "Uit onderzoek of praktijkervaring blijkt dat kernfuncties niet werken met gangbare hulpmiddelen zoals een screenreader of alleen het toetsenbord. Er is geen verbeterplan.",
           "De applicatie is getoetst aan WCAG 2.2 AA en voldoet op hoofdlijnen. Er zijn bekende tekortkomingen die sommige gebruikers hinderen, met een verbeterplan waarvan de uitvoering niet vaststaat.",
           "De applicatie voldoet aantoonbaar aan WCAG 2.2 AA, met een actuele toets, een openbare toegankelijkheidsverklaring en zichtbare opvolging van tekortkomingen.",
@@ -8081,8 +8081,8 @@ const I18N = {
         "title": "Gelijke praktische toegang",
         "q": "Werkt de applicatie ook goed op eenvoudige apparaten, kleinere schermen en tragere verbindingen?",
         "r": [
-          "De applicatie vereist recente of dure apparatuur en een snelle verbinding. Op de apparaten die de school of leerlingen thuis hebben, is zij niet of nauwelijks bruikbaar.",
-          "De leverancier publiceert geen minimumeisen en de school kan vooraf niet vaststellen of het werkt. In de praktijk blijken belangrijke functies op gangbare schoolapparaten of tragere verbindingen traag of onbruikbaar.",
+          "De applicatie vereist recente of dure apparatuur en een snelle verbinding. Op de apparaten die de school of leerlingen thuis hebben, is de applicatie niet of nauwelijks bruikbaar.",
+          "De leverancier geeft geen minimumeisen aan, waardoor de school vooraf niet weet of de applicatie goed werkt. In de praktijk werken belangrijke functies traag of niet op veelgebruikte schoolapparaten of bij een trage internetverbinding.",
           "De minimumeisen zijn bekend en de applicatie werkt voor de meeste gebruikers. Er zijn merkbare beperkingen op oudere apparatuur, kleine schermen of bij lage bandbreedte, en de school moet daar zelf omheen werken.",
           "De applicatie werkt op gangbare en eenvoudige apparaten en op kleinere schermen. Bij een beperkte verbinding blijft zij bruikbaar, bijvoorbeeld door lichtere weergave of het uitstellen van zware onderdelen. De minimumeisen zijn vooraf duidelijk.",
           "Als niveau 4, en de leverancier test aantoonbaar op uiteenlopende apparaten, browsers en verbindingen, ook op oudere modellen. Waar het functioneel nodig is, kan offline of met lage bandbreedte worden gewerkt en houdt de leverancier hier bij doorontwikkeling rekening mee."
@@ -8094,7 +8094,7 @@ const I18N = {
         "q": "Hoe aantoonbaar en actueel is de beveiliging van de applicatie geregeld?",
         "r": [
           "De beveiliging kent bekende ernstige tekortkomingen, of er zijn incidenten geweest zonder aantoonbare opvolging.",
-          "De beveiliging is onbekend. De leverancier noemt hooguit algemene maatregelen zonder controleerbaar bewijs, en de school kan niet vaststellen wat er feitelijk geregeld is.",
+          "De leverancier heeft aantoonbaar slechts een deel van de noodzakelijke beveiligingsmaatregelen getroffen. Belangrijke tekortkomingen blijven bestaan.",
           "Gangbare maatregelen zijn aanwezig en deels onderbouwd, bijvoorbeeld met een eigen verklaring of een verouderde toets. Er zijn afspraken over incidentmelding aan de school, maar structurele toetsing en opvolging van kwetsbaarheden ontbreken.",
           "De beveiliging voldoet aantoonbaar aan een erkende norm, met een actueel certificaat of rapportage die de applicatie zelf dekt. De leverancier volgt kwetsbaarheden in de eigen applicatie en in gebruikte externe componenten actief op.",
           "Als niveau 4, en de leverancier laat periodiek onafhankelijk testen en deelt de uitkomsten en de opvolging met de school. De school weet welke kritieke componenten en subverwerkers in de keten zitten en wordt tijdig geïnformeerd over risico's die haar raken."
@@ -8117,10 +8117,10 @@ const I18N = {
         "title": "Uitlegbare en betwistbare automatische uitkomsten",
         "q": "Hoe begrijpelijk, controleerbaar en corrigeerbaar zijn automatische adviezen, beoordelingen of beslissingen?",
         "r": [
-          "Het is onduidelijk waar automatische uitkomsten worden gebruikt en hoe die ontstaan. Controleren, corrigeren of aanvechten is niet mogelijk.",
+          "Automatische uitkomsten worden aantoonbaar gebruikt, maar zijn niet navolgbaar. Controleren, corrigeren of aanvechten is niet mogelijk.",
           "De leverancier benoemt waar automatische of AI-gestuurde uitkomsten worden gebruikt, maar geeft weinig bruikbare uitleg over de werking. Een professional kan een uitkomst niet overschrijven.",
           "Gebruik en doel zijn globaal beschreven en een professional kan een uitkomst per geval negeren. Er is geen vaste werkwijze voor uitleg, correctie of bezwaar, en niemand controleert op oneerlijke effecten.",
-          "Belangrijke uitkomsten zijn navolgbaar en een bevoegde professional kan ze controleren, overschrijven en corrigeren. Voor leerlingen en ouders is zichtbaar dat een uitkomst automatisch tot stand komt, en er is een duidelijke route voor vragen, herstel of herbeoordeling.",
+          "Belangrijke uitkomsten zijn navolgbaar en een bevoegde professional kan ze controleren, overschrijven en corrigeren. Voor betrokkenen is zichtbaar dat een uitkomst automatisch tot stand komt, en er is een duidelijke route voor vragen, herstel of herbeoordeling.",
           "Als niveau 4, en de werking is aantoonbaar uitlegbaar en toetsbaar. De leverancier controleert periodiek op oneerlijke of discriminerende effecten en deelt de uitkomsten daarvan, en de school heeft vastgelegd welke uitkomsten altijd door een mens worden beoordeeld."
         ],
         "h": "Het gaat om uitkomsten met gevolgen: een niveau-indeling, een risicosignaal, een doorstroomadvies of een automatische beoordeling. Ga na of een leraar zo'n uitkomst kan overschrijven én of dat zichtbaar blijft, en of leerling en ouder weten dat er een algoritme achter zit."
@@ -8141,7 +8141,7 @@ const I18N = {
         "title": "Continuïteit bij uitval van kritieke leveranciers",
         "q": "Hoe goed is de continuïteit van de applicatie geborgd als een kritieke leverancier, onderaannemer of infrastructuurpartij uitvalt of stopt?",
         "r": [
-          "Kritieke afhankelijkheden zijn niet inzichtelijk en er zijn geen concrete maatregelen bekend voor uitval of het wegvallen van een leverancier of infrastructuurpartij.",
+          "Er zijn geen concrete maatregelen getroffen voor uitval of het wegvallen van een kritieke leverancier of infrastructuurpartij.",
           "De belangrijkste afhankelijkheden zijn deels bekend, maar er zijn alleen algemene toezeggingen over continuïteit. Concrete maatregelen voor herstel, uitwijk of vervanging ontbreken of zijn niet uitgewerkt.",
           "De belangrijkste kritieke partijen en afhankelijkheden zijn bekend en er zijn afspraken over herstel, vervanging of uitwijk. Het is niet aangetoond dat deze maatregelen bij een ernstige verstoring tijdig en voldoende werken.",
           "Kritieke afhankelijkheden zijn gedocumenteerd en er zijn concrete maatregelen voor herstel, uitwijk of vervanging. Deze maatregelen zijn getest en relevante scenario’s, zoals faillissement, sancties of exportbeperkingen, zijn meegenomen.",
