@@ -1303,20 +1303,20 @@ const CURRENT_VERSION = '0.9.0';
 
 // === INDICATOR DEFINITIONS ===
 const INDICATORS = [
-  { code: '1', dim: 'A', type: 'B', w: 3 },
+  { code: '1', dim: 'A', type: 'B', w: 4 },
   { code: '2', dim: 'A', type: 'B', w: 2 },
-  { code: '3', dim: 'A', type: 'B', w: 3 },
+  { code: '3', dim: 'A', type: 'B', w: 4 },
   { code: '4', dim: 'A', type: 'B', w: 2 },
   { code: '5', dim: 'A', type: 'B', w: 2 },
   { code: '6', dim: 'A', type: 'B', w: 2 },
   { code: '7', dim: 'B', type: 'R', w: 3 },
-  { code: '8', dim: 'B', type: 'R', w: 3 },
-  { code: '9', dim: 'B', type: 'M', w: 2 },
-  { code: '10', dim: 'B', type: 'M', w: 2 },
+  { code: '8', dim: 'B', type: 'R', w: 4 },
+  { code: '9', dim: 'B', type: 'M', w: 3 },
+  { code: '10', dim: 'B', type: 'M', w: 3 },
   { code: '11', dim: 'B', type: 'M', w: 2 },
   { code: '12', dim: 'B', type: 'M', w: 2 },
   { code: '13', dim: 'B', type: 'M', w: 2 },
-  { code: '14', dim: 'B', type: 'R', w: 3 },
+  { code: '14', dim: 'B', type: 'R', w: 4 },
   { code: '15', dim: 'B', type: 'M', w: 2 },
   { code: '16', dim: 'B', type: 'M', w: 3 },
   { code: '17', dim: 'B', type: 'M', w: 3 },
@@ -1325,18 +1325,18 @@ const INDICATORS = [
   { code: '20', dim: 'B', type: 'M', w: 3 },
   { code: '21', dim: 'B', type: 'M', w: 3 },
   { code: '22', dim: 'C', type: 'R', w: 2 },
-  { code: '23', dim: 'C', type: 'R', w: 2 },
+  { code: '23', dim: 'C', type: 'R', w: 3 },
   { code: '24', dim: 'C', type: 'R', w: 2 },
   { code: '25', dim: 'D', type: 'R', w: 2 },
   { code: '26', dim: 'D', type: 'R', w: 2 },
-  { code: '27', dim: 'D', type: 'M', w: 3 },
-  { code: '28', dim: 'D', type: 'M', w: 2 },
+  { code: '27', dim: 'D', type: 'M', w: 4 },
+  { code: '28', dim: 'D', type: 'M', w: 3 },
   { code: '29', dim: 'D', type: 'M', w: 2 },
   { code: '30', dim: 'D', type: 'M', w: 2 },
-  { code: '31', dim: 'D', type: 'M', w: 2 },
+  { code: '31', dim: 'D', type: 'M', w: 3 },
   { code: '32', dim: 'E', type: 'M', w: 3 },
   { code: '33', dim: 'E', type: 'M', w: 3 },
-  { code: '34', dim: 'E', type: 'M', w: 2 },
+  { code: '34', dim: 'E', type: 'M', w: 3 },
 ];
 
 const DIMS = ['A', 'B', 'C', 'D', 'E'];
@@ -1572,7 +1572,7 @@ const I18N = {
             <li><strong>Samlet overblik:</strong> koordinatorens oversigt viser det samlede billede, som du kan præsentere filtreret pr. enhed eller leverandør eller udskrive som rapport.</li>
         </ol>
         <h3>Vægte</h3>
-        <p>Hvert spørgsmål har en standardvægt (2 eller 3). Vægten bestemmer, hvor meget indflydelse et spørgsmål har <strong>inden for sin dimension og spørgsmålstype</strong>. For eksempel: hvis du sætter spørgsmål 15 til vægt 5 og spørgsmål 16 til vægt 1, tæller spørgsmål 15 fem gange så meget i afbødningsscoren for Autonomi. Der er to niveauer. Din <strong>organisations vægte</strong> indstiller du i din egen profil (knappen "Profil", fanen Vægte); de gælder for alle applikationer med den profil. Pr. applikation kan du stadig afvige med knappen "Vægte" i vurderingen. I vurderingen vises vægten kun, hvor den afviger fra SIVON-modellen. Juster kun vægte i samråd inden for din organisation eller sektor, så scorerne forbliver sammenlignelige.</p>
+        <p>Hvert spørgsmål har en standardvægt (2, 3 eller 4). Vægten bestemmer, hvor meget indflydelse et spørgsmål har <strong>inden for sin dimension og spørgsmålstype</strong>. For eksempel: hvis du sætter spørgsmål 15 til vægt 5 og spørgsmål 16 til vægt 1, tæller spørgsmål 15 fem gange så meget i afbødningsscoren for Autonomi. Der er to niveauer. Din <strong>organisations vægte</strong> indstiller du i din egen profil (knappen "Profil", fanen Vægte); de gælder for alle applikationer med den profil. Pr. applikation kan du stadig afvige med knappen "Vægte" i vurderingen. I vurderingen vises vægten kun, hvor den afviger fra SIVON-modellen. Juster kun vægte i samråd inden for din organisation eller sektor, så scorerne forbliver sammenlignelige.</p>
         <h3>Profiler</h3>
         <p>En <strong>profil</strong> fastlægger, hvordan din organisation bruger Tjek af offentlige værdier: <strong>vægtene</strong> og om nødvendigt <strong>egne tekster</strong> til spørgsmål (titel, spørgsmål, rubrikker og vejledning). Standardprofilen er SIVON-modellen, som den er, og er låst, så scorerne forbliver sammenlignelige. Numrene, spørgsmålstyperne, skalaen og beregningen er de samme for alle.</p>
         <ul>
@@ -2602,7 +2602,7 @@ const I18N = {
             <li><strong>Gesamtbild:</strong> Die Übersicht der koordinierenden Person zeigt das vollständige Bild, das Sie gefiltert nach Einheit oder Anbieter präsentieren oder als Bericht drucken können.</li>
         </ol>
         <h3>Gewichtungen</h3>
-        <p>Jede Frage hat eine Standardgewichtung (2 oder 3). Die Gewichtung bestimmt, wie viel Einfluss eine Frage <strong>innerhalb ihrer Dimension und ihres Fragetyps</strong> hat. Beispiel: Wenn Sie Frage 15 auf Gewichtung 5 und Frage 16 auf Gewichtung 1 setzen, zählt Frage 15 fünfmal so stark im Minderungswert von Autonomie. Es gibt zwei Ebenen. Die <strong>Gewichtung Ihrer Organisation</strong> legen Sie in Ihrem eigenen Profil fest (Schaltfläche „Profil“, Reiter Gewichtung); sie gilt für alle Anwendungen mit diesem Profil. Pro Anwendung können Sie mit der Schaltfläche „Gewichtung“ in der Bewertung noch davon abweichen. In der Bewertung wird die Gewichtung nur dort angezeigt, wo sie vom SIVON-Modell abweicht. Passen Sie Gewichtungen nur in Absprache innerhalb Ihrer Organisation oder Branche an, damit Scores vergleichbar bleiben.</p>
+        <p>Jede Frage hat eine Standardgewichtung (2, 3 oder 4). Die Gewichtung bestimmt, wie viel Einfluss eine Frage <strong>innerhalb ihrer Dimension und ihres Fragetyps</strong> hat. Beispiel: Wenn Sie Frage 15 auf Gewichtung 5 und Frage 16 auf Gewichtung 1 setzen, zählt Frage 15 fünfmal so stark im Minderungswert von Autonomie. Es gibt zwei Ebenen. Die <strong>Gewichtung Ihrer Organisation</strong> legen Sie in Ihrem eigenen Profil fest (Schaltfläche „Profil“, Reiter Gewichtung); sie gilt für alle Anwendungen mit diesem Profil. Pro Anwendung können Sie mit der Schaltfläche „Gewichtung“ in der Bewertung noch davon abweichen. In der Bewertung wird die Gewichtung nur dort angezeigt, wo sie vom SIVON-Modell abweicht. Passen Sie Gewichtungen nur in Absprache innerhalb Ihrer Organisation oder Branche an, damit Scores vergleichbar bleiben.</p>
         <h3>Profile</h3>
         <p>Ein <strong>Profil</strong> legt fest, wie Ihre Organisation den Check öffentlicher Werte verwendet: die <strong>Gewichtung</strong> und bei Bedarf <strong>eigene Texte</strong> für Fragen (Titel, Frage, Rubriken und Hinweis). Das Standardprofil ist das SIVON-Modell, wie es ist, und ist festgelegt, damit Scores vergleichbar bleiben. Die Nummern, die Fragetypen, die Skala und die Berechnung sind für alle gleich.</p>
         <ul>
@@ -3632,7 +3632,7 @@ const I18N = {
             <li><strong>Complete overview:</strong> the coordinator's overview shows the complete picture, which you can present filtered per unit or supplier, or print as a report.</li>
         </ol>
         <h3>Weights</h3>
-        <p>Each question has a default weight (2 or 3). The weight determines how much influence a question has <strong>within its dimension and question type</strong>. For example: if you set question 15 to weight 5 and question 16 to weight 1, question 15 counts five times as heavily in the mitigation score of Autonomy. There are two levels. Your <strong>organisation's weights</strong> are set in your own profile ("Profile" button, Weights tab) and apply to all applications with that profile. Per application you can still deviate with the "Weights" button in the assessment. In the assessment the weight is only shown where it differs from the SIVON model. Only adjust weights in consultation within your organisation or sector, so scores stay comparable.</p>
+        <p>Each question has a default weight (2, 3 or 4). The weight determines how much influence a question has <strong>within its dimension and question type</strong>. For example: if you set question 15 to weight 5 and question 16 to weight 1, question 15 counts five times as heavily in the mitigation score of Autonomy. There are two levels. Your <strong>organisation's weights</strong> are set in your own profile ("Profile" button, Weights tab) and apply to all applications with that profile. Per application you can still deviate with the "Weights" button in the assessment. In the assessment the weight is only shown where it differs from the SIVON model. Only adjust weights in consultation within your organisation or sector, so scores stay comparable.</p>
         <h3>Profiles</h3>
         <p>A <strong>profile</strong> sets how your organisation uses the Public Values Check: the <strong>weights</strong> and, if needed, <strong>own texts</strong> for questions (title, question, rubrics and guidance). The default profile is the SIVON model as it is and is fixed, so scores stay comparable. The numbers, question types, the scale and the calculation are the same for everyone.</p>
         <ul>
@@ -4665,7 +4665,7 @@ const I18N = {
             <li><strong>Visión completa:</strong> la vista general del coordinador muestra la imagen completa, que puedes presentar filtrada por unidad o proveedor, o imprimir como informe.</li>
         </ol>
         <h3>Pesos</h3>
-        <p>Cada pregunta tiene un peso predeterminado (2 o 3). El peso determina cuánta influencia tiene una pregunta <strong>dentro de su dimensión y su tipo de pregunta</strong>. Por ejemplo: si estableces la pregunta 15 en peso 5 y la pregunta 16 en peso 1, la pregunta 15 cuenta cinco veces más en la puntuación de mitigación de Autonomía. Hay dos niveles. Los <strong>pesos de tu organización</strong> se definen en tu propio perfil (botón "Perfil", pestaña Pesos) y se aplican a todas las aplicaciones con ese perfil. Por aplicación aún puedes desviarte con el botón "Pesos" de la evaluación. En la evaluación, el peso solo se muestra donde difiere del modelo SIVON. Ajusta los pesos solo en consulta dentro de tu organización o sector, para que las puntuaciones sigan siendo comparables.</p>
+        <p>Cada pregunta tiene un peso predeterminado (2, 3 o 4). El peso determina cuánta influencia tiene una pregunta <strong>dentro de su dimensión y su tipo de pregunta</strong>. Por ejemplo: si estableces la pregunta 15 en peso 5 y la pregunta 16 en peso 1, la pregunta 15 cuenta cinco veces más en la puntuación de mitigación de Autonomía. Hay dos niveles. Los <strong>pesos de tu organización</strong> se definen en tu propio perfil (botón "Perfil", pestaña Pesos) y se aplican a todas las aplicaciones con ese perfil. Por aplicación aún puedes desviarte con el botón "Pesos" de la evaluación. En la evaluación, el peso solo se muestra donde difiere del modelo SIVON. Ajusta los pesos solo en consulta dentro de tu organización o sector, para que las puntuaciones sigan siendo comparables.</p>
         <h3>Perfiles</h3>
         <p>Un <strong>perfil</strong> define cómo usa tu organización la Verificación de valores públicos: los <strong>pesos</strong> y, si hace falta, <strong>textos propios</strong> para las preguntas (título, pregunta, rúbricas y orientación). El perfil predeterminado es el modelo SIVON tal cual y es fijo, para que las puntuaciones sigan siendo comparables. Los números, los tipos de pregunta, la escala y el cálculo son iguales para todos.</p>
         <ul>
@@ -5695,7 +5695,7 @@ const I18N = {
             <li><strong>Vue complète :</strong> la vue d'ensemble du coordinateur montre le tableau complet, que vous pouvez présenter filtré par unité ou par fournisseur, ou imprimer sous forme de rapport.</li>
         </ol>
         <h3>Pondérations</h3>
-        <p>Chaque question a une pondération par défaut (2 ou 3). La pondération détermine l'influence d'une question <strong>au sein de sa dimension et de son type de question</strong>. Par exemple : si vous fixez la question 15 à une pondération de 5 et la question 16 à une pondération de 1, la question 15 compte cinq fois plus dans le score d'atténuation d'Autonomie. Il y a deux niveaux. Les <strong>pondérations de votre organisation</strong> se définissent dans votre propre profil (bouton « Profil », onglet Pondérations) et s'appliquent à toutes les applications ayant ce profil. Par application, vous pouvez encore vous en écarter avec le bouton « Pondérations » de l'évaluation. Dans l'évaluation, la pondération n'est affichée que là où elle diffère du modèle SIVON. N'ajustez les pondérations qu'en concertation au sein de votre organisation ou secteur, afin que les scores restent comparables.</p>
+        <p>Chaque question a une pondération par défaut (2, 3 ou 4). La pondération détermine l'influence d'une question <strong>au sein de sa dimension et de son type de question</strong>. Par exemple : si vous fixez la question 15 à une pondération de 5 et la question 16 à une pondération de 1, la question 15 compte cinq fois plus dans le score d'atténuation d'Autonomie. Il y a deux niveaux. Les <strong>pondérations de votre organisation</strong> se définissent dans votre propre profil (bouton « Profil », onglet Pondérations) et s'appliquent à toutes les applications ayant ce profil. Par application, vous pouvez encore vous en écarter avec le bouton « Pondérations » de l'évaluation. Dans l'évaluation, la pondération n'est affichée que là où elle diffère du modèle SIVON. N'ajustez les pondérations qu'en concertation au sein de votre organisation ou secteur, afin que les scores restent comparables.</p>
         <h3>Profils</h3>
         <p>Un <strong>profil</strong> définit la manière dont votre organisation utilise le Contrôle des valeurs publiques : les <strong>pondérations</strong> et, si nécessaire, des <strong>textes propres</strong> pour les questions (titre, question, rubriques et orientation). Le profil par défaut est le modèle SIVON tel quel et il est figé, afin que les scores restent comparables. Les numéros, les types de question, l'échelle et le calcul sont identiques pour tous.</p>
         <ul>
@@ -6725,7 +6725,7 @@ const I18N = {
             <li><strong>Quadro completo:</strong> la panoramica del coordinatore mostra il quadro completo, che puoi presentare filtrato per unità o fornitore, oppure stampare come rapporto.</li>
         </ol>
         <h3>Pesi</h3>
-        <p>Ogni domanda ha un peso predefinito (2 o 3). Il peso determina l'influenza di una domanda <strong>all'interno della sua dimensione e del suo tipo di domanda</strong>. Ad esempio: se imposti la domanda 15 a peso 5 e la domanda 16 a peso 1, la domanda 15 conta cinque volte di più nel punteggio di attenuazione di Autonomia. Ci sono due livelli. I <strong>pesi della tua organizzazione</strong> si impostano nel tuo profilo (pulsante "Profilo", scheda Pesi) e valgono per tutte le applicazioni con quel profilo. Per singola applicazione puoi comunque discostarti con il pulsante "Pesi" nella valutazione. Nella valutazione il peso viene mostrato solo dove differisce dal modello SIVON. Regola i pesi solo in consultazione all'interno della tua organizzazione o del tuo settore, così i punteggi restano confrontabili.</p>
+        <p>Ogni domanda ha un peso predefinito (2, 3 o 4). Il peso determina l'influenza di una domanda <strong>all'interno della sua dimensione e del suo tipo di domanda</strong>. Ad esempio: se imposti la domanda 15 a peso 5 e la domanda 16 a peso 1, la domanda 15 conta cinque volte di più nel punteggio di attenuazione di Autonomia. Ci sono due livelli. I <strong>pesi della tua organizzazione</strong> si impostano nel tuo profilo (pulsante "Profilo", scheda Pesi) e valgono per tutte le applicazioni con quel profilo. Per singola applicazione puoi comunque discostarti con il pulsante "Pesi" nella valutazione. Nella valutazione il peso viene mostrato solo dove differisce dal modello SIVON. Regola i pesi solo in consultazione all'interno della tua organizzazione o del tuo settore, così i punteggi restano confrontabili.</p>
         <h3>Profili</h3>
         <p>Un <strong>profilo</strong> stabilisce come la tua organizzazione usa la Verifica dei valori pubblici: i <strong>pesi</strong> e, se necessario, <strong>testi propri</strong> per le domande (titolo, domanda, rubriche e indicazioni). Il profilo predefinito è il modello SIVON così com'è ed è fisso, così i punteggi restano confrontabili. I numeri, i tipi di domanda, la scala e il calcolo sono uguali per tutti.</p>
         <ul>
