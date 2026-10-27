@@ -11,12 +11,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PVS | Publieke Waarden Scan</title>
+<title>PVC | Publieke waardencheck</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Ccircle%20cx='32'%20cy='32'%20r='24.035'%20fill='none'%20stroke='%2334444C'%20stroke-width='6.84'/%3E%3C/svg%3E">
 <script>
   // Set the appearance before the first paint, so a dark page does not flash light first
   try {
-    const p = localStorage.getItem('pvs_theme');
+    const p = localStorage.getItem('pvc_theme');
     document.documentElement.dataset.theme = p === 'dark' || (p === 'system' && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
   } catch (e) {}
 </script>
@@ -1141,7 +1141,7 @@
   <div class="header-left">
       <div class="header-logo">
         <a href="https://sivon.nl/"><img src="https://sivon.nl/wp-content/themes/haicu26_sivon/images/logo-SIVON.png" alt="SIVON Logo"></a>
-        <h1 data-i18n="ui.headerTitle">Public Values Scan</h1>
+        <h1 data-i18n="ui.headerTitle">Public Values Check</h1>
       </div>
   </div>
   <div class="header-right">
@@ -1225,7 +1225,7 @@
 <div class="modal-overlay" id="helpModal">
   <div class="modal">
     <div class="modal-header">
-      <h2 class="sivon" data-i18n="ui.helpModalTitle">User Guide – Public Values Scan</h2>
+      <h2 class="sivon" data-i18n="ui.helpModalTitle">User Guide – Public Values Check</h2>
       <button class="modal-close" onclick="closeHelpModal()">&times;</button>
     </div>
     <div class="modal-body" id="helpModalBody"></div>
@@ -1286,8 +1286,8 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-left">
-      <strong>PVS v<span id="footerVersion"></span></strong> | &copy; 2026 <span data-i18n="ui.footerCopyrights">University of Utrecht & SIVON</span> | <span data-i18n-html="ui.footerCreditsHtml">Based on <a href="https://github.com/UtrechtUniversity/digital-autonomy-assessment-tool">DAAF</a> by Tim van Neerbos</span><br>
-      <span data-i18n-html="ui.footerLicenseSummaryHtml">Free for non-commercial use with attribution, see <a href='https://codeberg.org/SIVON/pvaf/' target="_blank">LICENSE</a> for details. <a href='https://codeberg.org/SIVON/pvaf/' target="_blank">Contributions</a> welcome.</span><br>
+      <strong>PVC v<span id="footerVersion"></span></strong> | &copy; 2026 <span data-i18n="ui.footerCopyrights">University of Utrecht & SIVON</span> | <span data-i18n-html="ui.footerCreditsHtml">Based on <a href="https://github.com/UtrechtUniversity/digital-autonomy-assessment-tool">DAAF</a> by Tim van Neerbos</span><br>
+      <span data-i18n-html="ui.footerLicenseSummaryHtml">Free for non-commercial use with attribution, see <a href='https://codeberg.org/SIVON/pv-check' target="_blank">LICENSE</a> for details. <a href='https://codeberg.org/SIVON/pv-check' target="_blank">Contributions</a> welcome.</span><br>
     </div>
     <div class="footer-right">
       <a class="cc-badge" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">
@@ -1299,7 +1299,7 @@
 </footer>
 
 <script>
-const CURRENT_VERSION = '1.0.0';
+const CURRENT_VERSION = '0.9.0';
 
 // === INDICATOR DEFINITIONS ===
 const INDICATORS = [
@@ -1412,12 +1412,12 @@ function detectBrowserLang() {
   return 'en';
 }
 
-let lang = localStorage.getItem('pvs_lang') || detectBrowserLang();
+let lang = localStorage.getItem('pvc_lang') || detectBrowserLang();
 const I18N = {
   "da": {
     "changelog": [
       {
-        "version": "1.0.0",
+        "version": "0.9.0",
         "date": "2026-10-12",
         "items": [
           "<strong>Første offentlige version baseret på DAAF v1.0:</strong> 34 spørgsmål i 5 dimensioner: strategisk vigtighed, autonomi, menneskelighed, retfærdighed og skolens styring."
@@ -1484,8 +1484,8 @@ const I18N = {
       "vendor lock-in": "En situation, hvor en organisation er så afhængig af en udbyder, at det at skifte til et alternativ bliver uforholdsmæssigt dyrt eller komplekst."
     },
     "help": `
-        <h3>Hvad er PVS?</h3>
-        <p>Scanning af offentlige værdier (PVS) hjælper organisationer med at vurdere, i hvilken grad deres applikationslandskab overholder <a href="https://www.kennisnet.nl/tools/waardenwijzer/">de offentlige værdier i uddannelse</a>. Spørgeskemaet er baseret på SIVON's Scanning af offentlige værdier og indeholder 34 spørgsmål fordelt på 5 dimensioner: strategisk vigtighed, autonomi, menneskelighed, retfærdighed og skolens styring.</p>
+        <h3>Hvad er Tjek af offentlige værdier?</h3>
+        <p>Tjek af offentlige værdier (PVC) hjælper organisationer med at vurdere, i hvilken grad deres applikationslandskab overholder <a href="https://www.kennisnet.nl/tools/waardenwijzer/">de offentlige værdier i uddannelse</a>. Spørgeskemaet er baseret på SIVON's Scanning af offentlige værdier og indeholder 34 spørgsmål fordelt på 5 dimensioner: strategisk vigtighed, autonomi, menneskelighed, retfærdighed og skolens styring.</p>
         <h3>Hvordan fungerer det?</h3>
         <p>Vurderingen følger fire trin:</p>
         <ul>
@@ -1530,7 +1530,7 @@ const I18N = {
         </ul>
         <p>Ubesvarede spørgsmål tæller ikke med. Akserne beregnes, så snart mindst ét spørgsmål af den rette type er besvaret i hver af de berørte dimensioner. Hurtig scanning bruger kun de 12 centrale spørgsmål; resultatet er da vejledende.</p>
         <div class="tip"><strong>Eksempel:</strong> risikospørgsmålene besvares i gennemsnit med 2 i Autonomi, 4 i Menneskelighed og 3 i Retfærdighed. Omregnet giver det 4, 2 og 3, så risikoeksponeringen er (4 + 2 + 3) / 3 = 3,0. Med en strategisk vigtighed på 4,0 er risikopresset 3,0 × 4,0 = 12,0: over grænsen på 9, altså på den høje side af kvadranten.</div>
-        <p><strong>Score for offentlige værdier (1–10):</strong> ud over kvadranten samler dette værktøj begge akser i én score: <code>rå score = afbødningsstyrke / risikopres</code>, med et interval fra 0,04 (værste tilfælde) til 5,0 (bedste tilfælde). Den rå score omregnes til 1–10 via en logaritmisk skala. Denne score er en tilføjelse i værktøjet og ikke en del af den oprindelige metode i Scanning af offentlige værdier.</p>
+        <p><strong>Score for offentlige værdier (1–10):</strong> ud over kvadranten samler dette værktøj begge akser i én score: <code>rå score = afbødningsstyrke / risikopres</code>, med et interval fra 0,04 (værste tilfælde) til 5,0 (bedste tilfælde). Den rå score omregnes til 1–10 via en logaritmisk skala. Denne score er en tilføjelse i værktøjet og ikke en del af den oprindelige metode i Tjek af offentlige værdier.</p>
         <div class="tip"><strong>Hvorfor logaritmisk?</strong> Formlen dividerer Afbødning (maks 5) med Risiko × Vigtighed (maks 25). Som følge heraf falder de fleste råscorer mellem 0,
     1 og 0,5. Uden korrektion ville 90 % af applikationerne få en slutscore mellem 1 og 3, for snævert til at sammenligne meningsfyldt. Den logaritmiske skala spreder disse scorer over hele 1–10-intervallet og gør forskelle synlige og sammenlignelige.</div>
         <p><strong>Tommelfingerregler:</strong> 7+ = god position (grøn),
@@ -1564,7 +1564,7 @@ const I18N = {
         <h3>Datakvalitet</h3>
         <p>Kortet Datakvalitet i oversigten viser, hvad der stadig kræver opmærksomhed, før du deler billedet: applikationer, der ikke er fuldt scoret, applikationer uden enhed eller leverandør, mulige stavevarianter som "IT-afdeling" og "IT afdeling" samt forskellige profiler i brug. Klik på en meddelelse for at gå direkte til den.</p>
         <h3>Vurdering i fællesskab</h3>
-        <p>PVS udfyldes normalt sammen med kolleger. En almindelig arbejdsform, uden at nogen behøver at logge ind:</p>
+        <p>Tjek af offentlige værdier udfyldes normalt sammen med kolleger. En almindelig arbejdsform, uden at nogen behøver at logge ind:</p>
         <ol>
             <li><strong>Aftaler på forhånd:</strong> én koordinator beslutter, hvilken profil organisationen bruger, og deler den via "Del". Aftal også navnene på enheder og leverandører.</li>
             <li><strong>Udfyldning:</strong> kolleger importerer profilen via Importer &gt; Importer profil (den bliver så deres aktive profil), vurderer deres applikationer og eksporterer dem som JSON.</li>
@@ -1574,7 +1574,7 @@ const I18N = {
         <h3>Vægte</h3>
         <p>Hvert spørgsmål har en standardvægt (2 eller 3). Vægten bestemmer, hvor meget indflydelse et spørgsmål har <strong>inden for sin dimension og spørgsmålstype</strong>. For eksempel: hvis du sætter spørgsmål 15 til vægt 5 og spørgsmål 16 til vægt 1, tæller spørgsmål 15 fem gange så meget i afbødningsscoren for Autonomi. Der er to niveauer. Din <strong>organisations vægte</strong> indstiller du i din egen profil (knappen "Profil", fanen Vægte); de gælder for alle applikationer med den profil. Pr. applikation kan du stadig afvige med knappen "Vægte" i vurderingen. I vurderingen vises vægten kun, hvor den afviger fra SIVON-modellen. Juster kun vægte i samråd inden for din organisation eller sektor, så scorerne forbliver sammenlignelige.</p>
         <h3>Profiler</h3>
-        <p>En <strong>profil</strong> fastlægger, hvordan din organisation bruger PVS: <strong>vægtene</strong> og om nødvendigt <strong>egne tekster</strong> til spørgsmål (titel, spørgsmål, rubrikker og vejledning). Standardprofilen er SIVON-modellen, som den er, og er låst, så scorerne forbliver sammenlignelige. Numrene, spørgsmålstyperne, skalaen og beregningen er de samme for alle.</p>
+        <p>En <strong>profil</strong> fastlægger, hvordan din organisation bruger Tjek af offentlige værdier: <strong>vægtene</strong> og om nødvendigt <strong>egne tekster</strong> til spørgsmål (titel, spørgsmål, rubrikker og vejledning). Standardprofilen er SIVON-modellen, som den er, og er låst, så scorerne forbliver sammenlignelige. Numrene, spørgsmålstyperne, skalaen og beregningen er de samme for alle.</p>
         <ul>
             <li><strong>Opret din egen profil:</strong> via knappen "Profil". Din første egen profil bliver profilen for nye vurderinger, og værktøjet spørger, om eksisterende applikationer også må bruge den. Øverst i hver vurdering ser og skifter du profilen.</li>
             <li><strong>Egne tekster:</strong> på fanen Tekster eller med blyanten ved et spørgsmål i en vurdering. Et tomt felt bruger standardteksten.</li>
@@ -2127,7 +2127,7 @@ const I18N = {
       "exportReminderText3": " gemt i din browser. Eksporter regelmæssigt til JSON for at undgå at miste dit arbejde.",
       "footerCopyrights": "Universitetet i Utrecht & SIVON",
       "footerCreditsHtml": "Baseret på <a href='https://github.com/UtrechtUniversity/digital-autonomy-assessment-tool'>DAAF</a> af Tim van Neerbos",
-      "footerLicenseSummaryHtml": "Gratis at bruge til ikke-kommercielt formål med kreditering, se <a href='https://codeberg.org/SIVON/pvaf/' target='_blank'>LICENSEN</a> for detaljer. <a href='https://codeberg.org/SIVON/pvaf/' target='_blank'>Bidrag</a> er velkomne.",
+      "footerLicenseSummaryHtml": "Gratis at bruge til ikke-kommercielt formål med kreditering, se <a href='https://codeberg.org/SIVON/pv-check' target='_blank'>LICENSEN</a> for detaljer. <a href='https://codeberg.org/SIVON/pv-check' target='_blank'>Bidrag</a> er velkomne.",
       "formulaQuad": "Kvadrant: grænserne ligger ved risikopres = 9 (3 x 3) og afbødningsstyrke = 3.",
       "hasRemark": "Har en kommentar",
       "hDupes": "{n} mulig(e) stavevariant(er) i {label}",
@@ -2152,12 +2152,12 @@ const I18N = {
       "headerMenuResetWeightsBtn": "Nulstil til standard",
       "headerMenuWeightsBtn": "Juster vægte",
       "headerTabsAddAppBtn": "Tilføj applikation",
-      "headerTitle": "Scanning af offentlige værdier",
+      "headerTitle": "Tjek af offentlige værdier",
       "healthOk": "Alt i orden",
       "healthOkSub": "Fuldt scoret, klassificeret og uden dubletter.",
       "healthSub": "Hvad kræver stadig opmærksomhed, før du drager konklusioner",
       "healthTitle": "Datakvalitet",
-      "helpModalTitle": "Brugervejledning – Scanning af offentlige værdier",
+      "helpModalTitle": "Brugervejledning – Tjek af offentlige værdier",
       "hIncomplete": "{n} applikation(er) endnu ikke fuldt scoret",
       "hNoOrg": "{n} applikation(er) uden {label}",
       "hNoVendor": "{n} applikation(er) uden leverandør",
@@ -2332,7 +2332,7 @@ const I18N = {
       "profile": "Profil",
       "profileSaved": "Profilen \"{name}\" gemt.",
       "profilesBtn": "Profil",
-      "profilesIntroHtml": "En <strong>profil</strong> fastlægger, hvordan din organisation bruger PVS: spørgsmålenes <strong>vægte</strong> og om nødvendigt <strong>egne tekster</strong> til spørgsmål. Standardprofilen er SIVON-modellen, som den er; den er låst, så scorerne forbliver sammenlignelige.",
+      "profilesIntroHtml": "En <strong>profil</strong> fastlægger, hvordan din organisation bruger Tjek af offentlige værdier: spørgsmålenes <strong>vægte</strong> og om nødvendigt <strong>egne tekster</strong> til spørgsmål. Standardprofilen er SIVON-modellen, som den er; den er låst, så scorerne forbliver sammenlignelige.",
       "profilesShareHtml": "<strong>Vurderer I sammen?</strong> En profil gemmes i din egen browser. Del den via <em>Del</em> med alle involverede. En profil medtages også automatisk i hver JSON-eksport. Kolleger vælger <em>Importer</em> (eller <em>Importer profil</em> nedenfor); den delte profil bliver så straks deres aktive profil.",
       "profilesTitle": "Profil",
       "profileVersionChanged": "Vurderet med version {v}; profilen er nu version {cur}.",
@@ -2354,7 +2354,7 @@ const I18N = {
       "rpBtn": "Rapport",
       "rpExplain": "Scoren for offentlige værdier (1 til 10) viser, hvor presserende risiciene for offentlige værdier er: jo lavere, jo mere presserende. Kvadranten viser, hvilken type handling der passer.",
       "rpFilter": "Filter",
-      "rpFoot": "Lavet med PVS v{v} (Scanning af offentlige værdier, SIVON, baseret på DAAF fra Utrecht Universitet).",
+      "rpFoot": "Lavet med PVC v{v} (Tjek af offentlige værdier, SIVON, baseret på DAAF fra Utrecht Universitet).",
       "rpGainSub": "Spørgsmål, der oftest giver den største gevinst ved Kritisk og Opmærksomhedspunkt. Forslag, ikke rådgivning.",
       "rpLowest": "Laveste scorer",
       "rpMenu": "Rapport (PDF)",
@@ -2435,7 +2435,7 @@ const I18N = {
       "wModel": "SIVON-model"
     },
     "welcome": `
-      <p>Velkommen til Scanning af offentlige værdier (PVS), et værktøj der hjælper organisationer med at vurdere i hvilken grad deres applikationslandskab lever op til <a href="https://www.kennisnet.nl/tools/waardenwijzer/">de offentlige værdier i uddannelse</a> (autonomi, retfærdighed og menneskelighed).</p>
+      <p>Velkommen til Tjek af offentlige værdier (PVC), et værktøj der hjælper organisationer med at vurdere i hvilken grad deres applikationslandskab lever op til <a href="https://www.kennisnet.nl/tools/waardenwijzer/">de offentlige værdier i uddannelse</a> (autonomi, retfærdighed og menneskelighed).</p>
       <h3>Sådan kommer du i gang</h3>
       <ol>
         <li><strong>Tilføj en applikation:</strong> klik på <strong>+ Tilføj applikation</strong>, eller importer en liste med navne via CSV.</li>
@@ -2450,7 +2450,7 @@ const I18N = {
   "de": {
     "changelog": [
       {
-        "version": "1.0.0",
+        "version": "0.9.0",
         "date": "2026-10-12",
         "items": [
           "<strong>Erste öffentliche Version auf Basis von DAAF v1.0:</strong> 34 Fragen in 5 Dimensionen: strategische Bedeutung, Autonomie, Menschlichkeit, Gerechtigkeit und Steuerung durch die Schule."
@@ -2517,8 +2517,8 @@ const I18N = {
       "vendor lock-in": "Eine Situation, in der eine Organisation so stark von einem Anbieter abhängig ist, dass ein Wechsel zu einer Alternative unverhältnismäßig teuer oder komplex wird."
     },
     "help": `
-        <h3>Was ist PVS?</h3>
-        <p>Der Scan öffentlicher Werte (PVS) hilft Organisationen dabei, zu bewerten, inwieweit ihre Anwendungslandschaft den <a href="https://www.kennisnet.nl/tools/waardenwijzer/">öffentlichen Werten im Bildungswesen</a> entspricht. Der Fragebogen basiert auf dem Scan öffentlicher Werte von SIVON und umfasst 34 Fragen in 5 Dimensionen: strategische Bedeutung, Autonomie, Menschlichkeit, Gerechtigkeit und Steuerung durch die Schule.</p>
+        <h3>Was ist der Check öffentlicher Werte?</h3>
+        <p>Der Check öffentlicher Werte (PVC) hilft Organisationen dabei, zu bewerten, inwieweit ihre Anwendungslandschaft den <a href="https://www.kennisnet.nl/tools/waardenwijzer/">öffentlichen Werten im Bildungswesen</a> entspricht. Der Fragebogen basiert auf dem Scan öffentlicher Werte von SIVON und umfasst 34 Fragen in 5 Dimensionen: strategische Bedeutung, Autonomie, Menschlichkeit, Gerechtigkeit und Steuerung durch die Schule.</p>
         <h3>Wie funktioniert es?</h3>
         <p>Die Bewertung folgt vier Schritten:</p>
         <ul>
@@ -2594,7 +2594,7 @@ const I18N = {
         <h3>Datenqualität</h3>
         <p>Die Karte Datenqualität in der Übersicht zeigt, was noch Aufmerksamkeit erfordert, bevor Sie das Bild teilen: nicht vollständig bewertete Anwendungen, Anwendungen ohne Einheit oder Anbieter, mögliche Schreibvarianten wie „IT-Dienst“ und „IT Dienst“ sowie unterschiedliche verwendete Profile. Klicken Sie auf einen Hinweis, um direkt dorthin zu gelangen.</p>
         <h3>Gemeinsam bewerten</h3>
-        <p>Der PVS wird meist gemeinsam mit Kolleginnen und Kollegen ausgefüllt. Eine übliche Arbeitsweise, ohne dass sich jemand anmelden muss:</p>
+        <p>Der Check öffentlicher Werte wird meist gemeinsam mit Kolleginnen und Kollegen ausgefüllt. Eine übliche Arbeitsweise, ohne dass sich jemand anmelden muss:</p>
         <ol>
             <li><strong>Vorab Absprachen treffen:</strong> Eine koordinierende Person legt fest, welches Profil die Organisation verwendet, und teilt es über „Teilen“. Stimmen Sie auch die Namen der Einheiten und Anbieter ab.</li>
             <li><strong>Ausfüllen:</strong> Kolleginnen und Kollegen importieren das Profil über Importieren &gt; Profil importieren (es wird dann ihr aktives Profil), bewerten ihre Anwendungen und exportieren sie als JSON.</li>
@@ -2604,7 +2604,7 @@ const I18N = {
         <h3>Gewichtungen</h3>
         <p>Jede Frage hat eine Standardgewichtung (2 oder 3). Die Gewichtung bestimmt, wie viel Einfluss eine Frage <strong>innerhalb ihrer Dimension und ihres Fragetyps</strong> hat. Beispiel: Wenn Sie Frage 15 auf Gewichtung 5 und Frage 16 auf Gewichtung 1 setzen, zählt Frage 15 fünfmal so stark im Minderungswert von Autonomie. Es gibt zwei Ebenen. Die <strong>Gewichtung Ihrer Organisation</strong> legen Sie in Ihrem eigenen Profil fest (Schaltfläche „Profil“, Reiter Gewichtung); sie gilt für alle Anwendungen mit diesem Profil. Pro Anwendung können Sie mit der Schaltfläche „Gewichtung“ in der Bewertung noch davon abweichen. In der Bewertung wird die Gewichtung nur dort angezeigt, wo sie vom SIVON-Modell abweicht. Passen Sie Gewichtungen nur in Absprache innerhalb Ihrer Organisation oder Branche an, damit Scores vergleichbar bleiben.</p>
         <h3>Profile</h3>
-        <p>Ein <strong>Profil</strong> legt fest, wie Ihre Organisation den PVS verwendet: die <strong>Gewichtung</strong> und bei Bedarf <strong>eigene Texte</strong> für Fragen (Titel, Frage, Rubriken und Hinweis). Das Standardprofil ist das SIVON-Modell, wie es ist, und ist festgelegt, damit Scores vergleichbar bleiben. Die Nummern, die Fragetypen, die Skala und die Berechnung sind für alle gleich.</p>
+        <p>Ein <strong>Profil</strong> legt fest, wie Ihre Organisation den Check öffentlicher Werte verwendet: die <strong>Gewichtung</strong> und bei Bedarf <strong>eigene Texte</strong> für Fragen (Titel, Frage, Rubriken und Hinweis). Das Standardprofil ist das SIVON-Modell, wie es ist, und ist festgelegt, damit Scores vergleichbar bleiben. Die Nummern, die Fragetypen, die Skala und die Berechnung sind für alle gleich.</p>
         <ul>
             <li><strong>Eigenes Profil erstellen:</strong> über die Schaltfläche „Profil“. Ihr erstes eigenes Profil wird das Profil für neue Bewertungen, und das Tool fragt, ob bestehende Anwendungen es ebenfalls verwenden dürfen. Oben in jeder Bewertung sehen und wechseln Sie das Profil.</li>
             <li><strong>Eigene Texte:</strong> im Reiter Texte oder mit dem Stift neben einer Frage in einer Bewertung. Ein leeres Feld verwendet den Standardtext.</li>
@@ -3157,7 +3157,7 @@ const I18N = {
       "exportReminderText3": " in Ihrem Browser gespeichert. Exportieren Sie regelmäßig nach JSON, um den Verlust Ihrer Arbeit zu vermeiden.",
       "footerCopyrights": "Universität Utrecht & SIVON",
       "footerCreditsHtml": "Basierend auf <a href='https://github.com/UtrechtUniversity/digital-autonomy-assessment-tool'>DAAF</a> von Tim van Neerbos",
-      "footerLicenseSummaryHtml": "Kostenlos für nicht-kommerzielle Nutzung mit Namensnennung, siehe <a href='https://codeberg.org/SIVON/pvaf/' target='_blank'>LIZENZ</a> für Details. <a href='https://codeberg.org/SIVON/pvaf/' target='_blank'>Beiträge</a> willkommen.",
+      "footerLicenseSummaryHtml": "Kostenlos für nicht-kommerzielle Nutzung mit Namensnennung, siehe <a href='https://codeberg.org/SIVON/pv-check' target='_blank'>LIZENZ</a> für Details. <a href='https://codeberg.org/SIVON/pv-check' target='_blank'>Beiträge</a> willkommen.",
       "formulaQuad": "Quadrant: Die Grenzen liegen bei Risikodruck = 9 (3 x 3) und Minderungsstärke = 3.",
       "hasRemark": "Hat einen Kommentar",
       "hDupes": "{n} mögliche Schreibvariante(n) bei {label}",
@@ -3182,12 +3182,12 @@ const I18N = {
       "headerMenuResetWeightsBtn": "Auf Standard zurücksetzen",
       "headerMenuWeightsBtn": "Gewichtungen anpassen",
       "headerTabsAddAppBtn": "Anwendung hinzufügen",
-      "headerTitle": "Scan öffentlicher Werte",
+      "headerTitle": "Check öffentlicher Werte",
       "healthOk": "Alles in Ordnung",
       "healthOkSub": "Vollständig bewertet, zugeordnet und ohne Duplikate.",
       "healthSub": "Was vor dem Ziehen von Schlussfolgerungen noch Aufmerksamkeit braucht",
       "healthTitle": "Datenqualität",
-      "helpModalTitle": "Benutzerhandbuch – Scan öffentlicher Werte",
+      "helpModalTitle": "Benutzerhandbuch – Check öffentlicher Werte",
       "hIncomplete": "{n} Anwendung(en) noch nicht vollständig bewertet",
       "hNoOrg": "{n} Anwendung(en) ohne {label}",
       "hNoVendor": "{n} Anwendung(en) ohne Anbieter",
@@ -3362,7 +3362,7 @@ const I18N = {
       "profile": "Profil",
       "profileSaved": "Profil \"{name}\" gespeichert.",
       "profilesBtn": "Profil",
-      "profilesIntroHtml": "Ein <strong>Profil</strong> legt fest, wie Ihre Organisation den PVS verwendet: die <strong>Gewichtung</strong> der Fragen und bei Bedarf <strong>eigene Texte</strong> für Fragen. Das Standardprofil ist das SIVON-Modell, wie es ist; es ist festgelegt, damit Scores vergleichbar bleiben.",
+      "profilesIntroHtml": "Ein <strong>Profil</strong> legt fest, wie Ihre Organisation den Check öffentlicher Werte verwendet: die <strong>Gewichtung</strong> der Fragen und bei Bedarf <strong>eigene Texte</strong> für Fragen. Das Standardprofil ist das SIVON-Modell, wie es ist; es ist festgelegt, damit Scores vergleichbar bleiben.",
       "profilesShareHtml": "<strong>Gemeinsam bewerten?</strong> Ein Profil wird in Ihrem eigenen Browser gespeichert. Teilen Sie es über <em>Teilen</em> mit allen Beteiligten. Ein Profil ist außerdem automatisch in jedem JSON-Export enthalten. Kolleginnen und Kollegen wählen <em>Importieren</em> (oder unten <em>Profil importieren</em>); das geteilte Profil wird dann sofort ihr aktives Profil.",
       "profilesTitle": "Profil",
       "profileVersionChanged": "Bewertet mit Version {v}; das Profil ist jetzt Version {cur}.",
@@ -3384,7 +3384,7 @@ const I18N = {
       "rpBtn": "Bericht",
       "rpExplain": "Der Public-Values-Score (1 bis 10) zeigt, wie dringend die Risiken für öffentliche Werte sind: je niedriger, desto dringender. Der Quadrant zeigt, welche Art von Maßnahme passt.",
       "rpFilter": "Filter",
-      "rpFoot": "Erstellt mit PVS v{v} (Scan öffentlicher Werte, SIVON, basierend auf dem DAAF der Universität Utrecht).",
+      "rpFoot": "Erstellt mit PVC v{v} (Check öffentlicher Werte, SIVON, basierend auf dem DAAF der Universität Utrecht).",
       "rpGainSub": "Fragen, die bei Kritisch und Aufmerksamkeitspunkt am häufigsten den größten Gewinn bringen. Vorschläge, keine Beratung.",
       "rpLowest": "Niedrigste Werte",
       "rpMenu": "Bericht (PDF)",
@@ -3465,7 +3465,7 @@ const I18N = {
       "wModel": "SIVON-Modell"
     },
     "welcome": `
-      <p>Willkommen beim Scan öffentlicher Werte (PVS), einem Werkzeug, das Organisationen dabei hilft zu bewerten, inwieweit ihre Anwendungslandschaft den <a href="https://www.kennisnet.nl/tools/waardenwijzer/">öffentlichen Werten im Bildungswesen</a> (Autonomie, Gerechtigkeit und Menschlichkeit) entspricht.</p>
+      <p>Willkommen beim Check öffentlicher Werte (PVC), einem Werkzeug, das Organisationen dabei hilft zu bewerten, inwieweit ihre Anwendungslandschaft den <a href="https://www.kennisnet.nl/tools/waardenwijzer/">öffentlichen Werten im Bildungswesen</a> (Autonomie, Gerechtigkeit und Menschlichkeit) entspricht.</p>
       <h3>Erste Schritte</h3>
         <ol>
           <li><strong>Anwendung hinzufügen:</strong> klicken Sie auf <strong>+ Anwendung hinzufügen</strong>, oder importieren Sie eine Namensliste per CSV.</li>
@@ -3480,7 +3480,7 @@ const I18N = {
   "en": {
     "changelog": [
       {
-        "version": "1.0.0",
+        "version": "0.9.0",
         "date": "2026-10-12",
         "items": [
           "<strong>First public version based on DAAF v1.0:</strong> 34 questions in 5 dimensions: strategic importance, autonomy, humanity, justice and school control."
@@ -3547,8 +3547,8 @@ const I18N = {
       "vendor lock-in": "A situation where an organisation is so dependent on a provider that switching to an alternative becomes disproportionately expensive or complex."
     },
     "help": `
-        <h3>What is PVS?</h3>
-        <p>The Public Values Scan (PVS) helps organisations assess the extent to which their application landscape complies with the <a href="https://www.kennisnet.nl/tools/waardenwijzer/">public values in education</a>. The questionnaire is based on SIVON's Public Values Scan and contains 34 questions across 5 dimensions: strategic importance, autonomy, humanity, justice and school control.</p>
+        <h3>What is the Public Values Check?</h3>
+        <p>The Public Values Check (PVC) helps organisations assess the extent to which their application landscape complies with the <a href="https://www.kennisnet.nl/tools/waardenwijzer/">public values in education</a>. The questionnaire is based on SIVON's Public Values Scan and contains 34 questions across 5 dimensions: strategic importance, autonomy, humanity, justice and school control.</p>
         <h3>How does it work?</h3>
         <p>The assessment follows four steps:</p>
         <ul>
@@ -3624,7 +3624,7 @@ const I18N = {
         <h3>Data quality</h3>
         <p>The Data quality card in the overview shows what still needs attention before you share the picture: applications that have not been fully scored, applications without a unit or supplier, possible spelling variants such as "ICT service" and "ICT services", and different profiles in use. Click a notice to go straight to it.</p>
         <h3>Assessing together</h3>
-        <p>The PVS is usually completed together with colleagues. A common way of working, without anyone having to log in:</p>
+        <p>The Public Values Check is usually completed together with colleagues. A common way of working, without anyone having to log in:</p>
         <ol>
             <li><strong>Agreements beforehand:</strong> one coordinator decides which profile the organisation uses and shares it via "Share". Also agree on the names of units and suppliers.</li>
             <li><strong>Completing:</strong> colleagues import the profile via Import &gt; Import profile (it then becomes their active profile), assess their applications and export them as JSON.</li>
@@ -3634,7 +3634,7 @@ const I18N = {
         <h3>Weights</h3>
         <p>Each question has a default weight (2 or 3). The weight determines how much influence a question has <strong>within its dimension and question type</strong>. For example: if you set question 15 to weight 5 and question 16 to weight 1, question 15 counts five times as heavily in the mitigation score of Autonomy. There are two levels. Your <strong>organisation's weights</strong> are set in your own profile ("Profile" button, Weights tab) and apply to all applications with that profile. Per application you can still deviate with the "Weights" button in the assessment. In the assessment the weight is only shown where it differs from the SIVON model. Only adjust weights in consultation within your organisation or sector, so scores stay comparable.</p>
         <h3>Profiles</h3>
-        <p>A <strong>profile</strong> sets how your organisation uses the PVS: the <strong>weights</strong> and, if needed, <strong>own texts</strong> for questions (title, question, rubrics and guidance). The default profile is the SIVON model as it is and is fixed, so scores stay comparable. The numbers, question types, the scale and the calculation are the same for everyone.</p>
+        <p>A <strong>profile</strong> sets how your organisation uses the Public Values Check: the <strong>weights</strong> and, if needed, <strong>own texts</strong> for questions (title, question, rubrics and guidance). The default profile is the SIVON model as it is and is fixed, so scores stay comparable. The numbers, question types, the scale and the calculation are the same for everyone.</p>
         <ul>
             <li><strong>Creating your own profile:</strong> via the "Profile" button. Your first own profile becomes the profile for new assessments, and the tool asks whether existing applications may use it too. At the top of each assessment you see and switch the profile.</li>
             <li><strong>Own texts:</strong> in the Texts tab, or with the pencil next to a question in an assessment. An empty field uses the default text.</li>
@@ -4190,7 +4190,7 @@ const I18N = {
       "exportReminderText3": " saved in your browser. Export regularly to JSON to avoid losing your work.",
       "footerCopyrights": "University of Utrecht & SIVON",
       "footerCreditsHtml": "Based on <a href='https://github.com/UtrechtUniversity/digital-autonomy-assessment-tool'>DAAF</a> by Tim van Neerbos",
-      "footerLicenseSummaryHtml": "Free for non-commercial use with attribution, see <a href='https://codeberg.org/SIVON/pvaf/' target='_blank'>LICENSE</a> for details. <a href='https://codeberg.org/SIVON/pvaf/' target='_blank'>Contributions</a> welcome.",
+      "footerLicenseSummaryHtml": "Free for non-commercial use with attribution, see <a href='https://codeberg.org/SIVON/pv-check' target='_blank'>LICENSE</a> for details. <a href='https://codeberg.org/SIVON/pv-check' target='_blank'>Contributions</a> welcome.",
       "formulaQuad": "Quadrant: the boundaries are at risk pressure = 9 (3 x 3) and mitigation strength = 3.",
       "hasRemark": "Has a remark",
       "hDupes": "{n} possible spelling variant(s) in {label}",
@@ -4215,12 +4215,12 @@ const I18N = {
       "headerMenuResetWeightsBtn": "Reset to default",
       "headerMenuWeightsBtn": "Adjust Weights",
       "headerTabsAddAppBtn": "Add Application",
-      "headerTitle": "Public Values Scan",
+      "headerTitle": "Public Values Check",
       "healthOk": "All in order",
       "healthOkSub": "Fully scored, classified and without duplicates.",
       "healthSub": "What still needs attention before drawing conclusions",
       "healthTitle": "Data quality",
-      "helpModalTitle": "User Guide – Public Values Scan",
+      "helpModalTitle": "User Guide – Public Values Check",
       "hIncomplete": "{n} application(s) not yet fully scored",
       "hNoOrg": "{n} application(s) without {label}",
       "hNoVendor": "{n} application(s) without supplier",
@@ -4395,7 +4395,7 @@ const I18N = {
       "profile": "Profile",
       "profileSaved": "Profile \"{name}\" saved.",
       "profilesBtn": "Profile",
-      "profilesIntroHtml": "A <strong>profile</strong> sets how your organisation uses the PVS: the <strong>weights</strong> of the questions and, if needed, <strong>own texts</strong> for questions. The default profile is the SIVON model as it is; it is fixed, so scores stay comparable.",
+      "profilesIntroHtml": "A <strong>profile</strong> sets how your organisation uses the Public Values Check: the <strong>weights</strong> of the questions and, if needed, <strong>own texts</strong> for questions. The default profile is the SIVON model as it is; it is fixed, so scores stay comparable.",
       "profilesShareHtml": "<strong>Assessing together?</strong> A profile is stored in your own browser. Share it via <em>Share</em> with everyone involved. A profile is also included automatically in every JSON export. Colleagues choose <em>Import</em> (or <em>Import profile</em> below); the shared profile then immediately becomes their active profile.",
       "profilesTitle": "Profile",
       "profileVersionChanged": "Assessed with version {v}; the profile is now version {cur}.",
@@ -4417,7 +4417,7 @@ const I18N = {
       "rpBtn": "Report",
       "rpExplain": "The public values score (1 to 10) shows how urgent the risks to public values are: the lower, the more urgent. The quadrant shows which kind of action fits.",
       "rpFilter": "Filter",
-      "rpFoot": "Made with PVS v{v} (Public Values Scan, SIVON, based on the DAAF of Utrecht University).",
+      "rpFoot": "Made with PVC v{v} (Public Values Check, SIVON, based on the DAAF of Utrecht University).",
       "rpGainSub": "Questions that most often give the biggest gain for Critical and Attention. Suggestions, not advice.",
       "rpLowest": "Lowest scores",
       "rpMenu": "Report (PDF)",
@@ -4498,7 +4498,7 @@ const I18N = {
       "wModel": "SIVON model"
     },
     "welcome": `
-      <p>Welcome to the Public Values Scan (PVS), a tool that helps organisations assess to what extent their application landscape meets the <a href="https://www.kennisnet.nl/tools/waardenwijzer/">public values in education</a> (autonomy, justice, and humanity).</p>
+      <p>Welcome to the Public Values Check (PVC), a tool that helps organisations assess to what extent their application landscape meets the <a href="https://www.kennisnet.nl/tools/waardenwijzer/">public values in education</a> (autonomy, justice, and humanity).</p>
       <h3>How to get started</h3>
         <ol>
           <li><strong>Add an application:</strong> click <strong>+ Add Application</strong>, or import a list of names via CSV.</li>
@@ -4513,7 +4513,7 @@ const I18N = {
   "es": {
     "changelog": [
       {
-        "version": "1.0.0",
+        "version": "0.9.0",
         "date": "2026-10-12",
         "items": [
           "<strong>Primera versión pública basada en DAAF v1.0:</strong> 34 preguntas en 5 dimensiones: importancia estratégica, autonomía, humanidad, justicia y control del centro."
@@ -4580,8 +4580,8 @@ const I18N = {
       "vendor lock-in": "Una situación en la que una organización depende tanto de un proveedor que cambiar a una alternativa se vuelve desproporcionadamente costoso o complejo."
     },
     "help": `
-        <h3>¿Qué es el PVS?</h3>
-        <p>El Análisis de valores públicos (PVS) ayuda a las organizaciones a evaluar en qué medida su cartera de aplicaciones cumple con los <a href="https://www.kennisnet.nl/tools/waardenwijzer/">valores públicos en la educación</a>. El cuestionario se basa en el Análisis de valores públicos de SIVON y contiene 34 preguntas en 5 dimensiones: importancia estratégica, autonomía, humanidad, justicia y control del centro.</p>
+        <h3>¿Qué es la Verificación de valores públicos?</h3>
+        <p>La Verificación de valores públicos (PVC) ayuda a las organizaciones a evaluar en qué medida su cartera de aplicaciones cumple con los <a href="https://www.kennisnet.nl/tools/waardenwijzer/">valores públicos en la educación</a>. El cuestionario se basa en el Análisis de valores públicos de SIVON y contiene 34 preguntas en 5 dimensiones: importancia estratégica, autonomía, humanidad, justicia y control del centro.</p>
         <h3>¿Cómo funciona?</h3>
         <p>La evaluación sigue cuatro pasos:</p>
         <ul>
@@ -4657,7 +4657,7 @@ const I18N = {
         <h3>Calidad de los datos</h3>
         <p>La tarjeta Calidad de los datos de la vista general muestra lo que aún requiere atención antes de compartir la imagen: aplicaciones que no se han puntuado por completo, aplicaciones sin unidad o proveedor, posibles variantes ortográficas como "Servicio TIC" y "Servicios TIC", y distintos perfiles en uso. Haz clic en un aviso para ir directamente a él.</p>
         <h3>Evaluar en equipo</h3>
-        <p>El PVS suele completarse junto con compañeros. Una forma de trabajo habitual, sin que nadie tenga que iniciar sesión:</p>
+        <p>La Verificación de valores públicos suele completarse junto con compañeros. Una forma de trabajo habitual, sin que nadie tenga que iniciar sesión:</p>
         <ol>
             <li><strong>Acuerdos previos:</strong> un coordinador decide qué perfil usa la organización y lo comparte mediante "Compartir". Acordad también los nombres de las unidades y de los proveedores.</li>
             <li><strong>Completar:</strong> los compañeros importan el perfil mediante Importar &gt; Importar perfil (pasa a ser su perfil activo), evalúan sus aplicaciones y las exportan como JSON.</li>
@@ -4667,7 +4667,7 @@ const I18N = {
         <h3>Pesos</h3>
         <p>Cada pregunta tiene un peso predeterminado (2 o 3). El peso determina cuánta influencia tiene una pregunta <strong>dentro de su dimensión y su tipo de pregunta</strong>. Por ejemplo: si estableces la pregunta 15 en peso 5 y la pregunta 16 en peso 1, la pregunta 15 cuenta cinco veces más en la puntuación de mitigación de Autonomía. Hay dos niveles. Los <strong>pesos de tu organización</strong> se definen en tu propio perfil (botón "Perfil", pestaña Pesos) y se aplican a todas las aplicaciones con ese perfil. Por aplicación aún puedes desviarte con el botón "Pesos" de la evaluación. En la evaluación, el peso solo se muestra donde difiere del modelo SIVON. Ajusta los pesos solo en consulta dentro de tu organización o sector, para que las puntuaciones sigan siendo comparables.</p>
         <h3>Perfiles</h3>
-        <p>Un <strong>perfil</strong> define cómo usa tu organización el PVS: los <strong>pesos</strong> y, si hace falta, <strong>textos propios</strong> para las preguntas (título, pregunta, rúbricas y orientación). El perfil predeterminado es el modelo SIVON tal cual y es fijo, para que las puntuaciones sigan siendo comparables. Los números, los tipos de pregunta, la escala y el cálculo son iguales para todos.</p>
+        <p>Un <strong>perfil</strong> define cómo usa tu organización la Verificación de valores públicos: los <strong>pesos</strong> y, si hace falta, <strong>textos propios</strong> para las preguntas (título, pregunta, rúbricas y orientación). El perfil predeterminado es el modelo SIVON tal cual y es fijo, para que las puntuaciones sigan siendo comparables. Los números, los tipos de pregunta, la escala y el cálculo son iguales para todos.</p>
         <ul>
             <li><strong>Crear un perfil propio:</strong> con el botón "Perfil". Tu primer perfil propio pasa a ser el perfil para nuevas evaluaciones, y la herramienta pregunta si las aplicaciones existentes también pueden usarlo. En la parte superior de cada evaluación ves y cambias el perfil.</li>
             <li><strong>Textos propios:</strong> en la pestaña Textos, o con el lápiz junto a una pregunta en una evaluación. Un campo vacío usa el texto predeterminado.</li>
@@ -5220,7 +5220,7 @@ const I18N = {
       "exportReminderText3": " guardadas en tu navegador. Exporta regularmente a JSON para evitar perder tu trabajo.",
       "footerCopyrights": "Universidad de Utrecht & SIVON",
       "footerCreditsHtml": "Basado en <a href='https://github.com/UtrechtUniversity/digital-autonomy-assessment-tool'>DAAF</a> por Tim van Neerbos",
-      "footerLicenseSummaryHtml": "Libre para uso no comercial con atribución, consulta la <a href='https://codeberg.org/SIVON/pvaf/' target='_blank'>LICENCIA</a> para más detalles. <a href='https://codeberg.org/SIVON/pvaf/' target='_blank'>Contribuciones</a> bienvenidas.",
+      "footerLicenseSummaryHtml": "Libre para uso no comercial con atribución, consulta la <a href='https://codeberg.org/SIVON/pv-check' target='_blank'>LICENCIA</a> para más detalles. <a href='https://codeberg.org/SIVON/pv-check' target='_blank'>Contribuciones</a> bienvenidas.",
       "formulaQuad": "Cuadrante: los límites están en presión de riesgo = 9 (3 x 3) y solidez de la mitigación = 3.",
       "hasRemark": "Tiene un comentario",
       "hDupes": "{n} posible(s) variante(s) ortográfica(s) en {label}",
@@ -5245,12 +5245,12 @@ const I18N = {
       "headerMenuResetWeightsBtn": "Restablecer predeterminados",
       "headerMenuWeightsBtn": "Ajustar pesos",
       "headerTabsAddAppBtn": "Añadir aplicación",
-      "headerTitle": "Análisis de valores públicos",
+      "headerTitle": "Verificación de valores públicos",
       "healthOk": "Todo en orden",
       "healthOkSub": "Puntuado por completo, clasificado y sin duplicados.",
       "healthSub": "Lo que aún requiere atención antes de sacar conclusiones",
       "healthTitle": "Calidad de los datos",
-      "helpModalTitle": "Guía de usuario – Análisis de valores públicos",
+      "helpModalTitle": "Guía de usuario – Verificación de valores públicos",
       "hIncomplete": "{n} aplicación(es) aún sin puntuar por completo",
       "hNoOrg": "{n} aplicación(es) sin {label}",
       "hNoVendor": "{n} aplicación(es) sin proveedor",
@@ -5425,7 +5425,7 @@ const I18N = {
       "profile": "Perfil",
       "profileSaved": "Perfil \"{name}\" guardado.",
       "profilesBtn": "Perfil",
-      "profilesIntroHtml": "Un <strong>perfil</strong> define cómo usa tu organización el PVS: los <strong>pesos</strong> de las preguntas y, si hace falta, <strong>textos propios</strong> para las preguntas. El perfil predeterminado es el modelo SIVON tal cual; es fijo, para que las puntuaciones sigan siendo comparables.",
+      "profilesIntroHtml": "Un <strong>perfil</strong> define cómo usa tu organización la Verificación de valores públicos: los <strong>pesos</strong> de las preguntas y, si hace falta, <strong>textos propios</strong> para las preguntas. El perfil predeterminado es el modelo SIVON tal cual; es fijo, para que las puntuaciones sigan siendo comparables.",
       "profilesShareHtml": "<strong>¿Evalúas en equipo?</strong> Un perfil se guarda en tu propio navegador. Compártelo mediante <em>Compartir</em> con todas las personas implicadas. Además, el perfil se incluye automáticamente en cada exportación JSON. Tus colegas eligen <em>Importar</em> (o <em>Importar perfil</em> abajo); el perfil compartido pasa a ser su perfil activo de inmediato.",
       "profilesTitle": "Perfil",
       "profileVersionChanged": "Evaluada con la versión {v}; el perfil está ahora en la versión {cur}.",
@@ -5447,7 +5447,7 @@ const I18N = {
       "rpBtn": "Informe",
       "rpExplain": "La puntuación de valores públicos (1 a 10) muestra la urgencia de los riesgos para los valores públicos: cuanto más baja, más urgente. El cuadrante indica qué tipo de acción encaja.",
       "rpFilter": "Filtro",
-      "rpFoot": "Creado con PVS v{v} (Análisis de valores públicos, SIVON, basado en el DAAF de la Universidad de Utrecht).",
+      "rpFoot": "Creado con PVC v{v} (Verificación de valores públicos, SIVON, basado en el DAAF de la Universidad de Utrecht).",
       "rpGainSub": "Preguntas que con más frecuencia dan la mayor mejora en Crítico y Punto de atención. Sugerencias, no consejos.",
       "rpLowest": "Puntuaciones más bajas",
       "rpMenu": "Informe (PDF)",
@@ -5528,7 +5528,7 @@ const I18N = {
       "wModel": "Modelo SIVON"
     },
     "welcome": `
-      <p>Bienvenido al Análisis de valores públicos (PVS), una herramienta que ayuda a las organizaciones a evaluar en qué medida su panorama de aplicaciones cumple con los <a href="https://www.kennisnet.nl/tools/waardenwijzer/">valores públicos en educación</a> (autonomía, justicia y humanidad).</p>
+      <p>Bienvenido a la Verificación de valores públicos (PVC), una herramienta que ayuda a las organizaciones a evaluar en qué medida su panorama de aplicaciones cumple con los <a href="https://www.kennisnet.nl/tools/waardenwijzer/">valores públicos en educación</a> (autonomía, justicia y humanidad).</p>
       <h3>Cómo empezar</h3>
         <ol>
           <li><strong>Añadir una aplicación:</strong> haz clic en <strong>+ Añadir aplicación</strong>, o importa una lista de nombres mediante CSV.</li>
@@ -5543,7 +5543,7 @@ const I18N = {
   "fr": {
     "changelog": [
       {
-        "version": "1.0.0",
+        "version": "0.9.0",
         "date": "2026-10-12",
         "items": [
           "<strong>Première version publique basée sur DAAF v1.0 :</strong> 34 questions réparties en 5 dimensions : importance stratégique, autonomie, humanité, justice et maîtrise de l'établissement."
@@ -5610,8 +5610,8 @@ const I18N = {
       "vendor lock-in": "Une situation où une organisation est si dépendante d'un fournisseur que passer à une alternative devient disproportionnellement coûteux ou complexe."
     },
     "help": `
-        <h3>Qu'est-ce que le PVS ?</h3>
-        <p>Le Scan des valeurs publiques (PVS) aide les organisations à évaluer dans quelle mesure leur paysage applicatif est conforme aux <a href="https://www.kennisnet.nl/tools/waardenwijzer/">valeurs publiques dans l'éducation</a>. Le questionnaire est basé sur le Scan des valeurs publiques de SIVON et comprend 34 questions réparties en 5 dimensions : importance stratégique, autonomie, humanité, justice et maîtrise de l'établissement.</p>
+        <h3>Qu'est-ce que le Contrôle des valeurs publiques ?</h3>
+        <p>Le Contrôle des valeurs publiques (PVC) aide les organisations à évaluer dans quelle mesure leur paysage applicatif est conforme aux <a href="https://www.kennisnet.nl/tools/waardenwijzer/">valeurs publiques dans l'éducation</a>. Le questionnaire est basé sur le Scan des valeurs publiques de SIVON et comprend 34 questions réparties en 5 dimensions : importance stratégique, autonomie, humanité, justice et maîtrise de l'établissement.</p>
         <h3>Comment ça marche ?</h3>
         <p>L'évaluation suit quatre étapes :</p>
         <ul>
@@ -5687,7 +5687,7 @@ const I18N = {
         <h3>Qualité des données</h3>
         <p>La carte Qualité des données de la vue d'ensemble indique ce qui demande encore de l'attention avant de partager le tableau : applications pas entièrement évaluées, applications sans unité ou sans fournisseur, variantes orthographiques possibles comme « Service informatique » et « Services informatiques », et profils différents utilisés. Cliquez sur un signalement pour y accéder directement.</p>
         <h3>Évaluer ensemble</h3>
-        <p>Le PVS est généralement rempli avec des collègues. Une façon de travailler courante, sans que personne n'ait besoin de se connecter :</p>
+        <p>Le Contrôle des valeurs publiques est généralement rempli avec des collègues. Une façon de travailler courante, sans que personne n'ait besoin de se connecter :</p>
         <ol>
             <li><strong>Accords préalables :</strong> un coordinateur décide du profil utilisé par l'organisation et le partage via « Partager ». Convenez aussi des noms des unités et des fournisseurs.</li>
             <li><strong>Remplissage :</strong> les collègues importent le profil via Importer &gt; Importer un profil (il devient alors leur profil actif), évaluent leurs applications et les exportent au format JSON.</li>
@@ -5697,7 +5697,7 @@ const I18N = {
         <h3>Pondérations</h3>
         <p>Chaque question a une pondération par défaut (2 ou 3). La pondération détermine l'influence d'une question <strong>au sein de sa dimension et de son type de question</strong>. Par exemple : si vous fixez la question 15 à une pondération de 5 et la question 16 à une pondération de 1, la question 15 compte cinq fois plus dans le score d'atténuation d'Autonomie. Il y a deux niveaux. Les <strong>pondérations de votre organisation</strong> se définissent dans votre propre profil (bouton « Profil », onglet Pondérations) et s'appliquent à toutes les applications ayant ce profil. Par application, vous pouvez encore vous en écarter avec le bouton « Pondérations » de l'évaluation. Dans l'évaluation, la pondération n'est affichée que là où elle diffère du modèle SIVON. N'ajustez les pondérations qu'en concertation au sein de votre organisation ou secteur, afin que les scores restent comparables.</p>
         <h3>Profils</h3>
-        <p>Un <strong>profil</strong> définit la manière dont votre organisation utilise le PVS : les <strong>pondérations</strong> et, si nécessaire, des <strong>textes propres</strong> pour les questions (titre, question, rubriques et orientation). Le profil par défaut est le modèle SIVON tel quel et il est figé, afin que les scores restent comparables. Les numéros, les types de question, l'échelle et le calcul sont identiques pour tous.</p>
+        <p>Un <strong>profil</strong> définit la manière dont votre organisation utilise le Contrôle des valeurs publiques : les <strong>pondérations</strong> et, si nécessaire, des <strong>textes propres</strong> pour les questions (titre, question, rubriques et orientation). Le profil par défaut est le modèle SIVON tel quel et il est figé, afin que les scores restent comparables. Les numéros, les types de question, l'échelle et le calcul sont identiques pour tous.</p>
         <ul>
             <li><strong>Créer votre propre profil :</strong> via le bouton « Profil ». Votre premier profil propre devient le profil des nouvelles évaluations, et l'outil demande si les applications existantes peuvent également l'utiliser. En haut de chaque évaluation, vous voyez et changez le profil.</li>
             <li><strong>Textes propres :</strong> dans l'onglet Textes, ou avec le crayon à côté d'une question dans une évaluation. Un champ vide utilise le texte par défaut.</li>
@@ -6250,7 +6250,7 @@ const I18N = {
       "exportReminderText3": " sauvegardées dans votre navigateur. Exportez régulièrement en JSON pour éviter de perdre votre travail.",
       "footerCopyrights": "Université d'Utrecht & SIVON",
       "footerCreditsHtml": "Basé sur <a href='https://github.com/UtrechtUniversity/digital-autonomy-assessment-tool'>DAAF</a> par Tim van Neerbos",
-      "footerLicenseSummaryHtml": "Libre pour un usage non commercial avec attribution, voir la <a href='https://codeberg.org/SIVON/pvaf/' target='_blank'>LICENCE</a> pour les détails. <a href='https://codeberg.org/SIVON/pvaf/' target='_blank'>Contributions</a> bienvenues.",
+      "footerLicenseSummaryHtml": "Libre pour un usage non commercial avec attribution, voir la <a href='https://codeberg.org/SIVON/pv-check' target='_blank'>LICENCE</a> pour les détails. <a href='https://codeberg.org/SIVON/pv-check' target='_blank'>Contributions</a> bienvenues.",
       "formulaQuad": "Quadrant : les seuils se situent à pression du risque = 9 (3 x 3) et force d'atténuation = 3.",
       "hasRemark": "Contient un commentaire",
       "hDupes": "{n} variante(s) orthographique(s) possible(s) dans {label}",
@@ -6275,12 +6275,12 @@ const I18N = {
       "headerMenuResetWeightsBtn": "Réinitialiser par défaut",
       "headerMenuWeightsBtn": "Ajuster les pondérations",
       "headerTabsAddAppBtn": "Ajouter une application",
-      "headerTitle": "Scan des valeurs publiques",
+      "headerTitle": "Contrôle des valeurs publiques",
       "healthOk": "Tout est en ordre",
       "healthOkSub": "Entièrement évaluées, classées et sans doublons.",
       "healthSub": "Ce qui demande encore attention avant de tirer des conclusions",
       "healthTitle": "Qualité des données",
-      "helpModalTitle": "Guide d'utilisation – Scan des valeurs publiques",
+      "helpModalTitle": "Guide d'utilisation – Contrôle des valeurs publiques",
       "hIncomplete": "{n} application(s) pas encore entièrement évaluée(s)",
       "hNoOrg": "{n} application(s) sans {label}",
       "hNoVendor": "{n} application(s) sans fournisseur",
@@ -6455,7 +6455,7 @@ const I18N = {
       "profile": "Profil",
       "profileSaved": "Profil « {name} » enregistré.",
       "profilesBtn": "Profil",
-      "profilesIntroHtml": "Un <strong>profil</strong> définit la manière dont votre organisation utilise le PVS : les <strong>pondérations</strong> des questions et, si nécessaire, des <strong>textes propres</strong> pour les questions. Le profil par défaut est le modèle SIVON tel quel ; il est figé, afin que les scores restent comparables.",
+      "profilesIntroHtml": "Un <strong>profil</strong> définit la manière dont votre organisation utilise le Contrôle des valeurs publiques : les <strong>pondérations</strong> des questions et, si nécessaire, des <strong>textes propres</strong> pour les questions. Le profil par défaut est le modèle SIVON tel quel ; il est figé, afin que les scores restent comparables.",
       "profilesShareHtml": "<strong>Vous évaluez ensemble ?</strong> Un profil est stocké dans votre propre navigateur. Partagez-le via <em>Partager</em> avec toutes les personnes concernées. Un profil est aussi inclus automatiquement dans chaque export JSON. Vos collègues choisissent <em>Importer</em> (ou <em>Importer un profil</em> ci-dessous) ; le profil partagé devient alors immédiatement leur profil actif.",
       "profilesTitle": "Profil",
       "profileVersionChanged": "Évaluée avec la version {v} ; le profil est maintenant en version {cur}.",
@@ -6477,7 +6477,7 @@ const I18N = {
       "rpBtn": "Rapport",
       "rpExplain": "Le score des valeurs publiques (1 à 10) indique l'urgence des risques pour les valeurs publiques : plus il est bas, plus c'est urgent. Le quadrant indique le type d'action adapté.",
       "rpFilter": "Filtre",
-      "rpFoot": "Réalisé avec PVS v{v} (Scan des valeurs publiques, SIVON, basé sur le DAAF de l'Université d'Utrecht).",
+      "rpFoot": "Réalisé avec PVC v{v} (Contrôle des valeurs publiques, SIVON, basé sur le DAAF de l'Université d'Utrecht).",
       "rpGainSub": "Questions qui apportent le plus souvent le plus grand gain pour Critique et Point d'attention. Des suggestions, pas des conseils.",
       "rpLowest": "Scores les plus bas",
       "rpMenu": "Rapport (PDF)",
@@ -6558,7 +6558,7 @@ const I18N = {
       "wModel": "Modèle SIVON"
     },
     "welcome": `
-      <p>Bienvenue dans le Scan des valeurs publiques (PVS), un outil qui aide les organisations à évaluer dans quelle mesure leur parc applicatif répond aux <a href="https://www.kennisnet.nl/tools/waardenwijzer/">valeurs publiques dans l'éducation</a> (autonomie, justice et humanité).</p>
+      <p>Bienvenue dans le Contrôle des valeurs publiques (PVC), un outil qui aide les organisations à évaluer dans quelle mesure leur parc applicatif répond aux <a href="https://www.kennisnet.nl/tools/waardenwijzer/">valeurs publiques dans l'éducation</a> (autonomie, justice et humanité).</p>
       <h3>Comment démarrer</h3>
       <ol>
         <li><strong>Ajouter une application :</strong> cliquez sur <strong>+ Ajouter une application</strong>, ou importez une liste de noms via CSV.</li>
@@ -6573,7 +6573,7 @@ const I18N = {
   "it": {
     "changelog": [
       {
-        "version": "1.0.0",
+        "version": "0.9.0",
         "date": "2026-10-12",
         "items": [
           "<strong>Prima versione pubblica basata su DAAF v1.0:</strong> 34 domande in 5 dimensioni: importanza strategica, autonomia, umanità, giustizia e controllo della scuola."
@@ -6640,8 +6640,8 @@ const I18N = {
       "vendor lock-in": "Una situazione in cui un'organizzazione dipende così tanto da un fornitore che passare a un'alternativa diventa sproporzionatamente costoso o complesso."
     },
     "help": `
-        <h3>Cos'è la PVS?</h3>
-        <p>La Scansione dei valori pubblici (PVS) aiuta le organizzazioni a valutare in che misura il loro parco applicativo è conforme ai <a href="https://www.kennisnet.nl/tools/waardenwijzer/">valori pubblici nell'istruzione</a>. Il questionario si basa sulla Scansione dei valori pubblici di SIVON e comprende 34 domande suddivise in 5 dimensioni: importanza strategica, autonomia, umanità, giustizia e controllo della scuola.</p>
+        <h3>Cos'è la Verifica dei valori pubblici?</h3>
+        <p>La Verifica dei valori pubblici (PVC) aiuta le organizzazioni a valutare in che misura il loro parco applicativo è conforme ai <a href="https://www.kennisnet.nl/tools/waardenwijzer/">valori pubblici nell'istruzione</a>. Il questionario si basa sulla Scansione dei valori pubblici di SIVON e comprende 34 domande suddivise in 5 dimensioni: importanza strategica, autonomia, umanità, giustizia e controllo della scuola.</p>
         <h3>Come funziona?</h3>
         <p>La valutazione segue quattro passi:</p>
         <ul>
@@ -6717,7 +6717,7 @@ const I18N = {
         <h3>Qualità dei dati</h3>
         <p>La scheda Qualità dei dati nella panoramica mostra ciò che richiede ancora attenzione prima di condividere il quadro: applicazioni non valutate completamente, applicazioni senza unità o fornitore, possibili varianti ortografiche come "Servizio ICT" e "Servizi ICT", e profili diversi in uso. Clicca su una segnalazione per andarci direttamente.</p>
         <h3>Valutare insieme</h3>
-        <p>La PVS viene di solito compilato insieme ai colleghi. Un modo di lavorare comune, senza che nessuno debba effettuare l'accesso:</p>
+        <p>La Verifica dei valori pubblici viene di solito compilata insieme ai colleghi. Un modo di lavorare comune, senza che nessuno debba effettuare l'accesso:</p>
         <ol>
             <li><strong>Accordi preliminari:</strong> un coordinatore decide quale profilo usa l'organizzazione e lo condivide tramite "Condividi". Concordate anche i nomi delle unità e dei fornitori.</li>
             <li><strong>Compilazione:</strong> i colleghi importano il profilo tramite Importa &gt; Importa profilo (diventa così il loro profilo attivo), valutano le loro applicazioni e le esportano in formato JSON.</li>
@@ -6727,7 +6727,7 @@ const I18N = {
         <h3>Pesi</h3>
         <p>Ogni domanda ha un peso predefinito (2 o 3). Il peso determina l'influenza di una domanda <strong>all'interno della sua dimensione e del suo tipo di domanda</strong>. Ad esempio: se imposti la domanda 15 a peso 5 e la domanda 16 a peso 1, la domanda 15 conta cinque volte di più nel punteggio di attenuazione di Autonomia. Ci sono due livelli. I <strong>pesi della tua organizzazione</strong> si impostano nel tuo profilo (pulsante "Profilo", scheda Pesi) e valgono per tutte le applicazioni con quel profilo. Per singola applicazione puoi comunque discostarti con il pulsante "Pesi" nella valutazione. Nella valutazione il peso viene mostrato solo dove differisce dal modello SIVON. Regola i pesi solo in consultazione all'interno della tua organizzazione o del tuo settore, così i punteggi restano confrontabili.</p>
         <h3>Profili</h3>
-        <p>Un <strong>profilo</strong> stabilisce come la tua organizzazione usa la PVS: i <strong>pesi</strong> e, se necessario, <strong>testi propri</strong> per le domande (titolo, domanda, rubriche e indicazioni). Il profilo predefinito è il modello SIVON così com'è ed è fisso, così i punteggi restano confrontabili. I numeri, i tipi di domanda, la scala e il calcolo sono uguali per tutti.</p>
+        <p>Un <strong>profilo</strong> stabilisce come la tua organizzazione usa la Verifica dei valori pubblici: i <strong>pesi</strong> e, se necessario, <strong>testi propri</strong> per le domande (titolo, domanda, rubriche e indicazioni). Il profilo predefinito è il modello SIVON così com'è ed è fisso, così i punteggi restano confrontabili. I numeri, i tipi di domanda, la scala e il calcolo sono uguali per tutti.</p>
         <ul>
             <li><strong>Creare un profilo proprio:</strong> tramite il pulsante "Profilo". Il tuo primo profilo proprio diventa il profilo per le nuove valutazioni, e lo strumento chiede se anche le applicazioni esistenti possono usarlo. In cima a ogni valutazione vedi e cambi il profilo.</li>
             <li><strong>Testi propri:</strong> nella scheda Testi, oppure con la matita accanto a una domanda in una valutazione. Un campo vuoto usa il testo predefinito.</li>
@@ -7280,7 +7280,7 @@ const I18N = {
       "exportReminderText3": " salvate nel browser. Esporta regolarmente in JSON per evitare di perdere il tuo lavoro.",
       "footerCopyrights": "Università di Utrecht & SIVON",
       "footerCreditsHtml": "Basato su <a href='https://github.com/UtrechtUniversity/digital-autonomy-assessment-tool'>DAAF</a> di Tim van Neerbos",
-      "footerLicenseSummaryHtml": "Libero per uso non commerciale con attribuzione, vedi la <a href='https://codeberg.org/SIVON/pvaf/' target='_blank'>LICENZA</a> per i dettagli. <a href='https://codeberg.org/SIVON/pvaf/' target='_blank'>Contributi</a> benvenuti.",
+      "footerLicenseSummaryHtml": "Libero per uso non commerciale con attribuzione, vedi la <a href='https://codeberg.org/SIVON/pv-check' target='_blank'>LICENZA</a> per i dettagli. <a href='https://codeberg.org/SIVON/pv-check' target='_blank'>Contributi</a> benvenuti.",
       "formulaQuad": "Quadrante: le soglie sono a pressione del rischio = 9 (3 x 3) ed efficacia dell'attenuazione = 3.",
       "hasRemark": "Ha un commento",
       "hDupes": "{n} possibile/i variante/i ortografica/he in {label}",
@@ -7305,12 +7305,12 @@ const I18N = {
       "headerMenuResetWeightsBtn": "Ripristina predefiniti",
       "headerMenuWeightsBtn": "Regola pesi",
       "headerTabsAddAppBtn": "Aggiungi applicazione",
-      "headerTitle": "Scansione dei valori pubblici",
+      "headerTitle": "Verifica dei valori pubblici",
       "healthOk": "Tutto in ordine",
       "healthOkSub": "Valutate completamente, classificate e senza duplicati.",
       "healthSub": "Cosa richiede ancora attenzione prima di trarre conclusioni",
       "healthTitle": "Qualità dei dati",
-      "helpModalTitle": "Guida utente – Scansione dei valori pubblici",
+      "helpModalTitle": "Guida utente – Verifica dei valori pubblici",
       "hIncomplete": "{n} applicazione/i non ancora valutata/e completamente",
       "hNoOrg": "{n} applicazione/i senza {label}",
       "hNoVendor": "{n} applicazione/i senza fornitore",
@@ -7485,7 +7485,7 @@ const I18N = {
       "profile": "Profilo",
       "profileSaved": "Profilo \"{name}\" salvato.",
       "profilesBtn": "Profilo",
-      "profilesIntroHtml": "Un <strong>profilo</strong> stabilisce come la tua organizzazione usa la PVS: i <strong>pesi</strong> delle domande e, se necessario, <strong>testi propri</strong> per le domande. Il profilo predefinito è il modello SIVON così com'è; è fisso, così i punteggi restano confrontabili.",
+      "profilesIntroHtml": "Un <strong>profilo</strong> stabilisce come la tua organizzazione usa la Verifica dei valori pubblici: i <strong>pesi</strong> delle domande e, se necessario, <strong>testi propri</strong> per le domande. Il profilo predefinito è il modello SIVON così com'è; è fisso, così i punteggi restano confrontabili.",
       "profilesShareHtml": "<strong>Valutate insieme?</strong> Un profilo è salvato nel tuo browser. Condividilo tramite <em>Condividi</em> con tutte le persone coinvolte. Un profilo è inoltre incluso automaticamente in ogni esportazione JSON. I colleghi scelgono <em>Importa</em> (o <em>Importa profilo</em> qui sotto); il profilo condiviso diventa subito il loro profilo attivo.",
       "profilesTitle": "Profilo",
       "profileVersionChanged": "Valutata con la versione {v}; il profilo è ora alla versione {cur}.",
@@ -7507,7 +7507,7 @@ const I18N = {
       "rpBtn": "Rapporto",
       "rpExplain": "Il punteggio valori pubblici (da 1 a 10) mostra quanto sono urgenti i rischi per i valori pubblici: più è basso, più è urgente. Il quadrante indica il tipo di azione adatto.",
       "rpFilter": "Filtro",
-      "rpFoot": "Realizzato con PVS v{v} (Scansione dei valori pubblici, SIVON, basato sul DAAF dell'Università di Utrecht).",
+      "rpFoot": "Realizzato con PVC v{v} (Verifica dei valori pubblici, SIVON, basato sul DAAF dell'Università di Utrecht).",
       "rpGainSub": "Domande che più spesso danno il guadagno maggiore per Critico e Punto di attenzione. Suggerimenti, non consigli.",
       "rpLowest": "Punteggi più bassi",
       "rpMenu": "Rapporto (PDF)",
@@ -7588,7 +7588,7 @@ const I18N = {
       "wModel": "Modello SIVON"
     },
     "welcome": `
-      <p>Benvenuto nella Scansione dei valori pubblici (PVS), uno strumento che aiuta le organizzazioni a valutare in che misura il loro panorama applicativo soddisfa i <a href="https://www.kennisnet.nl/tools/waardenwijzer/">valori pubblici nell'istruzione</a> (autonomia, giustizia e umanità).</p>
+      <p>Benvenuto nella Verifica dei valori pubblici (PVC), uno strumento che aiuta le organizzazioni a valutare in che misura il loro panorama applicativo soddisfa i <a href="https://www.kennisnet.nl/tools/waardenwijzer/">valori pubblici nell'istruzione</a> (autonomia, giustizia e umanità).</p>
       <h3>Come iniziare</h3>
       <ol>
         <li><strong>Aggiungi un'applicazione:</strong> clicca su <strong>+ Aggiungi applicazione</strong>, o importa un elenco di nomi tramite CSV.</li>
@@ -7603,7 +7603,7 @@ const I18N = {
   "nl": {
     "changelog": [
       {
-        "version": "1.0.0",
+        "version": "0.9.0",
         "date": "2026-10-12",
         "items": [
           "<strong>Eerste publieke versie gebaseerd op DAAF v1.0:</strong> 34 vragen in 5 dimensies: strategisch belang, autonomie, menselijkheid, rechtvaardigheid en regie van de school."
@@ -8314,7 +8314,7 @@ const I18N = {
       "exportReminderText3": " in je browser opgeslagen. Exporteer regelmatig naar JSON om je werk niet kwijt te raken.",
       "footerCopyrights": "Universiteit Utrecht & SIVON",
       "footerCreditsHtml": "Gebaseerd op <a href='https://github.com/UtrechtUniversity/digital-autonomy-assessment-tool'>DAAF</a> door Tim van Neerbos",
-      "footerLicenseSummaryHtml": "Vrij te gebruiken voor niet-commercieel gebruik met naamsvermelding, zie de <a href='https://codeberg.org/SIVON/pvaf/' target='_blank'>LICENTIE</a> voor details. <a href='https://codeberg.org/SIVON/pvaf/' target='_blank'>Bijdragen</a> zijn welkom.",
+      "footerLicenseSummaryHtml": "Vrij te gebruiken voor niet-commercieel gebruik met naamsvermelding, zie de <a href='https://codeberg.org/SIVON/pv-check' target='_blank'>LICENTIE</a> voor details. <a href='https://codeberg.org/SIVON/pv-check' target='_blank'>Bijdragen</a> zijn welkom.",
       "formulaQuad": "Kwadrant: de grenzen liggen bij risicodruk = 9 (3 x 3) en mitigatiekracht = 3.",
       "hasRemark": "Heeft een opmerking",
       "hDupes": "{n} mogelijke schrijfvariant(en) bij {label}",
@@ -8338,12 +8338,12 @@ const I18N = {
       "headerMenuImportJsonSub": "Eerder geëxporteerde assessments",
       "headerMenuWeightsBtn": "Wegingen aanpassen",
       "headerTabsAddAppBtn": "Applicatie toevoegen",
-      "headerTitle": "Publieke Waarden Scan",
+      "headerTitle": "Publieke waardencheck",
       "healthOk": "Alles op orde",
       "healthOkSub": "Volledig gescoord, ingedeeld en zonder dubbelingen.",
       "healthSub": "Wat nog aandacht vraagt voordat je conclusies trekt",
       "healthTitle": "Datakwaliteit",
-      "helpModalTitle": "Handleiding Publieke Waarden Scan",
+      "helpModalTitle": "Handleiding Publieke waardencheck",
       "hIncomplete": "{n} applicatie(s) nog niet volledig gescoord",
       "hNoOrg": "{n} applicatie(s) zonder {label}",
       "hNoVendor": "{n} applicatie(s) zonder leverancier",
@@ -8518,7 +8518,7 @@ const I18N = {
       "profile": "Profiel",
       "profileSaved": "Profiel \"{name}\" opgeslagen.",
       "profilesBtn": "Profiel",
-      "profilesIntroHtml": "Een <strong>profiel</strong> legt vast hoe jouw organisatie de PVS gebruikt: de <strong>weging</strong> van de vragen en zo nodig <strong>eigen teksten</strong> voor vragen. Het standaardprofiel is het SIVON-model zoals het is; het ligt vast, zodat scores vergelijkbaar blijven.",
+      "profilesIntroHtml": "Een <strong>profiel</strong> legt vast hoe jouw organisatie de Publieke waardencheck gebruikt: de <strong>weging</strong> van de vragen en zo nodig <strong>eigen teksten</strong> voor vragen. Het standaardprofiel is het SIVON-model zoals het is; het ligt vast, zodat scores vergelijkbaar blijven.",
       "profilesShareHtml": "<strong>Samen invullen?</strong> Een profiel staat in je eigen browser. Deel het via <em>Delen</em> met iedereen die meedoet. Een profiel gaat ook automatisch mee in elke JSON-export. Collega's kiezen <em>Importeren</em> (of <em>Profiel importeren</em> hieronder); het gedeelde profiel wordt dan meteen hun actieve profiel.",
       "profilesTitle": "Profiel",
       "profileVersionChanged": "Beoordeeld met versie {v}; het profiel is nu versie {cur}.",
@@ -8540,7 +8540,7 @@ const I18N = {
       "rpBtn": "Rapport",
       "rpExplain": "De publieke waarden score (1 tot 10) laat zien hoe urgent de risico's voor publieke waarden zijn: hoe lager, hoe urgenter. Het kwadrant laat zien welk soort actie past.",
       "rpFilter": "Filter",
-      "rpFoot": "Gemaakt met PVS v{v} (Publieke Waarden Scan, SIVON, gebaseerd op het DAAF van de Universiteit Utrecht).",
+      "rpFoot": "Gemaakt met PVC v{v} (Publieke waardencheck, SIVON, gebaseerd op het DAAF van de Universiteit Utrecht).",
       "rpGainSub": "Vragen die het vaakst de grootste winst geven bij Kritiek en Aandachtspunt. Suggesties, geen advies.",
       "rpLowest": "Laagste scores",
       "rpMenu": "Rapport (PDF)",
@@ -8621,7 +8621,7 @@ const I18N = {
       "wModel": "SIVON-model"
     },
     "welcome": `
-      <p>Welkom bij de Publieke Waarden Scan (PVS), een tool die organisaties helpt met het beoordelen in hoeverre hun applicatielandschap voldoet aan de <a href="https://www.kennisnet.nl/tools/waardenwijzer/">publieke waarden in het onderwijs</a> (autonomie,
+      <p>Welkom bij de Publieke waardencheck (PVC), een tool die organisaties helpt met het beoordelen in hoeverre hun applicatielandschap voldoet aan de <a href="https://www.kennisnet.nl/tools/waardenwijzer/">publieke waarden in het onderwijs</a> (autonomie,
       rechtvaardigheid, en menselijkheid).</p>
       <h3>Aan de slag</h3>
       <ol>
@@ -8768,11 +8768,11 @@ function slug(s) {
 }
 
 // === STORAGE ===
-const KEY_STATE = 'pvs_state';
-const KEY_LANG = 'pvs_lang';
-const KEY_LAST_SEEN = 'pvs_lastSeenVersion';
-const KEY_LAST_EXPORT = 'pvs_lastExportAction';
-const KEY_VIEWPREFS = 'pvs_overview';
+const KEY_STATE = 'pvc_state';
+const KEY_LANG = 'pvc_lang';
+const KEY_LAST_SEEN = 'pvc_lastSeenVersion';
+const KEY_LAST_EXPORT = 'pvc_lastExportAction';
+const KEY_VIEWPREFS = 'pvc_overview';
 
 function lsGet(k) {
   try {
@@ -9194,7 +9194,7 @@ function openLanguagePicker(btn) {
 
 // === APPEARANCE (light, dark or follow the system) ===
 // Light by default; dark only when someone chooses it, and following the system is a deliberate choice too.
-const KEY_THEME = 'pvs_theme';
+const KEY_THEME = 'pvc_theme';
 
 function themePref() {
   const p = lsGet(KEY_THEME);
@@ -9599,7 +9599,7 @@ function rerenderAppView(id) {
 function updateDocTitle() {
   const base = t('ui.headerTitle');
   const a = state.currentView !== 'overview' && state.apps[state.currentView];
-  document.title = a ? (a.name || unnamed()) + ' · PVS' : 'PVS | ' + base;
+  document.title = a ? (a.name || unnamed()) + ' · PVC' : 'PVC | ' + base;
 }
 
 // === MANAGING APPLICATIONS ===
@@ -10952,7 +10952,7 @@ function openReport() {
   const row = x => `<tr><td>${nm(x)}</td><td>${esc(x.a.orgUnit||'')}</td><td>${esc(x.a.vendor||'')}</td><td class="c">${scorePill(x.r.score10)}</td><td class="c">${quadPill(x.r.quadrant)}</td></tr>`;
   const thead = `<thead><tr><th>${esc(t('ui.overviewTableHeaderApp'))}</th><th>${esc(orgLabel())}</th><th>${esc(tx('vendor'))}</th><th class="c">${esc(t('ui.overviewTableHeaderScore'))}</th><th class="c">${esc(tx('quadrant'))}</th></tr></thead>`;
   const byScore = [...S].sort((a, b) => a.r.score10 - b.r.score10);
-  let h = `<header class="rp-head"><div class="rp-brand">PVS</div><h1>${esc(tx('rpTitle'))}</h1><p>${esc(date)} · ${esc(tx('profile'))}: ${esc(profs)}${filt?' · '+esc(tx('rpFilter'))+': '+esc(filt):''}</p></header>`;
+  let h = `<header class="rp-head"><div class="rp-brand">PVC</div><h1>${esc(tx('rpTitle'))}</h1><p>${esc(date)} · ${esc(tx('profile'))}: ${esc(profs)}${filt?' · '+esc(tx('rpFilter'))+': '+esc(filt):''}</p></header>`;
   h += `<div class="rp-kpis"><div><b>${L.length}</b><span>${esc(tx('rpApps',{n:L.length,u:uniq}))}</span></div><div><b>${avg!=null?avg.toFixed(1):'--'}</b><span>${esc(tx('tileAvg'))}</span></div>`;
   for (const k of ['crit', 'att', 'man', 'opt']) h += `<div class="rp-k rp-${k}"><b>${cnt[k]}</b><span>${esc(quadLabel(k))}${S.length?' · '+Math.round(cnt[k]/S.length*100)+'%':''}</span></div>`;
   h += '</div>';
@@ -11905,8 +11905,8 @@ function deleteProfile(pid) {
 function exportProfile(pid) {
   const p = profById(pid);
   if (!p) return;
-  const data = {version: 'PVS-profile-v1', exportDate: new Date().toISOString(), toolVersion: CURRENT_VERSION, profile: p};
-  downloadBlob(JSON.stringify(data, null, 2), 'application/json', `PVS_profile_${slug(p.name)}_v${p.version}.json`);
+  const data = {version: 'PVC-profile-v1', exportDate: new Date().toISOString(), toolVersion: CURRENT_VERSION, profile: p};
+  downloadBlob(JSON.stringify(data, null, 2), 'application/json', `PVC_profile_${slug(p.name)}_v${p.version}.json`);
   showToast(esc(tx('pfSharedToast')));
 }
 
@@ -12266,14 +12266,14 @@ function prepareImport(parsed) {
       continue;
     }
     const d = f.data;
-    if (d?.version === 'PVS-lists-v1' && d.lists) {
+    if (d?.version === 'PVC-lists-v1' && d.lists) {
       plan.lists.org.push(...cleanListArr(d.lists.orgUnits));
       plan.lists.vendor.push(...cleanListArr(d.lists.vendors));
       if (nz(d.lists.orgLabel) && !plan.lists.label) plan.lists.label = String(d.lists.orgLabel).slice(0, 40);
       plan.files.push({name: f.name, info: tx('impListsFile')});
       continue;
     }
-    if (d?.version === 'PVS-profile-v1' && d.profile) {
+    if (d?.version === 'PVC-profile-v1' && d.profile) {
       const n0 = plan.profiles.length;
       planProfile(d.profile, plan, profMap);
       if (plan.profiles.length > n0) plan.profiles[plan.profiles.length - 1].fromFile = true;
@@ -12404,7 +12404,7 @@ function exportWeights(app, p) {
 
 function exportAll() {
   const data = {
-    version: 'PVS-export-v1',
+    version: 'PVC-export-v1',
     exportDate: new Date().toISOString(),
     toolVersion: CURRENT_VERSION,
     lists: listsPayload(),
@@ -12451,7 +12451,7 @@ function exportAll() {
     data.applications[key] = e;
   }
   if (Object.keys(used).length) data.profiles = used;
-  downloadBlob(JSON.stringify(data, null, 2), 'application/json', `PVS_export_${todayISO()}.json`);
+  downloadBlob(JSON.stringify(data, null, 2), 'application/json', `PVC_export_${todayISO()}.json`);
   markExportAction();
 }
 
@@ -12481,7 +12481,7 @@ function exportCSV() {
     for (const d of DIMS) csv += `;${res.dims[d]?res.dims[d].toFixed(2):''}`;
     csv += `;${csvq(res.quadrant?quadLabel(res.quadrant):'')};${csvq(app.orgUnit)};${csvq(app.vendor)};${csvq(profName(p)+(p?' v'+p.version:''))}\n`;
   }
-  downloadBlob(csv, 'text/csv;charset=utf-8', `PVS_scores_${todayISO()}.csv`);
+  downloadBlob(csv, 'text/csv;charset=utf-8', `PVC_scores_${todayISO()}.csv`);
 }
 
 function exportODF() {
@@ -12506,7 +12506,7 @@ function exportODF() {
       csv += `;${csvq(app.remarks?.[ind.code]||'')};${csvq(pn)}\n`;
     }
   }
-  downloadBlob(csv, 'text/csv;charset=utf-8', `PVS_export_${todayISO()}.csv`);
+  downloadBlob(csv, 'text/csv;charset=utf-8', `PVC_export_${todayISO()}.csv`);
 }
 
 function importCSVApps() {
@@ -12606,7 +12606,7 @@ function downloadCSVTemplate() {
   csv += 'SOFT-002;Magister;;;;Iddink\n';
   csv += 'SOFT-003;Somtoday;;;;Topicus\n';
   csv += 'SOFT-004;Google Workspace for Education;;;;Google\n';
-  downloadBlob(csv, 'text/csv;charset=utf-8', 'PVS_import_template.csv');
+  downloadBlob(csv, 'text/csv;charset=utf-8', 'PVC_import_template.csv');
 }
 
 function downloadBlob(content, type, filename) {
