@@ -18,7 +18,7 @@ For every question, score 1 is the least favourable and score 5 the most favoura
 
 - Fully client-side: runs entirely in the browser, no server required
 - Data is stored locally in the browser (localStorage)
-- Quick scan (12 questions) and full assessment (34 questions)
+- Quick scan (9 questions) and full assessment (34 questions)
 - Overview dashboard with key figures, filters, a bubble quadrant, lowest scores, data quality and overviews per supplier and organisational unit
 - Possible improvements per application and "where is the most to gain?" across applications
 - Report for management (print or save as PDF)
