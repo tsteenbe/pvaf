@@ -67,9 +67,11 @@ Answer scores are converted by question type: strategic importance and risk as `
 Score = Mitigation / (Risk exposure x Strategic importance)
 ```
 
-The result is normalised to a 1-10 scale using a logarithmic function, where 1 indicates low conformance with public values (urgent) and 10 indicates high conformance (optimal).
+The result is normalised to a 1-10 scale using a logarithmic function, where 1 indicates the most urgent risks to public values and 10 the least urgent. A high score does not by itself mean that an application aligns with all public values.
 
 The quadrant places each application on risk pressure (risk exposure x strategic importance, 1-25, boundary 9) against mitigation strength (1-5, boundary 3).
+
+Unanswered questions do not count. The score appears once each dimension involved has at least one answered question of the right type. The quick scan only counts dimensions that have questions in it, so mitigation there averages Autonomy and Justice, without School control and resilience.
 
 ## Technical details
 
