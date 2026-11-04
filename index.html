@@ -123,7 +123,7 @@
   .app-header.compact .header-right .hbtn:not(.help-btn) .btn-label { display:none; }
   .app-header.compact .header-right .hbtn[data-hint]:hover::after { content:attr(data-hint); position:absolute; top:calc(100% + 6px); left:50%; transform:translateX(-50%); white-space:nowrap; z-index:300; background:var(--sivon-grey-blue); color:var(--sivon-white); font-size:0.7rem; font-weight:600; padding:0.3rem 0.55rem; pointer-events:none; }
   .app-header.compact .lang-btn .lang-code { display:inline; }
-  .hbtn { background:rgba(255,255,255,0.1); color:var(--sivon-grey-blue); border:none; cursor:pointer; font-family:inherit; transition:all 0.15s; display:inline-flex; align-items:center; gap:0.4rem; height:34px; padding:0 0.75rem; font-size:0.76rem; font-weight:600; position:relative; }
+  .hbtn { background:rgba(255,255,255,0.1); color:var(--sivon-grey-blue); border:none; cursor:pointer; font-family:inherit; transition:all 0.15s; display:inline-flex; align-items:center; gap:0.4rem; height:34px; padding:0 0.75rem; font-size:0.76rem; font-weight:600; position:relative; text-decoration:none; }
   .hbtn .hbtn-chev .ic { width:13px; height:13px; opacity:0.7; }
   .hbtn .ic { width:16px; height:16px; }
   .hbtn.help-btn:hover { background:var(--sivon-blue); color:var(--on-blue); }
@@ -1172,6 +1172,7 @@
     <button class="hbtn" id="headerWeightsBtn" onclick="openWeightsModalCurrent()" style="display:none" data-ico="sliders"><span class="btn-label" data-i18n="ui.headerMenuWeightsBtn">Adjust Weights</span></button>
     <button class="hbtn" onclick="openChangelogModal()" id="changelogBtn" data-ico="clock"><span class="btn-label" data-i18n="ui.headerMenuChangeLogBtn">Changelog</span></button>
     <button class="hbtn lang-btn" id="langBtn" onclick="openLanguagePicker(this)" data-ico="globe" aria-haspopup="listbox" data-i18n-attr="title:ui.langTitle;aria-label:ui.langTitle"><span class="btn-label" id="langLabel">English</span><span class="lang-code" id="langCode">EN</span><span data-ico="chevron" class="hbtn-chev"></span></button>
+    <a class="hbtn" href="https://c.spotler.com/ct/m2/k1/0EOl1y-K89rhDBOC3u7TzBl_CaePIIZkEF_faLppM7y1mE-f8-tgCTynt9x93QYC4SR7KEe-7jKSyc-Jpw8uQ1pSc_40xiqYZhsVHQAzSmE/R5XnqdbtH9emnjw" target="_blank" rel="noopener noreferrer" data-ico="message"><span class="btn-label" data-i18n="ui.headerMenuFeedbackBtn">Feedback</span></a>
     <button class="hbtn icon-only" id="themeBtn" onclick="openThemePicker(this)" aria-haspopup="listbox" data-i18n-attr="title:ui.themeTitle;aria-label:ui.themeTitle"></button>
     <button class="hbtn help-btn" onclick="openHelpModal()" data-ico="help"><span class="btn-label" data-i18n="ui.headerMenuHelpBtn">User Guide</span></button>
   </div>
@@ -2160,6 +2161,7 @@ const I18N = {
       "headerMenuExportCsvSumSub": "Scorer pr. dimension og niveau",
       "headerMenuExportJson": "JSON (komplet)",
       "headerMenuExportJsonSub": "Alle data, scorer og vægte",
+      "headerMenuFeedbackBtn": "Feedback",
       "headerMenuHelpBtn": "Brugervejledning",
       "headerMenuImportBtn": "Importer",
       "headerMenuImportCsv": "Applikationsliste (CSV)",
@@ -3210,6 +3212,7 @@ const I18N = {
       "headerMenuExportCsvSumSub": "Werte pro Dimension und Ebene",
       "headerMenuExportJson": "JSON (vollständig)",
       "headerMenuExportJsonSub": "Alle Daten, Werte und Gewichtungen",
+      "headerMenuFeedbackBtn": "Feedback",
       "headerMenuHelpBtn": "Benutzerhandbuch",
       "headerMenuImportBtn": "Importieren",
       "headerMenuImportCsv": "Anwendungsliste (CSV)",
@@ -4263,6 +4266,7 @@ const I18N = {
       "headerMenuExportCsvSumSub": "Scores per dimension and level",
       "headerMenuExportJson": "JSON (complete)",
       "headerMenuExportJsonSub": "All data, scores and weights",
+      "headerMenuFeedbackBtn": "Feedback",
       "headerMenuHelpBtn": "User Guide",
       "headerMenuImportBtn": "Import",
       "headerMenuImportCsv": "Application list (CSV)",
@@ -5313,6 +5317,7 @@ const I18N = {
       "headerMenuExportCsvSumSub": "Puntuaciones por dimensión y nivel",
       "headerMenuExportJson": "JSON (completo)",
       "headerMenuExportJsonSub": "Todos los datos, puntuaciones y pesos",
+      "headerMenuFeedbackBtn": "Comentarios",
       "headerMenuHelpBtn": "Guía de usuario",
       "headerMenuImportBtn": "Importar",
       "headerMenuImportCsv": "Lista de aplicaciones (CSV)",
@@ -6363,6 +6368,7 @@ const I18N = {
       "headerMenuExportCsvSumSub": "Scores par dimension et niveau",
       "headerMenuExportJson": "JSON (complet)",
       "headerMenuExportJsonSub": "Toutes les données, scores et pondérations",
+      "headerMenuFeedbackBtn": "Commentaires",
       "headerMenuHelpBtn": "Guide d'utilisation",
       "headerMenuImportBtn": "Importer",
       "headerMenuImportCsv": "Liste d'applications (CSV)",
@@ -7413,6 +7419,7 @@ const I18N = {
       "headerMenuExportCsvSumSub": "Punteggi per dimensione e livello",
       "headerMenuExportJson": "JSON (completo)",
       "headerMenuExportJsonSub": "Tutti i dati, punteggi e pesi",
+      "headerMenuFeedbackBtn": "Feedback",
       "headerMenuHelpBtn": "Guida utente",
       "headerMenuImportBtn": "Importa",
       "headerMenuImportCsv": "Elenco applicazioni (CSV)",
@@ -8467,6 +8474,7 @@ const I18N = {
       "headerMenuExportCsvSumSub": "Scores per dimensie en niveau",
       "headerMenuExportJson": "JSON (volledig)",
       "headerMenuExportJsonSub": "Alle data, scores en wegingen",
+      "headerMenuFeedbackBtn": "Feedback",
       "headerMenuHelpBtn": "Handleiding",
       "headerMenuImportBtn": "Importeer",
       "headerMenuImportCsv": "Applicatielijst (CSV)",
@@ -9242,6 +9250,7 @@ const ICONS = {
   print: '<path d="M7 9V4h10v5"/><rect x="4" y="9" width="16" height="7" rx="2"/><path d="M7 14h10v6H7z"/>',
   upload: '<path d="M12 15V4m0 0L7.5 8.5M12 4l4.5 4.5"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/>',
   download: '<path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/>',
+  message: '<path d="M4 5.5h16v11H10l-4 3.5v-3.5H4v-11Z"/>',
   note: '<path d="M5 5.5h14a1.5 1.5 0 0 1 1.5 1.5v8a1.5 1.5 0 0 1-1.5 1.5h-8.5L6.5 20v-3.5H5A1.5 1.5 0 0 1 3.5 15V7A1.5 1.5 0 0 1 5 5.5Z"/><path d="M8 9.5h8M8 12.5h5"/>',
   layers: '<path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/>',
   sliders: '<path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/>',
