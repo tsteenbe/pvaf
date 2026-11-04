@@ -6,7 +6,7 @@ A browser-based tool for the Public Values Check (PVC; Dutch: Publieke waardench
 
 ## About
 
-The questionnaire is based on the [DAAF tool][daaf] from the [University of Utrecht][university-utrecht] and materials from [SURF][surf] and [SIVON][sivon]. It contains 34 questions across 5 dimensions. Each question has one of three question types:
+The questionnaire is based on the [DAAF tool][daaf] from the [Utrecht University][university-utrecht] and materials from [SURF][surf] and [SIVON][sivon]. It contains 34 questions across 5 dimensions. Each question has one of three question types:
 
 1. **Strategic importance**: how much is at stake for the school?
 2. **Risk**: what is put under pressure?
@@ -83,7 +83,7 @@ Unanswered questions do not count. The score appears once each dimension involve
 
 This work is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
-Based on the [digital autonomy assessment tool][daaf] from the [University of Utrecht][university-utrecht].
+Based on the [digital autonomy assessment tool][daaf] from the [Utrecht University][university-utrecht].
 
 ## Contact
 
