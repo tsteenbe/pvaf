@@ -2,7 +2,7 @@
 
 A browser-based tool for the Public Values Check (PVC; Dutch: Publieke waardencheck). Helps school boards assess the extent to which their applications align with the [public values of Dutch education][waarden-wijzer]. Developed at [SIVON][sivon] as part of its [Open Source Program Office][sivon-ospo].
 
-⚠️ **Warning: Prototype** - This project is a proof of concept under active development. Breaking changes and git force rebases will occur. Not recommended for production use.
+⚠️ **Final test phase** - This project is in its final test phase. Questions, scores and features may still change. Git force rebases may still occur.
 
 ## About
 
